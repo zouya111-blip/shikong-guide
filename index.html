@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控进化 · 新手站</title>
+<style>
+/* ============================================================
+   官网配色体系继承
+   背景: #111010 / #151515 / #191219
+   主文字: #e3dad1 / #e4d9cf
+   强调色: #e74020 / #c53f25
+   副色: #ff7132 / #fb6d32
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+:root {
+  --bg-base:      #111010;
+  --bg-card:      #1a1818;
+  --bg-card-alt:  #201e1e;
+  --bg-nav:       #0d0c0c;
+  --text-primary: #e3dad1;
+  --text-secondary: #b0a89f;
+  --text-muted:   #6e6660;
+  --accent:       #e74020;
+  --accent-dark:  #c53f25;
+  --accent-orange:#ff7132;
+  --border:       rgba(227,218,209,0.12);
+  --border-accent:rgba(231,64,32,0.4);
+  --font-title:   "FZLTZHUNHK", "Noto Sans SC", "PingFang SC", "微软雅黑", sans-serif;
+  --font-body:    "PingFang SC", "Noto Sans SC", "微软雅黑", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ---- 导航栏 ---- */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 54px;
+  background: var(--bg-nav);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  gap: 0;
+}
+.nav-logo {
+  font-family: var(--font-title);
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  margin-right: 48px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.nav-logo span {
+  color: var(--accent);
+}
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  flex: 1;
+}
+.nav-links a {
+  display: block;
+  padding: 0 18px;
+  height: 54px;
+  line-height: 54px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 18px; right: 18px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ---- 主内容区 ---- */
+main {
+  padding-top: 54px;
+}
+
+/* ---- 页面切换 ---- */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ============================================================
+   首页 — HOMEPAGE
+   ============================================================ */
+
+/* Hero Banner */
+.hero {
+  position: relative;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(231,64,32,0.08) 0%, transparent 70%),
+    linear-gradient(180deg, #151515 0%, #111010 60%, #0d0c0c 100%);
+}
+/* 网格纹理感 */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(227,218,209,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(227,218,209,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+/* 底部渐变遮罩 */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(0deg, var(--bg-base) 0%, transparent 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid var(--border-accent);
+  border-radius: 2px;
+  font-size: 12px;
+  color: var(--accent-orange);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  background: rgba(231,64,32,0.08);
+}
+.hero h1 {
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.hero h1 em {
+  color: var(--accent);
+  font-style: normal;
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  letter-spacing: 0.02em;
+}
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.btn-primary {
+  padding: 0 32px;
+  height: 46px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.15s;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  padding: 0 24px;
+  height: 46px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover {
+  color: var(--text-primary);
+  border-color: rgba(227,218,209,0.3);
+}
+
+/* 三列游戏介绍卡片 */
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin: 0 0 64px;
+}
+.intro-card {
+  background: var(--bg-card);
+  padding: 36px 32px;
+  transition: background 0.2s;
+}
+.intro-card:hover {
+  background: var(--bg-card-alt);
+}
+.intro-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+.intro-card h3 {
+  font-family: var(--font-title);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+.intro-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* 入口导航区 */
+.entry-section {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 0 40px;
+}
+.entry-section > .section-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.entry-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+}
+.entry-card {
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.entry-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--accent);
+  transition: height 0.25s;
+}
+.entry-card:hover {
+  border-color: var(--border-accent);
+  background: rgba(231,64,32,0.04);
+}
+.entry-card:hover::before {
+  height: 100%;
+}
+.entry-card.featured {
+  border-color: rgba(231,64,32,0.3);
+  background: rgba(231,64,32,0.04);
+}
+.entry-card.featured::before {
+  height: 60px;
+}
+.entry-tag {
+  font-size: 11px;
+  color: var(--accent-orange);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.entry-card h3 {
+  font-family: var(--font-title);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+.entry-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.entry-arrow {
+  font-size: 13px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================================
+   Step 1 页面
+   ============================================================ */
+
+.step-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* 进度条 */
+.step-progress {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 48px;
+}
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-base);
+  flex-shrink: 0;
+}
+.step-dot.done {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.step-dot.current {
+  background: var(--bg-base);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(231,64,32,0.15);
+}
+.step-dot:hover:not(.current) {
+  border-color: rgba(227,218,209,0.3);
+  color: var(--text-secondary);
+}
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  position: relative;
+}
+.step-line.done {
+  background: var(--accent-dark);
+}
+.step-label {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.step-dot.current .step-label {
+  color: var(--accent-orange);
+}
+
+/* 步骤标题区 */
+.step-header {
+  margin-bottom: 40px;
+}
+.step-meta {
+  font-size: 12px;
+  color: var(--accent-orange);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.step-header h2 {
+  font-family: var(--font-title);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.step-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+/* 信息卡片——出生情况 */
+.info-block {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--text-muted);
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  background: var(--bg-card);
+}
+.info-block.tip {
+  border-left-color: var(--accent-orange);
+  background: rgba(255,113,50,0.05);
+}
+.info-block.warn {
+  border-left-color: var(--accent);
+  background: rgba(231,64,32,0.05);
+}
+.info-block-title {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.info-block.tip .info-block-title { color: var(--accent-orange); }
+.info-block.warn .info-block-title { color: var(--accent); }
+.info-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.info-block li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.info-block li::before {
+  content: '·';
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* 行动清单三列卡片 */
+.action-section {
+  margin-bottom: 36px;
+}
+.action-section-title {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.action-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.action-card {
+  background: var(--bg-card);
+  padding: 24px 20px;
+  position: relative;
+}
+.action-num {
+  font-family: var(--font-title);
+  font-size: 40px;
+  font-weight: 900;
+  color: rgba(231,64,32,0.12);
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.action-card h4 {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.action-targets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.action-targets li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.target-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  background: rgba(227,218,209,0.08);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-primary);
+  font-family: monospace;
+}
+.action-reason {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* 折叠块 */
+.collapse-block {
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.collapse-header {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+.collapse-header:hover {
+  background: rgba(227,218,209,0.04);
+  color: var(--text-primary);
+}
+.collapse-arrow {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.collapse-header.open .collapse-arrow {
+  transform: rotate(180deg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.collapse-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.collapse-body-inner {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--border);
+}
+.tip-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tip-list li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.6;
+}
+.tip-mark {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--accent-orange);
+  background: rgba(255,113,50,0.1);
+  padding: 1px 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* 视频占位 */
+.video-placeholder {
+  border: 1px dashed var(--border);
+  padding: 20px;
+  margin-top: 12px;
+  background: rgba(227,218,209,0.02);
+}
+.video-placeholder-title {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.video-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.video-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.video-icon {
+  width: 28px;
+  height: 20px;
+  background: rgba(227,218,209,0.06);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* 步骤导航 */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.step-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.step-nav-btn:hover {
+  border-color: rgba(227,218,209,0.3);
+  color: var(--text-primary);
+}
+.step-nav-btn.next {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+.step-nav-btn.next:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
+/* ---- 底部 ---- */
+footer {
+  background: #0d0c0c;
+  border-top: 1px solid var(--border);
+  padding: 32px 40px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---- 动画 ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.45s ease forwards;
+}
+.fade-up:nth-child(1) { animation-delay: 0.05s; }
+.fade-up:nth-child(2) { animation-delay: 0.12s; }
+.fade-up:nth-child(3) { animation-delay: 0.19s; }
+
+/* ---- 响应式 ---- */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .entry-grid { grid-template-columns: 1fr; }
+  .action-cards { grid-template-columns: 1fr; }
+  .step-page { padding: 32px 20px 60px; }
+  .site-nav { padding: 0 20px; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav class="site-nav">
+  <a class="nav-logo" href="#" onclick="showPage('home')">失<em>控</em>进化</a>
+  <ul class="nav-links">
+    <li><a href="#" class="active" onclick="showPage('home')">新手上手</a></li>
+    <li><a href="#" onclick="showPage('step1')">选择模式</a></li>
+    <li><a href="#">据点介绍</a></li>
+    <li><a href="#">武器图鉴</a></li>
+    <li><a href="#">攻略视频</a></li>
+    <li><a href="#">FAQ</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ============================================================
+     首页
+     ============================================================ -->
+<section class="page active" id="page-home">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">BEGINNER'S GUIDE · Rust 正版授权</div>
+      <h1>失控进化<br><em>新手站</em></h1>
+      <p class="hero-sub">荒岛求生，从零开始。第一天的关键，全在这里。</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('step1')">▶ 从第一步开始</button>
+        <button class="btn-secondary" onclick="scrollToEntries()">快速查找 ↓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三列游戏介绍 -->
+  <div class="intro-grid">
+    <div class="intro-card fade-up">
+      <span class="intro-icon">🌍</span>
+      <h3>开放世界生存</h3>
+      <p>荒岛从零开始，采集、建造、战斗。没有固定主线，你自己决定方向。</p>
+    </div>
+    <div class="intro-card fade-up">
+      <span class="intro-icon">⚔️</span>
+      <h3>真实玩家对抗</h3>
+      <p>所有玩家都是真人。可以结盟，也可以抄家。死亡掉落装备，但可以复活。</p>
+    </div>
+    <div class="intro-card fade-up">
+      <span class="intro-icon">🔧</span>
+      <h3>不卖战力，靠实力</h3>
+      <p>游戏不卖数值、不卖战力加成。强不强，全靠自己积累资源和科技。</p>
+    </div>
+  </div>
+
+  <!-- 入口导航 -->
+  <div class="entry-section" id="entries">
+    <div class="section-label">从哪里开始</div>
+    <div class="entry-grid">
+      <div class="entry-card featured" onclick="showPage('step1')">
+        <div class="entry-tag">推荐入口 · 6步完整路径</div>
+        <h3>新手路径</h3>
+        <p>从出生到有家有枪，6个步骤带你走完第一天。跟着路径走，不会懵。</p>
+        <div class="entry-arrow">开始 Step 1 →</div>
+      </div>
+      <div class="entry-card" onclick="showPage('step1')">
+        <div class="entry-tag">选择模式</div>
+        <h3>不知道<br>选哪个？</h3>
+        <p>庇护/标准/挑战/领地攻防，30秒做决定。</p>
+        <div class="entry-arrow">看模式对比 →</div>
+      </div>
+      <div class="entry-card" onclick="showPage('step1')">
+        <div class="entry-tag">工具查询</div>
+        <h3>武器 /<br>据点图鉴</h3>
+        <p>合成材料、属性、威胁等级，快速查。</p>
+        <div class="entry-arrow">打开图鉴 →</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     Step 1 页面
+     ============================================================ -->
+<section class="page" id="page-step1">
+<div class="step-page">
+
+  <!-- 进度条 -->
+  <div class="step-progress" id="stepProgress">
+    <div class="step-dot done" onclick="showPage('step1')" title="出生后做什么">
+      ✓
+      <span class="step-label">出生</span>
+    </div>
+    <div class="step-line done"></div>
+    <div class="step-dot current" title="活下来">
+      2
+      <span class="step-label">生存</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-dot" title="资源收集">3<span class="step-label">资源</span></div>
+    <div class="step-line"></div>
+    <div class="step-dot" title="建立基地">4<span class="step-label">建家</span></div>
+    <div class="step-line"></div>
+    <div class="step-dot" title="战斗入门">5<span class="step-label">战斗</span></div>
+    <div class="step-line"></div>
+    <div class="step-dot" title="成长路线">6<span class="step-label">变强</span></div>
+  </div>
+
+  <!-- 标题 -->
+  <div class="step-header">
+    <div class="step-meta">Step 1 / 6 · 上手第一步</div>
+    <h2>出生后，<br>先做这3件事</h2>
+    <p class="step-desc">你随机出生在地图边缘。什么装备都没有，只有1块石头和1个火把。接下来10分钟，按这个顺序做。</p>
+  </div>
+
+  <!-- 出生情况 -->
+  <div class="info-block">
+    <div class="info-block-title">你的初始状态</div>
+    <ul>
+      <li>随机出生在地图边缘，远离其他玩家</li>
+      <li>携带：石头 ×1、火把 ×1（用于照明）</li>
+      <li>出生点附近通常有树木和岩石，优先就近采集</li>
+    </ul>
+  </div>
+
+  <!-- 三步行动清单 -->
+  <div class="action-section">
+    <div class="action-section-title">前10分钟行动清单</div>
+    <div class="action-cards">
+      <div class="action-card">
+        <div class="action-num">01</div>
+        <h4>打树 · 采石</h4>
+        <ul class="action-targets">
+          <li>目标：<span class="target-tag">木头 ×200</span></li>
+          <li>目标：<span class="target-tag">石头 ×100</span></li>
+          <li>目标：<span class="target-tag">布料 ×30</span></li>
+        </ul>
+        <div class="action-reason">布料来自麻草和动物皮，后面做睡袋用</div>
+      </div>
+      <div class="action-card">
+        <div class="action-num">02</div>
+        <h4>制作石斧 · 石镐</h4>
+        <ul class="action-targets">
+          <li>用：<span class="target-tag">石头 + 木头</span></li>
+          <li>效果：采集效率大幅提升</li>
+        </ul>
+        <div class="action-reason">徒手采集很慢，工具是优先级最高的制作</div>
+      </div>
+      <div class="action-card">
+        <div class="action-num">03</div>
+        <h4>制作睡袋</h4>
+        <ul class="action-targets">
+          <li>用：<span class="target-tag">布料 ×30</span></li>
+          <li>放置在安全位置</li>
+        </ul>
+        <div class="action-reason">睡袋是你的复活点，被杀死后从这里重生</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 采集技巧（折叠） -->
+  <div class="collapse-block">
+    <div class="collapse-header" onclick="toggleCollapse(this)">
+      <span>💡 采集效率技巧</span>
+      <span class="collapse-arrow">▾</span>
+    </div>
+    <div class="collapse-body">
+      <div class="collapse-body-inner">
+        <ul class="tip-list">
+          <li><span class="tip-mark">技巧</span>树木上有红色 ✕ 标记 → 瞄准红点攻击，每次可采集更多木材</li>
+          <li><span class="tip-mark">技巧</span>岩石矿脉上有闪光节点 → 瞄准闪光点攻击，采石效率显著提升</li>
+          <li><span class="tip-mark">注意</span>采集时注意周围，声音会暴露位置，别被其他玩家偷袭</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 遇到玩家怎么办（折叠） -->
+  <div class="collapse-block">
+    <div class="collapse-header" onclick="toggleCollapse(this)">
+      <span>⚠️ 遇到其他玩家怎么办？</span>
+      <span class="collapse-arrow">▾</span>
+    </div>
+    <div class="collapse-body">
+      <div class="collapse-body-inner">
+        <ul class="tip-list">
+          <li><span class="tip-mark">前期</span>刚出生装备为零，遇到装备比你好的玩家，优先撤退，跑进树林躲避</li>
+          <li><span class="tip-mark">判断</span>观察对方装备——只有石头工具的早期玩家威胁相对较低；有枪的要特别谨慎</li>
+          <li><span class="tip-mark">选模式</span>如果觉得被针对太频繁，可以考虑切换到庇护模式，前期抄家保护更完善</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 相关视频（折叠） -->
+  <div class="collapse-block">
+    <div class="collapse-header" onclick="toggleCollapse(this)">
+      <span>📹 相关视频</span>
+      <span class="collapse-arrow">▾</span>
+    </div>
+    <div class="collapse-body">
+      <div class="collapse-body-inner">
+        <div class="video-placeholder">
+          <div class="video-placeholder-title">攻略视频 · Step 1 相关</div>
+          <div class="video-items">
+            <div class="video-item">
+              <div class="video-icon">▶</div>
+              <span>官方新手引导：第一次出生怎么办（待更新）</span>
+            </div>
+            <div class="video-item">
+              <div class="video-icon">▶</div>
+              <span>精选：开局10分钟生存速成（待更新）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 警告提示 -->
+  <div class="info-block warn" style="margin-top:24px;">
+    <div class="info-block-title">⚠️ 记住这一点</div>
+    <ul>
+      <li>先做睡袋再去探索。死掉之后如果没有睡袋，会在地图随机位置重生，丢失前进的位置。</li>
+    </ul>
+  </div>
+
+  <!-- 步骤导航 -->
+  <div class="step-nav">
+    <button class="step-nav-btn" onclick="showPage('home')">← 返回首页</button>
+    <button class="step-nav-btn next" onclick="showPage('step1')">Step 2：活下来 →</button>
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+  © 失控进化 · 新手站 &nbsp;|&nbsp; Rust 正版玩法授权 &nbsp;|&nbsp; 腾讯游戏
+</footer>
+
+<script>
+// 页面切换
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // 导航高亮
+  document.querySelectorAll('.nav-links a').forEach((a, i) => {
+    a.classList.toggle('active', i === (name === 'home' ? 0 : 1));
+  });
+}
+
+// 滚动到入口区
+function scrollToEntries() {
+  const el = document.getElementById('entries');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// 折叠块
+function toggleCollapse(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  if (header.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+  } else {
+    body.style.maxHeight = '0';
+  }
+}
+</script>
+
+</body>
+</html>
