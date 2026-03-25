@@ -6,1013 +6,1449 @@
 <title>失控进化 · 新手站</title>
 <style>
 /* ============================================================
-   官网配色体系继承
-   背景: #111010 / #151515 / #191219
-   主文字: #e3dad1 / #e4d9cf
-   强调色: #e74020 / #c53f25
-   副色: #ff7132 / #fb6d32
+   Design Token — 完全继承官网配色
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
-
 :root {
-  --bg-base:      #111010;
-  --bg-card:      #1a1818;
-  --bg-card-alt:  #201e1e;
+  --bg:           #111010;
+  --bg-card:      #191717;
+  --bg-card-2:    #201e1e;
   --bg-nav:       #0d0c0c;
-  --text-primary: #e3dad1;
-  --text-secondary: #b0a89f;
-  --text-muted:   #6e6660;
-  --accent:       #e74020;
-  --accent-dark:  #c53f25;
-  --accent-orange:#ff7132;
-  --border:       rgba(227,218,209,0.12);
-  --border-accent:rgba(231,64,32,0.4);
-  --font-title:   "FZLTZHUNHK", "Noto Sans SC", "PingFang SC", "微软雅黑", sans-serif;
-  --font-body:    "PingFang SC", "Noto Sans SC", "微软雅黑", sans-serif;
+  --txt:          #e3dad1;
+  --txt-2:        #a89f97;
+  --txt-3:        #635c57;
+  --red:          #e74020;
+  --red-dark:     #c53f25;
+  --orange:       #ff7132;
+  --border:       rgba(227,218,209,0.10);
+  --border-red:   rgba(231,64,32,0.35);
+  --font-hd:      "FZLTZHUNHK","PingFang SC","微软雅黑",sans-serif;
+  --font-bd:      "PingFang SC","Noto Sans SC","微软雅黑",sans-serif;
+  --assets:       //game.gtimg.cn/images/rm/cp/a20250311000017index/assets;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--bg-base);
-  color: var(--text-primary);
-  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--font-bd);
   font-size: 15px;
   line-height: 1.7;
-  min-height: 100vh;
 }
+img { display: block; max-width: 100%; }
+a  { color: inherit; text-decoration: none; }
 
-/* ---- 导航栏 ---- */
-.site-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   height: 54px;
   background: var(--bg-nav);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-  gap: 0;
+  display: flex; align-items: center; padding: 0 40px; gap: 0;
 }
 .nav-logo {
-  font-family: var(--font-title);
-  font-size: 17px;
-  font-weight: 900;
-  color: var(--text-primary);
-  letter-spacing: 0.04em;
-  margin-right: 48px;
-  white-space: nowrap;
-  text-decoration: none;
+  font-family: var(--font-hd);
+  font-size: 17px; font-weight: 900;
+  color: var(--txt); letter-spacing: .05em;
+  margin-right: 44px; white-space: nowrap; cursor: pointer;
 }
-.nav-logo span {
-  color: var(--accent);
-}
-.nav-links {
-  display: flex;
-  gap: 0;
-  list-style: none;
-  flex: 1;
-}
+.nav-logo em { color: var(--red); font-style: normal; }
+.nav-links { display: flex; gap: 0; list-style: none; }
 .nav-links a {
-  display: block;
-  padding: 0 18px;
-  height: 54px;
-  line-height: 54px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s;
-  white-space: nowrap;
+  display: block; padding: 0 16px;
+  height: 54px; line-height: 54px;
+  font-size: 14px; color: var(--txt-2);
+  transition: color .2s; white-space: nowrap; cursor: pointer;
   position: relative;
 }
 .nav-links a:hover,
-.nav-links a.active {
-  color: var(--text-primary);
-}
+.nav-links a.active { color: var(--txt); }
 .nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 18px; right: 18px;
-  height: 2px;
-  background: var(--accent);
+  content: ''; position: absolute;
+  bottom: 0; left: 16px; right: 16px;
+  height: 2px; background: var(--red);
 }
 
-/* ---- 主内容区 ---- */
-main {
-  padding-top: 54px;
-}
-
-/* ---- 页面切换 ---- */
+/* ============================================================
+   PAGE SWITCH
+   ============================================================ */
+main { padding-top: 54px; }
 .page { display: none; }
 .page.active { display: block; }
 
 /* ============================================================
-   首页 — HOMEPAGE
+   HOMEPAGE
    ============================================================ */
 
-/* Hero Banner */
+/* Hero */
 .hero {
-  position: relative;
-  height: 520px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  text-align: center;
+  position: relative; height: 480px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; text-align: center;
 }
-.hero-bg {
-  position: absolute;
-  inset: 0;
+.hero-img {
+  position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(231,64,32,0.08) 0%, transparent 70%),
-    linear-gradient(180deg, #151515 0%, #111010 60%, #0d0c0c 100%);
+    url(//game.gtimg.cn/images/rm/cp/a20250311000017index/assets/bg1_new-BSceQ2o8.jpg)
+    center/cover no-repeat;
 }
-/* 网格纹理感 */
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(227,218,209,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(227,218,209,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+.hero-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17,16,16,.35) 0%,
+    rgba(17,16,16,.65) 60%,
+    #111010 100%
+  );
 }
-/* 底部渐变遮罩 */
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(0deg, var(--bg-base) 0%, transparent 100%);
+.hero-body {
+  position: relative; z-index: 1;
 }
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
-.hero-badge {
+.hero-eyebrow {
   display: inline-block;
-  padding: 3px 12px;
-  border: 1px solid var(--border-accent);
-  border-radius: 2px;
-  font-size: 12px;
-  color: var(--accent-orange);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  background: rgba(231,64,32,0.08);
+  padding: 3px 12px; margin-bottom: 18px;
+  border: 1px solid var(--border-red);
+  font-size: 11px; color: var(--orange);
+  letter-spacing: .14em; text-transform: uppercase;
+  background: rgba(231,64,32,.08);
 }
 .hero h1 {
-  font-family: var(--font-title);
-  font-size: 56px;
-  font-weight: 900;
-  color: var(--text-primary);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
+  font-family: var(--font-hd);
+  font-size: 52px; font-weight: 900;
+  color: var(--txt); letter-spacing: -.01em;
+  line-height: 1.1; margin-bottom: 12px;
 }
-.hero h1 em {
-  color: var(--accent);
-  font-style: normal;
-}
+.hero h1 em { color: var(--red); font-style: normal; }
 .hero-sub {
-  font-size: 16px;
-  color: var(--text-secondary);
-  margin-bottom: 36px;
-  letter-spacing: 0.02em;
+  font-size: 16px; color: var(--txt-2);
+  margin-bottom: 32px; letter-spacing: .03em;
 }
-.hero-btns {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  align-items: center;
-}
+.hero-btns { display: flex; gap: 12px; justify-content: center; }
+
 .btn-primary {
-  padding: 0 32px;
-  height: 46px;
-  background: var(--accent);
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: background 0.2s, transform 0.15s;
-  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  padding: 0 30px; height: 44px;
+  background: var(--red); color: #fff;
+  font-family: var(--font-bd); font-size: 14px; font-weight: 700;
+  border: none; cursor: pointer; letter-spacing: .05em;
+  clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  transition: background .2s, transform .15s;
 }
-.btn-primary:hover {
-  background: var(--accent-dark);
-  transform: translateY(-1px);
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-ghost {
+  padding: 0 22px; height: 44px;
+  background: transparent; color: var(--txt-2);
+  font-size: 14px; border: 1px solid var(--border); cursor: pointer;
+  transition: color .2s, border-color .2s;
 }
-.btn-secondary {
-  padding: 0 24px;
-  height: 46px;
-  background: transparent;
-  color: var(--text-secondary);
-  font-size: 14px;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
-}
-.btn-secondary:hover {
-  color: var(--text-primary);
-  border-color: rgba(227,218,209,0.3);
-}
+.btn-ghost:hover { color: var(--txt); border-color: rgba(227,218,209,.28); }
 
-/* 三列游戏介绍卡片 */
-.intro-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  margin: 0 0 64px;
+/* 新手路径导航格 */
+.guide-nav {
+  padding: 0 40px 64px;
+  max-width: 1100px; margin: 0 auto;
 }
-.intro-card {
+.section-eyebrow {
+  font-size: 11px; color: var(--txt-3);
+  letter-spacing: .18em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px; background: var(--border);
+}
+.guide-cell {
   background: var(--bg-card);
-  padding: 36px 32px;
-  transition: background 0.2s;
-}
-.intro-card:hover {
-  background: var(--bg-card-alt);
-}
-.intro-icon {
-  font-size: 28px;
-  margin-bottom: 14px;
-  display: block;
-}
-.intro-card h3 {
-  font-family: var(--font-title);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-  letter-spacing: 0.03em;
-}
-.intro-card p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.8;
-}
-
-/* 入口导航区 */
-.entry-section {
-  max-width: 900px;
-  margin: 0 auto 80px;
-  padding: 0 40px;
-}
-.entry-section > .section-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.entry-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 12px;
-}
-.entry-card {
-  border: 1px solid var(--border);
-  padding: 28px 24px;
+  padding: 24px 20px;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
+  transition: background .2s;
+  display: flex; flex-direction: column; gap: 8px;
 }
-.entry-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px; height: 0;
-  background: var(--accent);
-  transition: height 0.25s;
+.guide-cell:hover { background: var(--bg-card-2); }
+.guide-cell::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--red); transform: scaleX(0);
+  transform-origin: left; transition: transform .25s;
 }
-.entry-card:hover {
-  border-color: var(--border-accent);
-  background: rgba(231,64,32,0.04);
+.guide-cell:hover::before { transform: scaleX(1); }
+.guide-cell-num {
+  font-family: var(--font-hd);
+  font-size: 32px; font-weight: 900;
+  color: rgba(231,64,32,.15); line-height: 1;
 }
-.entry-card:hover::before {
-  height: 100%;
+.guide-cell-label {
+  font-size: 11px; color: var(--orange);
+  letter-spacing: .12em; text-transform: uppercase;
 }
-.entry-card.featured {
-  border-color: rgba(231,64,32,0.3);
-  background: rgba(231,64,32,0.04);
+.guide-cell h3 {
+  font-family: var(--font-hd);
+  font-size: 15px; font-weight: 700;
+  color: var(--txt); line-height: 1.3;
 }
-.entry-card.featured::before {
-  height: 60px;
+.guide-cell p {
+  font-size: 12px; color: var(--txt-2); line-height: 1.6;
 }
-.entry-tag {
-  font-size: 11px;
-  color: var(--accent-orange);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.entry-card h3 {
-  font-family: var(--font-title);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
-}
-.entry-card p {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-.entry-arrow {
-  font-size: 13px;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.guide-cell-arr {
+  font-size: 12px; color: var(--red);
+  margin-top: auto; padding-top: 10px;
 }
 
 /* ============================================================
-   Step 1 页面
+   STEP PAGES  (shared layout)
    ============================================================ */
-
-.step-page {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 48px 40px 80px;
+.step-wrap {
+  display: flex; gap: 0;
+  max-width: 1060px; margin: 0 auto;
+  padding: 0 40px 80px;
 }
 
-/* 进度条 */
-.step-progress {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 48px;
+/* 左侧步骤索引 */
+.step-sidebar {
+  width: 220px; flex-shrink: 0;
+  padding-top: 40px; padding-right: 32px;
+  border-right: 1px solid var(--border);
 }
-.step-dot {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
-  z-index: 1;
-  background: var(--bg-base);
-  flex-shrink: 0;
-}
-.step-dot.done {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-.step-dot.current {
-  background: var(--bg-base);
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(231,64,32,0.15);
-}
-.step-dot:hover:not(.current) {
-  border-color: rgba(227,218,209,0.3);
-  color: var(--text-secondary);
-}
-.step-line {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-  position: relative;
-}
-.step-line.done {
-  background: var(--accent-dark);
-}
-.step-label {
-  position: absolute;
-  top: 36px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-.step-dot.current .step-label {
-  color: var(--accent-orange);
-}
-
-/* 步骤标题区 */
-.step-header {
-  margin-bottom: 40px;
-}
-.step-meta {
-  font-size: 12px;
-  color: var(--accent-orange);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.step-header h2 {
-  font-family: var(--font-title);
-  font-size: 36px;
-  font-weight: 900;
-  color: var(--text-primary);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin-bottom: 12px;
-}
-.step-desc {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.75;
-  max-width: 600px;
-}
-
-/* 信息卡片——出生情况 */
-.info-block {
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--text-muted);
-  padding: 20px 24px;
-  margin-bottom: 32px;
-  background: var(--bg-card);
-}
-.info-block.tip {
-  border-left-color: var(--accent-orange);
-  background: rgba(255,113,50,0.05);
-}
-.info-block.warn {
-  border-left-color: var(--accent);
-  background: rgba(231,64,32,0.05);
-}
-.info-block-title {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-.info-block.tip .info-block-title { color: var(--accent-orange); }
-.info-block.warn .info-block-title { color: var(--accent); }
-.info-block ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.info-block li {
-  font-size: 14px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-.info-block li::before {
-  content: '·';
-  color: var(--text-muted);
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-/* 行动清单三列卡片 */
-.action-section {
-  margin-bottom: 36px;
-}
-.action-section-title {
-  font-family: var(--font-title);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.sidebar-label {
+  font-size: 11px; color: var(--txt-3);
+  letter-spacing: .16em; text-transform: uppercase;
   margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
-.action-section-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
+.sidebar-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.sidebar-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; cursor: pointer;
+  border-radius: 2px; transition: background .15s;
 }
-.action-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
+.sidebar-item:hover { background: rgba(227,218,209,.05); }
+.sidebar-item.active { background: rgba(231,64,32,.08); }
+.sidebar-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  border: 1.5px solid var(--border); color: var(--txt-3);
+  flex-shrink: 0; transition: all .2s;
 }
-.action-card {
-  background: var(--bg-card);
-  padding: 24px 20px;
-  position: relative;
+.sidebar-item.done .sidebar-num {
+  background: var(--red); border-color: var(--red); color: #fff; font-size: 10px;
 }
-.action-num {
-  font-family: var(--font-title);
-  font-size: 40px;
-  font-weight: 900;
-  color: rgba(231,64,32,0.12);
-  line-height: 1;
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
+.sidebar-item.active .sidebar-num {
+  background: transparent; border-color: var(--red); color: var(--red);
 }
-.action-card h4 {
-  font-family: var(--font-title);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 10px;
+.sidebar-text { font-size: 13px; color: var(--txt-2); line-height: 1.4; }
+.sidebar-item.active .sidebar-text { color: var(--txt); }
+
+/* 右侧内容区 */
+.step-content {
+  flex: 1; padding-top: 40px; padding-left: 40px;
 }
-.action-targets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 10px;
+
+/* 步骤标头 */
+.step-head { margin-bottom: 32px; }
+.step-kicker {
+  font-size: 11px; color: var(--orange);
+  letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px;
 }
-.action-targets li {
-  font-size: 13px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.step-head h2 {
+  font-family: var(--font-hd);
+  font-size: 34px; font-weight: 900;
+  color: var(--txt); line-height: 1.15;
+  letter-spacing: -.01em; margin-bottom: 10px;
 }
-.target-tag {
-  display: inline-block;
-  padding: 1px 7px;
-  background: rgba(227,218,209,0.08);
+.step-head p {
+  font-size: 15px; color: var(--txt-2);
+  line-height: 1.75; max-width: 560px;
+}
+
+/* Hero 图区 */
+.step-hero-img {
+  width: 100%; height: 240px; overflow: hidden;
+  margin-bottom: 32px; position: relative;
+}
+.step-hero-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(.85);
+}
+.step-hero-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(17,16,16,.7) 100%);
+}
+
+/* 内容卡片 */
+.block { margin-bottom: 28px; }
+.block-title {
+  font-size: 11px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--txt-3);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.block-title::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* 提示/警告盒 */
+.info-box {
   border: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--text-primary);
-  font-family: monospace;
+  border-left: 3px solid var(--txt-3);
+  padding: 16px 20px;
+  background: var(--bg-card);
+  margin-bottom: 16px;
 }
-.action-reason {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-style: italic;
+.info-box.tip  { border-left-color: var(--orange); background: rgba(255,113,50,.05); }
+.info-box.warn { border-left-color: var(--red);    background: rgba(231,64,32,.05); }
+.info-box-label {
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--txt-3);
 }
+.info-box.tip  .info-box-label { color: var(--orange); }
+.info-box.warn .info-box-label { color: var(--red); }
+.info-box ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.info-box li {
+  font-size: 14px; color: var(--txt-2);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.info-box li::before { content: '·'; color: var(--txt-3); flex-shrink: 0; }
+
+/* 行动三格 */
+.action-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border); margin-bottom: 28px;
+}
+.action-cell {
+  background: var(--bg-card); padding: 22px 18px;
+}
+.action-n {
+  font-family: var(--font-hd);
+  font-size: 38px; font-weight: 900;
+  color: rgba(231,64,32,.12); line-height: 1;
+  margin-bottom: 10px;
+}
+.action-cell h4 {
+  font-family: var(--font-hd);
+  font-size: 15px; font-weight: 700; color: var(--txt);
+  margin-bottom: 10px;
+}
+.target-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-bottom: 8px; }
+.target-list li { font-size: 13px; color: var(--txt-2); display: flex; align-items: center; gap: 7px; }
+.tag {
+  display: inline-block; padding: 1px 6px;
+  background: rgba(227,218,209,.07);
+  border: 1px solid var(--border);
+  font-size: 11px; color: var(--txt); font-family: monospace;
+}
+.action-note { font-size: 12px; color: var(--txt-3); font-style: italic; }
 
 /* 折叠块 */
-.collapse-block {
-  border: 1px solid var(--border);
-  margin-bottom: 10px;
-  overflow: hidden;
+.collapse { border: 1px solid var(--border); margin-bottom: 8px; overflow: hidden; }
+.collapse-hd {
+  padding: 14px 18px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; color: var(--txt-2);
+  transition: background .15s, color .15s; user-select: none;
 }
-.collapse-header {
-  padding: 14px 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  color: var(--text-secondary);
-  transition: background 0.15s, color 0.15s;
-  user-select: none;
+.collapse-hd:hover { background: rgba(227,218,209,.04); color: var(--txt); }
+.collapse-arr {
+  width: 16px; height: 16px; border: 1px solid var(--txt-3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: var(--txt-3);
+  transition: transform .2s, border-color .2s, color .2s; flex-shrink: 0;
 }
-.collapse-header:hover {
-  background: rgba(227,218,209,0.04);
-  color: var(--text-primary);
-}
-.collapse-arrow {
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: var(--text-muted);
-  transition: transform 0.2s, border-color 0.2s;
-  flex-shrink: 0;
-}
-.collapse-header.open .collapse-arrow {
-  transform: rotate(180deg);
-  border-color: var(--accent);
-  color: var(--accent);
-}
-.collapse-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-.collapse-body-inner {
-  padding: 16px 20px 20px;
-  border-top: 1px solid var(--border);
-}
-.tip-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.tip-list li {
-  font-size: 14px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.6;
-}
-.tip-mark {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--accent-orange);
-  background: rgba(255,113,50,0.1);
-  padding: 1px 6px;
-  flex-shrink: 0;
-  margin-top: 2px;
+.collapse-hd.open .collapse-arr { transform: rotate(180deg); border-color: var(--red); color: var(--red); }
+.collapse-bd { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+.collapse-bd-inner { padding: 16px 18px 18px; border-top: 1px solid var(--border); }
+.tip-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.tip-list li { font-size: 14px; color: var(--txt-2); display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
+.tip-tag {
+  font-size: 10px; letter-spacing: .07em; color: var(--orange);
+  background: rgba(255,113,50,.1); padding: 1px 6px;
+  flex-shrink: 0; margin-top: 2px;
 }
 
 /* 视频占位 */
-.video-placeholder {
-  border: 1px dashed var(--border);
-  padding: 20px;
-  margin-top: 12px;
-  background: rgba(227,218,209,0.02);
-}
-.video-placeholder-title {
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.video-items {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.video-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--text-muted);
-}
+.video-slot { border: 1px dashed var(--border); padding: 18px; margin-top: 12px; background: rgba(227,218,209,.02); }
+.video-slot-label { font-size: 10px; color: var(--txt-3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+.video-slot-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--txt-3); padding: 6px 0; border-bottom: 1px solid var(--border); }
+.video-slot-item:last-child { border-bottom: none; }
 .video-icon {
-  width: 28px;
-  height: 20px;
-  background: rgba(227,218,209,0.06);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  color: var(--text-muted);
-  flex-shrink: 0;
+  width: 28px; height: 20px; background: rgba(227,218,209,.05);
+  border: 1px solid var(--border); display: flex; align-items: center;
+  justify-content: center; font-size: 8px; color: var(--txt-3); flex-shrink: 0;
 }
 
-/* 步骤导航 */
-.step-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 56px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
+/* 模式比较表 */
+.mode-tabs { display: flex; gap: 2px; margin-bottom: 20px; }
+.mode-tab {
+  padding: 8px 18px; font-size: 13px; cursor: pointer;
+  border: 1px solid var(--border); color: var(--txt-2);
+  transition: all .2s; background: transparent;
 }
-.step-nav-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.step-nav-btn:hover {
-  border-color: rgba(227,218,209,0.3);
-  color: var(--text-primary);
-}
-.step-nav-btn.next {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  font-weight: 700;
-  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-}
-.step-nav-btn.next:hover {
-  background: var(--accent-dark);
-  border-color: var(--accent-dark);
-}
+.mode-tab.active { background: var(--red); border-color: var(--red); color: #fff; font-weight: 700; }
+.mode-tab:hover:not(.active) { border-color: rgba(227,218,209,.25); color: var(--txt); }
 
-/* ---- 底部 ---- */
+.mode-panel { display: none; }
+.mode-panel.active { display: block; }
+
+.mode-card {
+  border: 1px solid var(--border); overflow: hidden;
+}
+.mode-card-head {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; background: var(--border);
+}
+.mode-card-col {
+  background: var(--bg-card); padding: 20px 24px;
+}
+.mode-card-col h4 {
+  font-family: var(--font-hd); font-size: 15px; font-weight: 700;
+  color: var(--txt); margin-bottom: 6px;
+}
+.mode-card-col p { font-size: 13px; color: var(--txt-2); line-height: 1.6; }
+.mode-table { width: 100%; border-collapse: collapse; }
+.mode-table th {
+  background: var(--bg-card-2); padding: 10px 16px;
+  text-align: left; font-size: 12px;
+  color: var(--txt-3); letter-spacing: .1em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.mode-table td {
+  padding: 10px 16px; font-size: 13px; color: var(--txt-2);
+  border-bottom: 1px solid var(--border); vertical-align: top;
+}
+.mode-table td:first-child { color: var(--txt); font-weight: 600; width: 130px; }
+.mode-table tr:last-child td { border-bottom: none; }
+
+/* 武器卡片格 */
+.weapon-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+}
+.weapon-card {
+  background: var(--bg-card); padding: 16px;
+  display: flex; flex-direction: column; gap: 8px;
+  cursor: default;
+}
+.weapon-card img {
+  width: 100%; height: 80px; object-fit: contain;
+  filter: brightness(.9);
+}
+.weapon-name { font-family: var(--font-hd); font-size: 14px; font-weight: 700; color: var(--txt); }
+.weapon-type { font-size: 11px; color: var(--orange); letter-spacing: .1em; text-transform: uppercase; }
+.weapon-cost { font-size: 12px; color: var(--txt-3); }
+.weapon-note { font-size: 12px; color: var(--txt-2); line-height: 1.5; }
+
+/* 据点卡片 */
+.outpost-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+.outpost-row {
+  display: grid; grid-template-columns: 200px 1fr 80px;
+  background: var(--bg-card); padding: 14px 18px; gap: 16px;
+  align-items: start; transition: background .15s;
+}
+.outpost-row:hover { background: var(--bg-card-2); }
+.outpost-name { font-family: var(--font-hd); font-size: 14px; font-weight: 700; color: var(--txt); }
+.outpost-type { font-size: 11px; color: var(--txt-3); margin-top: 3px; }
+.outpost-desc { font-size: 13px; color: var(--txt-2); line-height: 1.6; }
+.threat-badge {
+  display: inline-block; padding: 2px 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+}
+.threat-0 { color: #6ec26e; background: rgba(110,194,110,.12); border: 1px solid rgba(110,194,110,.2); }
+.threat-1 { color: #a6c95c; background: rgba(166,201,92,.12); border: 1px solid rgba(166,201,92,.2); }
+.threat-2 { color: var(--orange); background: rgba(255,113,50,.12); border: 1px solid rgba(255,113,50,.2); }
+.threat-3 { color: var(--red); background: rgba(231,64,32,.12); border: 1px solid rgba(231,64,32,.2); }
+.threat-4 { color: #ff3333; background: rgba(255,51,51,.15); border: 1px solid rgba(255,51,51,.25); }
+
+/* 步骤底部导航 */
+.step-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.foot-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 22px; font-size: 14px; cursor: pointer;
+  border: 1px solid var(--border); color: var(--txt-2);
+  background: transparent; transition: all .2s;
+}
+.foot-btn:hover { border-color: rgba(227,218,209,.28); color: var(--txt); }
+.foot-btn.next {
+  background: var(--red); border-color: var(--red); color: #fff; font-weight: 700;
+  clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+}
+.foot-btn.next:hover { background: var(--red-dark); border-color: var(--red-dark); }
+
+/* Footer */
 footer {
-  background: #0d0c0c;
-  border-top: 1px solid var(--border);
-  padding: 32px 40px;
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-muted);
+  background: #0d0c0c; border-top: 1px solid var(--border);
+  padding: 28px 40px; text-align: center;
+  font-size: 12px; color: var(--txt-3);
 }
 
-/* ---- 动画 ---- */
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:translateY(0);    }
 }
-.fade-up {
-  animation: fadeUp 0.45s ease forwards;
-}
-.fade-up:nth-child(1) { animation-delay: 0.05s; }
-.fade-up:nth-child(2) { animation-delay: 0.12s; }
-.fade-up:nth-child(3) { animation-delay: 0.19s; }
+.anim { opacity: 0; }
+.anim.in { animation: fadeUp .4s ease forwards; }
+.anim:nth-child(1).in { animation-delay:.04s }
+.anim:nth-child(2).in { animation-delay:.10s }
+.anim:nth-child(3).in { animation-delay:.16s }
+.anim:nth-child(4).in { animation-delay:.22s }
+.anim:nth-child(5).in { animation-delay:.28s }
+.anim:nth-child(6).in { animation-delay:.34s }
 
-/* ---- 响应式 ---- */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 36px; }
-  .intro-grid { grid-template-columns: 1fr; }
-  .entry-grid { grid-template-columns: 1fr; }
-  .action-cards { grid-template-columns: 1fr; }
-  .step-page { padding: 32px 20px 60px; }
-  .site-nav { padding: 0 20px; }
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:900px){
+  .step-wrap { flex-direction: column; padding: 0 20px 60px; }
+  .step-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .sidebar-list { flex-direction: row; flex-wrap: wrap; }
+  .step-content { padding-left: 0; }
+  .weapon-grid { grid-template-columns: repeat(2,1fr); }
+  .guide-grid { grid-template-columns: repeat(3,1fr); }
+  .hero h1 { font-size: 34px; }
+  .action-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){
   .nav-links { display: none; }
+  .guide-grid { grid-template-columns: repeat(2,1fr); }
 }
 </style>
 </head>
 <body>
 
-<!-- 导航 -->
-<nav class="site-nav">
-  <a class="nav-logo" href="#" onclick="showPage('home')">失<em>控</em>进化</a>
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav">
+  <div class="nav-logo" onclick="showPage('home')">失<em>控</em>进化 · <em>新手站</em></div>
   <ul class="nav-links">
-    <li><a href="#" class="active" onclick="showPage('home')">新手上手</a></li>
-    <li><a href="#" onclick="showPage('step1')">选择模式</a></li>
-    <li><a href="#">据点介绍</a></li>
-    <li><a href="#">武器图鉴</a></li>
-    <li><a href="#">攻略视频</a></li>
-    <li><a href="#">FAQ</a></li>
+    <li><a id="nav-home"  class="active" onclick="showPage('home')">攻略总览</a></li>
+    <li><a id="nav-mode"  onclick="showStep(2)">选择模式</a></li>
+    <li><a id="nav-out"   onclick="showStep(4)">据点指南</a></li>
+    <li><a id="nav-wpn"   onclick="showStep(5)">武器入门</a></li>
+    <li><a id="nav-faq"   onclick="showPage('faq')">FAQ</a></li>
   </ul>
 </nav>
 
 <main>
 
 <!-- ============================================================
-     首页
+     HOME PAGE
      ============================================================ -->
-<section class="page active" id="page-home">
+<div id="page-home" class="page active">
 
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div class="hero-badge">BEGINNER'S GUIDE · Rust 正版授权</div>
-      <h1>失控进化<br><em>新手站</em></h1>
-      <p class="hero-sub">荒岛求生，从零开始。第一天的关键，全在这里。</p>
+    <div class="hero-img"></div>
+    <div class="hero-body">
+      <div class="hero-eyebrow">Rust 正版玩法授权 · 新手攻略站</div>
+      <h1>从出生到有家有枪<br>这里帮你走完<em>第一天</em></h1>
+      <p class="hero-sub">6步结构化攻略，跳到你需要的那步。</p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="showPage('step1')">▶ 从第一步开始</button>
-        <button class="btn-secondary" onclick="scrollToEntries()">快速查找 ↓</button>
+        <button class="btn-primary" onclick="showStep(1)">▶ 从 Step 1 开始</button>
+        <button class="btn-ghost"   onclick="showPage('faq')">有具体问题 → FAQ</button>
       </div>
     </div>
   </div>
 
-  <!-- 三列游戏介绍 -->
-  <div class="intro-grid">
-    <div class="intro-card fade-up">
-      <span class="intro-icon">🌍</span>
-      <h3>开放世界生存</h3>
-      <p>荒岛从零开始，采集、建造、战斗。没有固定主线，你自己决定方向。</p>
-    </div>
-    <div class="intro-card fade-up">
-      <span class="intro-icon">⚔️</span>
-      <h3>真实玩家对抗</h3>
-      <p>所有玩家都是真人。可以结盟，也可以抄家。死亡掉落装备，但可以复活。</p>
-    </div>
-    <div class="intro-card fade-up">
-      <span class="intro-icon">🔧</span>
-      <h3>不卖战力，靠实力</h3>
-      <p>游戏不卖数值、不卖战力加成。强不强，全靠自己积累资源和科技。</p>
+  <!-- 6步导航格 -->
+  <div class="guide-nav">
+    <div class="section-eyebrow">新手路径 · 点击任意步骤直接进入</div>
+    <div class="guide-grid">
+      <div class="guide-cell anim" onclick="showStep(1)">
+        <div class="guide-cell-num">01</div>
+        <div class="guide-cell-label">第一步</div>
+        <h3>出生后<br>先做什么</h3>
+        <p>初始道具、前10分钟行动清单</p>
+        <div class="guide-cell-arr">进入 →</div>
+      </div>
+      <div class="guide-cell anim" onclick="showStep(2)">
+        <div class="guide-cell-num">02</div>
+        <div class="guide-cell-label">选模式</div>
+        <h3>该选哪个<br>模式</h3>
+        <p>庇护 / 标准 / 挑战 / 领地攻防</p>
+        <div class="guide-cell-arr">进入 →</div>
+      </div>
+      <div class="guide-cell anim" onclick="showStep(3)">
+        <div class="guide-cell-num">03</div>
+        <div class="guide-cell-label">建家</div>
+        <h3>第一个家<br>怎么造</h3>
+        <p>选址、结构、工具柜维护</p>
+        <div class="guide-cell-arr">进入 →</div>
+      </div>
+      <div class="guide-cell anim" onclick="showStep(4)">
+        <div class="guide-cell-num">04</div>
+        <div class="guide-cell-label">据点</div>
+        <h3>去哪里<br>刷资源</h3>
+        <p>25个据点威胁等级一览</p>
+        <div class="guide-cell-arr">进入 →</div>
+      </div>
+      <div class="guide-cell anim" onclick="showStep(5)">
+        <div class="guide-cell-num">05</div>
+        <div class="guide-cell-label">武器</div>
+        <h3>新手第一把枪<br>选哪个</h3>
+        <p>合成路径、优先级、用法</p>
+        <div class="guide-cell-arr">进入 →</div>
+      </div>
+      <div class="guide-cell anim" onclick="showStep(6)">
+        <div class="guide-cell-num">06</div>
+        <div class="guide-cell-label">成长</div>
+        <h3>怎么才算<br>在变强</h3>
+        <p>科技树路线、情报等级</p>
+        <div class="guide-cell-arr">进入 →</div>
+      </div>
     </div>
   </div>
 
-  <!-- 入口导航 -->
-  <div class="entry-section" id="entries">
-    <div class="section-label">从哪里开始</div>
-    <div class="entry-grid">
-      <div class="entry-card featured" onclick="showPage('step1')">
-        <div class="entry-tag">推荐入口 · 6步完整路径</div>
-        <h3>新手路径</h3>
-        <p>从出生到有家有枪，6个步骤带你走完第一天。跟着路径走，不会懵。</p>
-        <div class="entry-arrow">开始 Step 1 →</div>
-      </div>
-      <div class="entry-card" onclick="showPage('step1')">
-        <div class="entry-tag">选择模式</div>
-        <h3>不知道<br>选哪个？</h3>
-        <p>庇护/标准/挑战/领地攻防，30秒做决定。</p>
-        <div class="entry-arrow">看模式对比 →</div>
-      </div>
-      <div class="entry-card" onclick="showPage('step1')">
-        <div class="entry-tag">工具查询</div>
-        <h3>武器 /<br>据点图鉴</h3>
-        <p>合成材料、属性、威胁等级，快速查。</p>
-        <div class="entry-arrow">打开图鉴 →</div>
-      </div>
-    </div>
-  </div>
+</div><!-- /home -->
 
-</section>
 
 <!-- ============================================================
-     Step 1 页面
+     STEP PAGES  (共享侧边栏 + 内容区)
      ============================================================ -->
-<section class="page" id="page-step1">
-<div class="step-page">
+<div id="page-step" class="page">
+<div class="step-wrap">
 
-  <!-- 进度条 -->
-  <div class="step-progress" id="stepProgress">
-    <div class="step-dot done" onclick="showPage('step1')" title="出生后做什么">
-      ✓
-      <span class="step-label">出生</span>
-    </div>
-    <div class="step-line done"></div>
-    <div class="step-dot current" title="活下来">
-      2
-      <span class="step-label">生存</span>
-    </div>
-    <div class="step-line"></div>
-    <div class="step-dot" title="资源收集">3<span class="step-label">资源</span></div>
-    <div class="step-line"></div>
-    <div class="step-dot" title="建立基地">4<span class="step-label">建家</span></div>
-    <div class="step-line"></div>
-    <div class="step-dot" title="战斗入门">5<span class="step-label">战斗</span></div>
-    <div class="step-line"></div>
-    <div class="step-dot" title="成长路线">6<span class="step-label">变强</span></div>
-  </div>
-
-  <!-- 标题 -->
-  <div class="step-header">
-    <div class="step-meta">Step 1 / 6 · 上手第一步</div>
-    <h2>出生后，<br>先做这3件事</h2>
-    <p class="step-desc">你随机出生在地图边缘。什么装备都没有，只有1块石头和1个火把。接下来10分钟，按这个顺序做。</p>
-  </div>
-
-  <!-- 出生情况 -->
-  <div class="info-block">
-    <div class="info-block-title">你的初始状态</div>
-    <ul>
-      <li>随机出生在地图边缘，远离其他玩家</li>
-      <li>携带：石头 ×1、火把 ×1（用于照明）</li>
-      <li>出生点附近通常有树木和岩石，优先就近采集</li>
+  <!-- 左侧导航 -->
+  <aside class="step-sidebar">
+    <div class="sidebar-label">新手路径</div>
+    <ul class="sidebar-list">
+      <li class="sidebar-item" id="sb-1" onclick="showStep(1)">
+        <span class="sidebar-num" id="sn-1">1</span>
+        <span class="sidebar-text">出生后做什么</span>
+      </li>
+      <li class="sidebar-item" id="sb-2" onclick="showStep(2)">
+        <span class="sidebar-num" id="sn-2">2</span>
+        <span class="sidebar-text">选择游戏模式</span>
+      </li>
+      <li class="sidebar-item" id="sb-3" onclick="showStep(3)">
+        <span class="sidebar-num" id="sn-3">3</span>
+        <span class="sidebar-text">建立第一个家</span>
+      </li>
+      <li class="sidebar-item" id="sb-4" onclick="showStep(4)">
+        <span class="sidebar-num" id="sn-4">4</span>
+        <span class="sidebar-text">据点探索指南</span>
+      </li>
+      <li class="sidebar-item" id="sb-5" onclick="showStep(5)">
+        <span class="sidebar-num" id="sn-5">5</span>
+        <span class="sidebar-text">武器与战斗入门</span>
+      </li>
+      <li class="sidebar-item" id="sb-6" onclick="showStep(6)">
+        <span class="sidebar-num" id="sn-6">6</span>
+        <span class="sidebar-text">科技树与变强路线</span>
+      </li>
     </ul>
-  </div>
+  </aside>
 
-  <!-- 三步行动清单 -->
-  <div class="action-section">
-    <div class="action-section-title">前10分钟行动清单</div>
-    <div class="action-cards">
-      <div class="action-card">
-        <div class="action-num">01</div>
-        <h4>打树 · 采石</h4>
-        <ul class="action-targets">
-          <li>目标：<span class="target-tag">木头 ×200</span></li>
-          <li>目标：<span class="target-tag">石头 ×100</span></li>
-          <li>目标：<span class="target-tag">布料 ×30</span></li>
-        </ul>
-        <div class="action-reason">布料来自麻草和动物皮，后面做睡袋用</div>
-      </div>
-      <div class="action-card">
-        <div class="action-num">02</div>
-        <h4>制作石斧 · 石镐</h4>
-        <ul class="action-targets">
-          <li>用：<span class="target-tag">石头 + 木头</span></li>
-          <li>效果：采集效率大幅提升</li>
-        </ul>
-        <div class="action-reason">徒手采集很慢，工具是优先级最高的制作</div>
-      </div>
-      <div class="action-card">
-        <div class="action-num">03</div>
-        <h4>制作睡袋</h4>
-        <ul class="action-targets">
-          <li>用：<span class="target-tag">布料 ×30</span></li>
-          <li>放置在安全位置</li>
-        </ul>
-        <div class="action-reason">睡袋是你的复活点，被杀死后从这里重生</div>
-      </div>
-    </div>
-  </div>
+  <!-- 右侧内容区 -->
+  <div class="step-content">
 
-  <!-- 采集技巧（折叠） -->
-  <div class="collapse-block">
-    <div class="collapse-header" onclick="toggleCollapse(this)">
-      <span>💡 采集效率技巧</span>
-      <span class="collapse-arrow">▾</span>
-    </div>
-    <div class="collapse-body">
-      <div class="collapse-body-inner">
-        <ul class="tip-list">
-          <li><span class="tip-mark">技巧</span>树木上有红色 ✕ 标记 → 瞄准红点攻击，每次可采集更多木材</li>
-          <li><span class="tip-mark">技巧</span>岩石矿脉上有闪光节点 → 瞄准闪光点攻击，采石效率显著提升</li>
-          <li><span class="tip-mark">注意</span>采集时注意周围，声音会暴露位置，别被其他玩家偷袭</li>
+    <!-- ==================== STEP 1 ==================== -->
+    <div id="sc-1" class="step-panel">
+      <div class="step-head">
+        <div class="step-kicker">Step 1 / 6 · 上手第一步</div>
+        <h2>出生后，<br>先做这3件事</h2>
+        <p>你随机出生在地图边缘，身上只有1块石头和1个火把。接下来10分钟，按这个顺序做。</p>
+      </div>
+
+      <div class="step-hero-img">
+        <img src="//game.gtimg.cn/images/rm/cp/a20250311000017index/assets/big-img3-BG_jGbTx.jpg"
+             alt="出生场景" loading="lazy">
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-label">你的初始状态</div>
+        <ul>
+          <li>随机出生在地图边缘，远离其他玩家聚集区</li>
+          <li>携带：石头 ×1、火把 ×1（用于照明）</li>
+          <li>出生点附近通常有树木和岩石，优先就近采集</li>
         </ul>
       </div>
-    </div>
-  </div>
 
-  <!-- 遇到玩家怎么办（折叠） -->
-  <div class="collapse-block">
-    <div class="collapse-header" onclick="toggleCollapse(this)">
-      <span>⚠️ 遇到其他玩家怎么办？</span>
-      <span class="collapse-arrow">▾</span>
-    </div>
-    <div class="collapse-body">
-      <div class="collapse-body-inner">
-        <ul class="tip-list">
-          <li><span class="tip-mark">前期</span>刚出生装备为零，遇到装备比你好的玩家，优先撤退，跑进树林躲避</li>
-          <li><span class="tip-mark">判断</span>观察对方装备——只有石头工具的早期玩家威胁相对较低；有枪的要特别谨慎</li>
-          <li><span class="tip-mark">选模式</span>如果觉得被针对太频繁，可以考虑切换到庇护模式，前期抄家保护更完善</li>
-        </ul>
+      <div class="block">
+        <div class="block-title">前10分钟行动清单</div>
+        <div class="action-grid">
+          <div class="action-cell">
+            <div class="action-n">01</div>
+            <h4>打树 · 采石</h4>
+            <ul class="target-list">
+              <li>目标：<span class="tag">木头 ×200</span></li>
+              <li>目标：<span class="tag">石头 ×100</span></li>
+              <li>目标：<span class="tag">布料 ×30</span></li>
+            </ul>
+            <div class="action-note">布料来自麻草和动物皮，睡袋必需</div>
+          </div>
+          <div class="action-cell">
+            <div class="action-n">02</div>
+            <h4>制作石斧 · 石镐</h4>
+            <ul class="target-list">
+              <li>用：<span class="tag">石头 + 木头</span></li>
+              <li>效果：采集效率大幅提升</li>
+            </ul>
+            <div class="action-note">徒手采集极慢，工具是第一优先制作项</div>
+          </div>
+          <div class="action-cell">
+            <div class="action-n">03</div>
+            <h4>制作并放置睡袋</h4>
+            <ul class="target-list">
+              <li>用：<span class="tag">布料 ×30</span></li>
+              <li>放在安全隐蔽处</li>
+            </ul>
+            <div class="action-note">睡袋是复活点，先放睡袋再去冒险</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- 相关视频（折叠） -->
-  <div class="collapse-block">
-    <div class="collapse-header" onclick="toggleCollapse(this)">
-      <span>📹 相关视频</span>
-      <span class="collapse-arrow">▾</span>
-    </div>
-    <div class="collapse-body">
-      <div class="collapse-body-inner">
-        <div class="video-placeholder">
-          <div class="video-placeholder-title">攻略视频 · Step 1 相关</div>
-          <div class="video-items">
-            <div class="video-item">
-              <div class="video-icon">▶</div>
-              <span>官方新手引导：第一次出生怎么办（待更新）</span>
-            </div>
-            <div class="video-item">
-              <div class="video-icon">▶</div>
-              <span>精选：开局10分钟生存速成（待更新）</span>
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>💡 采集效率技巧</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <ul class="tip-list">
+              <li><span class="tip-tag">技巧</span>树木有红色 ✕ 标记 → 瞄准红点攻击，每次可采更多木材</li>
+              <li><span class="tip-tag">技巧</span>岩石矿脉有闪光节点 → 瞄准闪光点，采石效率显著提升</li>
+              <li><span class="tip-tag">注意</span>采集声音会暴露位置，注意周围，防止被其他玩家偷袭</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>⚠️ 遇到其他玩家怎么办</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <ul class="tip-list">
+              <li><span class="tip-tag">前期</span>刚出生装备为零，遇到装备更好的玩家优先撤退，跑进树林隐蔽</li>
+              <li><span class="tip-tag">判断</span>对方只有石器工具威胁较低；持有枪支要特别谨慎</li>
+              <li><span class="tip-tag">模式</span>如果被针对太频繁，考虑切换庇护模式，前期保护更完善</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>📹 相关攻略视频</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <div class="video-slot">
+              <div class="video-slot-label">官方 · 攻略视频</div>
+              <div class="video-slot-item"><div class="video-icon">▶</div><span>新手开局第一步：出生后做什么（待更新）</span></div>
+              <div class="video-slot-item"><div class="video-icon">▶</div><span>10分钟快速积累前期资源（待更新）</span></div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="info-box warn" style="margin-top:20px">
+        <div class="info-box-label">⚠️ 最重要的一件事</div>
+        <ul><li>先做睡袋再去探索——没有睡袋被杀死后会随机重生，之前积累的地理优势全部丢失</li></ul>
+      </div>
+
+      <div class="step-foot">
+        <button class="foot-btn" onclick="showPage('home')">← 返回总览</button>
+        <button class="foot-btn next" onclick="showStep(2)">Step 2：选择模式 →</button>
+      </div>
+    </div><!-- /step1 -->
+
+
+    <!-- ==================== STEP 2 ==================== -->
+    <div id="sc-2" class="step-panel" style="display:none">
+      <div class="step-head">
+        <div class="step-kicker">Step 2 / 6 · 模式选择</div>
+        <h2>选哪个模式？<br>30秒做决定</h2>
+        <p>每种模式适合不同的玩法偏好。不确定的话，从庇护模式开始——随时可以换。</p>
+      </div>
+
+      <div class="step-hero-img">
+        <img src="//game.gtimg.cn/images/rm/cp/a20250311000017index/assets/banner1-gTaHelsu.jpg"
+             alt="模式选择" loading="lazy">
+      </div>
+
+      <div class="block">
+        <div class="block-title">经典战局模式对比</div>
+        <div class="mode-tabs">
+          <button class="mode-tab active" onclick="switchMode(this,'m-bihus')">庇护</button>
+          <button class="mode-tab" onclick="switchMode(this,'m-std')">标准</button>
+          <button class="mode-tab" onclick="switchMode(this,'m-adv')">进阶</button>
+          <button class="mode-tab" onclick="switchMode(this,'m-hard')">挑战</button>
+        </div>
+
+        <div id="m-bihus" class="mode-panel active">
+          <div class="mode-card">
+            <div class="mode-card-head" style="background:var(--border)">
+              <div class="mode-card-col">
+                <h4>🛡 庇护模式</h4>
+                <p>新手最友好。前期有保护机制，探索压力最小，适合先熟悉游戏核心玩法。</p>
+              </div>
+              <div class="mode-card-col">
+                <div class="info-box tip" style="margin-bottom:0">
+                  <div class="info-box-label">适合你如果…</div>
+                  <ul>
+                    <li>第一次玩生存类游戏</li>
+                    <li>不想一直被老玩家针对</li>
+                    <li>想先把建造/采集摸熟</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <table class="mode-table">
+              <tr><th>维度</th><th>详情</th></tr>
+              <tr><td>死亡惩罚</td><td>较轻，装备损失相对可控</td></tr>
+              <tr><td>抄家规则</td><td>前期有保护，不可无限制抄家</td></tr>
+              <tr><td>结算周期</td><td>与标准模式一致</td></tr>
+              <tr><td>玩家密度</td><td>相对较低</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="m-std" class="mode-panel">
+          <div class="mode-card">
+            <div class="mode-card-head" style="background:var(--border)">
+              <div class="mode-card-col">
+                <h4>⚔️ 标准模式</h4>
+                <p>最主流的平衡体验。既有生存压力，也有成长成就感，玩家基数最大。</p>
+              </div>
+              <div class="mode-card-col">
+                <div class="info-box tip" style="margin-bottom:0">
+                  <div class="info-box-label">适合你如果…</div>
+                  <ul>
+                    <li>有一定生存游戏基础</li>
+                    <li>想要真实的 Rust 体验</li>
+                    <li>接受被抄家的可能性</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <table class="mode-table">
+              <tr><th>维度</th><th>详情</th></tr>
+              <tr><td>死亡惩罚</td><td>中等，会掉落携带物资</td></tr>
+              <tr><td>抄家规则</td><td>允许，但有时间窗口限制</td></tr>
+              <tr><td>结算周期</td><td>定期清档重置</td></tr>
+              <tr><td>玩家密度</td><td>中到高</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="m-adv" class="mode-panel">
+          <div class="mode-card">
+            <div class="mode-card-head" style="background:var(--border)">
+              <div class="mode-card-col">
+                <h4>🔥 进阶模式</h4>
+                <p>标准模式的进阶版，规则更严苛，玩家整体实力更强，竞争更激烈。</p>
+              </div>
+              <div class="mode-card-col">
+                <div class="info-box warn" style="margin-bottom:0">
+                  <div class="info-box-label">注意</div>
+                  <ul>
+                    <li>不推荐新手直接进入</li>
+                    <li>先在标准模式积累经验</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <table class="mode-table">
+              <tr><th>维度</th><th>详情</th></tr>
+              <tr><td>死亡惩罚</td><td>较重</td></tr>
+              <tr><td>抄家规则</td><td>全天候可抄</td></tr>
+              <tr><td>结算周期</td><td>定期清档</td></tr>
+              <tr><td>玩家密度</td><td>高</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="m-hard" class="mode-panel">
+          <div class="mode-card">
+            <div class="mode-card-head" style="background:var(--border)">
+              <div class="mode-card-col">
+                <h4>💀 挑战模式</h4>
+                <p>硬核玩法，最高惩罚，全天开放抄家。给追求极致竞争的玩家。</p>
+              </div>
+              <div class="mode-card-col">
+                <div class="info-box warn" style="margin-bottom:0">
+                  <div class="info-box-label">⚠️ 新手不建议</div>
+                  <ul>
+                    <li>装备损失极重</li>
+                    <li>老玩家占据明显优势</li>
+                    <li>需要大量经验积累再进入</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <table class="mode-table">
+              <tr><th>维度</th><th>详情</th></tr>
+              <tr><td>死亡惩罚</td><td>最高，全装备可能丢失</td></tr>
+              <tr><td>抄家规则</td><td>全天24h可抄</td></tr>
+              <tr><td>结算周期</td><td>定期清档</td></tr>
+              <tr><td>玩家密度</td><td>高，竞争极激烈</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="block" style="margin-top:32px">
+        <div class="block-title">速决模式</div>
+        <div class="info-box tip">
+          <div class="info-box-label">🏟 领地攻防</div>
+          <ul>
+            <li>无需积累物资，直接体验攻守对抗核心</li>
+            <li>进攻方：用爆炸物摧毁领地柜；防守方：在规定时间内阻止</li>
+            <li>每局15分钟，适合短时间体验对抗玩法</li>
+            <li>子模式：原始攻防 / 手枪对决 / 轻武突袭 / 全面武装</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-foot">
+        <button class="foot-btn" onclick="showStep(1)">← Step 1</button>
+        <button class="foot-btn next" onclick="showStep(3)">Step 3：建立基地 →</button>
+      </div>
+    </div><!-- /step2 -->
+
+
+    <!-- ==================== STEP 3 ==================== -->
+    <div id="sc-3" class="step-panel" style="display:none">
+      <div class="step-head">
+        <div class="step-kicker">Step 3 / 6 · 建立基地</div>
+        <h2>第一个家，<br>怎么造不被偷</h2>
+        <p>基地是你的复活点、储物仓和安全屋。选址、结构、维护，三件事做对，才能住得久。</p>
+      </div>
+
+      <div class="step-hero-img">
+        <img src="//game.gtimg.cn/images/rm/cp/a20250311000017index/assets/banner2-DMbHlv81.jpg"
+             alt="建造场景" loading="lazy">
+      </div>
+
+      <div class="block">
+        <div class="block-title">选址三原则</div>
+        <div class="action-grid">
+          <div class="action-cell">
+            <div class="action-n">A</div>
+            <h4>靠近资源</h4>
+            <p style="font-size:13px;color:var(--txt-2);line-height:1.6">周边有树木、矿石和据点。资源采集效率直接影响发育速度。</p>
+          </div>
+          <div class="action-cell">
+            <div class="action-n">B</div>
+            <h4>远离主路</h4>
+            <p style="font-size:13px;color:var(--txt-2);line-height:1.6">建在偏僻位置降低被发现概率。配套齐全的地点会吸引其他玩家窥视。</p>
+          </div>
+          <div class="action-cell">
+            <div class="action-n">C</div>
+            <h4>近安全区</h4>
+            <p style="font-size:13px;color:var(--txt-2);line-height:1.6">安全区是买卖物资的地方，离得近可以快速补给和出售资源。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-title">建造顺序</div>
+        <div class="info-box">
+          <div class="info-box-label">推荐建造步骤</div>
+          <ul>
+            <li>先建 1×2 或 2×2 的核心居住空间，先有再扩</li>
+            <li>立即摆放工具柜，并填满维护材料（木材、石头、金属碎片）</li>
+            <li>尽快封顶和大门，防止玩家直接进入掠夺</li>
+            <li>待资源充足后，向外拓展防炸层结构增加防御力</li>
+            <li>可交互单个建筑件升级材质，或在工具柜一键升级全部</li>
+          </ul>
+        </div>
+        <div class="info-box tip">
+          <div class="info-box-label">💡 如果不确定怎么建</div>
+          <ul><li>游戏内置领地模板房，根据队伍需求直接选择模板即可</li></ul>
+        </div>
+      </div>
+
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>🔧 工具柜维护说明</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <ul class="tip-list">
+              <li><span class="tip-tag">必做</span>工具柜必须摆放，它控制基地维护范围，没有工具柜基地会自然衰退</li>
+              <li><span class="tip-tag">补给</span>定期检查工具柜，补充木材、石头、金属碎片，保持资源充足</li>
+              <li><span class="tip-tag">安全</span>工具柜是最重要的设施，应该放在基地最里层，用多道门保护</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>📹 相关攻略视频</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <div class="video-slot">
+              <div class="video-slot-label">官方 · 攻略视频</div>
+              <div class="video-slot-item"><div class="video-icon">▶</div><span>新手基地建造入门：从1×1到防炸层（待更新）</span></div>
+              <div class="video-slot-item"><div class="video-icon">▶</div><span>选址技巧：如何找到安全又资源丰富的地点（待更新）</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-foot">
+        <button class="foot-btn" onclick="showStep(2)">← Step 2</button>
+        <button class="foot-btn next" onclick="showStep(4)">Step 4：据点探索 →</button>
+      </div>
+    </div><!-- /step3 -->
+
+
+    <!-- ==================== STEP 4 ==================== -->
+    <div id="sc-4" class="step-panel" style="display:none">
+      <div class="step-head">
+        <div class="step-kicker">Step 4 / 6 · 据点探索</div>
+        <h2>去哪里刷资源？<br>威胁等级一览</h2>
+        <p>据点是获取资源、解锁科技的核心场所。按威胁等级选择适合当前实力的目标。</p>
+      </div>
+
+      <div class="block">
+        <div class="block-title">威胁等级说明</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+          <span class="threat-badge threat-0">安全区</span>
+          <span class="threat-badge threat-1">低威胁</span>
+          <span class="threat-badge threat-2">中威胁</span>
+          <span class="threat-badge threat-3">高威胁</span>
+          <span class="threat-badge threat-4">极高威胁</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-title">新手推荐先去的据点</div>
+        <div class="outpost-list">
+          <div class="outpost-row" style="background:var(--bg-card-2)">
+            <div><div class="outpost-name">采购站</div><div class="outpost-type">安全区 · 商店</div></div>
+            <div class="outpost-desc">可使用废料购买物资的商店，附近有分解机，新手必去的补给点</div>
+            <span class="threat-badge threat-0">安全区</span>
+          </div>
+          <div class="outpost-row">
+            <div><div class="outpost-name">加油站</div><div class="outpost-type">前哨站</div></div>
+            <div class="outpost-desc">燃油资源、桶装物资，低难度科学家巡逻，新手可以尝试的第一个前哨站</div>
+            <span class="threat-badge threat-1">低威胁</span>
+          </div>
+          <div class="outpost-row">
+            <div><div class="outpost-name">超市</div><div class="outpost-type">前哨站</div></div>
+            <div class="outpost-desc">食物和日用物资丰富，科学家密度适中，适合前期补充生存物资</div>
+            <span class="threat-badge threat-1">低威胁</span>
+          </div>
+          <div class="outpost-row">
+            <div><div class="outpost-name">废料堆场</div><div class="outpost-type">资源点</div></div>
+            <div class="outpost-desc">废料产出高，是前期解锁科技树的关键资源来源</div>
+            <span class="threat-badge threat-1">低威胁</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-title">高价值据点（有一定实力后）</div>
+        <div class="outpost-list">
+          <div class="outpost-row">
+            <div><div class="outpost-name">军事营地</div><div class="outpost-type">军事据点</div></div>
+            <div class="outpost-desc">高级武器蓝图和弹药，但驻守大量武装科学家，需要自动化枪械</div>
+            <span class="threat-badge threat-3">高威胁</span>
+          </div>
+          <div class="outpost-row">
+            <div><div class="outpost-name">发射井</div><div class="outpost-type">高级军事</div></div>
+            <div class="outpost-desc">顶级装备产出，需要团队配合，新手阶段不建议单独进入</div>
+            <span class="threat-badge threat-4">极高威胁</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box warn">
+        <div class="info-box-label">⚠️ 进入据点前</div>
+        <ul>
+          <li>先在外围观察，确认是否有其他玩家正在刷这个据点</li>
+          <li>带够弹药和医疗道具再进，不要空手去高威胁据点</li>
+          <li>据点有分解机，可以把暂时用不上的零件换成基础资源</li>
+        </ul>
+      </div>
+
+      <div class="step-foot">
+        <button class="foot-btn" onclick="showStep(3)">← Step 3</button>
+        <button class="foot-btn next" onclick="showStep(5)">Step 5：武器入门 →</button>
+      </div>
+    </div><!-- /step4 -->
+
+
+    <!-- ==================== STEP 5 ==================== -->
+    <div id="sc-5" class="step-panel" style="display:none">
+      <div class="step-head">
+        <div class="step-kicker">Step 5 / 6 · 武器与战斗</div>
+        <h2>新手第一把枪，<br>选这几个</h2>
+        <p>武器靠科技树解锁合成，不需要找装备。废料是解锁货币，前期优先解锁战斗模块。</p>
+      </div>
+
+      <div class="step-hero-img">
+        <img src="//game.gtimg.cn/images/rm/cp/a20250311000017index/assets/weapon_bg-BAsMunmJ.png"
+             alt="武器图鉴" loading="lazy" style="object-fit:contain;background:#151515">
+      </div>
+
+      <div class="block">
+        <div class="block-title">新手阶段推荐武器（按获取难度排序）</div>
+        <div class="weapon-grid">
+          <div class="weapon-card">
+            <div class="weapon-type">近战 · 优先解锁</div>
+            <div class="weapon-name">石斧 / 石镐</div>
+            <div class="weapon-cost">初始合成，无需废料</div>
+            <div class="weapon-note">不只是工具，也是前期主要防身武器。先有再说。</div>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-type">远程 · 第一把弓</div>
+            <div class="weapon-name">猎弓 + 箭</div>
+            <div class="weapon-cost">木头 + 布料合成</div>
+            <div class="weapon-note">开荒主力远程，有抛物线需要练习瞄准，箭矢可回收。</div>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-type">近战 · 爆发</div>
+            <div class="weapon-name">大砍刀</div>
+            <div class="weapon-cost">科技树 15 废料解锁</div>
+            <div class="weapon-note">室内战爆发强，换枪困难时的可靠近战选择。</div>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-type">枪械 · 过渡</div>
+            <div class="weapon-name">单管霰弹枪</div>
+            <div class="weapon-cost">科技树 100 废料解锁</div>
+            <div class="weapon-note">第一把正式枪，近距离伤害高，但每次只有1发，需要补枪习惯。</div>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-type">枪械 · 主流</div>
+            <div class="weapon-name">左轮手枪</div>
+            <div class="weapon-cost">科技树 150 废料解锁</div>
+            <div class="weapon-note">精准稳定，6发连射，是进入中期战斗的核心配置。</div>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-type">枪械 · 自动化</div>
+            <div class="weapon-name">废料冲锋枪</div>
+            <div class="weapon-cost">科技树 125 废料解锁</div>
+            <div class="weapon-note">第一把自动武器，压制力强，有了这把前期战斗优势显著。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>📈 武器解锁优先级建议</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <ul class="tip-list">
+              <li><span class="tip-tag">第1步</span>猎弓（无废料成本）→ 能远程打人和动物</li>
+              <li><span class="tip-tag">第2步</span>单管霰弹枪（100废料）→ 有枪了，近战不怕</li>
+              <li><span class="tip-tag">第3步</span>废料冲锋枪（125废料）→ 自动武器，战斗效率跃升</li>
+              <li><span class="tip-tag">注意</span>解锁武器需要先制作对应工作台，一级工作台是前期关键</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>⚔️ 战斗基础技巧</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <ul class="tip-list">
+              <li><span class="tip-tag">位置</span>利用地形和掩护，不要在空旷地带正面硬刚</li>
+              <li><span class="tip-tag">判断</span>看清对方装备再决定是否开打，装备差距大时撤退是正确选择</li>
+              <li><span class="tip-tag">倒地</span>倒地后队友可以拉起你，也有小概率原地复活，不要立刻放弃</li>
+              <li><span class="tip-tag">被淘汰</span>被淘汰后尽快找回凋落物，凋落物会在原地保留一段时间</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-foot">
+        <button class="foot-btn" onclick="showStep(4)">← Step 4</button>
+        <button class="foot-btn next" onclick="showStep(6)">Step 6：科技树与变强 →</button>
+      </div>
+    </div><!-- /step5 -->
+
+
+    <!-- ==================== STEP 6 ==================== -->
+    <div id="sc-6" class="step-panel" style="display:none">
+      <div class="step-head">
+        <div class="step-kicker">Step 6 / 6 · 成长路线</div>
+        <h2>怎么才算<br>真正在变强</h2>
+        <p>变强不只是有更好的枪——科技树解锁路径和情报等级，决定了你的成长速度。</p>
+      </div>
+
+      <div class="block">
+        <div class="block-title">科技树解锁路线（战斗优先）</div>
+        <div class="info-box">
+          <div class="info-box-label">推荐解锁顺序（废料数量）</div>
+          <ul>
+            <li>钉枪（7废料）→ 弩（15废料）→ 大砍刀（15废料）</li>
+            <li>→ 单管霰弹枪（100废料）→ 左轮手枪（150废料）</li>
+            <li>→ 废料冲锋枪（125废料）→ 制作一级工作台</li>
+            <li>→ 一级工作台后：自动化武器全面开放</li>
+            <li>→ 积累250废料：解锁二级工作台</li>
+          </ul>
+        </div>
+        <div class="info-box tip">
+          <div class="info-box-label">💡 关键逻辑</div>
+          <ul>
+            <li>每个等级的科技树解锁前，需要制作并摆放对应的制作台</li>
+            <li>废料既是科技货币，也是安全区商店的购物货币，合理分配</li>
+            <li>在敌人还用弓箭时你已经用自动武器，战斗优势巨大</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-title">情报等级系统</div>
+        <div class="info-box">
+          <div class="info-box-label">情报是什么？</div>
+          <ul>
+            <li>每个战局的"主线目标"——通过据点探索和突袭玩家收集情报</li>
+            <li>情报等级越高，解锁越强力的独特装备道具</li>
+            <li>战局结算后，根据情报等级获得账号奖励</li>
+            <li>不只是本次战局有用，情报等级也会影响后续战局奖励</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="collapse">
+        <div class="collapse-hd" onclick="toggleC(this)">
+          <span>📋 生存数值管理</span>
+          <span class="collapse-arr">▾</span>
+        </div>
+        <div class="collapse-bd">
+          <div class="collapse-bd-inner">
+            <ul class="tip-list">
+              <li><span class="tip-tag">生命值</span>保持口渴和饱腹值高 → 被动恢复生命值；受伤后用绷带/医疗针快速回血</li>
+              <li><span class="tip-tag">口渴值</span>清零后失去奔跑能力 → 河流取水或使用集水器；随身带水瓶</li>
+              <li><span class="tip-tag">饱腹值</span>清零后持续扣血 → 狩猎动物获取生肉，制作篝火烹饪后食用</li>
+              <li><span class="tip-tag">体温</span>夜间或特定区域有体温威胁 → 靠近火源恢复，制作服饰提升保暖</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box tip" style="margin-top:16px">
+        <div class="info-box-label">🎯 新手第一天的目标清单</div>
+        <ul>
+          <li>✅ 有睡袋</li>
+          <li>✅ 有一个基础小屋（有顶有门）</li>
+          <li>✅ 有猎弓或单管霰弹枪</li>
+          <li>✅ 工具柜里有维护材料</li>
+          <li>✅ 知道最近的安全区在哪</li>
+        </ul>
+      </div>
+
+      <div class="step-foot">
+        <button class="foot-btn" onclick="showStep(5)">← Step 5</button>
+        <button class="foot-btn next" onclick="showPage('faq')">查看 FAQ →</button>
+      </div>
+    </div><!-- /step6 -->
+
+  </div><!-- /step-content -->
+</div><!-- /step-wrap -->
+</div><!-- /page-step -->
+
+
+<!-- ============================================================
+     FAQ PAGE
+     ============================================================ -->
+<div id="page-faq" class="page">
+<div class="step-wrap">
+  <aside class="step-sidebar">
+    <div class="sidebar-label">FAQ 分类</div>
+    <ul class="sidebar-list">
+      <li class="sidebar-item active"><span class="sidebar-num active" style="border-color:var(--red);color:var(--red)">Q</span><span class="sidebar-text">生存基础</span></li>
+      <li class="sidebar-item"><span class="sidebar-num">Q</span><span class="sidebar-text">建造问题</span></li>
+      <li class="sidebar-item"><span class="sidebar-num">Q</span><span class="sidebar-text">战斗 & 死亡</span></li>
+      <li class="sidebar-item"><span class="sidebar-num">Q</span><span class="sidebar-text">模式 & 规则</span></li>
+    </ul>
+  </aside>
+  <div class="step-content">
+    <div class="step-head">
+      <div class="step-kicker">FAQ · 高频问题</div>
+      <h2>新手最常问<br>的问题</h2>
+      <p>找到你的问题，直接看答案。</p>
+    </div>
+
+    <div class="collapse">
+      <div class="collapse-hd" onclick="toggleC(this)">
+        <span>死了之后，装备会掉吗？</span>
+        <span class="collapse-arr">▾</span>
+      </div>
+      <div class="collapse-bd">
+        <div class="collapse-bd-inner">
+          <ul class="tip-list">
+            <li><span class="tip-tag">是的</span>被淘汰后携带的物资会掉落在原地，需要尽快回去拾取</li>
+            <li><span class="tip-tag">注意</span>凋落物有时效性，其他玩家也可以捡走</li>
+            <li><span class="tip-tag">庇护模式</span>在庇护模式中死亡惩罚相对较轻，装备损失更可控</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <div class="collapse-hd" onclick="toggleC(this)">
+        <span>废料怎么最快获取？</span>
+        <span class="collapse-arr">▾</span>
+      </div>
+      <div class="collapse-bd">
+        <div class="collapse-bd-inner">
+          <ul class="tip-list">
+            <li><span class="tip-tag">方法1</span>探索铁桶和物资箱——废料最主要的来源</li>
+            <li><span class="tip-tag">方法2</span>使用分解机将暂时不需要的零件分解成废料</li>
+            <li><span class="tip-tag">方法3</span>探索据点，前哨站和废料堆场的产出较高</li>
+            <li><span class="tip-tag">方法4</span>突袭其他玩家的基地也能获得废料，但风险更高</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <div class="collapse-hd" onclick="toggleC(this)">
+        <span>基地会被别人拆掉吗？如何防止？</span>
+        <span class="collapse-arr">▾</span>
+      </div>
+      <div class="collapse-bd">
+        <div class="collapse-bd-inner">
+          <ul class="tip-list">
+            <li><span class="tip-tag">会</span>其他玩家可以用炸药摧毁你的基地结构，这叫"抄家"</li>
+            <li><span class="tip-tag">防御</span>升级墙体材质（木→石头→金属），增加防炸层</li>
+            <li><span class="tip-tag">隐蔽</span>建在偏僻位置，减少被发现的概率</li>
+            <li><span class="tip-tag">模式</span>庇护模式对新手有前期抄家保护，可以先在这里练习建造</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <div class="collapse-hd" onclick="toggleC(this)">
+        <span>科技树是什么，怎么解锁？</span>
+        <span class="collapse-arr">▾</span>
+      </div>
+      <div class="collapse-bd">
+        <div class="collapse-bd-inner">
+          <ul class="tip-list">
+            <li><span class="tip-tag">是什么</span>科技树是制作更高级道具的前提，需要消耗废料解锁具体配方</li>
+            <li><span class="tip-tag">怎么解锁</span>打开科技树界面，消耗对应废料数量点击解锁即可</li>
+            <li><span class="tip-tag">前提</span>解锁高级科技前必须先制作并摆放对应等级的制作台</li>
+            <li><span class="tip-tag">优先级</span>新手优先解锁战斗模块，尽快获得自动化武器</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <div class="collapse-hd" onclick="toggleC(this)">
+        <span>游戏公平吗？充值能买到武器吗？</span>
+        <span class="collapse-arr">▾</span>
+      </div>
+      <div class="collapse-bd">
+        <div class="collapse-bd-inner">
+          <ul class="tip-list">
+            <li><span class="tip-tag">公平</span>游戏坚持不卖数值、不卖战力加成的公平原则</li>
+            <li><span class="tip-tag">充值</span>充值只能购买外观类道具（皮肤），不影响战斗数值</li>
+            <li><span class="tip-tag">武器</span>所有武器只能通过科技树解锁后自己合成，无法购买</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-foot" style="justify-content:flex-start">
+      <button class="foot-btn" onclick="showPage('home')">← 返回攻略总览</button>
     </div>
   </div>
-
-  <!-- 警告提示 -->
-  <div class="info-block warn" style="margin-top:24px;">
-    <div class="info-block-title">⚠️ 记住这一点</div>
-    <ul>
-      <li>先做睡袋再去探索。死掉之后如果没有睡袋，会在地图随机位置重生，丢失前进的位置。</li>
-    </ul>
-  </div>
-
-  <!-- 步骤导航 -->
-  <div class="step-nav">
-    <button class="step-nav-btn" onclick="showPage('home')">← 返回首页</button>
-    <button class="step-nav-btn next" onclick="showPage('step1')">Step 2：活下来 →</button>
-  </div>
-
 </div>
-</section>
+</div><!-- /faq -->
 
 </main>
 
 <footer>
-  © 失控进化 · 新手站 &nbsp;|&nbsp; Rust 正版玩法授权 &nbsp;|&nbsp; 腾讯游戏
+  © 失控进化 · 新手攻略站 &nbsp;·&nbsp; Rust 正版玩法授权 &nbsp;·&nbsp; 腾讯游戏
 </footer>
 
 <script>
-// 页面切换
+// ---------- 当前步骤 ----------
+var _step = 1;
+
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const target = document.getElementById('page-' + name);
-  if (target) {
-    target.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  // 导航高亮
-  document.querySelectorAll('.nav-links a').forEach((a, i) => {
-    a.classList.toggle('active', i === (name === 'home' ? 0 : 1));
+  var pg = document.getElementById('page-' + name);
+  if (pg) { pg.classList.add('active'); window.scrollTo({ top:0, behavior:'smooth' }); }
+  // 触发入场动画
+  setTimeout(() => {
+    pg.querySelectorAll('.anim').forEach(el => el.classList.add('in'));
+  }, 50);
+  // nav高亮
+  ['home','mode','out','wpn','faq'].forEach(k => {
+    var el = document.getElementById('nav-' + k);
+    if (el) el.classList.remove('active');
   });
+  if (name === 'home') document.getElementById('nav-home').classList.add('active');
+  if (name === 'faq')  document.getElementById('nav-faq').classList.add('active');
 }
 
-// 滚动到入口区
-function scrollToEntries() {
-  const el = document.getElementById('entries');
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function showStep(n) {
+  _step = n;
+  showPage('step');
+
+  // 切换内容面板
+  document.querySelectorAll('.step-panel').forEach(p => p.style.display = 'none');
+  var panel = document.getElementById('sc-' + n);
+  if (panel) panel.style.display = 'block';
+
+  // 更新侧边栏
+  document.querySelectorAll('.sidebar-item').forEach((item, i) => {
+    var stepN = i + 1;
+    item.classList.toggle('active', stepN === n);
+    item.classList.toggle('done', stepN < n);
+    var num = document.getElementById('sn-' + stepN);
+    if (num) {
+      if (stepN < n)    num.textContent = '✓';
+      else if (stepN === n) num.textContent = stepN;
+      else              num.textContent = stepN;
+    }
+  });
+
+  // nav高亮
+  var navMap = { 1:'home', 2:'mode', 3:'home', 4:'out', 5:'wpn', 6:'home' };
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
 }
 
-// 折叠块
-function toggleCollapse(header) {
-  header.classList.toggle('open');
-  const body = header.nextElementSibling;
-  if (header.classList.contains('open')) {
-    body.style.maxHeight = body.scrollHeight + 'px';
-  } else {
-    body.style.maxHeight = '0';
-  }
+function switchMode(btn, id) {
+  btn.closest('.block').querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  btn.closest('.block').querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  var panel = document.getElementById(id);
+  if (panel) panel.classList.add('active');
 }
+
+function toggleC(hd) {
+  hd.classList.toggle('open');
+  var bd = hd.nextElementSibling;
+  bd.style.maxHeight = hd.classList.contains('open') ? bd.scrollHeight + 'px' : '0';
+}
+
+// 首页入场动画
+window.addEventListener('load', () => {
+  document.querySelectorAll('#page-home .anim').forEach(el => el.classList.add('in'));
+});
 </script>
-
 </body>
 </html>
