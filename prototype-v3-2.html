@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控进化·新手站 v3 改版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c0f;
+  --surface: #111418;
+  --surface2: #181d24;
+  --surface3: #1e2530;
+  --border: #1e2530;
+  --border-bright: #2a3545;
+  --orange: #e8621a;
+  --orange-dim: rgba(232,98,26,0.12);
+  --orange-glow: rgba(232,98,26,0.3);
+  --yellow: #f0b429;
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #60a5fa;
+  --text: #e2e8f0;
+  --text-dim: #7a8a9a;
+  --text-muted: #4a5568;
+  --r: 8px;
+  --r-lg: 14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Serif SC',serif;min-height:100vh;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Noto Serif SC',serif;cursor:pointer;}
+
+/* ── PROTO BADGE ── */
+.proto-badge{position:fixed;top:12px;right:12px;background:var(--yellow);color:#000;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;z-index:9999;letter-spacing:.5px;}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,12,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;}
+.nav-logo{padding:0 24px;font-weight:900;font-size:15px;color:var(--orange);white-space:nowrap;letter-spacing:.5px;border-right:1px solid var(--border);height:52px;display:flex;align-items:center;cursor:pointer;gap:8px;}
+.nav-logo-icon{font-size:18px;}
+.nav-tabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{padding:0 20px;height:52px;display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text-dim);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;}
+.nav-tab:hover{color:var(--text);}
+.nav-tab.active{color:var(--orange);border-bottom-color:var(--orange);background:var(--orange-dim);}
+.nav-badge{background:var(--orange);color:#fff;font-size:9px;font-family:'JetBrains Mono',monospace;padding:1px 5px;border-radius:6px;font-weight:600;}
+
+/* ── PAGE ── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ════════ HOME ════════ */
+.home-hero{position:relative;height:420px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;}
+.home-hero-bg{position:absolute;inset:0;background:url('https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/bg1new.jpg') center/cover;filter:brightness(.35);}
+.home-hero-particles{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 110%,rgba(232,98,26,.22) 0%,transparent 65%);}
+.home-hero-content{position:relative;z-index:1;}
+.home-hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;opacity:.85;}
+.home-hero h1{font-size:44px;font-weight:900;letter-spacing:2px;line-height:1.15;text-shadow:0 2px 24px rgba(0,0,0,.8);}
+.home-hero h1 em{color:var(--orange);font-style:normal;}
+.home-hero p{margin-top:12px;color:var(--text-dim);font-size:14px;letter-spacing:1px;}
+.hero-scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-muted);font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* Split cards */
+.split-section{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:40px 48px 56px;max-width:1100px;margin:0 auto;}
+.split-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:0;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.split-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(0,0,0,.4);}
+.split-card.new-player:hover{border-color:var(--orange);box-shadow:0 20px 56px rgba(232,98,26,.18);}
+.split-card.veteran:hover{border-color:var(--yellow);box-shadow:0 20px 56px rgba(240,180,41,.14);}
+
+/* Card illustration area */
+.card-illus{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.new-player .card-illus{background:linear-gradient(135deg,#0d1824,#121e2e);}
+.veteran .card-illus{background:linear-gradient(135deg,#0f1020,#14101a);}
+.illus-placeholder{position:relative;z-index:1;text-align:center;}
+.illus-placeholder .illus-icon{font-size:64px;display:block;line-height:1;margin-bottom:8px;filter:drop-shadow(0 0 20px rgba(232,98,26,.4));}
+.illus-placeholder .illus-caption{font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);}
+.illus-glow-new{position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(232,98,26,.2),transparent 70%);}
+.illus-glow-vet{position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(240,180,41,.15),transparent 70%);}
+.card-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:1px;border:1px dashed var(--border-bright);margin:16px;border-radius:8px;}
+
+/* Card body */
+.card-body{padding:24px 28px 28px;flex:1;display:flex;flex-direction:column;}
+.card-tag{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:14px;width:fit-content;}
+.new-player .card-tag{background:rgba(232,98,26,.15);color:var(--orange);}
+.veteran .card-tag{background:rgba(240,180,41,.12);color:var(--yellow);}
+.card-body h2{font-size:22px;font-weight:900;letter-spacing:.5px;margin-bottom:8px;}
+.card-body p{font-size:13px;color:var(--text-dim);line-height:1.8;margin-bottom:20px;}
+.card-features{display:flex;flex-direction:column;gap:7px;margin-bottom:24px;flex:1;}
+.feat-row{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-dim);}
+.feat-icon{font-size:14px;width:20px;text-align:center;flex-shrink:0;}
+.card-cta{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:.5px;border:none;transition:all .2s;}
+.new-player .card-cta{background:var(--orange);color:#fff;}
+.new-player .card-cta:hover{background:#f07030;}
+.veteran .card-cta{background:transparent;color:var(--yellow);border:1px solid var(--yellow);}
+.veteran .card-cta:hover{background:rgba(240,180,41,.1);}
+
+/* Stats strip */
+.home-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 0 0;}
+.stat-cell{padding:20px 0;text-align:center;border-right:1px solid var(--border);}
+.stat-cell:last-child{border-right:none;}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600;color:var(--orange);}
+.stat-label{font-size:11px;color:var(--text-muted);margin-top:4px;letter-spacing:.5px;}
+
+/* ════════ GUIDE ════════ */
+.guide-layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 52px);}
+.guide-sidebar{background:var(--surface);border-right:1px solid var(--border);padding:28px 0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;}
+.sidebar-section-label{padding:0 20px 10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);margin-bottom:8px;}
+.snav-item{display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer;transition:all .15s;position:relative;}
+.snav-item:hover{background:var(--surface2);}
+.snav-item.active{background:var(--orange-dim);}
+.snav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--orange);}
+.snav-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;flex-shrink:0;transition:all .15s;}
+.snav-item.active .snav-num{background:var(--orange);color:#fff;}
+.snav-item.done .snav-num{background:var(--green);color:#fff;}
+.snav-item:not(.active):not(.done) .snav-num{background:var(--surface2);color:var(--text-dim);border:1px solid var(--border);}
+.snav-text{font-size:12px;line-height:1.4;}
+.snav-item.active .snav-text{color:var(--orange);}
+.snav-item.done .snav-text{color:var(--text-dim);}
+
+/* Guide main */
+.guide-main{padding:40px 52px;max-width:780px;}
+.progress-wrap{margin-bottom:36px;}
+.progress-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.progress-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:1px;}
+.progress-pct{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--orange);}
+.progress-track{background:var(--surface2);border-radius:20px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--yellow));border-radius:20px;transition:width .5s ease;}
+
+/* Step header */
+.step-hd{display:flex;align-items:flex-start;gap:16px;margin-bottom:32px;}
+.step-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--orange);background:var(--orange-dim);border:1px solid var(--orange-glow);padding:4px 10px;border-radius:4px;letter-spacing:1px;white-space:nowrap;margin-top:4px;}
+.step-hd h2{font-size:28px;font-weight:900;letter-spacing:.5px;line-height:1.25;}
+.step-subtitle{margin-top:7px;font-size:13px;color:var(--text-dim);font-style:italic;}
+
+/* Graphic cards inside steps */
+.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0;}
+.info-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center;}
+.info-card-icon{font-size:28px;margin-bottom:8px;display:block;}
+.info-card-title{font-size:12px;font-weight:700;margin-bottom:5px;}
+.info-card-desc{font-size:11px;color:var(--text-dim);line-height:1.6;}
+
+.steps-graphic{display:flex;gap:0;margin:20px 0;position:relative;}
+.steps-graphic::before{content:'';position:absolute;top:20px;left:20px;right:20px;height:2px;background:linear-gradient(90deg,var(--orange),var(--yellow));z-index:0;}
+.sg-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1;}
+.sg-dot{width:40px;height:40px;border-radius:50%;background:var(--surface2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;}
+.sg-step.active .sg-dot{background:var(--orange);border-color:var(--orange);box-shadow:0 0 12px var(--orange-glow);}
+.sg-step.done .sg-dot{background:var(--green);border-color:var(--green);}
+.sg-label{font-size:10px;color:var(--text-dim);text-align:center;line-height:1.4;}
+
+.resource-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0;}
+.res-row{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;}
+.res-icon{font-size:22px;flex-shrink:0;}
+.res-info{}
+.res-name{font-size:12px;font-weight:700;}
+.res-desc{font-size:10px;color:var(--text-dim);margin-top:2px;}
+
+.lifeline-bars{display:flex;flex-direction:column;gap:12px;margin:16px 0;}
+.ll-row{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;}
+.ll-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.ll-name{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;}
+.ll-icon{font-size:18px;}
+.ll-status{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 7px;border-radius:3px;}
+.ll-status.ok{background:rgba(34,197,94,.12);color:var(--green);}
+.ll-status.warn{background:rgba(240,180,41,.12);color:var(--yellow);}
+.ll-status.danger{background:rgba(239,68,68,.12);color:var(--red);}
+.ll-bar{height:8px;background:var(--surface3);border-radius:4px;overflow:hidden;}
+.ll-fill{height:100%;border-radius:4px;}
+.ll-fill-hp{background:linear-gradient(90deg,var(--red),#f87171);width:75%;}
+.ll-fill-thirst{background:linear-gradient(90deg,var(--blue),#93c5fd);width:50%;}
+.ll-fill-hunger{background:linear-gradient(90deg,var(--yellow),#fde68a);width:30%;}
+.ll-tip{margin-top:8px;font-size:11px;color:var(--text-dim);}
+
+.tip-box{background:var(--surface2);border:1px solid var(--border-bright);border-left:3px solid var(--yellow);border-radius:var(--r);padding:12px 16px;margin:14px 0;font-size:12px;color:var(--text-dim);display:flex;gap:10px;align-items:flex-start;}
+.tip-box-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.tip-box-text{line-height:1.7;}
+.tip-box-text strong{color:var(--yellow);}
+
+/* Craft path viz */
+.craft-path{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;margin:16px 0;}
+.cp-title{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;}
+.cp-stages{display:flex;align-items:center;gap:0;overflow-x:auto;}
+.cp-stage{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:90px;}
+.cp-stage-icon{width:52px;height:52px;border-radius:var(--r);background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;}
+.cp-stage-name{font-size:10px;text-align:center;color:var(--text-dim);}
+.cp-arrow{color:var(--orange);font-size:18px;margin:0 4px;padding-bottom:16px;flex-shrink:0;}
+
+.crosslink-section{margin-top:32px;padding-top:20px;border-top:1px solid var(--border);}
+.crosslink-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
+.crosslink-cards{display:flex;gap:10px;flex-wrap:wrap;}
+.cc-card{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:all .2s;font-size:12px;}
+.cc-card:hover{border-color:var(--orange);color:var(--orange);transform:translateX(3px);}
+.cc-icon{font-size:15px;}
+
+.step-nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--border);}
+.snbtn{display:flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--border);border-radius:var(--r);background:transparent;color:var(--text-dim);font-size:13px;cursor:pointer;transition:all .2s;}
+.snbtn:hover{border-color:var(--orange);color:var(--orange);}
+.snbtn.primary{background:var(--orange);border-color:var(--orange);color:#fff;}
+.snbtn.primary:hover{background:#f07030;}
+.snbtn:disabled{opacity:.3;cursor:not-allowed;}
+
+/* ════════ WEAPONS ════════ */
+.page-hd{padding:36px 48px 0;max-width:1200px;margin:0 auto;}
+.page-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.page-title{font-size:30px;font-weight:900;letter-spacing:1px;display:flex;align-items:center;gap:12px;}
+.page-title-icon{font-size:26px;}
+.page-intro{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:var(--r);padding:12px 16px;font-size:13px;color:var(--text-dim);margin-bottom:20px;}
+.page-intro strong{color:var(--orange);}
+
+.filter-bar{display:flex;gap:8px;padding:0 48px 20px;max-width:1200px;margin:0 auto;flex-wrap:wrap;}
+.chip{padding:6px 14px;border-radius:20px;font-size:12px;font-family:'JetBrains Mono',monospace;cursor:pointer;transition:all .15s;border:1px solid var(--border);color:var(--text-dim);background:transparent;}
+.chip:hover{border-color:var(--orange);color:var(--orange);}
+.chip.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+
+/* ════════ GAME INFO ════════ */
+.gameinfo-wrap{max-width:1100px;margin:0 auto;padding:0 48px 64px;display:flex;flex-direction:column;gap:40px;}
+
+/* Hero */
+.gi-hero{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);}
+.gi-hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,98,26,.18) 0%,rgba(10,12,15,.95) 60%),url('https://game.gtimg.cn/images/rm/cp/a20250311000017index/img/bg1new.jpg') center/cover no-repeat;filter:brightness(.5);}
+.gi-hero-content{position:relative;padding:48px 48px 44px;}
+.gi-tagline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+.gi-title{font-size:42px;font-weight:900;letter-spacing:1px;margin-bottom:16px;}
+.gi-desc{font-size:15px;line-height:1.9;color:var(--text-dim);max-width:760px;}
+
+/* Section */
+.gi-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px 36px;}
+.gi-section-hd{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+.gi-section-icon{font-size:28px;width:52px;height:52px;background:var(--surface2);border:1px solid var(--border-bright);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.gi-section-title{font-size:20px;font-weight:800;margin-bottom:4px;}
+.gi-section-sub{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:1px;}
+
+/* Gameplay 7-card grid */
+.gi-gameplay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gi-gp-card-wide{grid-column:span 3;}
+.gi-gp-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px 22px;transition:border-color .2s;}
+.gi-gp-card:hover{border-color:var(--border-bright);}
+.gi-gp-icon{font-size:26px;margin-bottom:10px;}
+.gi-gp-name{font-size:15px;font-weight:800;margin-bottom:8px;color:var(--orange);}
+.gi-gp-desc{font-size:13px;line-height:1.8;color:var(--text-dim);}
+.gi-gp-card-wide .gi-gp-desc{max-width:700px;}
+
+/* Spec tabs */
+.gi-spec-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.gi-spec-tab{padding:9px 20px;border-radius:var(--r);border:1px solid var(--border);cursor:pointer;font-size:13px;font-weight:600;color:var(--text-dim);transition:all .2s;}
+.gi-spec-tab:hover{border-color:var(--border-bright);}
+.gi-spec-tab.active{background:var(--orange-dim);border-color:var(--orange);color:var(--orange);}
+.gi-spec-panel{display:none;}
+.gi-spec-panel.active{display:block;}
+
+/* Spec grid */
+.gi-spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.gi-spec-grid-2{grid-template-columns:repeat(2,1fr);}
+.gi-spec-col{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;}
+.gi-spec-col-hd{font-size:12px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1px;padding:6px 10px;border-radius:6px;margin-bottom:14px;text-align:center;border:1px solid transparent;}
+.gi-spec-min{background:rgba(74,222,128,.1);color:#4ade80;border-color:rgba(74,222,128,.25);}
+.gi-spec-rec{background:rgba(232,98,26,.12);color:var(--orange);border-color:rgba(232,98,26,.3);}
+.gi-spec-high{background:rgba(96,165,250,.1);color:#93c5fd;border-color:rgba(96,165,250,.25);}
+.gi-spec-ultra{background:rgba(168,85,247,.1);color:#c084fc;border-color:rgba(168,85,247,.25);}
+.gi-spec-row{display:flex;flex-direction:column;gap:3px;padding:8px 0;border-bottom:1px solid var(--border);}
+.gi-spec-row:last-child{border-bottom:none;}
+.gi-spec-lbl{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:.5px;}
+.gi-spec-val{font-size:12px;color:var(--text-dim);line-height:1.5;}
+.weapons-carousel{max-width:1200px;margin:0 auto;padding:0 48px 48px;}
+.wep-type-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:3px;}
+.badge-rifle{background:rgba(239,68,68,.15);color:#ef4444;}
+.badge-smg{background:rgba(168,85,247,.15);color:#c084fc;}
+.badge-pistol{background:rgba(59,130,246,.15);color:#60a5fa;}
+.badge-shotgun{background:rgba(34,197,94,.15);color:#4ade80;}
+.badge-bow{background:rgba(245,158,11,.15);color:#fbbf24;}
+
+/* Carousel main grid */
+.wep-carousel-main{display:grid;grid-template-columns:1fr 380px;gap:24px;margin-bottom:24px;}
+
+/* Left: showcase */
+.wep-showcase{border-radius:var(--r-lg);overflow:hidden;background:var(--surface);border:1px solid var(--border);position:relative;}
+.wep-showcase-img{height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.wep-showcase-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--text-muted);}
+.wep-showcase-img-placeholder .wep-big-icon{font-size:96px;filter:drop-shadow(0 0 32px rgba(232,98,26,.35));}
+.wep-showcase-img-placeholder .placeholder-text{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.wep-showcase-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,15,.95) 0%,transparent 60%);padding:24px 24px 20px;}
+.wep-showcase-type{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:8px;}
+.wep-showcase-name{font-size:28px;font-weight:900;letter-spacing:.5px;}
+
+/* Right: detail sections */
+.wep-detail-sections{display:flex;flex-direction:column;gap:14px;}
+.wep-detail-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 18px;}
+.wep-detail-section-title{font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+
+/* Stat bars */
+.stat-rows{display:flex;flex-direction:column;gap:8px;}
+.stat-row-d{display:flex;align-items:center;gap:8px;}
+.stat-lbl{font-size:11px;color:var(--text-dim);width:36px;flex-shrink:0;}
+.stat-track{flex:1;height:5px;background:var(--surface3);border-radius:3px;overflow:hidden;}
+.stat-fill-d{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--orange),var(--yellow));}
+.stat-val-d{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);width:28px;text-align:right;}
+
+/* Workbench requirement */
+.workbench-req{background:var(--surface2);border:1px solid var(--border-bright);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;}
+.wb-icon{font-size:28px;flex-shrink:0;}
+.wb-info{}
+.wb-name{font-size:13px;font-weight:700;margin-bottom:3px;}
+.wb-tier{font-size:10px;font-family:'JetBrains Mono',monospace;padding:1px 7px;border-radius:3px;background:rgba(240,180,41,.12);color:var(--yellow);display:inline-block;}
+
+/* Tech prereq */
+.tech-prereq{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(96,165,250,.05);border:1px solid rgba(96,165,250,.2);border-radius:var(--r);font-size:12px;margin-top:8px;}
+.tech-prereq-icon{font-size:18px;}
+.tech-prereq-text{color:var(--blue);}
+
+/* Materials */
+.materials{display:flex;flex-direction:column;gap:6px;}
+.mat-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--surface2);border-radius:6px;border:1px solid var(--border);}
+.mat-left{display:flex;align-items:center;gap:8px;font-size:12px;}
+.mat-icon{font-size:16px;}
+.mat-qty{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;}
+.mat-cost-high .mat-qty{color:#f87171;}
+.mat-cost-mid .mat-qty{color:#fde68a;}
+.mat-cost-low .mat-qty{color:#86efac;}
+.mat-cost-badge{font-size:9px;font-family:'JetBrains Mono',monospace;padding:1px 6px;border-radius:3px;}
+.mat-cost-high .mat-cost-badge{background:rgba(239,68,68,.12);color:#f87171;}
+.mat-cost-mid .mat-cost-badge{background:rgba(245,158,11,.12);color:#fde68a;}
+.mat-cost-low .mat-cost-badge{background:rgba(34,197,94,.12);color:#86efac;}
+
+/* Weapon thumbnail strip (mirrors .poi-strip) */
+.wep-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.wep-thumb{width:90px;flex-shrink:0;cursor:pointer;border-radius:var(--r);overflow:hidden;border:2px solid transparent;transition:all .2s;}
+.wep-thumb:hover{border-color:var(--border-bright);}
+.wep-thumb.active{border-color:var(--orange);}
+.wep-thumb-img{height:56px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:24px;}
+.wep-thumb-label{padding:5px 6px;background:var(--surface);font-size:10px;color:var(--text-dim);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wep-thumb.active .wep-thumb-label{color:var(--orange);}
+
+/* Desc */
+.wep-desc-text{font-size:13px;color:var(--text-dim);line-height:1.8;}
+.wep-tags-wrap{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.wep-tag-chip{font-size:11px;font-family:'JetBrains Mono',monospace;padding:4px 8px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);}
+
+/* ════════ POI ════════ */
+/* Carousel */
+.poi-carousel{max-width:1200px;margin:0 auto;padding:0 48px 48px;}
+.poi-carousel-main{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-bottom:24px;}
+
+.poi-showcase{border-radius:var(--r-lg);overflow:hidden;background:var(--surface);border:1px solid var(--border);position:relative;}
+.poi-showcase-img{height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.poi-showcase-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--text-muted);}
+.poi-showcase-img-placeholder .placeholder-icon{font-size:72px;filter:drop-shadow(0 0 32px rgba(232,98,26,.3));}
+.poi-showcase-img-placeholder .placeholder-text{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.poi-showcase-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,15,.95) 0%,transparent 60%);padding:24px 24px 20px;}
+.poi-showcase-tier{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:8px;}
+.poi-showcase-name{font-size:28px;font-weight:900;letter-spacing:.5px;}
+
+/* POI detail panel */
+.poi-detail{display:flex;flex-direction:column;gap:16px;}
+.poi-detail-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;}
+.poi-detail-section-title{font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+.poi-desc-text{font-size:13px;color:var(--text-dim);line-height:1.8;}
+.poi-tags-wrap{display:flex;gap:6px;flex-wrap:wrap;}
+.poi-tag-chip{font-size:11px;font-family:'JetBrains Mono',monospace;padding:4px 8px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);}
+.danger-meter{display:flex;gap:4px;margin-bottom:10px;}
+.danger-pip{width:28px;height:8px;border-radius:3px;background:var(--surface3);}
+.danger-pip.active-1{background:#4ade80;}
+.danger-pip.active-2{background:#fbbf24;}
+.danger-pip.active-3{background:#fb923c;}
+.danger-pip.active-4{background:#ef4444;}
+.danger-label{font-size:11px;color:var(--text-dim);}
+.reward-items{display:flex;flex-direction:column;gap:6px;}
+.reward-row{display:flex;align-items:center;gap:8px;font-size:12px;}
+.reward-icon{font-size:14px;width:20px;text-align:center;}
+.reward-text{color:var(--text-dim);}
+
+/* POI thumbnail strip */
+.poi-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.poi-thumb{width:90px;flex-shrink:0;cursor:pointer;border-radius:var(--r);overflow:hidden;border:2px solid transparent;transition:all .2s;}
+.poi-thumb:hover{border-color:var(--border-bright);}
+.poi-thumb.active{border-color:var(--orange);}
+.poi-thumb-img{height:56px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:24px;}
+.poi-thumb-label{padding:5px 6px;background:var(--surface);font-size:10px;color:var(--text-dim);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.poi-thumb.active .poi-thumb-label{color:var(--orange);}
+
+/* Tier filter row */
+.tier-filter-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.tier-chip{padding:7px 14px;border-radius:6px;font-size:12px;font-family:'JetBrains Mono',monospace;cursor:pointer;border:1px solid var(--border);color:var(--text-dim);background:transparent;transition:all .15s;display:flex;align-items:center;gap:6px;}
+.tier-chip:hover{border-color:var(--border-bright);}
+.tier-chip.t1{border-left:3px solid #4ade80;} .tier-chip.t1:hover,.tier-chip.t1.active{background:rgba(34,197,94,.08);color:#4ade80;border-color:#4ade80;}
+.tier-chip.t2{border-left:3px solid #60a5fa;} .tier-chip.t2:hover,.tier-chip.t2.active{background:rgba(96,165,250,.08);color:#60a5fa;border-color:#60a5fa;}
+.tier-chip.t3{border-left:3px solid #fbbf24;} .tier-chip.t3:hover,.tier-chip.t3.active{background:rgba(245,158,11,.08);color:#fbbf24;border-color:#fbbf24;}
+.tier-chip.t4{border-left:3px solid #f87171;} .tier-chip.t4:hover,.tier-chip.t4.active{background:rgba(239,68,68,.08);color:#f87171;border-color:#f87171;}
+.tier-chip.ts{border-left:3px solid #c084fc;} .tier-chip.ts:hover,.tier-chip.ts.active{background:rgba(168,85,247,.08);color:#c084fc;border-color:#c084fc;}
+
+/* ════════ VIDEOS ════════ */
+.videos-container{max-width:1100px;margin:0 auto;padding:0 48px 48px;}
+.video-section-tabs{display:flex;gap:4px;margin-bottom:24px;}
+.vst-btn{padding:8px 18px;border-radius:6px;font-size:13px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-dim);transition:all .15s;font-family:'Noto Serif SC',serif;}
+.vst-btn:hover{border-color:var(--orange);color:var(--orange);}
+.vst-btn.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+.video-subtab{display:none;}
+.video-subtab.active{display:block;}
+
+/* Featured video + grid */
+.video-featured{display:grid;grid-template-columns:1fr 300px;gap:20px;margin-bottom:28px;}
+.vfeat-main{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:all .2s;}
+.vfeat-main:hover{border-color:var(--orange);}
+.vfeat-thumb{height:240px;position:relative;overflow:hidden;}
+.vfeat-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.vfeat-main:hover .vfeat-thumb img{transform:scale(1.04);}
+.vfeat-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,12,15,.8) 0%,transparent 50%);display:flex;align-items:center;justify-content:center;}
+.vfeat-play{width:56px;height:56px;background:rgba(232,98,26,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .2s;box-shadow:0 0 24px rgba(232,98,26,.4);}
+.vfeat-main:hover .vfeat-play{transform:scale(1.1);}
+.vfeat-body{padding:18px 20px;}
+.vfeat-tag{font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:7px;}
+.vfeat-title{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:6px;}
+.vfeat-date{font-size:11px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+
+.vfeat-side{display:flex;flex-direction:column;gap:10px;}
+.vsm-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .2s;display:flex;gap:0;}
+.vsm-card:hover{border-color:var(--border-bright);}
+.vsm-thumb{width:100px;flex-shrink:0;position:relative;overflow:hidden;}
+.vsm-thumb img{width:100%;height:100%;object-fit:cover;}
+.vsm-play{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:14px;opacity:0;transition:opacity .2s;}
+.vsm-card:hover .vsm-play{opacity:1;}
+.vsm-body{padding:10px 12px;flex:1;min-width:0;}
+.vsm-title{font-size:12px;font-weight:600;line-height:1.5;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.vsm-date{font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+
+.video-grid-small{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.vgrid-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .2s;}
+.vgrid-card:hover{border-color:var(--orange);transform:translateY(-2px);}
+.vgrid-thumb{height:100px;position:relative;overflow:hidden;}
+.vgrid-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.vgrid-card:hover .vgrid-thumb img{transform:scale(1.06);}
+.vgrid-play{position:absolute;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;font-size:16px;opacity:0;transition:opacity .2s;}
+.vgrid-card:hover .vgrid-play{opacity:1;}
+.vgrid-body{padding:10px 12px;}
+.vgrid-title{font-size:11px;font-weight:600;line-height:1.5;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.vgrid-date{font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+
+.placeholder-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ph-card{background:var(--surface);border:1px dashed var(--border-bright);border-radius:var(--r);min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-muted);text-align:center;padding:20px;cursor:pointer;transition:all .2s;}
+.ph-card:hover{border-color:var(--orange);color:var(--orange);}
+.ph-card:last-child{border-color:var(--orange);color:var(--orange);}
+.ph-icon{font-size:28px;}
+.ph-text{font-size:11px;line-height:1.6;}
+
+/* ════════ FAQ ════════ */
+.faq-container{max-width:1000px;margin:0 auto;padding:0 48px 48px;}
+/* Graphic category entry */
+.faq-cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px;}
+.faq-cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center;cursor:pointer;transition:all .2s;}
+.faq-cat-card:hover{border-color:var(--border-bright);transform:translateY(-2px);}
+.faq-cat-card.active{border-color:var(--orange);background:var(--orange-dim);}
+.fcc-icon{font-size:28px;margin-bottom:8px;display:block;}
+.fcc-name{font-size:12px;font-weight:700;margin-bottom:3px;}
+.fcc-count{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);}
+.faq-cat-card.active .fcc-name{color:var(--orange);}
+
+.faq-section-label{font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+.faq-item{border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden;}
+.faq-item:hover{border-color:var(--border-bright);}
+.faq-item.open{border-color:var(--orange);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;font-size:13px;font-weight:600;gap:12px;background:var(--surface);}
+.faq-item.open .faq-q{color:var(--orange);background:var(--orange-dim);}
+.faq-q-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.faq-src{font-size:9px;font-family:'JetBrains Mono',monospace;padding:2px 6px;border-radius:3px;}
+.src-official{background:rgba(232,98,26,.12);color:var(--orange);}
+.src-player{background:rgba(96,165,250,.12);color:#60a5fa;}
+.faq-toggle{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--surface2);border:1px solid var(--border);transition:transform .2s;flex-shrink:0;}
+.faq-item.open .faq-toggle{transform:rotate(45deg);background:var(--orange);border-color:var(--orange);color:#fff;}
+.faq-a{display:none;padding:14px 16px;font-size:12px;color:var(--text-dim);line-height:1.8;background:var(--surface);border-top:1px solid var(--border);}
+.faq-item.open .faq-a{display:block;}
+
+/* ════════ SECTION DIVIDER ════════ */
+.sec-div{display:flex;align-items:center;gap:12px;padding:0 48px 20px;max-width:1200px;margin:0 auto;}
+.sec-div-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;}
+.sec-div-line{flex:1;height:1px;background:var(--border);}
+
+/* Step contents */
+.step-content{display:none;}
+.step-content.active{display:block;}
+
+/* Util */
+.mt12{margin-top:12px;}
+.mt16{margin-top:16px;}
+.mt20{margin-top:20px;}
+</style>
+</head>
+<body>
+<div class="proto-badge">PROTOTYPE v3.1</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo" onclick="switchPage('home')">
+    <span class="nav-logo-icon">🏝</span> 失控进化·新手站
+  </div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏠</span> 首页</div>
+    <div class="nav-tab" data-page="gameinfo" onclick="switchPage('gameinfo',this)"><span>🎮</span> 游戏介绍</div>
+    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📖</span> 新手入门 <span class="nav-badge">STEP 1-6</span></div>
+    <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🔫</span> 武器图鉴</div>
+    <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>📍</span> 据点指南</div>
+    <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>🎬</span> 攻略视频</div>
+    <div class="nav-tab" data-page="faq" onclick="switchPage('faq',this)"><span>❓</span> FAQ</div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HOME
+══════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <div class="home-hero">
+    <div class="home-hero-bg"></div>
+    <div class="home-hero-particles"></div>
+    <div class="home-hero-content">
+      <div class="home-hero-eyebrow">RUST 正版玩法授权 · 官方指南中心</div>
+      <h1>《失控<em>进化</em>》<br>荒岛求生·新手站</h1>
+      <p>从零到活下来，从活下来到越来越强</p>
+    </div>
+    <div class="hero-scroll-hint">▼ 选择你的路线</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="home-stats">
+    <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">新手步骤</div></div>
+    <div class="stat-cell"><div class="stat-num">10+</div><div class="stat-label">武器收录</div></div>
+    <div class="stat-cell"><div class="stat-num">15+</div><div class="stat-label">据点收录</div></div>
+    <div class="stat-cell"><div class="stat-num">5</div><div class="stat-label">游戏模式</div></div>
+  </div>
+
+  <div class="split-section">
+    <!-- 新玩家 -->
+    <div class="split-card new-player" onclick="switchPage('guide')">
+      <div class="card-illus">
+        <div class="illus-glow-new"></div>
+        <div class="illus-placeholder">
+          <span class="illus-icon">🔰</span>
+          <span class="illus-caption">NEW SURVIVOR</span>
+        </div>
+        <div class="card-img-placeholder">官方新手插图 · 待填充</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">🔰 NEWCOMER</div>
+        <h2>初次登岛？</h2>
+        <p>跟着 6 步走完第一天，从出生到建好第一个家，不掉线、不饿死、不被偷家。</p>
+        <div class="card-features">
+          <div class="feat-row"><span class="feat-icon">🗺</span>出生点怎么站稳脚跟</div>
+          <div class="feat-row"><span class="feat-icon">💊</span>血量 / 口渴 / 饱腹管理</div>
+          <div class="feat-row"><span class="feat-icon">🌲</span>高效资源收集路线</div>
+          <div class="feat-row"><span class="feat-icon">🏠</span>第一个家怎么建</div>
+          <div class="feat-row"><span class="feat-icon">🔫</span>武器与战斗入门</div>
+          <div class="feat-row"><span class="feat-icon">⚙️</span>科技树与变强路径</div>
+        </div>
+        <button class="card-cta">开始新手入门 →</button>
+      </div>
+    </div>
+
+    <!-- 老玩家 -->
+    <div class="split-card veteran" onclick="switchPage('weapons')">
+      <div class="card-illus">
+        <div class="illus-glow-vet"></div>
+        <div class="illus-placeholder">
+          <span class="illus-icon">⚔️</span>
+          <span class="illus-caption">VETERAN SURVIVOR</span>
+        </div>
+        <div class="card-img-placeholder" style="border-color:rgba(240,180,41,.2)">官方老兵插图 · 待填充</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">⚔️ VETERAN</div>
+        <h2>快速查阅工具</h2>
+        <p>武器合成成本、据点攻略、进阶技巧——直接跳到你要找的内容。</p>
+        <div class="card-features">
+          <div class="feat-row"><span class="feat-icon">🔫</span>武器图鉴：合成路径 + 工作台需求</div>
+          <div class="feat-row"><span class="feat-icon">📍</span>据点指南：等级分类 + 推荐时机</div>
+          <div class="feat-row"><span class="feat-icon">🎬</span>攻略视频：官方 + 玩家实战</div>
+          <div class="feat-row"><span class="feat-icon">❓</span>FAQ：常见问题 + 机制解答</div>
+        </div>
+        <button class="card-cta">进入工具区 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     GAME INFO
+══════════════════════════════════════ -->
+<div class="page" id="page-gameinfo">
+  <div class="page-hd">
+    <div class="page-title-row">
+      <div class="page-title"><span class="page-title-icon">🎮</span> 游戏介绍</div>
+    </div>
+    <div class="page-intro">官方内容直引，帮你快速了解这款游戏是什么、能玩什么、需要什么配置。</div>
+  </div>
+
+  <div class="gameinfo-wrap">
+
+    <!-- Hero 核心定位 -->
+    <div class="gi-hero">
+      <div class="gi-hero-bg"></div>
+      <div class="gi-hero-content">
+        <div class="gi-tagline">Rust 正版玩法授权 · PC&移动跨端</div>
+        <div class="gi-title">失控进化</div>
+        <p class="gi-desc">《失控进化》是一款Rust正版玩法授权的高自由度生存对抗游戏，支持PC和移动跨端游戏体验。您将赤手空拳开启一段开放世界荒岛求生的历程，通过采集资源、建造领地、制作工具武器、狩猎、探索，同时抵御饥饿、气候、野生动物以及其他玩家的威胁。您可以选择独自冒险，也可以与其他玩家协作或对抗，在这片危机四伏的世界中展开生存资源争夺战，这里每一刻都充满了未知的风险与机遇。</p>
+      </div>
+    </div>
+
+    <!-- 玩法概述 7要素 官方原文 -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">🗺️</div>
+        <div>
+          <div class="gi-section-title">玩法概述</div>
+          <div class="gi-section-sub">来自官网 · 原文呈现</div>
+        </div>
+      </div>
+      <div class="gi-gameplay-grid">
+        <div class="gi-gp-card">
+          <div class="gi-gp-icon">🫀</div>
+          <div class="gi-gp-name">生存</div>
+          <div class="gi-gp-desc">在残酷的环境中存活下来，管理饥饿、口渴、体温和健康值，抵御来自野生动物、原住民、辐射或其他玩家的威胁。</div>
+        </div>
+        <div class="gi-gp-card">
+          <div class="gi-gp-icon">🏗️</div>
+          <div class="gi-gp-name">建造</div>
+          <div class="gi-gp-desc">建立坚固的领地，保护自己的资源与装备，同时设计防御结构以抵御其他玩家的进攻。</div>
+        </div>
+        <div class="gi-gp-card">
+          <div class="gi-gp-icon">⚗️</div>
+          <div class="gi-gp-name">科技</div>
+          <div class="gi-gp-desc">通过探索、收集与掠夺等行为获取废料，用以解锁生存、建造、战斗等各类科技，生产武器装备、提升建筑等级，甚至发展电力、水利、种植等能力。</div>
+        </div>
+        <div class="gi-gp-card">
+          <div class="gi-gp-icon">⚔️</div>
+          <div class="gi-gp-name">掠夺</div>
+          <div class="gi-gp-desc">保护自身的同时，通过战斗与策略掠夺其他玩家的资源，摧毁他们的领地，在弱肉强食的世界中始终保持竞争力。</div>
+        </div>
+        <div class="gi-gp-card">
+          <div class="gi-gp-icon">🧭</div>
+          <div class="gi-gp-name">探索</div>
+          <div class="gi-gp-desc">探索散布于地图中的遗迹、危险区域、空投补给，获取稀有资源、高级装备，并且揭开隐藏的秘密。</div>
+        </div>
+        <div class="gi-gp-card">
+          <div class="gi-gp-icon">🤝</div>
+          <div class="gi-gp-name">合作</div>
+          <div class="gi-gp-desc">与其他玩家组队，共同建造大型领地、抵御敌对团队或完成复杂任务。</div>
+        </div>
+        <div class="gi-gp-card gi-gp-card-wide">
+          <div class="gi-gp-icon">👑</div>
+          <div class="gi-gp-name">统治</div>
+          <div class="gi-gp-desc">凭借强大的战斗力与资源积累，以及坚不可摧的领地，成为荒岛上令所有人都敬畏的霸主。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 配置要求 -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">🖥️</div>
+        <div>
+          <div class="gi-section-title">配置要求</div>
+          <div class="gi-section-sub">开始游戏前先确认你的设备能跑</div>
+        </div>
+      </div>
+      <!-- Tab切换 PC/手机 -->
+      <div class="gi-spec-tabs">
+        <div class="gi-spec-tab active" onclick="switchSpecTab('pc',this)">💻 PC 端</div>
+        <div class="gi-spec-tab" onclick="switchSpecTab('mobile',this)">📱 移动端</div>
+      </div>
+
+      <!-- PC 配置表 -->
+      <div id="gi-spec-pc" class="gi-spec-panel active">
+        <div class="gi-spec-grid">
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd gi-spec-min">最低配置</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🪟 系统</span><span class="gi-spec-val">Windows 10 64位 1909+</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ CPU</span><span class="gi-spec-val">Intel i5-7500 / AMD FX-8350</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🎨 显卡</span><span class="gi-spec-val">GTX 1060 5G / RX 580</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">8GB RAM</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">30G+，推荐预留 50G</span></div>
+          </div>
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd gi-spec-rec">推荐配置</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🪟 系统</span><span class="gi-spec-val">Windows 10 64位 1909+</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ CPU</span><span class="gi-spec-val">Intel i7-11700 / AMD Ryzen 5 5600</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🎨 显卡</span><span class="gi-spec-val">RTX 3060 / RX 5700 XT</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">16GB RAM</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">30G+，推荐预留 50G</span></div>
+          </div>
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd gi-spec-high">高画质配置</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🪟 系统</span><span class="gi-spec-val">Windows 10 64位 1909+</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ CPU</span><span class="gi-spec-val">Intel i7-12700F / AMD Ryzen 7 5800X</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🎨 显卡</span><span class="gi-spec-val">RTX 4060 / RX 6700 XT</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">16GB RAM</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">30G+，推荐预留 50G</span></div>
+          </div>
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd gi-spec-ultra">极致配置</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🪟 系统</span><span class="gi-spec-val">Windows 10 64位 1909+</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ CPU</span><span class="gi-spec-val">Intel i9-12900K / AMD Ryzen 7 7800X3D</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">🎨 显卡</span><span class="gi-spec-val">RTX 3080 / RX 7800 XT</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">32GB RAM</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">30G+，推荐预留 50G</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 移动端配置表 -->
+      <div id="gi-spec-mobile" class="gi-spec-panel">
+        <div class="gi-spec-grid gi-spec-grid-2">
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd" style="background:rgba(34,197,94,.12);color:#4ade80;border-color:rgba(34,197,94,.3);">🤖 安卓最低</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">📱 系统</span><span class="gi-spec-val">Android 10 及以上</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ 芯片</span><span class="gi-spec-val">骁龙 710 / 天玑 700 / 麒麟 970</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">约 15GB，推荐预留 20GB+</span></div>
+          </div>
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd gi-spec-rec">🤖 安卓推荐</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">📱 系统</span><span class="gi-spec-val">Android 10 及以上</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ 芯片</span><span class="gi-spec-val">骁龙 8gen2 / 天玑 9200 或同等</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">约 15GB，推荐预留 20GB+</span></div>
+          </div>
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd" style="background:rgba(96,165,250,.12);color:#93c5fd;border-color:rgba(96,165,250,.3);">🍎 iOS 最低</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">📱 系统</span><span class="gi-spec-val">iOS 15 及以上</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ 芯片</span><span class="gi-spec-val">A14 处理器（iPhone 12 Pro）</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">约 15GB，推荐预留 20GB+</span></div>
+          </div>
+          <div class="gi-spec-col">
+            <div class="gi-spec-col-hd gi-spec-rec" style="background:rgba(96,165,250,.18);color:#60a5fa;border-color:rgba(96,165,250,.4);">🍎 iOS 推荐</div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">📱 系统</span><span class="gi-spec-val">iOS 15 及以上</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ 芯片</span><span class="gi-spec-val">A15 处理器及以上（iPhone 13 Pro+）</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">约 15GB，推荐预留 20GB+</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gameinfo-wrap -->
+</div><!-- /page-gameinfo -->
+
+<!-- ══════════════════════════════════════
+     GUIDE
+══════════════════════════════════════ -->
+<div class="page" id="page-guide">
+  <div class="guide-layout">
+    <div class="guide-sidebar">
+      <div class="sidebar-section-label">新手入门 GUIDE</div>
+      <div class="snav-item active" id="snav-1" onclick="switchStep(1)">
+        <div class="snav-num">1</div><div class="snav-text">出生后先做什么</div>
+      </div>
+      <div class="snav-item" id="snav-2" onclick="switchStep(2)">
+        <div class="snav-num">2</div><div class="snav-text">三条生命线</div>
+      </div>
+      <div class="snav-item" id="snav-3" onclick="switchStep(3)">
+        <div class="snav-num">3</div><div class="snav-text">资源收集路线</div>
+      </div>
+      <div class="snav-item" id="snav-4" onclick="switchStep(4)">
+        <div class="snav-num">4</div><div class="snav-text">第一个家怎么建</div>
+      </div>
+      <div class="snav-item" id="snav-5" onclick="switchStep(5)">
+        <div class="snav-num">5</div><div class="snav-text">武器与战斗入门</div>
+      </div>
+      <div class="snav-item" id="snav-6" onclick="switchStep(6)">
+        <div class="snav-num">6</div><div class="snav-text">科技树与变强路径</div>
+      </div>
+    </div>
+
+    <div class="guide-main">
+      <!-- Progress -->
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span class="progress-label">PROGRESS</span>
+          <span class="progress-pct" id="progress-pct">17%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:17%"></div></div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="step-content active" id="step-1">
+        <div class="step-hd">
+          <div class="step-tag">STEP 01 / 06</div>
+          <div>
+            <h2>出生后先做什么</h2>
+            <div class="step-subtitle">5 分钟内站稳脚跟的关键动作</div>
+          </div>
+        </div>
+
+        <!-- Graphic: 3 key actions -->
+        <div class="info-cards">
+          <div class="info-card">
+            <span class="info-card-icon">🪨</span>
+            <div class="info-card-title">收集基础资源</div>
+            <div class="info-card-desc">对石头闪光点击打<br>对树红色X击打<br>目标：木头200 + 石头100</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">🪓</span>
+            <div class="info-card-title">制作石斧</div>
+            <div class="info-card-desc">按 Q 打开制作界面<br>先做石斧<br>采集效率直接翻倍</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">🗺</span>
+            <div class="info-card-title">确认位置</div>
+            <div class="info-card-desc">打开地图<br>找最近的一级据点<br>废弃超市 / 加油站</div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-box-icon">💡</span>
+          <div class="tip-box-text"><strong>出生点技巧：</strong>出生点附近通常有灌木和石块，先就地解决基础资源，别跑太远暴露位置。</div>
+        </div>
+
+        <div class="crosslink-section">
+          <div class="crosslink-label">📎 延伸阅读</div>
+          <div class="crosslink-cards">
+            <div class="cc-card" onclick="goToPoi('tier-1')"><span class="cc-icon">📍</span>新手推荐据点 →</div>
+            <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>出生常见问题 →</div>
+          </div>
+        </div>
+        <div class="step-nav-btns">
+          <button class="snbtn" disabled>← 上一步</button>
+          <button class="snbtn primary" onclick="switchStep(2)">三条生命线 →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-content" id="step-2">
+        <div class="step-hd">
+          <div class="step-tag">STEP 02 / 06</div>
+          <div>
+            <h2>三条生命线</h2>
+            <div class="step-subtitle">任何一条归零都会让你立刻陷入危机</div>
+          </div>
+        </div>
+
+        <!-- Graphic: lifeline bars -->
+        <div class="lifeline-bars">
+          <div class="ll-row">
+            <div class="ll-header">
+              <div class="ll-name"><span class="ll-icon">❤️</span> 血量</div>
+              <div class="ll-status ok">稳定</div>
+            </div>
+            <div class="ll-bar"><div class="ll-fill ll-fill-hp"></div></div>
+            <div class="ll-tip">被打、饥饿、冻伤都会掉血。保持饱腹+口渴较高会<strong style="color:var(--green)">自动缓慢回血</strong>，绷带可快速补。</div>
+          </div>
+          <div class="ll-row">
+            <div class="ll-header">
+              <div class="ll-name"><span class="ll-icon">💧</span> 口渴</div>
+              <div class="ll-status warn">注意</div>
+            </div>
+            <div class="ll-bar"><div class="ll-fill ll-fill-thirst"></div></div>
+            <div class="ll-tip">随时间自然下降。归零 → <strong style="color:var(--red)">无法奔跑</strong>。去河边喝水或用水瓶备水。</div>
+          </div>
+          <div class="ll-row">
+            <div class="ll-header">
+              <div class="ll-name"><span class="ll-icon">🍖</span> 饱腹</div>
+              <div class="ll-status danger">危险</div>
+            </div>
+            <div class="ll-bar"><div class="ll-fill ll-fill-hunger"></div></div>
+            <div class="ll-tip">归零 → <strong style="color:var(--red)">持续掉血</strong>。优先找蘑菇、南瓜、仙人掌。<strong style="color:var(--yellow)">生肉必须烤熟！</strong>直接吃会呕吐。</div>
+          </div>
+        </div>
+
+        <div class="crosslink-section">
+          <div class="crosslink-label">📎 延伸阅读</div>
+          <div class="crosslink-cards">
+            <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>一直在饿/渴的原因 →</div>
+          </div>
+        </div>
+        <div class="step-nav-btns">
+          <button class="snbtn" onclick="switchStep(1)">← 出生后先做什么</button>
+          <button class="snbtn primary" onclick="switchStep(3)">资源收集 →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-content" id="step-3">
+        <div class="step-hd">
+          <div class="step-tag">STEP 03 / 06</div>
+          <div>
+            <h2>资源收集路线</h2>
+            <div class="step-subtitle">知道去哪收集，比乱跑效率高 3 倍</div>
+          </div>
+        </div>
+
+        <div class="resource-grid">
+          <div class="res-row"><span class="res-icon">🪵</span><div class="res-info"><div class="res-name">木材</div><div class="res-desc">砍树，用于建造基地</div></div></div>
+          <div class="res-row"><span class="res-icon">🪨</span><div class="res-info"><div class="res-name">石头</div><div class="res-desc">敲矿石节点，升级基地</div></div></div>
+          <div class="res-row"><span class="res-icon">⚙️</span><div class="res-info"><div class="res-name">废料</div><div class="res-desc">搜铁桶/物资箱，硬通货</div></div></div>
+          <div class="res-row"><span class="res-icon">🧵</span><div class="res-info"><div class="res-name">布料</div><div class="res-desc">采亚麻/仙人掌，制绷带</div></div></div>
+          <div class="res-row"><span class="res-icon">🍖</span><div class="res-info"><div class="res-name">食物</div><div class="res-desc">野外采集或狩猎</div></div></div>
+          <div class="res-row"><span class="res-icon">🔩</span><div class="res-info"><div class="res-name">金属碎片</div><div class="res-desc">冶炼矿石/分解废品</div></div></div>
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-box-icon">💡</span>
+          <div class="tip-box-text"><strong>废料提示：</strong>暂时用不上的齿轮、篷布等，放进据点分解机转化成基础资源，别直接丢掉。</div>
+        </div>
+
+        <div class="crosslink-section">
+          <div class="crosslink-label">📎 延伸阅读</div>
+          <div class="crosslink-cards">
+            <div class="cc-card" onclick="goToPoi('tier-1')"><span class="cc-icon">📍</span>一级据点分布 →</div>
+            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🔫</span>武器合成废料成本 →</div>
+          </div>
+        </div>
+        <div class="step-nav-btns">
+          <button class="snbtn" onclick="switchStep(2)">← 三条生命线</button>
+          <button class="snbtn primary" onclick="switchStep(4)">建造第一个家 →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-content" id="step-4">
+        <div class="step-hd">
+          <div class="step-tag">STEP 04 / 06</div>
+          <div>
+            <h2>第一个家怎么建</h2>
+            <div class="step-subtitle">不是越大越好，是够用、不被偷</div>
+          </div>
+        </div>
+
+        <!-- Build order graphic -->
+        <div class="steps-graphic">
+          <div class="sg-step active">
+            <div class="sg-dot">🏗</div>
+            <div class="sg-label">选址<br>远离主干道</div>
+          </div>
+          <div class="sg-step active">
+            <div class="sg-dot">🔒</div>
+            <div class="sg-label">放工具柜<br>确立所有权</div>
+          </div>
+          <div class="sg-step active">
+            <div class="sg-dot">🛏</div>
+            <div class="sg-label">放睡袋<br>绑定重生点</div>
+          </div>
+          <div class="sg-step">
+            <div class="sg-dot">🏠</div>
+            <div class="sg-label">封顶封门<br>1×2核心间</div>
+          </div>
+          <div class="sg-step">
+            <div class="sg-dot">🧱</div>
+            <div class="sg-label">木质升石质<br>防爆炸物</div>
+          </div>
+        </div>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <span class="info-card-icon">📍</span>
+            <div class="info-card-title">选址原则</div>
+            <div class="info-card-desc">靠近一级据点<br>不在主干道旁<br>周围有资源节点</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">📐</span>
+            <div class="info-card-title">最小可用基地</div>
+            <div class="info-card-desc">1×2 核心空间<br>工具柜+睡袋+箱子<br>后续向外扩防炸层</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">🛡</span>
+            <div class="info-card-title">升级优先</div>
+            <div class="info-card-desc">尽早升石质墙<br>石墙防爆远强于木<br>先封核心间再扩建</div>
+          </div>
+        </div>
+
+        <div class="step-nav-btns">
+          <button class="snbtn" onclick="switchStep(3)">← 资源收集</button>
+          <button class="snbtn primary" onclick="switchStep(5)">武器与战斗 →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step-content" id="step-5">
+        <div class="step-hd">
+          <div class="step-tag">STEP 05 / 06</div>
+          <div>
+            <h2>武器与战斗入门</h2>
+            <div class="step-subtitle">先活下来，再考虑打别人</div>
+          </div>
+        </div>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <span class="info-card-icon">🏹</span>
+            <div class="info-card-title">手工弓</div>
+            <div class="info-card-desc">前期首选远程武器<br>成本低：木头+布料<br>弹道有抛物线需练习</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">🗡</span>
+            <div class="info-card-title">石矛</div>
+            <div class="info-card-desc">近战保命神器<br>成本极低<br>倒地前最后一搏</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">🏃</span>
+            <div class="info-card-title">遭遇玩家</div>
+            <div class="info-card-desc">装备差时跑比打强<br>不熟悉对方不要接触<br>保住资源第一</div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-box-icon">💡</span>
+          <div class="tip-box-text"><strong>倒地提示：</strong>倒地后队友可救起你，也有小概率自行复活。被淘汰后去睡袋重生，记得及时找回凋落物。</div>
+        </div>
+
+        <div class="crosslink-section">
+          <div class="crosslink-label">📎 延伸阅读</div>
+          <div class="crosslink-cards">
+            <div class="cc-card" onclick="filterAndGoWeapons('bow')"><span class="cc-icon">🔫</span>弓弩类武器合成成本 →</div>
+            <div class="cc-card" onclick="switchPage('videos')"><span class="cc-icon">🎬</span>战斗技巧视频 →</div>
+          </div>
+        </div>
+        <div class="step-nav-btns">
+          <button class="snbtn" onclick="switchStep(4)">← 建造第一个家</button>
+          <button class="snbtn primary" onclick="switchStep(6)">科技树 →</button>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step-content" id="step-6">
+        <div class="step-hd">
+          <div class="step-tag">STEP 06 / 06</div>
+          <div>
+            <h2>科技树与变强路径</h2>
+            <div class="step-subtitle">废料怎么花，决定你的发育速度</div>
+          </div>
+        </div>
+
+        <!-- Tech tree graphic -->
+        <div class="craft-path">
+          <div class="cp-title">推荐发育路径</div>
+          <div class="cp-stages">
+            <div class="cp-stage"><div class="cp-stage-icon">🪨</div><div class="cp-stage-name">石质工作台<br><span style="color:var(--text-muted);font-size:9px">基础解锁</span></div></div>
+            <div class="cp-arrow">→</div>
+            <div class="cp-stage"><div class="cp-stage-icon">🔫</div><div class="cp-stage-name">战斗模块<br><span style="color:var(--orange);font-size:9px">优先解锁</span></div></div>
+            <div class="cp-arrow">→</div>
+            <div class="cp-stage"><div class="cp-stage-icon">🔧</div><div class="cp-stage-name">金属工作台<br><span style="color:var(--text-muted);font-size:9px">二阶制造</span></div></div>
+            <div class="cp-arrow">→</div>
+            <div class="cp-stage"><div class="cp-stage-icon">🏆</div><div class="cp-stage-name">高阶武装<br><span style="color:var(--yellow);font-size:9px">目标</span></div></div>
+          </div>
+        </div>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <span class="info-card-icon">⚙️</span>
+            <div class="info-card-title">科技树逻辑</div>
+            <div class="info-card-desc">废料解锁科技<br>需先制作对应制作台<br>摆放后才能解锁</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">🕵️</span>
+            <div class="info-card-title">情报等级</div>
+            <div class="info-card-desc">情报文件→情报站<br>破译→情报币<br>跨局永久有效</div>
+          </div>
+          <div class="info-card">
+            <span class="info-card-icon">🎯</span>
+            <div class="info-card-title">胜利路径</div>
+            <div class="info-card-desc">先枪后守<br>用火力优势压制邻居<br>再扩张基地规模</div>
+          </div>
+        </div>
+
+        <div class="tip-box" style="border-left-color:var(--green)">
+          <span class="tip-box-icon">🎉</span>
+          <div class="tip-box-text" style="color:var(--text)"><strong style="color:var(--green)">新手 6 步完成！</strong>接下来查看武器图鉴规划合成路径，或前往据点指南找更好的资源点。</div>
+        </div>
+
+        <div class="crosslink-section">
+          <div class="crosslink-label">📎 接下来做什么</div>
+          <div class="crosslink-cards">
+            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🔫</span>规划武器合成路径 →</div>
+            <div class="cc-card" onclick="switchPage('poi')"><span class="cc-icon">📍</span>探索更高级据点 →</div>
+            <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>常见问题 FAQ →</div>
+          </div>
+        </div>
+        <div class="step-nav-btns">
+          <button class="snbtn" onclick="switchStep(5)">← 武器与战斗</button>
+          <button class="snbtn primary" onclick="switchPage('weapons')">查看武器图鉴 →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     WEAPONS
+══════════════════════════════════════ -->
+<div class="page" id="page-weapons">
+  <div class="page-hd">
+    <div class="page-title-row">
+      <div class="page-title"><span class="page-title-icon">🔫</span> 武器图鉴</div>
+    </div>
+    <div class="page-intro"><strong>使用场景：</strong>手头废料有限？先看合成成本和工作台需求，再选武器路线——客观数据，不推荐，你自己判断。</div>
+  </div>
+  <div class="weapons-carousel">
+    <!-- Type filter row (mirrors tier filter) -->
+    <div class="tier-filter-row" id="wep-type-filter">
+      <div class="tier-chip t1 active" onclick="filterWeapons('all',this)">全部</div>
+      <div class="tier-chip t4" onclick="filterWeapons('rifle',this)" id="wchip-rifle">🔴 步枪</div>
+      <div class="tier-chip ts" onclick="filterWeapons('smg',this)" id="wchip-smg">🟣 冲锋枪</div>
+      <div class="tier-chip t2" onclick="filterWeapons('pistol',this)" id="wchip-pistol">🔵 手枪</div>
+      <div class="tier-chip t1" onclick="filterWeapons('shotgun',this)" id="wchip-shotgun">🟢 霰弹枪</div>
+      <div class="tier-chip t3" onclick="filterWeapons('bow',this)" id="wchip-bow">🟡 弓弩</div>
+    </div>
+    <!-- Carousel body rendered by JS -->
+    <div id="wep-carousel-body"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     POI
+══════════════════════════════════════ -->
+<div class="page" id="page-poi">
+  <div class="page-hd">
+    <div class="page-title-row">
+      <div class="page-title"><span class="page-title-icon">📍</span> 据点指南</div>
+    </div>
+    <div class="page-intro"><strong>使用场景：</strong>想刷什么等级的资源？选难度，找对应据点——装备不够别硬冲高级区。</div>
+  </div>
+  <div class="poi-carousel" id="poi-main">
+    <div class="tier-filter-row" id="poi-tier-filter">
+      <div class="tier-chip t1 active" onclick="filterPoiTier('all',this)">全部</div>
+      <div class="tier-chip t1" onclick="filterPoiTier('tier-1',this)">🟢 一级·新手</div>
+      <div class="tier-chip t2" onclick="filterPoiTier('tier-2',this)">🔵 二级·进阶</div>
+      <div class="tier-chip t3" onclick="filterPoiTier('tier-3',this)">🟡 三级·组队</div>
+      <div class="tier-chip t4" onclick="filterPoiTier('tier-4',this)">🔴 四级·顶级</div>
+      <div class="tier-chip ts" onclick="filterPoiTier('tier-safe',this)">🟣 安全区</div>
+    </div>
+    <!-- carousel rendered by JS -->
+    <div id="poi-carousel-body"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     VIDEOS
+══════════════════════════════════════ -->
+<div class="page" id="page-videos">
+  <div class="page-hd">
+    <div class="page-title-row">
+      <div class="page-title"><span class="page-title-icon">🎬</span> 攻略视频</div>
+    </div>
+    <div class="page-intro"><strong>使用场景：</strong>文字看不懂的操作，视频看一遍就会——官方实机演示 + 玩家实战录像。</div>
+  </div>
+  <div class="videos-container">
+    <div class="video-section-tabs">
+      <button class="vst-btn active" onclick="switchVideoTab('official',this)">🎮 官方攻略视频</button>
+      <button class="vst-btn" onclick="switchVideoTab('player',this)">👥 玩家攻略（征集中）</button>
+    </div>
+
+    <div class="video-subtab active" id="vtab-official">
+      <!-- Featured -->
+      <div class="video-featured">
+        <div class="vfeat-main">
+          <div class="vfeat-thumb">
+            <img src="https://static.gametalk.qq.com/image/461/1773227789_1526da7ee7fc469948c53a0253d45934.jpg" alt="最新">
+            <div class="vfeat-thumb-overlay">
+              <div class="vfeat-play">▶</div>
+            </div>
+          </div>
+          <div class="vfeat-body">
+            <div class="vfeat-tag">LATEST · 官方</div>
+            <div class="vfeat-title">【小黄监工日记】外挂非组全靠边，荒岛安全有底线！</div>
+            <div class="vfeat-date">2026-03-11</div>
+          </div>
+        </div>
+        <div class="vfeat-side" id="vfeat-side"></div>
+      </div>
+
+      <!-- Grid -->
+      <div class="sec-div" style="padding:0 0 16px;max-width:none;"><div class="sec-div-lbl">更多视频</div><div class="sec-div-line"></div></div>
+      <div class="video-grid-small" id="video-grid-small"></div>
+    </div>
+
+    <div class="video-subtab" id="vtab-player">
+      <div class="placeholder-grid">
+        <div class="ph-card"><div class="ph-icon">🎮</div><div class="ph-text"><strong style="color:var(--text)">玩家攻略视频</strong><br>即将上线</div></div>
+        <div class="ph-card"><div class="ph-icon">🏠</div><div class="ph-text"><strong style="color:var(--text)">建家技巧分享</strong><br>即将上线</div></div>
+        <div class="ph-card"><div class="ph-icon">⚔️</div><div class="ph-text"><strong style="color:var(--text)">PVP 实战录像</strong><br>即将上线</div></div>
+        <div class="ph-card" style="border-color:var(--orange);color:var(--orange)"><div class="ph-icon">📤</div><div class="ph-text"><strong>投稿你的攻略</strong><br>联系官方社群</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<div class="page" id="page-faq">
+  <div class="page-hd">
+    <div class="page-title-row">
+      <div class="page-title"><span class="page-title-icon">❓</span> FAQ 常见问题</div>
+    </div>
+    <div class="page-intro">碰到问题直接按分类找，点击展开查看答案。</div>
+  </div>
+  <div class="faq-container">
+    <div class="faq-cat-grid" id="faq-cat-grid"></div>
+    <div class="faq-section-label" id="faq-section-label"></div>
+    <div id="faq-list"></div>
+  </div>
+</div>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────────────
+const WEAPONS = [
+  { id:'bow', name:'手工弓', type:'bow', typeName:'弓弩', icon:'🏹',
+    desc:'前期主力远程武器，制作成本极低，弹道有抛物线需练习。',
+    stats:{damage:35,accuracy:30,recoil:0,rof:40},
+    workbench:{name:'石质工作台', tier:'一阶'},
+    techPrereq:'无需科技，直接制作',
+    craft:[{name:'木头', qty:100, cost:'low', icon:'🪵'},{name:'布料', qty:30, cost:'low', icon:'🧵'}] },
+  { id:'crossbow', name:'弩', type:'bow', typeName:'弓弩', icon:'🎯',
+    desc:'比手工弓更精准，伤害更高，箭矢可回收，后期性价比高。',
+    stats:{damage:55,accuracy:40,recoil:0,rof:30},
+    workbench:{name:'石质工作台', tier:'一阶'},
+    techPrereq:'弓弩制造Ⅰ',
+    craft:[{name:'木头', qty:150, cost:'low', icon:'🪵'},{name:'金属碎片', qty:50, cost:'mid', icon:'🔩'},{name:'弹簧', qty:1, cost:'high', icon:'🌀'}] },
+  { id:'semi_pistol', name:'半自动手枪', type:'pistol', typeName:'手枪', icon:'🔫',
+    desc:'最基础的自动化武器，射速快，前期升级弓的最佳选择。',
+    stats:{damage:30,accuracy:18,recoil:30,rof:350},
+    workbench:{name:'石质工作台', tier:'一阶'},
+    techPrereq:'枪械制造Ⅰ',
+    craft:[{name:'金属碎片', qty:30, cost:'low', icon:'🔩'},{name:'弹簧', qty:1, cost:'high', icon:'🌀'}] },
+  { id:'python', name:'左轮手枪', type:'pistol', typeName:'手枪', icon:'🔫',
+    desc:'高单发伤害，弹容量极小，适合近战补刀或偷袭。',
+    stats:{damage:40,accuracy:25,recoil:55,rof:150},
+    workbench:{name:'石质工作台', tier:'一阶'},
+    techPrereq:'枪械制造Ⅰ',
+    craft:[{name:'金属碎片', qty:40, cost:'mid', icon:'🔩'},{name:'弹簧', qty:1, cost:'high', icon:'🌀'}] },
+  { id:'mp5', name:'MP5 冲锋枪', type:'smg', typeName:'冲锋枪', icon:'🔫',
+    desc:'射速快，后坐力小，近距离压制能力强，合成成本适中。',
+    stats:{damage:25,accuracy:15,recoil:20,rof:600},
+    workbench:{name:'金属工作台', tier:'二阶'},
+    techPrereq:'枪械制造Ⅱ',
+    craft:[{name:'金属碎片', qty:80, cost:'mid', icon:'🔩'},{name:'弹簧', qty:1, cost:'high', icon:'🌀'},{name:'绳子', qty:2, cost:'low', icon:'🪢'}] },
+  { id:'thompson', name:'汤普森冲锋枪', type:'smg', typeName:'冲锋枪', icon:'🔫',
+    desc:'弹夹大，火力持续输出好，经典压制武器。',
+    stats:{damage:28,accuracy:12,recoil:28,rof:550},
+    workbench:{name:'金属工作台', tier:'二阶'},
+    techPrereq:'枪械制造Ⅱ',
+    craft:[{name:'金属碎片', qty:120, cost:'mid', icon:'🔩'},{name:'弹簧', qty:2, cost:'high', icon:'🌀'},{name:'螺丝', qty:2, cost:'mid', icon:'🔧'}] },
+  { id:'db', name:'双管霰弹枪', type:'shotgun', typeName:'霰弹枪', icon:'🔫',
+    desc:'两发击倒，近距离威力爆表，需要频繁手动换弹。',
+    stats:{damage:70,accuracy:5,recoil:80,rof:60},
+    workbench:{name:'石质工作台', tier:'一阶'},
+    techPrereq:'枪械制造Ⅰ',
+    craft:[{name:'金属碎片', qty:50, cost:'mid', icon:'🔩'},{name:'木头', qty:75, cost:'low', icon:'🪵'}] },
+  { id:'ak47', name:'AK-47 突击步枪', type:'rifle', typeName:'步枪', icon:'🔫',
+    desc:'高伤害全自动，射速中等，后坐力较大，中距离主力武器。',
+    stats:{damage:50,accuracy:11,recoil:70,rof:451},
+    workbench:{name:'金属工作台', tier:'二阶'},
+    techPrereq:'枪械制造Ⅲ',
+    craft:[{name:'金属碎片', qty:200, cost:'high', icon:'🔩'},{name:'弹簧', qty:2, cost:'high', icon:'🌀'},{name:'螺丝', qty:4, cost:'mid', icon:'🔧'}] },
+  { id:'lr300', name:'LR-300 突击步枪', type:'rifle', typeName:'步枪', icon:'🔫',
+    desc:'精准度高于AK，射速更快，后坐力略小，但合成成本更高。',
+    stats:{damage:40,accuracy:17,recoil:45,rof:500},
+    workbench:{name:'精密工作台', tier:'三阶'},
+    techPrereq:'枪械制造Ⅳ',
+    craft:[{name:'高质金属', qty:4, cost:'high', icon:'⚙️'},{name:'弹簧', qty:2, cost:'high', icon:'🌀'},{name:'螺丝', qty:8, cost:'mid', icon:'🔧'}] },
+  { id:'m92', name:'半自动步枪', type:'rifle', typeName:'步枪', icon:'🔫',
+    desc:'中等伤害，精准度高，弹容量小，适合远距离精准射击。',
+    stats:{damage:45,accuracy:20,recoil:35,rof:280},
+    workbench:{name:'金属工作台', tier:'二阶'},
+    techPrereq:'枪械制造Ⅲ',
+    craft:[{name:'金属碎片', qty:100, cost:'mid', icon:'🔩'},{name:'弹簧', qty:1, cost:'high', icon:'🌀'},{name:'螺丝', qty:2, cost:'mid', icon:'🔧'}] },
+];
+
+const POIS = [
+  { id:'market', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
+    name:'废弃超市', emoji:'🏪',
+    desc:'基础物资刷新点，威胁极低，新手首选补给地。主干道沿线多处分布，资源稳定刷新。',
+    tags:['绿卡', '食物', '基础物资', '无辐射'],
+    rewards:['🍖 食物 (中量)','⚙️ 废料 (少量)','🧵 布料 (少量)','💊 医疗用品 (偶有)'],
+    bestFor:'刚出生的玩家，缺食物和基础物资时'},
+  { id:'gas', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
+    name:'加油站', emoji:'⛽',
+    desc:'含分解机，可将废品分解为基础资源。内外结构均可探索，适合早期废料转化。',
+    tags:['分解机', '汽车零件', '无辐射'],
+    rewards:['⚙️ 废料 (中量)','🔩 金属碎片 (少量)','⛽ 燃料 (少量)'],
+    bestFor:'需要分解材料、刷废料的早期阶段'},
+  { id:'mine', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
+    name:'矿场遗迹', emoji:'⛏',
+    desc:'含采掘机，消耗燃料获取矿物。无辐射无威胁，是资源积累核心据点。',
+    tags:['金属矿', '硫磺矿', '石矿', '采掘机', '无辐射'],
+    rewards:['🪨 石头 (大量)','🔩 金属矿石 (中量)','💣 硫磺矿石 (少量)'],
+    bestFor:'需要大量矿石升级基地和制作弹药'},
+  { id:'bigball', tier:'tier-2', tierName:'二级遗迹', tierColor:'#60a5fa', dangerLevel:2,
+    name:'大铁球', emoji:'🔮',
+    desc:'低中辐射，含高价值物资。三座储油罐+球罐结构，部分资源在球罐内部，需要探索。',
+    tags:['低辐射', '中级物资', '多层地形'],
+    rewards:['⚙️ 废料 (中量)','🔩 金属碎片 (中量)','🧪 硫磺 (少量)','📦 特殊物资 (偶有)'],
+    bestFor:'有半自动手枪以上装备，需要升级武器弹药'},
+  { id:'harbor', tier:'tier-2', tierName:'二级遗迹', tierColor:'#60a5fa', dangerLevel:2,
+    name:'港口', emoji:'🚢',
+    desc:'沿海区域，含货轮、沉船、起重机。有公共设施，资源丰富，但玩家竞争激烈。',
+    tags:['低辐射', '中级物资', '分解机', '熔炉', '玩家争夺激烈'],
+    rewards:['⚙️ 废料 (大量)','🔩 金属碎片 (中量)','🚂 货轮组件 (少量)'],
+    bestFor:'需要快速积累废料和金属，能处理玩家对抗'},
+  { id:'military', tier:'tier-3', tierName:'三级遗迹', tierColor:'#fbbf24', dangerLevel:3,
+    name:'军事基地', emoji:'🎖',
+    desc:'高强度战斗据点，敌对NPC密集。含特殊多管火箭车，风险高但蓝卡奖励丰厚。',
+    tags:['强力NPC', '蓝卡', '火箭车', '高辐射'],
+    rewards:['🟦 蓝色物资箱','🚀 火箭组件','⚔️ 高级武器 (概率)','⚙️ 废料 (大量)'],
+    bestFor:'组队且有步枪级装备，冲击高级装备'},
+  { id:'powerplant', tier:'tier-3', tierName:'三级遗迹', tierColor:'#fbbf24', dangerLevel:3,
+    name:'发电站', emoji:'⚡',
+    desc:'高辐射，复杂多层结构。含多种资源处理装置，路线复杂需多次探索才能熟悉。',
+    tags:['高辐射', '高级物资', '熔炉', '采油机', '复杂地形'],
+    rewards:['🛢 原油 (大量)','🔩 高质金属 (中量)','⚙️ 废料 (大量)','📦 高级物资'],
+    bestFor:'全防护装甲，组队攻略，收益极高'},
+  { id:'tunnel', tier:'tier-4', tierName:'四级遗迹', tierColor:'#f87171', dangerLevel:4,
+    name:'军事隧道', emoji:'🕳',
+    desc:'中高辐射，内部科学家装备LR-300和狙击枪，超视距开火。风险极高，战利品顶级。',
+    tags:['高辐射', '顶级物资', '精英NPC', '狙击手'],
+    rewards:['🟥 红色物资箱','🔫 顶级武器 (高概率)','⚙️ 废料 (极大量)','🎖 稀有装备'],
+    bestFor:'全服顶级装备玩家，高风险高回报'},
+  { id:'launchsite', tier:'tier-4', tierName:'四级遗迹', tierColor:'#f87171', dangerLevel:4,
+    name:'火箭发射基地', emoji:'🚀',
+    desc:'最大战利品聚集地，布拉德利装甲坦克巡逻。工厂辐射达致命级，需全防护服。',
+    tags:['致命辐射', '顶级物资', '坦克', '公共设施'],
+    rewards:['🟥 红色物资箱 (多)','🚀 火箭零件','🏆 全服最高战利品','⚙️ 废料 (极大量)'],
+    bestFor:'全服最强阵容，坦克击杀需C4和大量火力'},
+  { id:'outpost', tier:'tier-safe', tierName:'安全区', tierColor:'#c084fc', dangerLevel:0,
+    name:'前哨战（安全区）', emoji:'🛡',
+    desc:'中立安全区，禁止战斗。含分解机、研究台、自动售货机，违规触发自动打击。',
+    tags:['安全区', '交易', '分解机', '研究台', '自动售货机'],
+    rewards:['🛒 可购买基础物资','⚙️ 废料 (交易用)','🔬 研究解锁'],
+    bestFor:'交易废料、研究物品、安全补给'},
+];
+
+const FAQ_DATA = {
+  survive: { label:'生存基础', icon:'🏃', count:4, items:[
+    {src:'official', q:'进游戏后什么都不会，先做什么？', a:'先在出生点收集基础资源：对树上红色X击打拿木头，对石头节点闪光点击打拿石头。收够木头200+石头100后，制作石斧，然后去最近的一级据点（废弃超市、加油站）搜刮基础物资。'},
+    {src:'player', q:'我一直在饿/一直在渴，该怎么办？', a:'口渴：找河边喝水或制作水瓶备水。饥饿：优先找蘑菇、南瓜、仙人掌，狩猎动物记得先烤熟再吃，生肉会导致呕吐加速消耗。'},
+    {src:'official', q:'倒地后怎么复活？', a:'倒地后队友可以在规定时间内救你，你也有小概率自行复活。被淘汰后可以在睡袋位置重生，注意及时找回凋落物。'},
+    {src:'player', q:'为什么我跑不动了？', a:'口渴值归零会导致无法奔跑。找水喝即可解除。'},
+  ]},
+  build: { label:'建造基地', icon:'🏠', count:3, items:[
+    {src:'official', q:'基地建在哪里比较好？', a:'综合考虑周边自然资源、据点数量和距安全区的距离。但资源丰富的位置也容易被其他玩家觊觎，隐蔽性和资源量需要权衡。'},
+    {src:'player', q:'工具柜是什么，为什么重要？', a:'工具柜是基地的核心建筑，控制基地权限。没有工具柜任何人都可以在范围内建造，放置后只有你和队友可以。基地维护也需要往工具柜里放资源。'},
+    {src:'official', q:'基地为什么会自动消失？', a:'基地会随时间衰退，工具柜里需要保持足够的维护资源（木材、石头、金属碎片）。定期补充资源，避免基地衰退被拆除。'},
+  ]},
+  weapon: { label:'武器战斗', icon:'🔫', count:3, items:[
+    {src:'player', q:'前期用什么武器防身？', a:'手工弓是前期最实用的远程武器，制作成本低（木头+布料），注意弹道有抛物线需要练习。石矛可以当近战保命用。'},
+    {src:'official', q:'遭遇其他玩家怎么处理？', a:'装备差的时候跑比打更明智。不熟悉对方装备等级就不要轻易接触。'},
+    {src:'player', q:'子弹打完了怎么办？', a:'可以在据点安全区的自动售货机购买弹药（需要废料），也可以在科技树里解锁弹药制作。弩的箭矢可以回收，经济性更好。'},
+  ]},
+  craft: { label:'合成制作', icon:'⚙️', count:3, items:[
+    {src:'official', q:'废料是什么，去哪弄？', a:'废料是游戏里的硬通货，用于解锁科技树、在安全区购买物资。搜刮铁桶、物资箱，或通过分解机分解不需要的材料获取。'},
+    {src:'player', q:'那些看不懂的材料（齿轮、篷布）有什么用？', a:'主要用于中高阶装备制作，但前期更需要基础资源和废料。把它们放进据点的分解机，可以转化成基础资源或废料。'},
+    {src:'official', q:'科技树要怎么解锁？', a:'用废料解锁科技，每个等级的科技需要先制作并摆放对应的制作台。建议前期优先解锁战斗模块科技，先获得自动化枪械。'},
+  ]},
+  meta: { label:'游戏机制', icon:'📊', count:3, items:[
+    {src:'official', q:'一局游戏多久结算？', a:'根据模式不同：庇护模式10天、标准模式7天、进阶模式6天、挑战模式5天、急速挑战2.5天。结算后根据情报等级获得账号奖励。'},
+    {src:'official', q:'什么是"情报等级"？', a:'在战利品箱获得情报文件，存入升级为情报站的工具柜缓慢破译，积累情报币后提升情报等级。情报等级跨局永久有效，可解锁独特装备。'},
+    {src:'player', q:'庇护模式适合新手吗？', a:'庇护模式死亡惩罚最轻，结算时间最长（10天），情报领地默认无敌。非常适合新手熟悉游戏机制。'},
+  ]},
+};
+
+// ── WEAPONS ─────────────────────────────────────────────
+let currentWeapon = null;
+let weaponFilter = 'all';
+
+function renderWeaponList(filter) {
+  weaponFilter = filter;
+  const data = filter === 'all' ? WEAPONS : WEAPONS.filter(w => w.type === filter);
+  const list = document.getElementById('weapons-list');
+  list.innerHTML = data.map(w => `
+    <div class="wep-row${currentWeapon && currentWeapon.id===w.id?' selected':''}" onclick="selectWeapon('${w.id}')">
+      <div class="wep-row-icon">${w.icon}</div>
+      <div class="wep-row-info">
+        <div class="wep-row-top">
+          <span class="wep-name">${w.name}</span>
+          <span class="wep-type-badge badge-${w.type}">${w.typeName}</span>
+        </div>
+        <div class="wep-desc">${w.desc}</div>
+      </div>
+      <div class="wep-row-stats">
+        ${miniStat('伤害', w.stats.damage, 70)}
+        ${miniStat('精准', w.stats.accuracy, 50)}
+        ${miniStat('射速', Math.min(w.stats.rof,600), 600)}
+      </div>
+    </div>
+  `).join('');
+}
+
+function miniStat(label, val, max) {
+  const pct = Math.round(val/max*100);
+  return `<div class="mini-stat"><div class="mini-stat-label">${label}</div><div class="mini-stat-bar"><div class="mini-stat-fill" style="width:${pct}%"></div></div></div>`;
+}
+
+function selectWeapon(id) {
+  currentWeapon = WEAPONS.find(w => w.id === id);
+  renderWeaponList(weaponFilter);
+  renderWeaponDetail(currentWeapon);
+}
+
+function renderWeaponDetail(w) {
+  const panel = document.getElementById('wep-detail');
+  panel.innerHTML = `
+    <div class="wdp-header">
+      <div class="wdp-illus">
+        <div style="font-size:64px;z-index:1;position:relative">${w.icon}</div>
+        <div class="wdp-illus-placeholder"><span>官方武器图 · 待填充</span></div>
+      </div>
+      <div class="wdp-name">${w.name}</div>
+      <div class="wdp-sub">${w.desc}</div>
+    </div>
+
+    <div class="wdp-section-title">数据统计</div>
+    <div class="stat-rows">
+      ${detailStat('伤害', w.stats.damage, 70)}
+      ${detailStat('精准', w.stats.accuracy, 50)}
+      ${detailStat('后坐', w.stats.recoil, 100)}
+      ${detailStat('射速', Math.min(w.stats.rof,600), 600, w.stats.rof+'')}
+    </div>
+
+    <div class="wdp-section-title">工作台需求</div>
+    <div class="workbench-req">
+      <div class="wb-icon">🔧</div>
+      <div class="wb-info">
+        <div class="wb-name">${w.workbench.name}</div>
+        <span class="wb-tier">${w.workbench.tier}</span>
+      </div>
+    </div>
+    <div class="tech-prereq mt12">
+      <span class="tech-prereq-icon">🔬</span>
+      <span class="tech-prereq-text">前置科技：${w.techPrereq}</span>
+    </div>
+
+    <div class="wdp-section-title">合成材料</div>
+    <div class="materials">
+      ${w.craft.map(c=>`
+        <div class="mat-row mat-cost-${c.cost}">
+          <div class="mat-left"><span class="mat-icon">${c.icon}</span>${c.name}</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="mat-qty">×${c.qty}</span>
+            <span class="mat-cost-badge">${c.cost==='high'?'高成本':c.cost==='mid'?'中等':'低成本'}</span>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function detailStat(label, val, max, display) {
+  const pct = Math.round(val/max*100);
+  return `<div class="stat-row-d">
+    <span class="stat-lbl">${label}</span>
+    <div class="stat-track"><div class="stat-fill-d" style="width:${pct}%"></div></div>
+    <span class="stat-val-d">${display||val}</span>
+  </div>`;
+}
+
+function filterWeapons(type, el) {
+  document.querySelectorAll('.filter-bar .chip').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+  currentWeapon = null;
+  renderWeaponList(type);
+  document.getElementById('wep-detail').innerHTML = `<div class="wdp-empty"><div class="wdp-empty-icon">🔫</div><div class="wdp-empty-text">从左侧选择一件武器<br>查看详细数据和合成路径</div></div>`;
+}
+
+function filterAndGoWeapons(type) {
+  switchPage('weapons');
+  const chip = document.getElementById('wchip-'+type);
+  filterWeapons(type, chip);
+}
+
+// ── POI ──────────────────────────────────────────────────
+let currentPoiIdx = 0;
+let filteredPois = [...POIS];
+
+function renderPoiCarousel() {
+  const body = document.getElementById('poi-carousel-body');
+  if(!filteredPois.length){body.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">暂无据点</div>';return;}
+  if(currentPoiIdx >= filteredPois.length) currentPoiIdx = 0;
+  const poi = filteredPois[currentPoiIdx];
+  const dangerPips = [1,2,3,4].map(i=>`<div class="danger-pip${i<=poi.dangerLevel?' active-'+i:''}"></div>`).join('');
+
+  body.innerHTML = `
+    <div class="poi-carousel-main">
+      <div class="poi-showcase">
+        <div class="poi-showcase-img" style="background:linear-gradient(135deg,${poi.tierColor}15,#0a0c0f)">
+          <div class="poi-showcase-img-placeholder">
+            <div class="placeholder-icon">${poi.emoji}</div>
+            <div class="placeholder-text">官方据点截图 · 待填充</div>
+          </div>
+          <div class="poi-showcase-overlay">
+            <div class="poi-showcase-tier" style="color:${poi.tierColor}">${poi.tierName}</div>
+            <div class="poi-showcase-name">${poi.name}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="poi-detail">
+        <div class="poi-detail-section">
+          <div class="poi-detail-section-title">据点介绍</div>
+          <p class="poi-desc-text">${poi.desc}</p>
+          <div class="poi-tags-wrap mt12">
+            ${poi.tags.map(t=>`<span class="poi-tag-chip">${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="poi-detail-section">
+          <div class="poi-detail-section-title">危险等级</div>
+          <div class="danger-meter">${dangerPips}</div>
+          <div class="danger-label">${['安全区','低风险','中等风险','高风险','顶级危险'][poi.dangerLevel]}</div>
+        </div>
+        <div class="poi-detail-section">
+          <div class="poi-detail-section-title">主要战利品</div>
+          <div class="reward-items">
+            ${poi.rewards.map(r=>`<div class="reward-row"><span class="reward-icon">${r.split(' ')[0]}</span><span class="reward-text">${r.slice(r.split(' ')[0].length+1)}</span></div>`).join('')}
+          </div>
+        </div>
+        <div class="poi-detail-section" style="background:var(--surface2)">
+          <div class="poi-detail-section-title">适合时机</div>
+          <p style="font-size:12px;color:var(--text-dim)">${poi.bestFor}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thumbnail strip -->
+    <div class="poi-strip">
+      ${filteredPois.map((p,i)=>`
+        <div class="poi-thumb${i===currentPoiIdx?' active':''}" onclick="selectPoi(${i})">
+          <div class="poi-thumb-img" style="background:${p.tierColor}15">${p.emoji}</div>
+          <div class="poi-thumb-label">${p.name}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function selectPoi(idx) {
+  currentPoiIdx = idx;
+  renderPoiCarousel();
+}
+
+function filterPoiTier(tier, el) {
+  document.querySelectorAll('.tier-chip').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+  filteredPois = tier==='all' ? [...POIS] : POIS.filter(p=>p.tier===tier);
+  currentPoiIdx = 0;
+  renderPoiCarousel();
+}
+
+function goToPoi(tier) {
+  switchPage('poi');
+  const chip = document.querySelector(`.tier-chip[onclick*="'${tier}'"]`);
+  filterPoiTier(tier, chip);
+}
+
+// ── VIDEOS ───────────────────────────────────────────────
+const VIDEOS = [
+  { thumb:'https://static.gametalk.qq.com/image/461/1773227789_1526da7ee7fc469948c53a0253d45934.jpg', date:'2026-03-11', title:'【小黄监工日记】外挂非组全靠边，荒岛安全有底线！' },
+  { thumb:'https://static.gametalk.qq.com/image/461/1772539213_1526da7ee7fc469948c53a0253d45934.jpg', date:'2026-03-03', title:'走过路过别错过！三月三加倍周，福利加码，高燃来袭！' },
+  { thumb:'https://static.gametalk.qq.com/image/461/1770785336_1526da7ee7fc469948c53a0253d45934.jpg', date:'2026-02-11', title:'【失控进化】开发者日志：策划新春祝福，福利加倍！' },
+  { thumb:'https://static.gametalk.qq.com/image/461/1770353558_7cb1b10b291ea4e0184806b9fdd14338.jpg', date:'2026-02-06', title:'全新传说级建筑皮肤【烽火江山】现已上架！' },
+  { thumb:'https://static.gametalk.qq.com/image/461/1770004003_1526da7ee7fc469948c53a0253d45934.jpg', date:'2026-02-02', title:'《失控进化》终极测试实机发布丨2月3日马上开测' },
+  { thumb:'https://static.gametalk.qq.com/image/461/1769503337_aafe96a22ca2ff8bce9769b7399795ab.png', date:'2026-01-27', title:'《失控进化》终测前瞻直播回顾｜2月3日马上开测' },
+];
+
+function renderVideos() {
+  const side = document.getElementById('vfeat-side');
+  side.innerHTML = VIDEOS.slice(1,4).map(v=>`
+    <div class="vsm-card">
+      <div class="vsm-thumb"><img src="${v.thumb}" alt="${v.title}"><div class="vsm-play">▶</div></div>
+      <div class="vsm-body"><div class="vsm-title">${v.title}</div><div class="vsm-date">${v.date}</div></div>
+    </div>
+  `).join('');
+  const grid = document.getElementById('video-grid-small');
+  grid.innerHTML = VIDEOS.slice(4).map(v=>`
+    <div class="vgrid-card">
+      <div class="vgrid-thumb"><img src="${v.thumb}" alt="${v.title}"><div class="vgrid-play">▶</div></div>
+      <div class="vgrid-body"><div class="vgrid-title">${v.title}</div><div class="vgrid-date">${v.date}</div></div>
+    </div>
+  `).join('');
+}
+
+function switchVideoTab(tab, el) {
+  document.querySelectorAll('.vst-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.video-subtab').forEach(s=>s.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.getElementById('vtab-'+tab).classList.add('active');
+}
+
+// ── FAQ ──────────────────────────────────────────────────
+let currentFaqCat = 'survive';
+
+function renderFaqCats() {
+  const grid = document.getElementById('faq-cat-grid');
+  grid.innerHTML = Object.entries(FAQ_DATA).map(([key,data])=>`
+    <div class="faq-cat-card${key===currentFaqCat?' active':''}" onclick="switchFaqCat('${key}',this)">
+      <span class="fcc-icon">${data.icon}</span>
+      <div class="fcc-name">${data.label}</div>
+      <div class="fcc-count">${data.count} 条</div>
+    </div>
+  `).join('');
+}
+
+function renderFaqItems(cat) {
+  const data = FAQ_DATA[cat];
+  document.getElementById('faq-section-label').textContent = data.icon + ' ' + data.label;
+  document.getElementById('faq-list').innerHTML = data.items.map((item,i)=>`
+    <div class="faq-item" id="faq-${cat}-${i}" onclick="toggleFaq('faq-${cat}-${i}')">
+      <div class="faq-q">
+        <span>${item.q}</span>
+        <div class="faq-q-right">
+          <span class="faq-src ${item.src==='official'?'src-official':'src-player'}">${item.src==='official'?'官方':'玩家'}</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">${item.a}</div>
+    </div>
+  `).join('');
+}
+
+function switchFaqCat(cat, el) {
+  currentFaqCat = cat;
+  document.querySelectorAll('.faq-cat-card').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+  else renderFaqCats();
+  renderFaqItems(cat);
+}
+
+function toggleFaq(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── NAVIGATION ───────────────────────────────────────────
+function switchPage(page, tabEl) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  const tab = tabEl || document.querySelector(`.nav-tab[data-page="${page}"]`);
+  if(tab) tab.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+let currentStep = 1;
+function switchStep(n) {
+  document.querySelectorAll('.step-content').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.snav-item').forEach(s=>s.classList.remove('active','done'));
+  document.getElementById('step-'+n).classList.add('active');
+  document.getElementById('snav-'+n).classList.add('active');
+  for(let i=1;i<n;i++) document.getElementById('snav-'+i).classList.add('done');
+  const pct = Math.round((n/6)*100);
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('progress-pct').textContent = pct+'%';
+  currentStep = n;
+  window.scrollTo(0,0);
+}
+
+// ── INIT ─────────────────────────────────────────────────
+renderWeaponCarousel();
+renderPoiCarousel();
+renderVideos();
+renderFaqCats();
+renderFaqItems('survive');
+
+function switchSpecTab(tab, el) {
+  document.querySelectorAll('.gi-spec-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.gi-spec-panel').forEach(p=>p.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.getElementById('gi-spec-'+tab).classList.add('active');
+}
+</script>
+</body>
+</html>
