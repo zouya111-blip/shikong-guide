@@ -636,9 +636,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .terms-cat-tab:hover{border-color:var(--border-bright);color:var(--text);}
 .terms-cat-tab.active{background:var(--orange-dim);border-color:var(--orange);color:var(--orange);}
 .terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
-.term-chip{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;transition:all .18s;font-size:12px;font-weight:600;color:var(--text-dim);position:relative;}
+.term-chip{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;transition:all .18s;font-size:12px;font-weight:600;color:var(--text-dim);position:relative;display:flex;align-items:center;gap:8px;}
 .term-chip:hover{border-color:var(--orange);color:var(--text);transform:translateY(-1px);box-shadow:0 4px 12px rgba(232,98,26,.15);}
-.term-chip-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:10px;opacity:0;transition:opacity .15s;}
+.term-chip-ico{font-size:16px;flex-shrink:0;line-height:1;}
+.term-chip-name{flex:1;line-height:1.3;}
+.term-chip-arrow{color:var(--text-muted);font-size:10px;opacity:0;transition:opacity .15s;flex-shrink:0;}
 .term-chip:hover .term-chip-arrow{opacity:1;}
 
 /* 侧边抽屉 */
@@ -706,44 +708,44 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="home-hero-bg"></div>
     <div class="home-hero-particles"></div>
     <div class="home-hero-content">
-      <div class="home-hero-eyebrow">RUST 正版玩法授权 · 官方指南中心</div>
+      <div class="home-hero-eyebrow">RUST 正版玩法授权 · 官方指南中心 · PC × 移动双端互通</div>
       <h1>《失控<em>进化</em>》<br>荒岛求生·新手站</h1>
       <p>从零到活下来，从活下来到越来越强</p>
     </div>
     <div class="hero-scroll-hint">▼ 选择你的路线</div>
   </div>
 
-  <!-- Stats -->
-  <div class="home-stats">
-    <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">新手步骤</div></div>
-    <div class="stat-cell"><div class="stat-num">10+</div><div class="stat-label">武器收录</div></div>
-    <div class="stat-cell"><div class="stat-num">15+</div><div class="stat-label">据点收录</div></div>
-    <div class="stat-cell"><div class="stat-num">5</div><div class="stat-label">游戏模式</div></div>
+
+  <!-- ✦ 新手必读词典（核心术语） ✦ -->
+  <div class="terms-section">
+    <div class="terms-hd">
+      <div class="terms-title-row">
+        <span class="terms-title-icon">📖</span>
+        <h2 class="terms-title">新手必读词典</h2>
+        <span class="terms-badge">出生前先看这里</span>
+      </div>
+      <div class="terms-subtitle">失控进化核心机制速查——点击任意词条，30秒理解一个关键概念</div>
+    </div>
+    <div class="terms-cat-tabs" id="terms-cat-tabs"></div>
+    <div class="terms-grid" id="terms-grid"></div>
   </div>
 
-  <!-- ✦ PC+移动 双端互通 醒目入口 ✦ -->
-  <div class="crossplay-banner">
-    <div class="crossplay-inner">
-      <div class="crossplay-left">
-        <div class="crossplay-badge">CROSS-PLATFORM</div>
-        <div class="crossplay-title">PC × 移动 双端互通</div>
-        <div class="crossplay-desc">同一战场，PC 玩家与手机玩家实时同服——你在电脑上建的家，手机也能守护。</div>
-      </div>
-      <div class="crossplay-platforms">
-        <div class="crossplay-platform">
-          <div class="cp-icon">🖥️</div>
-          <div class="cp-name">PC端</div>
-          <div class="cp-sub">Windows 客户端</div>
-        </div>
-        <div class="crossplay-divider">⟷</div>
-        <div class="crossplay-platform">
-          <div class="cp-icon">📱</div>
-          <div class="cp-name">移动端</div>
-          <div class="cp-sub">iOS / Android</div>
-        </div>
-      </div>
+  <!-- 术语侧边抽屉 -->
+  <div class="term-drawer-overlay" id="termDrawerOverlay" onclick="closeTermDrawer()"></div>
+  <div class="term-drawer" id="termDrawer">
+    <div class="term-drawer-hd">
+      <div class="term-drawer-cat" id="termDrawerCat"></div>
+      <button class="term-drawer-close" onclick="closeTermDrawer()">✕</button>
+    </div>
+    <div class="term-drawer-name" id="termDrawerName"></div>
+    <div class="term-drawer-divider"></div>
+    <div class="term-drawer-body" id="termDrawerBody"></div>
+    <div class="term-drawer-related" id="termDrawerRelated"></div>
+    <div class="term-drawer-footer">
+      <div class="term-nav-btns" id="termNavBtns"></div>
     </div>
   </div>
+
 
   <div class="split-section">
     <!-- 新玩家 -->
@@ -794,35 +796,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         </div>
         <button class="card-cta">进入工具区 →</button>
       </div>
-    </div>
-  </div>
-  <!-- ✦ 核心术语词条区块 ✦ -->
-  <div class="terms-section">
-    <div class="terms-hd">
-      <div class="terms-title-row">
-        <span class="terms-title-icon">📖</span>
-        <h2 class="terms-title">游戏核心术语</h2>
-        <span class="terms-badge">GLOSSARY</span>
-      </div>
-      <div class="terms-subtitle">点击术语查看详细解释，快速掌握失控进化的核心机制</div>
-    </div>
-    <div class="terms-cat-tabs" id="terms-cat-tabs"></div>
-    <div class="terms-grid" id="terms-grid"></div>
-  </div>
-
-  <!-- 术语侧边抽屉 -->
-  <div class="term-drawer-overlay" id="termDrawerOverlay" onclick="closeTermDrawer()"></div>
-  <div class="term-drawer" id="termDrawer">
-    <div class="term-drawer-hd">
-      <div class="term-drawer-cat" id="termDrawerCat"></div>
-      <button class="term-drawer-close" onclick="closeTermDrawer()">✕</button>
-    </div>
-    <div class="term-drawer-name" id="termDrawerName"></div>
-    <div class="term-drawer-divider"></div>
-    <div class="term-drawer-body" id="termDrawerBody"></div>
-    <div class="term-drawer-related" id="termDrawerRelated"></div>
-    <div class="term-drawer-footer">
-      <div class="term-nav-btns" id="termNavBtns"></div>
     </div>
   </div>
 
@@ -1908,38 +1881,38 @@ const POIS = [
 
 const TERMS = {
   survive: { label:'生存', icon:'❤️', terms:[
-    {name:'生命值（HP）', desc:'角色的存活指标。被攻击、辐射、饥饿、溺水等都会扣除生命值。生命值归零即倒地，通过保持口渴值和饱腹值、使用绷带/医疗针、或在舒适环境中休息来恢复。'},
-    {name:'口渴值', desc:'角色水分状态。口渴值归零后无法奔跑，并会持续扣血。在河流直接喝水或用水瓶储水补充。'},
-    {name:'饱腹值', desc:'角色进食状态。饱腹值归零后会持续扣血。可从植物（蘑菇/南瓜/仙人掌）、狩猎动物获取食物。'},
-    {name:'辐射', desc:'地图特定区域存在的持续伤害。需穿防护服才能安全进入辐射区，辐射区通常含有稀有物资。'},
-    {name:'舒适度', desc:'火源、家具等给角色提供的加成状态，在高舒适度环境中自动加速回血。'},
+    {icon:'❤️', name:'生命值（HP）', desc:'角色的存活指标。被攻击、辐射、饥饿、溺水等都会扣除生命值。生命值归零即倒地，通过保持口渴值和饱腹值、使用绷带/医疗针、或在舒适环境中休息来恢复。'},
+    {icon:'💧', name:'口渴值', desc:'角色水分状态。口渴值归零后无法奔跑，并会持续扣血。在河流直接喝水或用水瓶储水补充。'},
+    {icon:'🍗', name:'饱腹值', desc:'角色进食状态。饱腹值归零后会持续扣血。可从植物（蘑菇/南瓜/仙人掌）、狩猎动物获取食物。'},
+    {icon:'☢️', name:'辐射', desc:'地图特定区域存在的持续伤害。需穿防护服才能安全进入辐射区，辐射区通常含有稀有物资。'},
+    {icon:'🔥', name:'舒适度', desc:'火源、家具等给角色提供的加成状态，在高舒适度环境中自动加速回血。'},
   ]},
   base: { label:'建造', icon:'🏠', terms:[
-    {name:'工具柜', desc:'基地的核心建筑，管理建造权限和基地维护。放置后只有你和授权队友能在其范围内建造。需定期补充维护资源（木材/石头/金属碎片）否则基地会衰退。'},
-    {name:'睡袋', desc:'个人复活点装置，放置在基地后，被淘汰时可选择在附近复活，减少跑图时间。有冷却时间，建议在基地多放几个。'},
-    {name:'熔炉', desc:'将金属矿石冶炼成金属碎片/高质金属的建筑，需要木头作为燃料才能运作。'},
-    {name:'分解机', desc:'将多余材料（齿轮/篷布/管子等）分解为基础资源或废料的建筑，前期必备。'},
-    {name:'制作台', desc:'解锁高阶科技树的前置条件。需先制作并摆放在基地内，才能解锁对应等级的科技。'},
+    {icon:'🗝️', name:'工具柜', desc:'基地的核心建筑，管理建造权限和基地维护。放置后只有你和授权队友能在其范围内建造。需定期补充维护资源（木材/石头/金属碎片）否则基地会衰退。'},
+    {icon:'🛏️', name:'睡袋', desc:'个人复活点装置，放置在基地后，被淘汰时可选择在附近复活，减少跑图时间。有冷却时间，建议在基地多放几个。'},
+    {icon:'🔩', name:'熔炉', desc:'将金属矿石冶炼成金属碎片/高质金属的建筑，需要木头作为燃料才能运作。'},
+    {icon:'⚙️', name:'分解机', desc:'将多余材料（齿轮/篷布/管子等）分解为基础资源或废料的建筑，前期必备。'},
+    {icon:'🔧', name:'制作台', desc:'解锁高阶科技树的前置条件。需先制作并摆放在基地内，才能解锁对应等级的科技。'},
   ]},
   combat: { label:'战斗', icon:'⚔️', terms:[
-    {name:'科技树', desc:'游戏内的成长系统，用废料解锁各种装备和建筑的解锁权。官方建议前期优先解锁战斗模块，尽早获得自动化枪械。'},
-    {name:'废料', desc:'游戏的硬通货，用于解锁科技树、在安全区购买物资。主要通过搜刮物资箱、分解多余材料获得。'},
-    {name:'倒地', desc:'生命值归零后进入倒地状态，队友可在规定时间内将你救起；超时或被再次攻击则彻底淘汰。'},
-    {name:'爆炸物', desc:'用于破坏建筑结构的道具（炸药包、火箭弹等），解锁对应科技后可合成。不同材质的建筑耐久不同，金属墙需要多发才能破开。'},
+    {icon:'🌿', name:'科技树', desc:'游戏内的成长系统，用废料解锁各种装备和建筑的解锁权。官方建议前期优先解锁战斗模块，尽早获得自动化枪械。'},
+    {icon:'🪙', name:'废料', desc:'游戏的硬通货，用于解锁科技树、在安全区购买物资。主要通过搜刮物资箱、分解多余材料获得。'},
+    {icon:'💀', name:'倒地', desc:'生命值归零后进入倒地状态，队友可在规定时间内将你救起；超时或被再次攻击则彻底淘汰。'},
+    {icon:'💣', name:'爆炸物', desc:'用于破坏建筑结构的道具（炸药包、火箭弹等），解锁对应科技后可合成。不同材质的建筑耐久不同，金属墙需要多发才能破开。'},
   ]},
   world: { label:'世界', icon:'🗺️', terms:[
-    {name:'据点（遗迹）', desc:'地图上可探索的特定区域，分一到四级。一级：初期发育必去，威胁低；二至四级：含高价值物资，有辐射和敌对NPC，竞争激烈。'},
-    {name:'安全区', desc:'前哨战、强盗营地、渔村等特殊据点，禁止武器使用，玩家可在此交易物资。'},
-    {name:'科学家NPC', desc:'驻守在遗迹的AI敌人，会主动攻击靠近的玩家，击败后可掉落高级装备。'},
-    {name:'空投', desc:'游戏中定时出现的高价值物资补给，会吸引大量玩家争夺，装备不足时建议观望捡漏。'},
-    {name:'情报文件', desc:'在战利品箱中获取，存入情报站后缓慢破译，积累情报币用于提升情报等级，解锁独特高价值装备。'},
+    {icon:'🏚️', name:'据点（遗迹）', desc:'地图上可探索的特定区域，分一到四级。一级：初期发育必去，威胁低；二至四级：含高价值物资，有辐射和敌对NPC，竞争激烈。'},
+    {icon:'🏪', name:'安全区', desc:'前哨战、强盗营地、渔村等特殊据点，禁止武器使用，玩家可在此交易物资。'},
+    {icon:'🤖', name:'科学家NPC', desc:'驻守在遗迹的AI敌人，会主动攻击靠近的玩家，击败后可掉落高级装备。'},
+    {icon:'📦', name:'空投', desc:'游戏中定时出现的高价值物资补给，会吸引大量玩家争夺，装备不足时建议观望捡漏。'},
+    {icon:'📋', name:'情报文件', desc:'在战利品箱中获取，存入情报站后缓慢破译，积累情报币用于提升情报等级，解锁独特高价值装备。'},
   ]},
   mode: { label:'模式', icon:'🎮', terms:[
-    {name:'庇护模式', desc:'结算周期10天（游戏内），死亡惩罚最轻，情报领地默认无敌，适合新手熟悉游戏机制。'},
-    {name:'标准模式', desc:'结算周期7天，常规生存对抗体验，平衡难度与竞争强度。'},
-    {name:'挑战模式', desc:'结算周期5天，全天可抄家，竞争最激烈，适合追求高强度对抗的玩家。'},
-    {name:'急速挑战', desc:'结算周期2.5天，节奏极快，高风险高回报。'},
-    {name:'剧本系统', desc:'单局服务器的进程推进机制，事件刷新、物资产出和PVP规则随剧本推进而改变，让每局游戏有独特节奏。'},
+    {icon:'🛡️', name:'庇护模式', desc:'结算周期10天（游戏内），死亡惩罚最轻，情报领地默认无敌，适合新手熟悉游戏机制。'},
+    {icon:'⚔️', name:'标准模式', desc:'结算周期7天，常规生存对抗体验，平衡难度与竞争强度。'},
+    {icon:'🔥', name:'挑战模式', desc:'结算周期5天，全天可抄家，竞争最激烈，适合追求高强度对抗的玩家。'},
+    {icon:'⚡', name:'急速挑战', desc:'结算周期2.5天，节奏极快，高风险高回报。'},
+    {icon:'📜', name:'剧本系统', desc:'单局服务器的进程推进机制，事件刷新、物资产出和PVP规则随剧本推进而改变，让每局游戏有独特节奏。'},
   ]},
 };
 let currentTermCat = 'survive';
@@ -2144,7 +2117,8 @@ function renderTerms() {
   const cat = TERMS[currentTermCat];
   gridEl.innerHTML = cat.terms.map((t,i)=>`
     <div class="term-chip" onclick="openTermDrawer('${currentTermCat}',${i})">
-      ${t.name}
+      <span class="term-chip-ico">${t.icon||cat.icon}</span>
+      <span class="term-chip-name">${t.name}</span>
       <span class="term-chip-arrow">›</span>
     </div>
   `).join('');
@@ -2160,7 +2134,9 @@ function switchTermCat(key, el) {
   setTimeout(()=>{
     gridEl.innerHTML = cat.terms.map((t,i)=>`
       <div class="term-chip" onclick="openTermDrawer('${key}',${i})">
-        ${t.name}<span class="term-chip-arrow">›</span>
+        <span class="term-chip-ico">${t.icon||cat.icon}</span>
+        <span class="term-chip-name">${t.name}</span>
+        <span class="term-chip-arrow">›</span>
       </div>
     `).join('');
     gridEl.style.opacity = '1';
@@ -2174,7 +2150,7 @@ function openTermDrawer(catKey, termIdx) {
   currentTerm = {catKey, termIdx};
   
   document.getElementById('termDrawerCat').textContent = cat.icon + ' ' + cat.label;
-  document.getElementById('termDrawerName').textContent = term.name;
+  document.getElementById('termDrawerName').innerHTML = `<span style='margin-right:10px'>${term.icon||cat.icon}</span>${term.name}`;
   document.getElementById('termDrawerBody').innerHTML = '<p>' + term.desc + '</p>';
   
   // 相关词条（同分类其他词）
