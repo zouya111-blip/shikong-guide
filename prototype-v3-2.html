@@ -547,7 +547,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 /* ════════ FAQ ════════ */
 .faq-container{max-width:1000px;margin:0 auto;padding:0 48px 48px;}
 /* Graphic category entry */
-.faq-cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:28px;}
+.faq-cat-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:28px;}
 .faq-cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center;cursor:pointer;transition:all .2s;}
 .faq-cat-card:hover{border-color:var(--border-bright);transform:translateY(-2px);}
 .faq-cat-card.active{border-color:var(--orange);background:var(--orange-dim);}
@@ -584,6 +584,95 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .mt12{margin-top:12px;}
 .mt16{margin-top:16px;}
 .mt20{margin-top:20px;}
+
+/* ════════ 右侧悬浮快捷入口 ════════ */
+.float-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;gap:0;pointer-events:auto;}
+.float-btn{width:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px 0;background:var(--surface2);border:1px solid var(--border);cursor:pointer;transition:all .2s;position:relative;border-right:none;}
+.float-btn:first-child{border-radius:8px 0 0 0;}
+.float-btn:last-child{border-radius:0 0 0 8px;}
+.float-btn:not(:last-child){border-bottom:none;}
+.float-btn:hover{background:var(--surface);width:52px;}
+.float-btn-icon{font-size:18px;line-height:1;}
+.float-btn-label{font-size:9px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;letter-spacing:.5px;writing-mode:horizontal-tb;}
+/* 小程序二维码 popup */
+.float-qr-popup{position:absolute;right:56px;top:50%;transform:translateY(-50%);background:var(--surface2);border:1px solid var(--border-bright);border-radius:8px;padding:12px;width:140px;display:none;flex-direction:column;align-items:center;gap:8px;box-shadow:0 4px 24px rgba(0,0,0,.5);}
+.float-btn:hover .float-qr-popup{display:flex;}
+.float-qr-img{width:108px;height:108px;background:var(--surface);border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.float-qr-img img{width:100%;height:100%;object-fit:contain;}
+.float-qr-label{font-size:11px;color:var(--text-dim);text-align:center;}
+/* 客服/安全站 tooltip */
+.float-tooltip{position:absolute;right:56px;top:50%;transform:translateY(-50%);background:var(--surface2);border:1px solid var(--border-bright);border-radius:6px;padding:6px 12px;font-size:11px;color:var(--text-dim);white-space:nowrap;display:none;box-shadow:0 4px 16px rgba(0,0,0,.4);}
+.float-btn:hover .float-tooltip{display:block;}
+
+
+/* ════════ 返回官网按钮 ════════ */
+.nav-official-btn{display:flex;align-items:center;gap:6px;padding:0 18px;height:52px;font-size:12px;color:var(--text-muted);text-decoration:none;white-space:nowrap;border-left:1px solid var(--border);transition:color .2s;flex-shrink:0;}
+.nav-official-btn:hover{color:var(--orange);}
+
+/* ════════ PC/移动双端互通 Banner ════════ */
+.crossplay-banner{background:linear-gradient(135deg,rgba(232,98,26,.12) 0%,rgba(10,12,15,0) 60%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;margin-bottom:0;}
+.crossplay-inner{max-width:1100px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.crossplay-left{flex:1;}
+.crossplay-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:6px;}
+.crossplay-title{font-size:20px;font-weight:900;letter-spacing:.5px;margin-bottom:6px;}
+.crossplay-desc{font-size:13px;color:var(--text-dim);line-height:1.6;max-width:500px;}
+.crossplay-platforms{display:flex;align-items:center;gap:16px;flex-shrink:0;}
+.crossplay-platform{text-align:center;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 24px;}
+.cp-icon{font-size:28px;margin-bottom:6px;}
+.cp-name{font-size:13px;font-weight:700;}
+.cp-sub{font-size:11px;color:var(--text-muted);margin-top:2px;}
+.crossplay-divider{font-size:22px;color:var(--orange);font-weight:900;}
+
+/* ════════ 核心术语词条区块 ════════ */
+.terms-section{max-width:1100px;margin:0 auto;padding:40px 48px 48px;}
+.terms-hd{margin-bottom:24px;}
+.terms-title-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.terms-title-icon{font-size:20px;}
+.terms-title{font-size:22px;font-weight:900;}
+.terms-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);background:var(--orange-dim);border:1px solid var(--orange-glow);padding:3px 8px;border-radius:4px;letter-spacing:1px;}
+.terms-subtitle{font-size:13px;color:var(--text-dim);}
+.terms-cat-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.terms-cat-tab{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
+.terms-cat-tab:hover{border-color:var(--border-bright);color:var(--text);}
+.terms-cat-tab.active{background:var(--orange-dim);border-color:var(--orange);color:var(--orange);}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.term-chip{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;transition:all .18s;font-size:12px;font-weight:600;color:var(--text-dim);position:relative;}
+.term-chip:hover{border-color:var(--orange);color:var(--text);transform:translateY(-1px);box-shadow:0 4px 12px rgba(232,98,26,.15);}
+.term-chip-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:10px;opacity:0;transition:opacity .15s;}
+.term-chip:hover .term-chip-arrow{opacity:1;}
+
+/* 侧边抽屉 */
+.term-drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;display:none;opacity:0;transition:opacity .25s;}
+.term-drawer-overlay.open{display:block;opacity:1;}
+.term-drawer{position:fixed;right:-420px;top:0;bottom:0;width:400px;background:var(--surface);border-left:1px solid var(--border);z-index:1101;transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column;}
+.term-drawer.open{right:0;}
+.term-drawer-hd{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 0;flex-shrink:0;}
+.term-drawer-cat{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);background:var(--orange-dim);padding:3px 10px;border-radius:4px;}
+.term-drawer-close{width:32px;height:32px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.term-drawer-close:hover{border-color:var(--orange);color:var(--orange);}
+.term-drawer-name{font-size:24px;font-weight:900;padding:16px 24px 0;line-height:1.3;}
+.term-drawer-divider{height:1px;background:var(--border);margin:16px 24px;}
+.term-drawer-body{padding:0 24px;font-size:14px;color:var(--text-dim);line-height:1.8;flex:1;}
+.term-drawer-related{padding:20px 24px 0;}
+.term-drawer-related-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
+.term-drawer-footer{padding:20px 24px 32px;border-top:1px solid var(--border);margin-top:20px;flex-shrink:0;}
+.term-nav-btns{display:flex;justify-content:space-between;gap:10px;}
+.term-nav-btn{flex:1;padding:9px 16px;border-radius:var(--r);border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:12px;cursor:pointer;transition:all .15s;text-align:center;}
+.term-nav-btn:hover{border-color:var(--orange);color:var(--orange);}
+.term-nav-btn.primary{background:var(--orange);border-color:var(--orange);color:#fff;}
+.term-nav-btn.primary:hover{background:#f07030;}
+
+/* ════════ 搜索栏（武器/据点通用） ════════ */
+.page-search-bar{max-width:1200px;margin:0 auto;padding:0 48px 16px;}
+.psb-inner{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:0 14px;transition:border-color .2s;}
+.psb-inner:focus-within{border-color:var(--orange);}
+.psb-icon{color:var(--text-muted);flex-shrink:0;}
+.psb-input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:13px;padding:11px 0;font-family:inherit;}
+.psb-input::placeholder{color:var(--text-muted);}
+.psb-clear{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:4px;font-size:14px;transition:color .15s;opacity:0;}
+.psb-inner:focus-within .psb-clear{opacity:1;}
+.psb-clear:hover{color:var(--orange);}
+
 </style>
 </head>
 <body>
@@ -595,14 +684,18 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <span class="nav-logo-icon">🏝</span> 失控进化·新手站
   </div>
   <div class="nav-tabs">
-    <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏠</span> 首页</div>
-    <div class="nav-tab" data-page="gameinfo" onclick="switchPage('gameinfo',this)"><span>🎮</span> 游戏介绍</div>
+    <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏠</span> 新手站</div>
     <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📖</span> 新手入门 <span class="nav-badge">STEP 1-6</span></div>
     <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🔫</span> 武器图鉴</div>
     <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>📍</span> 据点指南</div>
     <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>🎬</span> 攻略视频</div>
     <div class="nav-tab" data-page="faq" onclick="switchPage('faq',this)"><span>❓</span> FAQ</div>
   </div>
+  <a class="nav-official-btn" href="https://rm.qq.com" target="_blank" title="返回官网">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    返回官网
+  </a>
+</div>
 </nav>
 
 <!-- ══════════════════════════════════════
@@ -626,6 +719,30 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="stat-cell"><div class="stat-num">10+</div><div class="stat-label">武器收录</div></div>
     <div class="stat-cell"><div class="stat-num">15+</div><div class="stat-label">据点收录</div></div>
     <div class="stat-cell"><div class="stat-num">5</div><div class="stat-label">游戏模式</div></div>
+  </div>
+
+  <!-- ✦ PC+移动 双端互通 醒目入口 ✦ -->
+  <div class="crossplay-banner">
+    <div class="crossplay-inner">
+      <div class="crossplay-left">
+        <div class="crossplay-badge">CROSS-PLATFORM</div>
+        <div class="crossplay-title">PC × 移动 双端互通</div>
+        <div class="crossplay-desc">同一战场，PC 玩家与手机玩家实时同服——你在电脑上建的家，手机也能守护。</div>
+      </div>
+      <div class="crossplay-platforms">
+        <div class="crossplay-platform">
+          <div class="cp-icon">🖥️</div>
+          <div class="cp-name">PC端</div>
+          <div class="cp-sub">Windows 客户端</div>
+        </div>
+        <div class="crossplay-divider">⟷</div>
+        <div class="crossplay-platform">
+          <div class="cp-icon">📱</div>
+          <div class="cp-name">移动端</div>
+          <div class="cp-sub">iOS / Android</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="split-section">
@@ -679,6 +796,36 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       </div>
     </div>
   </div>
+  <!-- ✦ 核心术语词条区块 ✦ -->
+  <div class="terms-section">
+    <div class="terms-hd">
+      <div class="terms-title-row">
+        <span class="terms-title-icon">📖</span>
+        <h2 class="terms-title">游戏核心术语</h2>
+        <span class="terms-badge">GLOSSARY</span>
+      </div>
+      <div class="terms-subtitle">点击术语查看详细解释，快速掌握失控进化的核心机制</div>
+    </div>
+    <div class="terms-cat-tabs" id="terms-cat-tabs"></div>
+    <div class="terms-grid" id="terms-grid"></div>
+  </div>
+
+  <!-- 术语侧边抽屉 -->
+  <div class="term-drawer-overlay" id="termDrawerOverlay" onclick="closeTermDrawer()"></div>
+  <div class="term-drawer" id="termDrawer">
+    <div class="term-drawer-hd">
+      <div class="term-drawer-cat" id="termDrawerCat"></div>
+      <button class="term-drawer-close" onclick="closeTermDrawer()">✕</button>
+    </div>
+    <div class="term-drawer-name" id="termDrawerName"></div>
+    <div class="term-drawer-divider"></div>
+    <div class="term-drawer-body" id="termDrawerBody"></div>
+    <div class="term-drawer-related" id="termDrawerRelated"></div>
+    <div class="term-drawer-footer">
+      <div class="term-nav-btns" id="termNavBtns"></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════════
@@ -1527,6 +1674,13 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
     <div class="page-intro"><strong>使用场景：</strong>手头废料有限？先看合成成本和工作台需求，再选武器路线——客观数据，不推荐，你自己判断。</div>
   </div>
+  <div class="page-search-bar">
+    <div class="psb-inner">
+      <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="psb-input" id="weapon-search" type="text" placeholder="搜索武器名称…" oninput="filterWeaponsBySearch(this.value)">
+      <button class="psb-clear" onclick="clearWeaponSearch()" title="清除">✕</button>
+    </div>
+  </div>
   <div class="weapons-carousel">
     <!-- Type filter row (mirrors tier filter) -->
     <div class="tier-filter-row" id="wep-type-filter">
@@ -1751,7 +1905,59 @@ const POIS = [
     bestFor:'交易废料、研究物品、安全补给'},
 ];
 
+
+const TERMS = {
+  survive: { label:'生存', icon:'❤️', terms:[
+    {name:'生命值（HP）', desc:'角色的存活指标。被攻击、辐射、饥饿、溺水等都会扣除生命值。生命值归零即倒地，通过保持口渴值和饱腹值、使用绷带/医疗针、或在舒适环境中休息来恢复。'},
+    {name:'口渴值', desc:'角色水分状态。口渴值归零后无法奔跑，并会持续扣血。在河流直接喝水或用水瓶储水补充。'},
+    {name:'饱腹值', desc:'角色进食状态。饱腹值归零后会持续扣血。可从植物（蘑菇/南瓜/仙人掌）、狩猎动物获取食物。'},
+    {name:'辐射', desc:'地图特定区域存在的持续伤害。需穿防护服才能安全进入辐射区，辐射区通常含有稀有物资。'},
+    {name:'舒适度', desc:'火源、家具等给角色提供的加成状态，在高舒适度环境中自动加速回血。'},
+  ]},
+  base: { label:'建造', icon:'🏠', terms:[
+    {name:'工具柜', desc:'基地的核心建筑，管理建造权限和基地维护。放置后只有你和授权队友能在其范围内建造。需定期补充维护资源（木材/石头/金属碎片）否则基地会衰退。'},
+    {name:'睡袋', desc:'个人复活点装置，放置在基地后，被淘汰时可选择在附近复活，减少跑图时间。有冷却时间，建议在基地多放几个。'},
+    {name:'熔炉', desc:'将金属矿石冶炼成金属碎片/高质金属的建筑，需要木头作为燃料才能运作。'},
+    {name:'分解机', desc:'将多余材料（齿轮/篷布/管子等）分解为基础资源或废料的建筑，前期必备。'},
+    {name:'制作台', desc:'解锁高阶科技树的前置条件。需先制作并摆放在基地内，才能解锁对应等级的科技。'},
+  ]},
+  combat: { label:'战斗', icon:'⚔️', terms:[
+    {name:'科技树', desc:'游戏内的成长系统，用废料解锁各种装备和建筑的解锁权。官方建议前期优先解锁战斗模块，尽早获得自动化枪械。'},
+    {name:'废料', desc:'游戏的硬通货，用于解锁科技树、在安全区购买物资。主要通过搜刮物资箱、分解多余材料获得。'},
+    {name:'倒地', desc:'生命值归零后进入倒地状态，队友可在规定时间内将你救起；超时或被再次攻击则彻底淘汰。'},
+    {name:'爆炸物', desc:'用于破坏建筑结构的道具（炸药包、火箭弹等），解锁对应科技后可合成。不同材质的建筑耐久不同，金属墙需要多发才能破开。'},
+  ]},
+  world: { label:'世界', icon:'🗺️', terms:[
+    {name:'据点（遗迹）', desc:'地图上可探索的特定区域，分一到四级。一级：初期发育必去，威胁低；二至四级：含高价值物资，有辐射和敌对NPC，竞争激烈。'},
+    {name:'安全区', desc:'前哨战、强盗营地、渔村等特殊据点，禁止武器使用，玩家可在此交易物资。'},
+    {name:'科学家NPC', desc:'驻守在遗迹的AI敌人，会主动攻击靠近的玩家，击败后可掉落高级装备。'},
+    {name:'空投', desc:'游戏中定时出现的高价值物资补给，会吸引大量玩家争夺，装备不足时建议观望捡漏。'},
+    {name:'情报文件', desc:'在战利品箱中获取，存入情报站后缓慢破译，积累情报币用于提升情报等级，解锁独特高价值装备。'},
+  ]},
+  mode: { label:'模式', icon:'🎮', terms:[
+    {name:'庇护模式', desc:'结算周期10天（游戏内），死亡惩罚最轻，情报领地默认无敌，适合新手熟悉游戏机制。'},
+    {name:'标准模式', desc:'结算周期7天，常规生存对抗体验，平衡难度与竞争强度。'},
+    {name:'挑战模式', desc:'结算周期5天，全天可抄家，竞争最激烈，适合追求高强度对抗的玩家。'},
+    {name:'急速挑战', desc:'结算周期2.5天，节奏极快，高风险高回报。'},
+    {name:'剧本系统', desc:'单局服务器的进程推进机制，事件刷新、物资产出和PVP规则随剧本推进而改变，让每局游戏有独特节奏。'},
+  ]},
+};
+let currentTermCat = 'survive';
+let termDrawerOpen = false;
+let currentTerm = null;
+
 const FAQ_DATA = {
+  basics: { label:'游戏必备', icon:'⬇️', count:8, items:[
+    {src:'official', q:'游戏怎么下载？在哪里下载？', a:'PC端：前往失控进化官网（rm.qq.com）或腾讯游戏平台下载 Windows 客户端；移动端：在 App Store（iOS）或各大 Android 应用商店搜索「失控进化」下载安装。'},
+    {src:'official', q:'游戏是免费的吗？', a:'失控进化基础游戏内容免费，可以免费下载畅玩。游戏内有皮肤等装饰性付费内容，不影响核心玩法体验。'},
+    {src:'official', q:'PC 端配置要求是什么？', a:'最低配置：CPU Intel i5-8400 / AMD Ryzen 5 2600；内存 16GB；显卡 GTX 1060 6G / RX 580 8G；存储 40GB 可用空间。推荐配置：CPU Intel i7-10700K / AMD Ryzen 7 3700X；内存 16GB；显卡 RTX 2070 / RX 5700 XT。【以官方最新公告为准】'},
+    {src:'official', q:'支持哪些平台？PC和手机可以一起玩吗？', a:'支持 PC（Windows）和移动端（iOS/Android），两端同服互通，可以在同一局游戏中合作或对抗。'},
+    {src:'official', q:'账号怎么注册？需要实名认证吗？', a:'使用腾讯账号（QQ/微信）直接登录，无需单独注册。根据国家规定，未成年用户需要完成实名认证，并受到防沉迷系统的时间限制管理。'},
+    {src:'official', q:'PC和手机的操作差异大吗？', a:'PC端使用键鼠操作，手机端使用触屏虚拟摇杆。游戏内设有跨端平衡机制，官方表示会持续优化不同设备的游戏体验公平性。'},
+    {src:'official', q:'游戏会定期更新吗？如何获取最新资讯？', a:'会定期更新。关注官方渠道获取最新资讯：官网（rm.qq.com）、官方微信公众号「失控进化」、官方QQ群/频道、B站官方账号。'},
+    {src:'official', q:'游戏里遇到外挂/作弊如何举报？', a:'在游戏内可以通过「举报」功能对可疑玩家进行举报。同时可以前往官方安全中心（链接待配置）提交详细证据，官方会进行核查处理。'},
+  ]},
+
   survive: { label:'生存基础', icon:'🏃', count:7, items:[
     {src:'official', q:'进游戏后什么都不会，先做什么？', a:'先收集出生点资源：对树上红色X击打拿木头，对石头节点闪光点击打拿石头。收够后制作石斧，再去最近的一级遗迹（废弃超市、加油站）搜刮物资和废料。'},
     {src:'official', q:'我一直饿/一直渴，该怎么办？', a:'口渴：在河流中直接喝水或用水瓶储水带走。饥饿：找蘑菇、南瓜、仙人掌等植物食物，或狩猎动物获取生肉烤熟食用。饱腹值清零会持续扣血，口渴值清零会无法奔跑。'},
@@ -1920,6 +2126,115 @@ function filterAndGoWeapons(type) {
   switchPage('weapons');
   const chip = document.getElementById('wchip-'+type);
   filterWeapons(type, chip);
+}
+
+
+// ── 术语词条 ──────────────────────────────────────────────────
+function renderTerms() {
+  const tabsEl = document.getElementById('terms-cat-tabs');
+  const gridEl = document.getElementById('terms-grid');
+  if(!tabsEl || !gridEl) return;
+  
+  tabsEl.innerHTML = Object.entries(TERMS).map(([key,cat])=>`
+    <button class="terms-cat-tab${key===currentTermCat?' active':''}" onclick="switchTermCat('${key}',this)">
+      <span>${cat.icon}</span>${cat.label}
+    </button>
+  `).join('');
+
+  const cat = TERMS[currentTermCat];
+  gridEl.innerHTML = cat.terms.map((t,i)=>`
+    <div class="term-chip" onclick="openTermDrawer('${currentTermCat}',${i})">
+      ${t.name}
+      <span class="term-chip-arrow">›</span>
+    </div>
+  `).join('');
+}
+
+function switchTermCat(key, el) {
+  currentTermCat = key;
+  document.querySelectorAll('.terms-cat-tab').forEach(b=>b.classList.remove('active'));
+  if(el) el.classList.add('active');
+  const cat = TERMS[key];
+  const gridEl = document.getElementById('terms-grid');
+  gridEl.style.opacity = '0';
+  setTimeout(()=>{
+    gridEl.innerHTML = cat.terms.map((t,i)=>`
+      <div class="term-chip" onclick="openTermDrawer('${key}',${i})">
+        ${t.name}<span class="term-chip-arrow">›</span>
+      </div>
+    `).join('');
+    gridEl.style.opacity = '1';
+  }, 120);
+}
+
+function openTermDrawer(catKey, termIdx) {
+  const cat = TERMS[catKey];
+  const term = cat.terms[termIdx];
+  currentTermCat = catKey;
+  currentTerm = {catKey, termIdx};
+  
+  document.getElementById('termDrawerCat').textContent = cat.icon + ' ' + cat.label;
+  document.getElementById('termDrawerName').textContent = term.name;
+  document.getElementById('termDrawerBody').innerHTML = '<p>' + term.desc + '</p>';
+  
+  // 相关词条（同分类其他词）
+  const related = cat.terms.filter((_,i) => i !== termIdx).slice(0,3);
+  const relEl = document.getElementById('termDrawerRelated');
+  if(related.length) {
+    relEl.innerHTML = `<div class="term-drawer-related-label">同类词条</div>` +
+      related.map((t,i)=>{
+        const realIdx = cat.terms.indexOf(t);
+        return `<div class="term-chip" style="margin-bottom:8px" onclick="openTermDrawer('${catKey}',${realIdx})">${t.name}<span class="term-chip-arrow">›</span></div>`;
+      }).join('');
+  } else relEl.innerHTML = '';
+  
+  // 前后导航
+  const total = cat.terms.length;
+  const prev = termIdx > 0 ? `<button class="term-nav-btn" onclick="openTermDrawer('${catKey}',${termIdx-1})">← ${cat.terms[termIdx-1].name}</button>` : '<span></span>';
+  const next = termIdx < total-1 ? `<button class="term-nav-btn primary" onclick="openTermDrawer('${catKey}',${termIdx+1})">${cat.terms[termIdx+1].name} →</button>` : '<span></span>';
+  document.getElementById('termNavBtns').innerHTML = prev + next;
+  
+  document.getElementById('termDrawerOverlay').classList.add('open');
+  document.getElementById('termDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTermDrawer() {
+  document.getElementById('termDrawerOverlay').classList.remove('open');
+  document.getElementById('termDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── 武器搜索 ──────────────────────────────────────────────────
+function filterWeaponsBySearch(q) {
+  const trimmed = q.trim().toLowerCase();
+  if(!trimmed) {
+    filteredWeapons = [...WEAPONS];
+  } else {
+    filteredWeapons = WEAPONS.filter(w => w.name.toLowerCase().includes(trimmed) || (w.type||'').toLowerCase().includes(trimmed));
+  }
+  currentWepIdx = 0;
+  renderWeaponCarousel();
+}
+function clearWeaponSearch() {
+  const inp = document.getElementById('weapon-search');
+  if(inp) { inp.value = ''; filterWeaponsBySearch(''); }
+}
+
+// ── 据点搜索 ──────────────────────────────────────────────────
+function filterPoisBySearch(q) {
+  const trimmed = q.trim().toLowerCase();
+  if(!trimmed) {
+    filteredPois = [...POIS];
+  } else {
+    filteredPois = POIS.filter(p => p.name.toLowerCase().includes(trimmed));
+  }
+  currentPoiIdx = 0;
+  renderPoiCarousel();
+}
+function clearPoiSearch() {
+  const inp = document.getElementById('poi-search');
+  if(inp) { inp.value = ''; filterPoisBySearch(''); }
 }
 
 // ── POI ──────────────────────────────────────────────────
@@ -2161,6 +2476,7 @@ renderWeaponCarousel();
 renderPoiCarousel();
 renderVideos();
 renderFaqCats();
+renderTerms();
 
 // ── 游戏介绍侧边导航 ──────────────────────────────────
 function giNavClick(el, targetId) {
@@ -2212,5 +2528,31 @@ function switchSpecTab(tab, el) {
   document.getElementById('gi-spec-'+tab).classList.add('active');
 }
 </script>
+
+<!-- ═══════ 右侧悬浮快捷入口 ═══════ -->
+<div class="float-sidebar">
+  <!-- 小程序二维码 -->
+  <div class="float-btn">
+    <div class="float-qr-popup">
+      <div class="float-qr-img"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/qrcode_wx-VLqfNOP9.png" alt="小程序二维码"></div>
+      <div class="float-qr-label">扫码进入小程序</div>
+    </div>
+    <span class="float-btn-icon">📱</span>
+    <span class="float-btn-label">小程序</span>
+  </div>
+  <!-- 客服站占位 -->
+  <div class="float-btn">
+    <div class="float-tooltip">官方客服中心<br><span style="color:var(--text-muted);font-size:10px">链接待配置</span></div>
+    <span class="float-btn-icon">🎧</span>
+    <span class="float-btn-label">客服</span>
+  </div>
+  <!-- 安全站占位 -->
+  <div class="float-btn">
+    <div class="float-tooltip">游戏安全中心<br><span style="color:var(--text-muted);font-size:10px">链接待配置</span></div>
+    <span class="float-btn-icon">🛡️</span>
+    <span class="float-btn-label">安全</span>
+  </div>
+</div>
+
 </body>
 </html>
