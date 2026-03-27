@@ -272,6 +272,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .gi-spec-lbl{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:.5px;}
 .gi-spec-val{font-size:12px;color:var(--text-dim);line-height:1.5;}
 /* ── 游戏介绍扩展 CSS ── */
+.gi-real-img{width:100%;border-radius:var(--r-lg);object-fit:cover;height:220px;display:block;margin-bottom:24px;border:1px solid var(--border);}
 .gi-img-placeholder{background:var(--surface2);border:1px dashed var(--border-bright);border-radius:var(--r-lg);height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;margin-bottom:24px;color:var(--text-muted);}
 .gi-img-ph-icon{font-size:40px;opacity:.6;}
 .gi-img-ph-text{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
@@ -387,6 +388,9 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .poi-showcase-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--text-muted);}
 .poi-showcase-img-placeholder .placeholder-icon{font-size:72px;filter:drop-shadow(0 0 32px rgba(232,98,26,.3));}
 .poi-showcase-img-placeholder .placeholder-text{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.poi-showcase-real-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.wep-showcase-real-img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;padding:20px;filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));}
+
 .poi-showcase-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(10,12,15,.95) 0%,transparent 60%);padding:24px 24px 20px;}
 .poi-showcase-tier{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:8px;}
 .poi-showcase-name{font-size:28px;font-weight:900;letter-spacing:.5px;}
@@ -702,7 +706,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">游戏的核心玩法围绕生存展开</div>
         </div>
       </div>
-      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🏕️</span><span class="gi-img-ph-text">生存场景图 · 待填充</span></div>
+      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_0-C-ftwBDx.png" alt="生存场景" class="gi-real-img">
       <div class="gi-detail-grid">
         <div class="gi-detail-card">
           <div class="gi-detail-title">🍖 饥饿与口渴</div>
@@ -732,7 +736,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">资源是一切生存与发展的基础</div>
         </div>
       </div>
-      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🪨</span><span class="gi-img-ph-text">资源采集场景图 · 待填充</span></div>
+      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_1-BxaIxARc.png" alt="资源采集" class="gi-real-img">
       <div class="gi-resource-cols">
         <div class="gi-res-group">
           <div class="gi-res-group-title">基础资源</div>
@@ -764,7 +768,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">保护资源和生存的关键</div>
         </div>
       </div>
-      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🏗️</span><span class="gi-img-ph-text">基地建造场景图 · 待填充</span></div>
+      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_2-UY53GMnj.png" alt="领地建造" class="gi-real-img">
       <div class="gi-detail-grid">
         <div class="gi-detail-card">
           <div class="gi-detail-title">📍 选址与设计</div>
@@ -825,7 +829,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">散布全图的遗迹与危险区域</div>
         </div>
       </div>
-      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🏚️</span><span class="gi-img-ph-text">遗迹探索场景图 · 待填充</span></div>
+      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_3-C1DQ4pjP.png" alt="遗迹探索" class="gi-real-img">
       <div class="gi-detail-grid gi-detail-grid-3">
         <div class="gi-detail-card">
           <div class="gi-detail-title">🟢 小型遗迹</div>
@@ -863,7 +867,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">获取资源或保护自己的基地</div>
         </div>
       </div>
-      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🔫</span><span class="gi-img-ph-text">战斗场景图 · 待填充</span></div>
+      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_4-B80nESyx.png" alt="战斗掠夺" class="gi-real-img">
       <div class="gi-detail-grid">
         <div class="gi-detail-card">
           <div class="gi-detail-title">🗡️ 近战 / 远程 / 陷阱</div>
@@ -1609,19 +1613,19 @@ const WEAPONS = [
     workbench:{name:'石质工作台', tier:'一阶'},
     techPrereq:'枪械制造Ⅰ',
     craft:[{name:'金属碎片', qty:50, cost:'mid', icon:'🔩'},{name:'木头', qty:75, cost:'low', icon:'🪵'}] },
-  { id:'ak47', name:'AK-47 突击步枪', type:'rifle', typeName:'步枪', icon:'🔫',
+  { id:'ak47', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/ak47-DSnQM6_8.png', name:'AK-47 突击步枪', type:'rifle', typeName:'步枪', icon:'🔫',
     desc:'高伤害全自动，射速中等，后坐力较大，中距离主力武器。',
     stats:{damage:50,accuracy:11,recoil:70,rof:451},
     workbench:{name:'金属工作台', tier:'二阶'},
     techPrereq:'枪械制造Ⅲ',
     craft:[{name:'金属碎片', qty:200, cost:'high', icon:'🔩'},{name:'弹簧', qty:2, cost:'high', icon:'🌀'},{name:'螺丝', qty:4, cost:'mid', icon:'🔧'}] },
-  { id:'lr300', name:'LR-300 突击步枪', type:'rifle', typeName:'步枪', icon:'🔫',
+  { id:'lr300', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/lr300-BVbR5bg5.png', name:'LR-300 突击步枪', type:'rifle', typeName:'步枪', icon:'🔫',
     desc:'精准度高于AK，射速更快，后坐力略小，但合成成本更高。',
     stats:{damage:40,accuracy:17,recoil:45,rof:500},
     workbench:{name:'精密工作台', tier:'三阶'},
     techPrereq:'枪械制造Ⅳ',
     craft:[{name:'高质金属', qty:4, cost:'high', icon:'⚙️'},{name:'弹簧', qty:2, cost:'high', icon:'🌀'},{name:'螺丝', qty:8, cost:'mid', icon:'🔧'}] },
-  { id:'m92', name:'半自动步枪', type:'rifle', typeName:'步枪', icon:'🔫',
+  { id:'m92', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/m92-Da2h8ySL.png', name:'半自动步枪', type:'rifle', typeName:'步枪', icon:'🔫',
     desc:'中等伤害，精准度高，弹容量小，适合远距离精准射击。',
     stats:{damage:45,accuracy:20,recoil:35,rof:280},
     workbench:{name:'金属工作台', tier:'二阶'},
@@ -1630,61 +1634,61 @@ const WEAPONS = [
 ];
 
 const POIS = [
-  { id:'market', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
+  { id:'market', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-fqcs-BjX5Rzs3.png', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
     name:'废弃超市', emoji:'🏪',
     desc:'基础物资刷新点，敌对威胁有限，无辐射影响。主干道沿线多处分布，绿卡刷新，是初期补给的理想据点。',
     tags:['绿卡', '食物', '基础物资', '无辐射'],
     rewards:['🍖 食物 (中量)','⚙️ 废料 (少量)','🧵 布料 (少量)','💊 医疗用品 (偶有)'],
     bestFor:'刚出生的玩家，缺食物和基础物资时'},
-  { id:'gas', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
+  { id:'gas', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-jyz-rJco2nFm.png', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
     name:'加油站', emoji:'⛽',
     desc:'含分解机，可将废品分解为基础资源。内外结构均可探索，适合早期废料转化。',
     tags:['分解机', '汽车零件', '无辐射'],
     rewards:['⚙️ 废料 (中量)','🔩 金属碎片 (少量)','⛽ 燃料 (少量)'],
     bestFor:'需要分解材料、刷废料的早期阶段'},
-  { id:'mine', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
+  { id:'mine', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-kclyj-D98JwZg_.png', tier:'tier-1', tierName:'一级遗迹', tierColor:'#4ade80', dangerLevel:1,
     name:'矿场遗迹', emoji:'⛏',
     desc:'含采掘机，消耗燃料获取矿物。无辐射无威胁，是资源积累核心据点。',
     tags:['金属矿', '硫磺矿', '石矿', '采掘机', '无辐射'],
     rewards:['🪨 石头 (大量)','🔩 金属矿石 (中量)','💣 硫磺矿石 (少量)'],
     bestFor:'需要大量矿石升级基地和制作弹药'},
-  { id:'bigball', tier:'tier-2', tierName:'二级遗迹', tierColor:'#60a5fa', dangerLevel:2,
+  { id:'bigball', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-dtq-Bce8CSEp.png', tier:'tier-2', tierName:'二级遗迹', tierColor:'#60a5fa', dangerLevel:2,
     name:'大铁球', emoji:'🔮',
     desc:'低中辐射，含高价值物资。三座储油罐+球罐结构，部分资源在球罐内部，需要探索。',
     tags:['低辐射', '中级物资', '多层地形'],
     rewards:['⚙️ 废料 (中量)','🔩 金属碎片 (中量)','🧪 硫磺 (少量)','📦 特殊物资 (偶有)'],
     bestFor:'有半自动手枪以上装备，需要升级武器弹药'},
-  { id:'harbor', tier:'tier-2', tierName:'二级遗迹', tierColor:'#60a5fa', dangerLevel:2,
+  { id:'harbor', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-gk-BGha0HeU.png', tier:'tier-2', tierName:'二级遗迹', tierColor:'#60a5fa', dangerLevel:2,
     name:'港口', emoji:'🚢',
     desc:'沿海区域，含货轮、沉船、起重机。有公共设施，资源丰富，但玩家竞争激烈。',
     tags:['低辐射', '中级物资', '分解机', '熔炉', '玩家争夺激烈'],
     rewards:['⚙️ 废料 (大量)','🔩 金属碎片 (中量)','🚂 货轮组件 (少量)'],
     bestFor:'需要快速积累废料和金属，能处理玩家对抗'},
-  { id:'military', tier:'tier-3', tierName:'三级遗迹', tierColor:'#fbbf24', dangerLevel:3,
+  { id:'military', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-jssd-DJITnAK-.png', tier:'tier-3', tierName:'三级遗迹', tierColor:'#fbbf24', dangerLevel:3,
     name:'军事基地', emoji:'🎖',
     desc:'高强度战斗据点，敌对NPC密集。含特殊多管火箭车，风险高但蓝卡奖励丰厚。',
     tags:['强力NPC', '蓝卡', '火箭车', '高辐射'],
     rewards:['🟦 蓝色物资箱','🚀 火箭组件','⚔️ 高级武器 (概率)','⚙️ 废料 (大量)'],
     bestFor:'组队且有步枪级装备，冲击高级装备'},
-  { id:'powerplant', tier:'tier-3', tierName:'三级遗迹', tierColor:'#fbbf24', dangerLevel:3,
+  { id:'powerplant', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-dxdt-BfJ2YZFa.png', tier:'tier-3', tierName:'三级遗迹', tierColor:'#fbbf24', dangerLevel:3,
     name:'发电站', emoji:'⚡',
     desc:'高辐射，复杂多层结构。含多种资源处理装置，路线复杂需多次探索才能熟悉。',
     tags:['高辐射', '高级物资', '熔炉', '采油机', '复杂地形'],
     rewards:['🛢 原油 (大量)','🔩 高质金属 (中量)','⚙️ 废料 (大量)','📦 高级物资'],
     bestFor:'全防护装甲，组队攻略，收益极高'},
-  { id:'tunnel', tier:'tier-4', tierName:'四级遗迹', tierColor:'#f87171', dangerLevel:4,
+  { id:'tunnel', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-jssd-DJITnAK-.png', tier:'tier-4', tierName:'四级遗迹', tierColor:'#f87171', dangerLevel:4,
     name:'军事隧道', emoji:'🕳',
     desc:'中高辐射，内部科学家装备LR-300和狙击枪，超视距开火。风险极高，战利品顶级。',
     tags:['高辐射', '顶级物资', '精英NPC', '狙击手'],
     rewards:['🟥 红色物资箱','🔫 顶级武器 (高概率)','⚙️ 废料 (极大量)','🎖 稀有装备'],
     bestFor:'全服顶级装备玩家，高风险高回报'},
-  { id:'launchsite', tier:'tier-4', tierName:'四级遗迹', tierColor:'#f87171', dangerLevel:4,
+  { id:'launchsite', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-hjfsjd-4O0H-Fmn.png', tier:'tier-4', tierName:'四级遗迹', tierColor:'#f87171', dangerLevel:4,
     name:'火箭发射基地', emoji:'🚀',
     desc:'最大战利品聚集地，布拉德利装甲坦克巡逻。工厂辐射达致命级，需全防护服。',
     tags:['致命辐射', '顶级物资', '坦克', '公共设施'],
     rewards:['🟥 红色物资箱 (多)','🚀 火箭零件','🏆 全服最高战利品','⚙️ 废料 (极大量)'],
     bestFor:'全服最强阵容，坦克击杀需C4和大量火力'},
-  { id:'outpost', tier:'tier-safe', tierName:'安全区', tierColor:'#c084fc', dangerLevel:0,
+  { id:'outpost', imgUrl:'https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-qsz-gs7ndVQA.png', tier:'tier-safe', tierName:'安全区', tierColor:'#c084fc', dangerLevel:0,
     name:'前哨战（安全区）', emoji:'🛡',
     desc:'中立安全区，禁止战斗。含分解机、研究台、自动售货机，违规触发自动打击。',
     tags:['安全区', '交易', '分解机', '研究台', '自动售货机'],
@@ -1760,10 +1764,7 @@ function renderWeaponCarousel() {
     <div class="wep-carousel-main">
       <div class="wep-showcase">
         <div class="wep-showcase-img" style="background:linear-gradient(135deg,rgba(232,98,26,.12),#0a0c0f)">
-          <div class="wep-showcase-img-placeholder">
-            <div class="wep-big-icon">${w.icon}</div>
-            <div class="placeholder-text">官方武器图 · 待填充</div>
-          </div>
+          ${w.imgUrl ? `<img src="${w.imgUrl}" alt="${w.name}" class="wep-showcase-real-img" onerror="this.style.display='none'">` : `<div class="wep-showcase-img-placeholder"><div class="wep-big-icon">${w.icon}</div></div>`}
           <div class="wep-showcase-overlay">
             <div class="wep-showcase-type" style="color:var(--orange)">
               <span class="wep-type-badge badge-${w.type}">${w.typeName}</span>
@@ -1881,10 +1882,7 @@ function renderPoiCarousel() {
     <div class="poi-carousel-main">
       <div class="poi-showcase">
         <div class="poi-showcase-img" style="background:linear-gradient(135deg,${poi.tierColor}15,#0a0c0f)">
-          <div class="poi-showcase-img-placeholder">
-            <div class="placeholder-icon">${poi.emoji}</div>
-            <div class="placeholder-text">官方据点截图 · 待填充</div>
-          </div>
+          ${poi.imgUrl ? `<img src="${poi.imgUrl}" alt="${poi.name}" class="poi-showcase-real-img" onerror="this.style.display='none'">` : `<div class="poi-showcase-img-placeholder"><div class="placeholder-icon">${poi.emoji}</div><div class="placeholder-text">据点场景图</div></div>`}
           <div class="poi-showcase-overlay">
             <div class="poi-showcase-tier" style="color:${poi.tierColor}">${poi.tierName}</div>
             <div class="poi-showcase-name">${poi.name}</div>
