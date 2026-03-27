@@ -262,6 +262,38 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .gi-spec-row:last-child{border-bottom:none;}
 .gi-spec-lbl{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:.5px;}
 .gi-spec-val{font-size:12px;color:var(--text-dim);line-height:1.5;}
+/* ── 游戏介绍扩展 CSS ── */
+.gi-img-placeholder{background:var(--surface2);border:1px dashed var(--border-bright);border-radius:var(--r-lg);height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;margin-bottom:24px;color:var(--text-muted);}
+.gi-img-ph-icon{font-size:40px;opacity:.6;}
+.gi-img-ph-text{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.gi-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.gi-detail-grid-3{grid-template-columns:repeat(3,1fr);}
+.gi-detail-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;}
+.gi-detail-title{font-size:13px;font-weight:700;color:var(--orange);margin-bottom:10px;}
+.gi-detail-body{font-size:12px;color:var(--text-dim);line-height:1.8;}
+.gi-resource-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gi-res-group{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;}
+.gi-res-group-title{font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;color:var(--orange);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.gi-res-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:12px;color:var(--text-dim);line-height:1.6;}
+.gi-res-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.gi-craft-three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gi-craft-col{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;}
+.gi-craft-col-title{font-size:13px;font-weight:700;color:var(--orange);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.gi-craft-item{font-size:12px;color:var(--text-dim);padding:6px 0;border-bottom:1px solid var(--border);line-height:1.5;}
+.gi-craft-item:last-child{border-bottom:none;}
+.gi-mode-block{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 28px;margin-bottom:20px;}
+.gi-mode-block:last-child{margin-bottom:0;}
+.gi-mode-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:16px;}
+.gi-mode-desc{font-size:13px;color:var(--text-dim);line-height:1.8;margin-bottom:18px;}
+.gi-mode-table-wrap{overflow-x:auto;}
+.gi-mode-table{width:100%;border-collapse:collapse;font-size:12px;}
+.gi-mode-table th{background:var(--surface);padding:10px 14px;text-align:left;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;border-bottom:1px solid var(--border-bright);}
+.gi-mode-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-dim);vertical-align:top;line-height:1.6;}
+.gi-mode-table tr:last-child td{border-bottom:none;}
+.gi-mode-table tr:hover td{background:rgba(255,255,255,.02);}
+.gi-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.gi-badge-green{background:rgba(74,222,128,.15);color:#4ade80;}
+.gi-badge-red{background:rgba(239,68,68,.15);color:#ef4444;}
 .weapons-carousel{max-width:1200px;margin:0 auto;padding:0 48px 48px;}
 .wep-type-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:3px;}
 .badge-rifle{background:rgba(239,68,68,.15);color:#ef4444;}
@@ -650,6 +682,316 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       </div>
     </div>
 
+    <!-- ── 生存机制 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">❤️</div>
+        <div>
+          <div class="gi-section-title">生存机制</div>
+          <div class="gi-section-sub">游戏的核心玩法围绕生存展开</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🏕️</span><span class="gi-img-ph-text">生存场景图 · 待填充</span></div>
+      <div class="gi-detail-grid">
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🍖 饥饿与口渴</div>
+          <div class="gi-detail-body">玩家需定期进食和饮水，否则健康值将逐渐下降。食物可通过狩猎动物、采集浆果或种植农作物获得；饮用水可从河流、湖泊或雨水收集获得。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🌡️ 体温管理</div>
+          <div class="gi-detail-body">在寒冷环境中，玩家会逐渐失温，需要点燃篝火或穿着保暖衣物；在炎热环境中，需避免长时间暴露于阳光下。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">❤️ 健康值</div>
+          <div class="gi-detail-body">健康值会因战斗、饥饿、寒冷或辐射而下降，可使用医疗物品（如绷带、医疗包）恢复。保持较高的口渴值和饱腹值可以缓慢自动回血。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">☢️ 辐射威胁</div>
+          <div class="gi-detail-body">地图中的辐射区会对玩家造成持续伤害，需穿着防护服或使用抗辐射药物方可进入。辐射区通常也含有最稀有的资源。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 资源采集 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">⛏️</div>
+        <div>
+          <div class="gi-section-title">资源采集</div>
+          <div class="gi-section-sub">资源是一切生存与发展的基础</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🪨</span><span class="gi-img-ph-text">资源采集场景图 · 待填充</span></div>
+      <div class="gi-resource-cols">
+        <div class="gi-res-group">
+          <div class="gi-res-group-title">基础资源</div>
+          <div class="gi-res-item"><span class="gi-res-icon">⚙️</span><div><strong>废料</strong> — 荒岛硬通货，用于解锁科技树、在安全区购买物资</div></div>
+          <div class="gi-res-item"><span class="gi-res-icon">🪵</span><div><strong>木材</strong> — 砍伐树木获得，基础建造和工具材料</div></div>
+          <div class="gi-res-item"><span class="gi-res-icon">🪨</span><div><strong>石头</strong> — 开采岩石获得，升级工具和石质建筑</div></div>
+          <div class="gi-res-item"><span class="gi-res-icon">🔩</span><div><strong>金属矿石</strong> — 开采矿脉获得，制作高级武器和铁质建筑</div></div>
+        </div>
+        <div class="gi-res-group">
+          <div class="gi-res-group-title">稀有资源</div>
+          <div class="gi-res-item"><span class="gi-res-icon">🧨</span><div><strong>硫磺</strong> — 制作弹药和各类爆炸物</div></div>
+          <div class="gi-res-item"><span class="gi-res-icon">⚙️</span><div><strong>高质金属</strong> — 顶级装备和钢质建筑用料</div></div>
+          <div class="gi-res-item"><span class="gi-res-icon">🧵</span><div><strong>布料</strong> — 采集植物或狩猎动物获得，制作衣物和绷带</div></div>
+        </div>
+        <div class="gi-res-group">
+          <div class="gi-res-group-title">采集技巧</div>
+          <div class="gi-res-item"><span class="gi-res-icon">🎯</span><div>瞄准树木上的<strong>红色 X</strong> 和岩石节点上的<strong>闪光点</strong>，采集效率更高</div></div>
+          <div class="gi-res-item"><span class="gi-res-icon">👀</span><div>注意时不时检查周围环境，以免被老六偷袭</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 领地建造 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">🏠</div>
+        <div>
+          <div class="gi-section-title">领地建造</div>
+          <div class="gi-section-sub">保护资源和生存的关键</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🏗️</span><span class="gi-img-ph-text">基地建造场景图 · 待填充</span></div>
+      <div class="gi-detail-grid">
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">📍 选址与设计</div>
+          <div class="gi-detail-body">建议将领地建在隐蔽地点（山谷或森林），综合考虑周边自然资源、据点数量以及和安全区的距离。从1×2核心空间开始，逐步向外拓展防炸层结构。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">⬆️ 升级与强化</div>
+          <div class="gi-detail-body">通过收集更高级的材料，将领地从木质升级为石质或金属结构。可以交互单个摆件，也可在工具柜一键升级全部建筑。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🛡️ 防御策略</div>
+          <div class="gi-detail-body">使用陷阱（地雷、自动炮塔）阻止入侵者，设计迷宫式入口延缓敌人进攻，使用坚固材料（金属墙壁）提高耐久性。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🔒 领地管理</div>
+          <div class="gi-detail-body">工具柜是基地核心，控制领地权限。摆放睡袋绑定复活点。定期往工具柜补充维护资源，防止基地自动衰退。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 制作与装备 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">⚗️</div>
+        <div>
+          <div class="gi-section-title">制作与装备</div>
+          <div class="gi-section-sub">将资源转化为工具、武器和装备</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🔧</span><span class="gi-img-ph-text">制作系统截图 · 待填充</span></div>
+      <div class="gi-craft-three">
+        <div class="gi-craft-col">
+          <div class="gi-craft-col-title">🔨 工具</div>
+          <div class="gi-craft-item">石斧、石镐 — 基础资源采集</div>
+          <div class="gi-craft-item">金属斧、金属镐 — 提高采集效率</div>
+        </div>
+        <div class="gi-craft-col">
+          <div class="gi-craft-col-title">🔫 武器</div>
+          <div class="gi-craft-item">近战：刀、长矛</div>
+          <div class="gi-craft-item">远程：弓箭、手枪、突击步枪</div>
+          <div class="gi-craft-item">爆炸物：炸药、火箭弹</div>
+        </div>
+        <div class="gi-craft-col">
+          <div class="gi-craft-col-title">🛡️ 装备</div>
+          <div class="gi-craft-item">衣物 — 保暖或防护效果</div>
+          <div class="gi-craft-item">防具 — 头盔、防弹衣</div>
+          <div class="gi-craft-item">工作台、熔炉 — 解锁高级制作</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 探索与地标 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">🗺️</div>
+        <div>
+          <div class="gi-section-title">探索与地标</div>
+          <div class="gi-section-sub">散布全图的遗迹与危险区域</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🏚️</span><span class="gi-img-ph-text">遗迹探索场景图 · 待填充</span></div>
+      <div class="gi-detail-grid gi-detail-grid-3">
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🟢 小型遗迹</div>
+          <div class="gi-detail-body">前期发育、收集资源、获取技术图纸的重要区域，威胁程度整体较低。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🔵 中型遗迹</div>
+          <div class="gi-detail-body">中等难度和战利品，是搜刮物资和装备的主流区域，通常需要组队或有一定装备。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🔴 大型遗迹</div>
+          <div class="gi-detail-body">包含高价值战利品，部分有强大敌人驻守，通常也伴随最激烈的玩家竞争。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">☢️ 辐射区</div>
+          <div class="gi-detail-body">含稀有资源，需防护装备才能进入，高风险高回报。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🚗 地面载具</div>
+          <div class="gi-detail-body">马匹、汽车、火车 — 陆地快速探索</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">✈️ 空/水载具</div>
+          <div class="gi-detail-body">小型/大型直升机、木舟、冲锋艇 — 制霸空中与水面</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 战斗与掠夺 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">⚔️</div>
+        <div>
+          <div class="gi-section-title">战斗与掠夺</div>
+          <div class="gi-section-sub">获取资源或保护自己的基地</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🔫</span><span class="gi-img-ph-text">战斗场景图 · 待填充</span></div>
+      <div class="gi-detail-grid">
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🗡️ 近战 / 远程 / 陷阱</div>
+          <div class="gi-detail-body">多种战斗方式：刀斧近战、弓枪远程、地雷炮塔陷阱防御，灵活组合应对不同场景。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🚀 远程火炮</div>
+          <div class="gi-detail-body">使用地图中的多管火箭发射系统，进行超视距进攻，是攻击远距敌方基地的终极手段。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🏰 领地攻防</div>
+          <div class="gi-detail-body">进攻方通过立体规划进攻路径，用炸药、火箭弹高效摧毁敌方领地；防守方用复杂结构和陷阱消耗敌人，为反击争取时间。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🎁 战利品</div>
+          <div class="gi-detail-body">击败敌人或摧毁敌方基地后，可抢夺对方的资源、装备和武器。凋落物有时限，注意及时找回。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 社交合作 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">🤝</div>
+        <div>
+          <div class="gi-section-title">社交合作</div>
+          <div class="gi-section-sub">游戏鼓励玩家互动，合作或对抗</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">👥</span><span class="gi-img-ph-text">组队协作场景图 · 待填充</span></div>
+      <div class="gi-detail-grid gi-detail-grid-3">
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">👥 组队系统</div>
+          <div class="gi-detail-body">组队共同建造领地、采集资源或进行战斗，分工协作效率远超单人。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🎙️ 语音聊天</div>
+          <div class="gi-detail-body">游戏内置语音聊天功能，方便与任何玩家实时沟通，也可近距离听到附近敌人。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🛒 交易系统</div>
+          <div class="gi-detail-body">玩家之间可直接面对面交易或放置自动售货机进行资源交换。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 动态事件与环境 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">🌍</div>
+        <div>
+          <div class="gi-section-title">动态事件与环境</div>
+          <div class="gi-section-sub">游戏世界动态变化，应对各种随机事件</div>
+        </div>
+      </div>
+      <div class="gi-img-placeholder"><span class="gi-img-ph-icon">🌅</span><span class="gi-img-ph-text">昼夜/动态事件截图 · 待填充</span></div>
+      <div class="gi-detail-grid">
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🌙 昼夜交替</div>
+          <div class="gi-detail-body">夜晚视野受限，玩家需点燃火把或使用夜视装备。黑暗也提供掩护，可用于偷袭。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">🚁 随机事件</div>
+          <div class="gi-detail-body">直升机巡逻攻击暴露基地、科学家NPC掉落高级装备、物资空投引发争夺、环线车队与玩家交互。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">📜 剧本系统</div>
+          <div class="gi-detail-body">单次服务器根据模式持续2.5至10天。事件刷新、物资产出、PVP规则等都随剧本推进而改变。</div>
+        </div>
+        <div class="gi-detail-card">
+          <div class="gi-detail-title">📡 情报等级</div>
+          <div class="gi-detail-body">在战利品箱获得情报文件，存入情报站缓慢破译积累情报币，提升情报等级后可解锁独特高价值装备道具，跨局永久有效。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 玩法模式 ── -->
+    <div class="gi-section">
+      <div class="gi-section-hd">
+        <div class="gi-section-icon">🎮</div>
+        <div>
+          <div class="gi-section-title">玩法模式</div>
+          <div class="gi-section-sub">经典战局 · 限时模式 · 领地攻防</div>
+        </div>
+      </div>
+
+      <!-- 经典战局 -->
+      <div class="gi-mode-block">
+        <div class="gi-mode-title">🏆 经典战局</div>
+        <div class="gi-img-placeholder" style="height:160px"><span class="gi-img-ph-icon">⚔️</span><span class="gi-img-ph-text">经典战局场景图 · 待填充</span></div>
+        <p class="gi-mode-desc">包含庇护、标准、进阶和挑战四个模式，每个模式都需要通过遗迹探索或突袭其他玩家收集情报，提升情报等级以获取强大支援。战局结算后根据情报等级获得账号奖励。</p>
+        <div class="gi-mode-table-wrap">
+          <table class="gi-mode-table">
+            <thead><tr><th></th><th>庇护模式</th><th>标准模式</th><th>进阶模式</th><th>挑战模式</th></tr></thead>
+            <tbody>
+              <tr><td>死亡惩罚</td><td>掉落部分物资</td><td>掉落部分物资</td><td>掉落所有物资</td><td>掉落所有物资</td></tr>
+              <tr><td>结算时间</td><td><span class="gi-badge gi-badge-green">10天</span></td><td>7天</td><td>6天</td><td><span class="gi-badge gi-badge-red">5天</span></td></tr>
+              <tr><td>抄家保护</td><td>默认领地无敌，主动报名才解除</td><td>第1-2日禁抄家，第3-7日每天4小时允许</td><td>第1日禁抄家，第2-6日每天12小时允许</td><td>全天可抄家</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 限时模式 -->
+      <div class="gi-mode-block">
+        <div class="gi-mode-title">⚡ 限时模式 — 急速挑战</div>
+        <div class="gi-img-placeholder" style="height:160px"><span class="gi-img-ph-icon">⏱️</span><span class="gi-img-ph-text">急速挑战场景图 · 待填充</span></div>
+        <p class="gi-mode-desc">结算时间大大缩短，玩家面临残酷生存压力，需在有限时间内完成全周期发育、造家、拆家的完整生存循环。</p>
+        <div class="gi-mode-table-wrap">
+          <table class="gi-mode-table">
+            <thead><tr><th></th><th>急速挑战</th></tr></thead>
+            <tbody>
+              <tr><td>死亡惩罚</td><td>掉落所有物资</td></tr>
+              <tr><td>结算时间</td><td><span class="gi-badge gi-badge-red">2.5天</span></td></tr>
+              <tr><td>抄家保护</td><td>前12小时禁止抄家；12小时后自由抄家</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 领地攻防 -->
+      <div class="gi-mode-block">
+        <div class="gi-mode-title">🏰 领地攻防</div>
+        <div class="gi-img-placeholder" style="height:160px"><span class="gi-img-ph-icon">💥</span><span class="gi-img-ph-text">领地攻防场景图 · 待填充</span></div>
+        <p class="gi-mode-desc">无需漫长物资积累，即可体验抄家玩法核心。进攻方用爆炸物摧毁目标领地柜，防守方在规定时间内阻止。每局预设不同科技程度的武器和建筑类型，体验多样。</p>
+        <div class="gi-mode-table-wrap">
+          <table class="gi-mode-table">
+            <thead><tr><th>模式</th><th>规则</th></tr></thead>
+            <tbody>
+              <tr><td>原始攻防</td><td>15分钟单局，4v6 非对称PVP（弓弩）</td></tr>
+              <tr><td>手枪对决</td><td>15分钟单局，4v6 非对称PVP（手枪）</td></tr>
+              <tr><td>轻武突袭</td><td>15分钟单局，4v6 非对称PVP（微冲）</td></tr>
+              <tr><td>全面武装</td><td>15分钟单局，4v6 非对称PVP（步枪）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!-- 配置要求 -->
     <div class="gi-section">
       <div class="gi-section-hd">
@@ -673,7 +1015,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="gi-spec-row"><span class="gi-spec-lbl">🪟 系统</span><span class="gi-spec-val">Windows 10 64位 1909+</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ CPU</span><span class="gi-spec-val">Intel i5-7500 / AMD FX-8350</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">🎨 显卡</span><span class="gi-spec-val">GTX 1060 5G / RX 580</span></div>
-            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">8GB RAM</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">16GB RAM</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">30G+，推荐预留 50G</span></div>
           </div>
           <div class="gi-spec-col">
@@ -685,15 +1027,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">30G+，推荐预留 50G</span></div>
           </div>
           <div class="gi-spec-col">
-            <div class="gi-spec-col-hd gi-spec-high">高画质配置</div>
+            <div class="gi-spec-col-hd gi-spec-high">2K 配置</div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">🪟 系统</span><span class="gi-spec-val">Windows 10 64位 1909+</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ CPU</span><span class="gi-spec-val">Intel i7-12700F / AMD Ryzen 7 5800X</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">🎨 显卡</span><span class="gi-spec-val">RTX 4060 / RX 6700 XT</span></div>
-            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">16GB RAM</span></div>
+            <div class="gi-spec-row"><span class="gi-spec-lbl">💾 内存</span><span class="gi-spec-val">32GB RAM</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">💿 存储</span><span class="gi-spec-val">30G+，推荐预留 50G</span></div>
           </div>
           <div class="gi-spec-col">
-            <div class="gi-spec-col-hd gi-spec-ultra">极致配置</div>
+            <div class="gi-spec-col-hd gi-spec-ultra">4K 配置</div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">🪟 系统</span><span class="gi-spec-val">Windows 10 64位 1909+</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">⚡ CPU</span><span class="gi-spec-val">Intel i9-12900K / AMD Ryzen 7 7800X3D</span></div>
             <div class="gi-spec-row"><span class="gi-spec-lbl">🎨 显卡</span><span class="gi-spec-val">RTX 3080 / RX 7800 XT</span></div>
@@ -1350,86 +1692,92 @@ const FAQ_DATA = {
   ]},
 };
 
-// ── WEAPONS ─────────────────────────────────────────────
-let currentWeapon = null;
+// ── WEAPONS (Carousel 布局) ──────────────────────────────
+let currentWepIdx = 0;
 let weaponFilter = 'all';
+let filteredWeapons = [...WEAPONS];
 
-function renderWeaponList(filter) {
-  weaponFilter = filter;
-  const data = filter === 'all' ? WEAPONS : WEAPONS.filter(w => w.type === filter);
-  const list = document.getElementById('weapons-list');
-  list.innerHTML = data.map(w => `
-    <div class="wep-row${currentWeapon && currentWeapon.id===w.id?' selected':''}" onclick="selectWeapon('${w.id}')">
-      <div class="wep-row-icon">${w.icon}</div>
-      <div class="wep-row-info">
-        <div class="wep-row-top">
-          <span class="wep-name">${w.name}</span>
-          <span class="wep-type-badge badge-${w.type}">${w.typeName}</span>
-        </div>
-        <div class="wep-desc">${w.desc}</div>
-      </div>
-      <div class="wep-row-stats">
-        ${miniStat('伤害', w.stats.damage, 70)}
-        ${miniStat('精准', w.stats.accuracy, 50)}
-        ${miniStat('射速', Math.min(w.stats.rof,600), 600)}
-      </div>
-    </div>
-  `).join('');
-}
+function renderWeaponCarousel() {
+  const body = document.getElementById('wep-carousel-body');
+  if(!filteredWeapons.length){body.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">暂无武器</div>';return;}
+  if(currentWepIdx >= filteredWeapons.length) currentWepIdx = 0;
+  const w = filteredWeapons[currentWepIdx];
 
-function miniStat(label, val, max) {
-  const pct = Math.round(val/max*100);
-  return `<div class="mini-stat"><div class="mini-stat-label">${label}</div><div class="mini-stat-bar"><div class="mini-stat-fill" style="width:${pct}%"></div></div></div>`;
-}
-
-function selectWeapon(id) {
-  currentWeapon = WEAPONS.find(w => w.id === id);
-  renderWeaponList(weaponFilter);
-  renderWeaponDetail(currentWeapon);
-}
-
-function renderWeaponDetail(w) {
-  const panel = document.getElementById('wep-detail');
-  panel.innerHTML = `
-    <div class="wdp-header">
-      <div class="wdp-illus">
-        <div style="font-size:64px;z-index:1;position:relative">${w.icon}</div>
-        <div class="wdp-illus-placeholder"><span>官方武器图 · 待填充</span></div>
-      </div>
-      <div class="wdp-name">${w.name}</div>
-      <div class="wdp-sub">${w.desc}</div>
-    </div>
-
-    <div class="wdp-section-title">数据统计</div>
-    <div class="stat-rows">
-      ${detailStat('伤害', w.stats.damage, 70)}
-      ${detailStat('精准', w.stats.accuracy, 50)}
-      ${detailStat('后坐', w.stats.recoil, 100)}
-      ${detailStat('射速', Math.min(w.stats.rof,600), 600, w.stats.rof+'')}
-    </div>
-
-    <div class="wdp-section-title">工作台需求</div>
-    <div class="workbench-req">
-      <div class="wb-icon">🔧</div>
-      <div class="wb-info">
-        <div class="wb-name">${w.workbench.name}</div>
-        <span class="wb-tier">${w.workbench.tier}</span>
-      </div>
-    </div>
-    <div class="tech-prereq mt12">
-      <span class="tech-prereq-icon">🔬</span>
-      <span class="tech-prereq-text">前置科技：${w.techPrereq}</span>
-    </div>
-
-    <div class="wdp-section-title">合成材料</div>
-    <div class="materials">
-      ${w.craft.map(c=>`
-        <div class="mat-row mat-cost-${c.cost}">
-          <div class="mat-left"><span class="mat-icon">${c.icon}</span>${c.name}</div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="mat-qty">×${c.qty}</span>
-            <span class="mat-cost-badge">${c.cost==='high'?'高成本':c.cost==='mid'?'中等':'低成本'}</span>
+  body.innerHTML = `
+    <div class="wep-carousel-main">
+      <div class="wep-showcase">
+        <div class="wep-showcase-img" style="background:linear-gradient(135deg,rgba(232,98,26,.12),#0a0c0f)">
+          <div class="wep-showcase-img-placeholder">
+            <div class="wep-big-icon">${w.icon}</div>
+            <div class="placeholder-text">官方武器图 · 待填充</div>
           </div>
+          <div class="wep-showcase-overlay">
+            <div class="wep-showcase-type" style="color:var(--orange)">
+              <span class="wep-type-badge badge-${w.type}">${w.typeName}</span>
+            </div>
+            <div class="wep-showcase-name">${w.name}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wep-detail-sections">
+        <div class="wep-detail-section">
+          <div class="wep-detail-section-title">武器简介</div>
+          <p class="wep-desc-text">${w.desc}</p>
+          <div class="wep-tags-wrap mt12">
+            <span class="wep-tag-chip">${w.typeName}</span>
+            <span class="wep-tag-chip">${w.workbench.name}</span>
+          </div>
+        </div>
+
+        <div class="wep-detail-section">
+          <div class="wep-detail-section-title">数据统计</div>
+          <div class="stat-rows">
+            ${detailStat('伤害', w.stats.damage, 70)}
+            ${detailStat('精准', w.stats.accuracy, 50)}
+            ${detailStat('后坐', w.stats.recoil, 100)}
+            ${detailStat('射速', Math.min(w.stats.rof,600), 600, w.stats.rof+'')}
+          </div>
+        </div>
+
+        <div class="wep-detail-section">
+          <div class="wep-detail-section-title">工作台需求</div>
+          <div class="workbench-req">
+            <div class="wb-icon">🔧</div>
+            <div class="wb-info">
+              <div class="wb-name">${w.workbench.name}</div>
+              <span class="wb-tier">${w.workbench.tier}</span>
+            </div>
+          </div>
+          <div class="tech-prereq mt12">
+            <span class="tech-prereq-icon">🔬</span>
+            <span class="tech-prereq-text">前置科技：${w.techPrereq}</span>
+          </div>
+        </div>
+
+        <div class="wep-detail-section">
+          <div class="wep-detail-section-title">合成材料</div>
+          <div class="materials">
+            ${w.craft.map(c=>`
+              <div class="mat-row mat-cost-${c.cost}">
+                <div class="mat-left"><span class="mat-icon">${c.icon}</span>${c.name}</div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span class="mat-qty">×${c.qty}</span>
+                  <span class="mat-cost-badge">${c.cost==='high'?'高成本':c.cost==='mid'?'中等':'低成本'}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thumbnail strip -->
+    <div class="wep-strip">
+      ${filteredWeapons.map((fw,i)=>`
+        <div class="wep-thumb${i===currentWepIdx?' active':''}" onclick="selectWep(${i})">
+          <div class="wep-thumb-img">${fw.icon}</div>
+          <div class="wep-thumb-label">${fw.name}</div>
         </div>
       `).join('')}
     </div>
@@ -1445,12 +1793,18 @@ function detailStat(label, val, max, display) {
   </div>`;
 }
 
+function selectWep(idx) {
+  currentWepIdx = idx;
+  renderWeaponCarousel();
+}
+
 function filterWeapons(type, el) {
-  document.querySelectorAll('.filter-bar .chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('#wep-type-filter .tier-chip').forEach(c=>c.classList.remove('active'));
   if(el) el.classList.add('active');
-  currentWeapon = null;
-  renderWeaponList(type);
-  document.getElementById('wep-detail').innerHTML = `<div class="wdp-empty"><div class="wdp-empty-icon">🔫</div><div class="wdp-empty-text">从左侧选择一件武器<br>查看详细数据和合成路径</div></div>`;
+  weaponFilter = type;
+  filteredWeapons = type === 'all' ? [...WEAPONS] : WEAPONS.filter(w => w.type === type);
+  currentWepIdx = 0;
+  renderWeaponCarousel();
 }
 
 function filterAndGoWeapons(type) {
@@ -1644,6 +1998,7 @@ function switchStep(n) {
 }
 
 // ── INIT ─────────────────────────────────────────────────
+// 初始化所有模块
 renderWeaponCarousel();
 renderPoiCarousel();
 renderVideos();
