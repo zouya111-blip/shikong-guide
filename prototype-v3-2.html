@@ -675,6 +675,28 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .psb-inner:focus-within .psb-clear{opacity:1;}
 .psb-clear:hover{color:var(--orange);}
 
+
+/* ════════ 模式对比卡片（新手入门 STEP 1） ════════ */
+.mode-compare-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.mode-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:18px;transition:border-color .2s;}
+.mode-card:hover{border-color:var(--border-bright);}
+.mode-recommended{border-color:var(--orange)!important;background:rgba(232,98,26,.06);}
+.mode-card-hd{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.mode-icon{font-size:24px;flex-shrink:0;}
+.mode-name{font-size:15px;font-weight:800;}
+.mode-rec-badge{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--orange);letter-spacing:1px;margin-top:2px;}
+.mode-attrs{display:flex;flex-direction:column;gap:7px;margin-bottom:12px;}
+.mode-attr{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:12px;}
+.attr-label{color:var(--text-muted);flex-shrink:0;}
+.attr-val{font-weight:600;text-align:right;}
+.attr-val.green{color:var(--green);}
+.attr-val.yellow{color:#f0b429;}
+.attr-val.red{color:#e84040;}
+.mode-tip{font-size:11px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:10px;line-height:1.6;}
+.step-nav-row{display:flex;justify-content:space-between;margin-top:28px;}
+.step-nav-btn{padding:10px 20px;border-radius:var(--r);background:var(--orange);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s;}
+.step-nav-btn:hover{background:#f07030;}
+
 </style>
 </head>
 <body>
@@ -687,7 +709,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   </div>
   <div class="nav-tabs">
     <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏠</span> 新手站</div>
-    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📖</span> 新手入门 <span class="nav-badge">STEP 1-6</span></div>
+    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📖</span> 新手入门 <span class="nav-badge">STEP 1-7</span></div>
     <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🔫</span> 武器图鉴</div>
     <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>📍</span> 据点指南</div>
     <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>🎬</span> 攻略视频</div>
@@ -1296,22 +1318,25 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   <div class="guide-layout">
     <div class="guide-sidebar">
       <div class="sidebar-section-label">新手入门 GUIDE</div>
-      <div class="snav-item active" id="snav-1" onclick="switchStep(1)">
+      <div class="snav-item active" id="snav-0" onclick="switchStep(1)">
+        <div class="snav-num">0</div><div class="snav-text">选择你的首局模式</div>
+      </div>
+      <div class="snav-item" id="snav-1" onclick="switchStep(2)">
         <div class="snav-num">1</div><div class="snav-text">出生后先做什么</div>
       </div>
-      <div class="snav-item" id="snav-2" onclick="switchStep(2)">
+      <div class="snav-item" id="snav-2" onclick="switchStep(3)">
         <div class="snav-num">2</div><div class="snav-text">三条生命线</div>
       </div>
-      <div class="snav-item" id="snav-3" onclick="switchStep(3)">
+      <div class="snav-item" id="snav-3" onclick="switchStep(4)">
         <div class="snav-num">3</div><div class="snav-text">资源收集路线</div>
       </div>
-      <div class="snav-item" id="snav-4" onclick="switchStep(4)">
+      <div class="snav-item" id="snav-4" onclick="switchStep(5)">
         <div class="snav-num">4</div><div class="snav-text">第一个家怎么建</div>
       </div>
-      <div class="snav-item" id="snav-5" onclick="switchStep(5)">
+      <div class="snav-item" id="snav-5" onclick="switchStep(6)">
         <div class="snav-num">5</div><div class="snav-text">武器与战斗入门</div>
       </div>
-      <div class="snav-item" id="snav-6" onclick="switchStep(6)">
+      <div class="snav-item" id="snav-6" onclick="switchStep(7)">
         <div class="snav-num">6</div><div class="snav-text">科技树与变强路径</div>
       </div>
     </div>
@@ -1322,9 +1347,9 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="guide-page-title-row">
           <span class="guide-page-title-icon">🗺️</span>
           <h1 class="guide-page-title">新手入门</h1>
-          <span class="guide-page-badge">STEP 1-6</span>
+          <span class="guide-page-badge">STEP 1-7</span>
         </div>
-        <div class="guide-page-intro">从零出生到站稳脚跟——跟着 6 个步骤，避开 90% 的新手坑。</div>
+        <div class="guide-page-intro">从零出生到站稳脚跟——跟着 7 个步骤，避开 90% 的新手坑。</div>
       </div>
       <!-- Progress -->
       <div class="progress-wrap">
@@ -1335,10 +1360,97 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:17%"></div></div>
       </div>
 
-      <!-- STEP 1 -->
+      <!-- STEP 1 · 选择首局模式 -->
       <div class="step-content active" id="step-1">
         <div class="step-hd">
-          <div class="step-tag">STEP 01 / 06</div>
+          <div class="step-tag">STEP 01 / 07</div>
+          <div>
+            <h2>选择你的首局模式</h2>
+            <div class="step-subtitle">进入游戏的第一个决策——选对模式，少走弯路</div>
+          </div>
+        </div>
+
+        <p style="color:var(--text-dim);line-height:1.8;margin-bottom:24px;">进入服务器前，你需要选择一个游戏模式。不同模式的<strong>死亡惩罚、结算周期和抄家规则</strong>差异很大。新手<strong>强烈推荐选择庇护模式</strong>，先把核心机制摸清楚。</p>
+
+        <div class="mode-compare-grid">
+          <!-- 庇护模式（推荐） -->
+          <div class="mode-card mode-recommended">
+            <div class="mode-card-hd">
+              <span class="mode-icon">🛡️</span>
+              <div>
+                <div class="mode-name">庇护模式</div>
+                <div class="mode-rec-badge">✦ 新手推荐</div>
+              </div>
+            </div>
+            <div class="mode-attrs">
+              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">10天</span></div>
+              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val green">掉落部分物资</span></div>
+              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val green">领地默认无敌</span></div>
+              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val green">50% 资源</span></div>
+            </div>
+            <div class="mode-tip">情报领地默认受保护，主动报名才解除。死亡惩罚最低，机制最宽容。</div>
+          </div>
+
+          <!-- 标准模式 -->
+          <div class="mode-card">
+            <div class="mode-card-hd">
+              <span class="mode-icon">⚔️</span>
+              <div><div class="mode-name">标准模式</div></div>
+            </div>
+            <div class="mode-attrs">
+              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">7天</span></div>
+              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val green">掉落部分物资</span></div>
+              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val yellow">第1-2日禁止，之后每天4小时可抄</span></div>
+              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val green">50% 资源</span></div>
+            </div>
+            <div class="mode-tip">常规体验，适合熟悉庇护后进阶。</div>
+          </div>
+
+          <!-- 进阶模式 -->
+          <div class="mode-card">
+            <div class="mode-card-hd">
+              <span class="mode-icon">🔱</span>
+              <div><div class="mode-name">进阶模式</div></div>
+            </div>
+            <div class="mode-attrs">
+              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">6天</span></div>
+              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val red">掉落所有物资</span></div>
+              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val red">第1日禁止，之后每天12小时可抄</span></div>
+              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val yellow">第3日前50%，之后不保护</span></div>
+            </div>
+            <div class="mode-tip">高压生存，不建议新手初次体验。</div>
+          </div>
+
+          <!-- 挑战模式 -->
+          <div class="mode-card">
+            <div class="mode-card-hd">
+              <span class="mode-icon">💀</span>
+              <div><div class="mode-name">挑战模式</div></div>
+            </div>
+            <div class="mode-attrs">
+              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">5天</span></div>
+              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val red">掉落所有物资</span></div>
+              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val red">全天可抄家</span></div>
+              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val red">无保护</span></div>
+            </div>
+            <div class="mode-tip">最高强度，硬核玩法，损失极大。</div>
+          </div>
+        </div>
+
+        <div class="tip-box" style="margin-top:24px;">
+          <div class="tip-box-icon">💡</div>
+          <div class="tip-box-text" style="color:var(--text)"><strong style="color:var(--green)">新手建议：</strong>第一局选<strong>庇护模式</strong>，死亡只掉部分物资，情报领地默认受保护，可以安心探索和建家，把7个核心步骤走完再考虑升级难度。</div>
+        </div>
+
+        <div class="step-nav-row">
+          <div></div>
+          <button class="step-nav-btn" onclick="switchStep(2);document.getElementById('snav-1').click()">下一步：出生后先做什么 →</button>
+        </div>
+      </div>
+
+      <div class="step-content" id="step-2">
+        <div class="step-hd">
+          <div class="step-tag">STEP 02 / 07</div>
           <div>
             <h2>出生后先做什么</h2>
             <div class="step-subtitle">5 分钟内站稳脚跟的关键动作</div>
@@ -1378,14 +1490,14 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         </div>
         <div class="step-nav-btns">
           <button class="snbtn" disabled>← 上一步</button>
-          <button class="snbtn primary" onclick="switchStep(2)">三条生命线 →</button>
+          <button class="snbtn primary" onclick="switchStep(3)">三条生命线 →</button>
         </div>
       </div>
 
       <!-- STEP 2 -->
-      <div class="step-content" id="step-2">
+      <div class="step-content" id="step-3">
         <div class="step-hd">
-          <div class="step-tag">STEP 02 / 06</div>
+          <div class="step-tag">STEP 03 / 07</div>
           <div>
             <h2>三条生命线</h2>
             <div class="step-subtitle">任何一条归零都会让你立刻陷入危机</div>
@@ -1427,15 +1539,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(1)">← 出生后先做什么</button>
-          <button class="snbtn primary" onclick="switchStep(3)">资源收集 →</button>
+          <button class="snbtn" onclick="switchStep(2)">← 出生后先做什么</button>
+          <button class="snbtn primary" onclick="switchStep(4)">资源收集 →</button>
         </div>
       </div>
 
       <!-- STEP 3 -->
-      <div class="step-content" id="step-3">
+      <div class="step-content" id="step-4">
         <div class="step-hd">
-          <div class="step-tag">STEP 03 / 06</div>
+          <div class="step-tag">STEP 04 / 07</div>
           <div>
             <h2>资源收集路线</h2>
             <div class="step-subtitle">知道去哪收集，比乱跑效率高 3 倍</div>
@@ -1464,15 +1576,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(2)">← 三条生命线</button>
-          <button class="snbtn primary" onclick="switchStep(4)">建造第一个家 →</button>
+          <button class="snbtn" onclick="switchStep(3)">← 三条生命线</button>
+          <button class="snbtn primary" onclick="switchStep(5)">建造第一个家 →</button>
         </div>
       </div>
 
       <!-- STEP 4 -->
-      <div class="step-content" id="step-4">
+      <div class="step-content" id="step-5">
         <div class="step-hd">
-          <div class="step-tag">STEP 04 / 06</div>
+          <div class="step-tag">STEP 05 / 07</div>
           <div>
             <h2>第一个家怎么建</h2>
             <div class="step-subtitle">不是越大越好，是够用、不被偷</div>
@@ -1522,15 +1634,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         </div>
 
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(3)">← 资源收集</button>
-          <button class="snbtn primary" onclick="switchStep(5)">武器与战斗 →</button>
+          <button class="snbtn" onclick="switchStep(4)">← 资源收集</button>
+          <button class="snbtn primary" onclick="switchStep(6)">武器与战斗 →</button>
         </div>
       </div>
 
       <!-- STEP 5 -->
-      <div class="step-content" id="step-5">
+      <div class="step-content" id="step-6">
         <div class="step-hd">
-          <div class="step-tag">STEP 05 / 06</div>
+          <div class="step-tag">STEP 06 / 07</div>
           <div>
             <h2>武器与战斗入门</h2>
             <div class="step-subtitle">先活下来，再考虑打别人</div>
@@ -1568,15 +1680,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(4)">← 建造第一个家</button>
-          <button class="snbtn primary" onclick="switchStep(6)">科技树 →</button>
+          <button class="snbtn" onclick="switchStep(5)">← 建造第一个家</button>
+          <button class="snbtn primary" onclick="switchStep(7)">科技树 →</button>
         </div>
       </div>
 
       <!-- STEP 6 -->
-      <div class="step-content" id="step-6">
+      <div class="step-content" id="step-7">
         <div class="step-hd">
-          <div class="step-tag">STEP 06 / 06</div>
+          <div class="step-tag">STEP 07 / 07</div>
           <div>
             <h2>科技树与变强路径</h2>
             <div class="step-subtitle">废料怎么花，决定你的发育速度</div>
@@ -1629,7 +1741,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(5)">← 武器与战斗</button>
+          <button class="snbtn" onclick="switchStep(6)">← 武器与战斗</button>
           <button class="snbtn primary" onclick="switchPage('weapons')">查看武器图鉴 →</button>
         </div>
       </div>
@@ -1882,9 +1994,9 @@ const POIS = [
 const TERMS = {
   survive: { label:'生存', icon:'❤️', terms:[
     {icon:'❤️', name:'生命值（HP）', desc:'角色的存活指标。被攻击、辐射、饥饿、溺水等都会扣除生命值。生命值归零即倒地，通过保持口渴值和饱腹值、使用绷带/医疗针、或在舒适环境中休息来恢复。'},
-    {icon:'💧', name:'口渴值', desc:'角色水分状态。口渴值归零后无法奔跑，并会持续扣血。在河流直接喝水或用水瓶储水补充。'},
+    {icon:'💧', name:'口渴值', desc:'角色水分状态。口渴值随时间缓慢减少，通过淡水或食物补充。口渴值归零后角色会失去奔跑能力。可在河流直接喝水，或用水瓶储水随身携带。'},
     {icon:'🍗', name:'饱腹值', desc:'角色进食状态。饱腹值归零后会持续扣血。可从植物（蘑菇/南瓜/仙人掌）、狩猎动物获取食物。'},
-    {icon:'☢️', name:'辐射', desc:'地图特定区域存在的持续伤害。需穿防护服才能安全进入辐射区，辐射区通常含有稀有物资。'},
+    {icon:'☢️', name:'辐射', desc:'地图特定区域存在的持续伤害。需穿着防护服或使用抗辐射药物才能安全进入辐射区，辐射区通常含有稀有物资，但风险较高。'},
     {icon:'🔥', name:'舒适度', desc:'火源、家具等给角色提供的加成状态，在高舒适度环境中自动加速回血。'},
   ]},
   base: { label:'建造', icon:'🏠', terms:[
@@ -1896,13 +2008,13 @@ const TERMS = {
   ]},
   combat: { label:'战斗', icon:'⚔️', terms:[
     {icon:'🌿', name:'科技树', desc:'游戏内的成长系统，用废料解锁各种装备和建筑的解锁权。官方建议前期优先解锁战斗模块，尽早获得自动化枪械。'},
-    {icon:'🪙', name:'废料', desc:'游戏的硬通货，用于解锁科技树、在安全区购买物资。主要通过搜刮物资箱、分解多余材料获得。'},
+    {icon:'🪙', name:'废料', desc:'荒岛上的硬通货。可在前哨站等中立区域购买物资、武器甚至载具；也可用于解锁科技树。主要来源：搜刮地图中散落的物资、分解多余材料。'},
     {icon:'💀', name:'倒地', desc:'生命值归零后进入倒地状态，队友可在规定时间内将你救起；超时或被再次攻击则彻底淘汰。'},
     {icon:'💣', name:'爆炸物', desc:'用于破坏建筑结构的道具（炸药包、火箭弹等），解锁对应科技后可合成。不同材质的建筑耐久不同，金属墙需要多发才能破开。'},
   ]},
   world: { label:'世界', icon:'🗺️', terms:[
     {icon:'🏚️', name:'据点（遗迹）', desc:'地图上可探索的特定区域，分一到四级。一级：初期发育必去，威胁低；二至四级：含高价值物资，有辐射和敌对NPC，竞争激烈。'},
-    {icon:'🏪', name:'安全区', desc:'前哨战、强盗营地、渔村等特殊据点，禁止武器使用，玩家可在此交易物资。'},
+    {icon:'🏪', name:'安全区', desc:'前哨站、强盗营地、渔村等中立区域，玩家可在此购买物资、武器，甚至载具，是安全交易和补给的重要场所。'},
     {icon:'🤖', name:'科学家NPC', desc:'驻守在遗迹的AI敌人，会主动攻击靠近的玩家，击败后可掉落高级装备。'},
     {icon:'📦', name:'空投', desc:'游戏中定时出现的高价值物资补给，会吸引大量玩家争夺，装备不足时建议观望捡漏。'},
     {icon:'📋', name:'情报文件', desc:'在战利品箱中获取，存入情报站后缓慢破译，积累情报币用于提升情报等级，解锁独特高价值装备。'},
@@ -2438,9 +2550,15 @@ function switchStep(n) {
   document.querySelectorAll('.step-content').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.snav-item').forEach(s=>s.classList.remove('active','done'));
   document.getElementById('step-'+n).classList.add('active');
-  document.getElementById('snav-'+n).classList.add('active');
-  for(let i=1;i<n;i++) document.getElementById('snav-'+i).classList.add('done');
-  const pct = Math.round((n/6)*100);
+  // snav-0 对应 step-1，snav-1 对应 step-2，以此类推
+  const snavId = 'snav-'+(n-1);
+  const snavEl = document.getElementById(snavId);
+  if(snavEl) snavEl.classList.add('active');
+  for(let i=0;i<n-1;i++){
+    const s=document.getElementById('snav-'+i);
+    if(s) s.classList.add('done');
+  }
+  const pct = Math.round((n/7)*100);
   document.getElementById('progress-fill').style.width = pct+'%';
   document.getElementById('progress-pct').textContent = pct+'%';
   currentStep = n;
