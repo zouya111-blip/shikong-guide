@@ -128,7 +128,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .snav-item.done .snav-text{color:var(--text-dim);}
 
 /* Guide main */
-.guide-main{padding:40px 48px;width:100%;}
+.guide-main{padding:40px 48px;max-width:800px;width:100%;margin:0 auto;}
 .progress-wrap{margin-bottom:28px;}
 .progress-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .progress-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:1px;}
@@ -143,7 +143,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .step-subtitle{margin-top:7px;font-size:13px;color:var(--text-dim);font-style:italic;}
 
 /* Graphic cards inside steps */
-.info-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0;}
+.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
 .info-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:20px 16px;text-align:center;}
 .info-card-icon{font-size:28px;margin-bottom:8px;display:block;}
 .info-card-title{font-size:12px;font-weight:700;margin-bottom:5px;}
@@ -157,7 +157,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .sg-step.done .sg-dot{background:var(--green);border-color:var(--green);}
 .sg-label{font-size:10px;color:var(--text-dim);text-align:center;line-height:1.4;}
 
-.resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:16px 0;}
+.resource-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0;}
 .res-row{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;}
 .res-icon{font-size:22px;flex-shrink:0;}
 .res-info{}
@@ -1565,12 +1565,18 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   </div>
   <div class="videos-container">
     <div class="video-tabs-bar">
-      <button class="vst-btn active" data-tab="all" onclick="switchVideoTab('all',this)">全部视频</button>
-      <button class="vst-btn" data-tab="newbie" onclick="switchVideoTab('newbie',this)">🌱 新手必看</button>
-      <button class="vst-btn" data-tab="juchang" onclick="switchVideoTab('juchang',this)">失控小剧场</button>
-      <button class="vst-btn" data-tab="48h" onclick="switchVideoTab('48h',this)">失控48小时</button>
+      <button class="vst-btn active" data-tab="official" onclick="switchVideoTab('official',this)">🎮 官方攻略视频</button>
+      <button class="vst-btn" data-tab="player" onclick="switchVideoTab('player',this)">👥 玩家攻略</button>
     </div>
     <div id="video-grid-main" class="video-grid-main"></div>
+    <div class="video-subtab" id="vtab-player" style="display:none;">
+      <div class="placeholder-grid">
+        <div class="ph-card"><div class="ph-icon">🎮</div><div class="ph-text"><strong style="color:var(--text)">玩家攻略视频</strong><br>即将上线</div></div>
+        <div class="ph-card"><div class="ph-icon">🏠</div><div class="ph-text"><strong style="color:var(--text)">建家技巧分享</strong><br>即将上线</div></div>
+        <div class="ph-card"><div class="ph-icon">⚔️</div><div class="ph-text"><strong style="color:var(--text)">PVP 实战录像</strong><br>即将上线</div></div>
+        <div class="ph-card" style="border-color:var(--orange);color:var(--orange)"><div class="ph-icon">📤</div><div class="ph-text"><strong>投稿你的攻略</strong><br>联系官方社群</div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1974,64 +1980,38 @@ function goToPoi(tier) {
 
 // ── VIDEOS ───────────────────────────────────────────────
 const VIDEO_DATA = [
-  {vid:'k12596ppnih',title:"这！才！是！真！正！的！音！乐！",cover:"http://puui.qpic.cn/vpic_cover/k12596ppnih/k12596ppnih_hz.jpg/640",date:'2026-03-21',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/k12596ppnih.html'},
-  {vid:'v12595o62g4',title:"【小黄监工日记】外挂非组全靠边，荒岛安全有底线！",cover:"http://puui.qpic.cn/vpic_cover/v12595o62g4/v12595o62g4_hz.jpg/640",date:'2026-03-11',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/v12595o62g4.html'},
-  {vid:'h1258qfk58o',title:"走过路过别错过！三月三加倍周，福利加码，高燃来袭！",cover:"http://puui.qpic.cn/vpic_cover/h1258qfk58o/h1258qfk58o_hz.jpg/640",date:'2026-03-03',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/h1258qfk58o.html'},
-  {vid:'y12571shcd4',title:"这爆炸物能处吗？小黄实测，看完你再冲！",cover:"http://puui.qpic.cn/vpic_cover/y12571shcd4/y12571shcd4_hz.jpg/640",date:'2026-02-14',cat:"失控小剧场",isNewbie:true,url:'https://v.qq.com/x/page/y12571shcd4.html'},
-  {vid:'z1257bwrzvs',title:"【失控进化】开发者日志：策划新春祝福，福利加倍！",cover:"http://puui.qpic.cn/vpic_cover/z1257bwrzvs/z1257bwrzvs_hz.jpg/640",date:'2026-02-11',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/z1257bwrzvs.html'},
-  {vid:'k1257l07wx1',title:"全新传说级建筑皮肤【烽火江山】现已上架！",cover:"http://puui.qpic.cn/vpic_cover/k1257l07wx1/k1257l07wx1_hz.jpg/640",date:'2026-02-06',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/k1257l07wx1.html'},
-  {vid:'i1257l0ly03',title:"《失控进化》终极测试实机发布丨2月3日马上开测",cover:"http://puui.qpic.cn/vpic_cover/i1257l0ly03/i1257l0ly03_hz.jpg/640",date:'2026-02-02',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/i1257l0ly03.html'},
-  {vid:'h1257wonj3g',title:"小黄出道！要签名合照的，通通安排！",cover:"http://puui.qpic.cn/vpic_cover/h1257wonj3g/h1257wonj3g_hz.jpg/640",date:'2026-01-31',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/h1257wonj3g.html'},
-  {vid:'u1257dr91j8',title:"《失控进化》终测前瞻直播回顾｜2月3日马上开测",cover:"http://puui.qpic.cn/vpic_cover/u1257dr91j8/u1257dr91j8_hz.jpg/640",date:'2026-01-27',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/u1257dr91j8.html'},
-  {vid:'i1256w8orqs',title:"我！在荒岛等着你回来~",cover:"http://puui.qpic.cn/vpic_cover/i1256w8orqs/i1256w8orqs_hz.jpg/640",date:'2026-01-24',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/i1256w8orqs.html'},
-  {vid:'g12564pt9c6',title:"【实机前瞻】第三弹丨段位奖励和永久技巧我全都要！",cover:"http://puui.qpic.cn/vpic_cover/g12564pt9c6/g12564pt9c6_hz.jpg/640",date:'2026-01-19',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/g12564pt9c6.html'},
-  {vid:'g1256p9uxc8',title:"【实机前瞻】爆料第二弹丨局内品质提升，你想知道的都在这里",cover:"http://puui.qpic.cn/vpic_cover/g1256p9uxc8/g1256p9uxc8_hz.jpg/640",date:'2026-01-15',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/g1256p9uxc8.html'},
-  {vid:'g1256c6uj4p',title:"「实机前瞻」爆料第一弹丨终极测试大更新，还有什么惊喜是你不知道的？",cover:"http://puui.qpic.cn/vpic_cover/g1256c6uj4p/g1256c6uj4p_hz.jpg/640",date:'2026-01-08',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/g1256c6uj4p.html'},
-  {vid:'c1255pqoxzj',title:"【失控进化】开发者日志：终极测试信息速递（内含机密）",cover:"http://puui.qpic.cn/vpic_cover/c1255pqoxzj/c1255pqoxzj_hz.jpg/640",date:'2025-12-18',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/c1255pqoxzj.html'},
-  {vid:'w1254ude9d5',title:"1分30秒，带你回顾登岛测试的趣味数据！",cover:"http://puui.qpic.cn/vpic_cover/w1254ude9d5/w1254ude9d5_hz.jpg/640",date:'2025-11-26',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/w1254ude9d5.html'},
-  {vid:'k1224me29cv',title:" 拆拆拆拆拆...个不停",cover:"http://puui.qpic.cn/vpic_cover/k1224me29cv/k1224me29cv_hz.jpg/640",date:'2025-11-26',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/k1224me29cv.html'},
-  {vid:'y1254sk1owy',title:"【失控进化】开发者日志：登岛测试总结及未来规划",cover:"http://puui.qpic.cn/vpic_cover/y1254sk1owy/y1254sk1owy_hz.jpg/640",date:'2025-11-24',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/y1254sk1owy.html'},
-  {vid:'s1254703sgb',title:"玩家投稿丨在失控进化，可以不活，但是不能没活！",cover:"http://puui.qpic.cn/vpic_cover/s1254703sgb/s1254703sgb_hz.jpg/640",date:'2025-11-17',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/s1254703sgb.html'},
-  {vid:'f12539l8iyc',title:"高雅人士，失控进化游玩中",cover:"http://puui.qpic.cn/vpic_cover/f12539l8iyc/f12539l8iyc_hz.jpg/640",date:'2025-11-08',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/f12539l8iyc.html'},
-  {vid:'y12534idd3v',title:"一天结束时，游戏内的世界会发生什么？",cover:"http://puui.qpic.cn/vpic_cover/y12534idd3v/y12534idd3v_hz.jpg/640",date:'2025-10-28',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/y12534idd3v.html'},
-  {vid:'s1253ljyl54',title:"当我刚玩失控进化的100种死法",cover:"http://puui.qpic.cn/vpic_cover/s1253ljyl54/s1253ljyl54_hz.jpg/640",date:'2025-10-23',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/s1253ljyl54.html'},
-  {vid:'x1252ue61n9',title:"失控48小时丨直播全程回顾！",cover:"http://puui.qpic.cn/vpic_cover/x1252ue61n9/x1252ue61n9_hz.jpg/640",date:'2025-10-20',cat:"失控48小时",isNewbie:false,url:'https://v.qq.com/x/page/x1252ue61n9.html'},
-  {vid:'s1252sn9hha',title:"失控牛人千千万，谁是荒岛NO.1？",cover:"http://puui.qpic.cn/vpic_cover/s1252sn9hha/s1252sn9hha_hz.jpg/640",date:'2025-10-18',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/s1252sn9hha.html'},
-  {vid:'z1252tlgbkq',title:"【小黄监工日记】汗水打湿鼠标垫，建议反馈包听劝",cover:"http://puui.qpic.cn/vpic_cover/z1252tlgbkq/z1252tlgbkq_hz.jpg/640",date:'2025-10-17',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/z1252tlgbkq.html'},
-  {vid:'l1252zvlxf6',title:"失控48小时 | 史诗级攻防大战，完美落幕！",cover:"http://puui.qpic.cn/vpic_cover/l1252zvlxf6/l1252zvlxf6_hz.jpg/640",date:'2025-10-15',cat:"失控48小时",isNewbie:true,url:'https://v.qq.com/x/page/l1252zvlxf6.html'},
-  {vid:'l1252i180tq',title:"失控48小时，一个注定不安稳的夜晚",cover:"http://puui.qpic.cn/vpic_cover/l1252i180tq/l1252i180tq_hz.jpg/640",date:'2025-10-15',cat:"失控48小时",isNewbie:false,url:'https://v.qq.com/x/page/l1252i180tq.html'},
-  {vid:'x1251ncbnq1',title:"失控48小时丨激情时刻回顾！",cover:"http://puui.qpic.cn/vpic_cover/x1251ncbnq1/x1251ncbnq1_hz.jpg/640",date:'2025-10-13',cat:"失控48小时",isNewbie:false,url:'https://v.qq.com/x/page/x1251ncbnq1.html'},
-  {vid:'z1251slx067',title:"失控48小时 | 腐蚀永不停止，失控才是常态！",cover:"http://puui.qpic.cn/vpic_cover/z1251slx067/z1251slx067_hz.jpg/640",date:'2025-10-13',cat:"失控48小时",isNewbie:false,url:'https://v.qq.com/x/page/z1251slx067.html'},
-  {vid:'w1251chx7ex',title:"失控48小时｜主播以身布局，精彩敬请期待",cover:"http://puui.qpic.cn/vpic_cover/w1251chx7ex/w1251chx7ex_hz.jpg/640",date:'2025-10-12',cat:"失控48小时",isNewbie:false,url:'https://v.qq.com/x/page/w1251chx7ex.html'},
-  {vid:'m1250n730lf',title:"失控48小时：不看血亏的生存高能瞬间",cover:"http://puui.qpic.cn/vpic_cover/m1250n730lf/m1250n730lf_hz.jpg/640",date:'2025-10-11',cat:"失控48小时",isNewbie:true,url:'https://v.qq.com/x/page/m1250n730lf.html'},
-  {vid:'l1250v6snis',title:"假如我生活在失控进化里",cover:"http://puui.qpic.cn/vpic_cover/l1250v6snis/l1250v6snis_hz.jpg/640",date:'2025-10-11',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/l1250v6snis.html'},
-  {vid:'l1238auv2q1',title:"没见过这么野的生存对抗游戏——「登岛测试」今日开启！",cover:"http://puui.qpic.cn/vpic_cover/l1238auv2q1/l1238auv2q1_hz.jpg/640",date:'2025-09-26',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/l1238auv2q1.html'},
-  {vid:'x12373jiin3',title:"《失控进化》「登岛测试」 前瞻直播视频回顾",cover:"http://puui.qpic.cn/vpic_cover/x12373jiin3/x12373jiin3_hz.jpg/640",date:'2025-09-24',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/x12373jiin3.html'},
-  {vid:'v1231a4e9k6',title:"「实机前瞻」体验优化篇丨测试迭代抢先看，您的声音已被采纳！",cover:"http://puui.qpic.cn/vpic_cover/v1231a4e9k6/v1231a4e9k6_hz.jpg/640",date:'2025-09-15',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/v1231a4e9k6.html'},
-  {vid:'p1224k5t09c',title:"「实机前瞻」系统更新篇丨登岛测试更新内容先睹为快!",cover:"http://puui.qpic.cn/vpic_cover/p1224k5t09c/p1224k5t09c_hz.jpg/640",date:'2025-09-04',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/p1224k5t09c.html'},
-  {vid:'w1224tphzn2',title:"「实机前瞻」玩法更新篇丨艾特你的登岛搭子一起来看",cover:"http://puui.qpic.cn/vpic_cover/w1224tphzn2/w1224tphzn2_hz.jpg/640",date:'2025-09-04',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/w1224tphzn2.html'},
-  {vid:'t12245ex1gg',title:"坏~老六得了MVP！",cover:"http://puui.qpic.cn/vpic_cover/t12245ex1gg/t12245ex1gg_hz.jpg/640",date:'2025-09-04',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/t12245ex1gg.html'},
-  {vid:'r1224oo7bou',title:"好悬没给我基地炸开线",cover:"http://puui.qpic.cn/vpic_cover/r1224oo7bou/r1224oo7bou_hz.jpg/640",date:'2025-09-04',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/r1224oo7bou.html'},
-  {vid:'l3091384wm1',title:"《失控进化》实机PV | 登岛搜打拆启动！",cover:"http://puui.qpic.cn/vpic_cover/l3091384wm1/l3091384wm1_hz.jpg/640",date:'2025-06-12',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/l3091384wm1.html'},
-  {vid:'g30928294gx',title:"《失控进化》一手游戏猛料 | 策划直面玩家拷问",cover:"http://puui.qpic.cn/vpic_cover/g30928294gx/g30928294gx_hz.jpg/640",date:'2025-06-12',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/g30928294gx.html'},
-  {vid:'h3092qjfecf',title:"《失控进化》幕后花絮 | 策划偷哭 就想说点心里话！",cover:"http://puui.qpic.cn/vpic_cover/h3092qjfecf/h3092qjfecf_hz.jpg/640",date:'2025-06-12',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/h3092qjfecf.html'},
-  {vid:'s3086uy76r2',title:"Rust正版玩法授权 | 《失控进化》首曝PV发布",cover:"http://puui.qpic.cn/vpic_cover/s3086uy76r2/s3086uy76r2_hz.jpg/640",date:'2025-06-12',cat:"攻略视频",isNewbie:true,url:'https://v.qq.com/x/page/s3086uy76r2.html'},
-  {vid:'m3092bw8lf5',title:"《失控进化》腾讯游戏发布会爆料 | 新游评审团出击！",cover:"http://puui.qpic.cn/vpic_cover/m3092bw8lf5/m3092bw8lf5_hz.jpg/640",date:'2025-06-12',cat:"攻略视频",isNewbie:false,url:'https://v.qq.com/x/page/m3092bw8lf5.html'},
-  {vid:'b3091ssvh87',title:"拆拆拆拆拆...个不停 ",cover:"http://puui.qpic.cn/vpic_cover/b3091ssvh87/b3091ssvh87_hz.jpg/640",date:'2025-06-12',cat:"失控小剧场",isNewbie:false,url:'https://v.qq.com/x/page/b3091ssvh87.html'}
+  {vid:'v12595o62g4',title:"【小黄监工日记】外挂非组全靠边，荒岛安全有底线！",cover:"http://puui.qpic.cn/vpic_cover/v12595o62g4/v12595o62g4_hz.jpg/640",date:'2026-03-11',url:'https://v.qq.com/x/page/v12595o62g4.html'},
+  {vid:'h1258qfk58o',title:"走过路过别错过！三月三加倍周，福利加码，高燃来袭！",cover:"http://puui.qpic.cn/vpic_cover/h1258qfk58o/h1258qfk58o_hz.jpg/640",date:'2026-03-03',url:'https://v.qq.com/x/page/h1258qfk58o.html'},
+  {vid:'z1257bwrzvs',title:"【失控进化】开发者日志：策划新春祝福，福利加倍！",cover:"http://puui.qpic.cn/vpic_cover/z1257bwrzvs/z1257bwrzvs_hz.jpg/640",date:'2026-02-11',url:'https://v.qq.com/x/page/z1257bwrzvs.html'},
+  {vid:'k1257l07wx1',title:"全新传说级建筑皮肤【烽火江山】现已上架！",cover:"http://puui.qpic.cn/vpic_cover/k1257l07wx1/k1257l07wx1_hz.jpg/640",date:'2026-02-06',url:'https://v.qq.com/x/page/k1257l07wx1.html'},
+  {vid:'i1257l0ly03',title:"《失控进化》终极测试实机发布丨2月3日马上开测",cover:"http://puui.qpic.cn/vpic_cover/i1257l0ly03/i1257l0ly03_hz.jpg/640",date:'2026-02-02',url:'https://v.qq.com/x/page/i1257l0ly03.html'},
+  {vid:'u1257dr91j8',title:"《失控进化》终测前瞻直播回顾｜2月3日马上开测",cover:"http://puui.qpic.cn/vpic_cover/u1257dr91j8/u1257dr91j8_hz.jpg/640",date:'2026-01-27',url:'https://v.qq.com/x/page/u1257dr91j8.html'},
+  {vid:'g12564pt9c6',title:"【实机前瞻】第三弹丨段位奖励和永久技巧我全都要！",cover:"http://puui.qpic.cn/vpic_cover/g12564pt9c6/g12564pt9c6_hz.jpg/640",date:'2026-01-19',url:'https://v.qq.com/x/page/g12564pt9c6.html'},
+  {vid:'g1256p9uxc8',title:"【实机前瞻】爆料第二弹丨局内品质提升，你想知道的都在这里",cover:"http://puui.qpic.cn/vpic_cover/g1256p9uxc8/g1256p9uxc8_hz.jpg/640",date:'2026-01-15',url:'https://v.qq.com/x/page/g1256p9uxc8.html'},
+  {vid:'g1256c6uj4p',title:"「实机前瞻」爆料第一弹丨终极测试大更新，还有什么惊喜是你不知道的？",cover:"http://puui.qpic.cn/vpic_cover/g1256c6uj4p/g1256c6uj4p_hz.jpg/640",date:'2026-01-08',url:'https://v.qq.com/x/page/g1256c6uj4p.html'},
+  {vid:'c1255pqoxzj',title:"【失控进化】开发者日志：终极测试信息速递（内含机密）",cover:"http://puui.qpic.cn/vpic_cover/c1255pqoxzj/c1255pqoxzj_hz.jpg/640",date:'2025-12-18',url:'https://v.qq.com/x/page/c1255pqoxzj.html'},
+  {vid:'w1254ude9d5',title:"1分30秒，带你回顾登岛测试的趣味数据！",cover:"http://puui.qpic.cn/vpic_cover/w1254ude9d5/w1254ude9d5_hz.jpg/640",date:'2025-11-26',url:'https://v.qq.com/x/page/w1254ude9d5.html'},
+  {vid:'y1254sk1owy',title:"【失控进化】开发者日志：登岛测试总结及未来规划",cover:"http://puui.qpic.cn/vpic_cover/y1254sk1owy/y1254sk1owy_hz.jpg/640",date:'2025-11-24',url:'https://v.qq.com/x/page/y1254sk1owy.html'},
+  {vid:'s1254703sgb',title:"玩家投稿丨在失控进化，可以不活，但是不能没活！",cover:"http://puui.qpic.cn/vpic_cover/s1254703sgb/s1254703sgb_hz.jpg/640",date:'2025-11-17',url:'https://v.qq.com/x/page/s1254703sgb.html'},
+  {vid:'z1252tlgbkq',title:"【小黄监工日记】汗水打湿鼠标垫，建议反馈包听劝",cover:"http://puui.qpic.cn/vpic_cover/z1252tlgbkq/z1252tlgbkq_hz.jpg/640",date:'2025-10-17',url:'https://v.qq.com/x/page/z1252tlgbkq.html'},
+  {vid:'l1238auv2q1',title:"没见过这么野的生存对抗游戏——「登岛测试」今日开启！",cover:"http://puui.qpic.cn/vpic_cover/l1238auv2q1/l1238auv2q1_hz.jpg/640",date:'2025-09-26',url:'https://v.qq.com/x/page/l1238auv2q1.html'},
+  {vid:'x12373jiin3',title:"《失控进化》「登岛测试」 前瞻直播视频回顾",cover:"http://puui.qpic.cn/vpic_cover/x12373jiin3/x12373jiin3_hz.jpg/640",date:'2025-09-24',url:'https://v.qq.com/x/page/x12373jiin3.html'},
+  {vid:'v1231a4e9k6',title:"「实机前瞻」体验优化篇丨测试迭代抢先看，您的声音已被采纳！",cover:"http://puui.qpic.cn/vpic_cover/v1231a4e9k6/v1231a4e9k6_hz.jpg/640",date:'2025-09-15',url:'https://v.qq.com/x/page/v1231a4e9k6.html'},
+  {vid:'p1224k5t09c',title:"「实机前瞻」系统更新篇丨登岛测试更新内容先睹为快!",cover:"http://puui.qpic.cn/vpic_cover/p1224k5t09c/p1224k5t09c_hz.jpg/640",date:'2025-09-04',url:'https://v.qq.com/x/page/p1224k5t09c.html'},
+  {vid:'w1224tphzn2',title:"「实机前瞻」玩法更新篇丨艾特你的登岛搭子一起来看",cover:"http://puui.qpic.cn/vpic_cover/w1224tphzn2/w1224tphzn2_hz.jpg/640",date:'2025-09-04',url:'https://v.qq.com/x/page/w1224tphzn2.html'},
+  {vid:'l3091384wm1',title:"《失控进化》实机PV | 登岛搜打拆启动！",cover:"http://puui.qpic.cn/vpic_cover/l3091384wm1/l3091384wm1_hz.jpg/640",date:'2025-06-12',url:'https://v.qq.com/x/page/l3091384wm1.html'},
+  {vid:'g30928294gx',title:"《失控进化》一手游戏猛料 | 策划直面玩家拷问",cover:"http://puui.qpic.cn/vpic_cover/g30928294gx/g30928294gx_hz.jpg/640",date:'2025-06-12',url:'https://v.qq.com/x/page/g30928294gx.html'},
+  {vid:'h3092qjfecf',title:"《失控进化》幕后花絮 | 策划偷哭 就想说点心里话！",cover:"http://puui.qpic.cn/vpic_cover/h3092qjfecf/h3092qjfecf_hz.jpg/640",date:'2025-06-12',url:'https://v.qq.com/x/page/h3092qjfecf.html'},
+  {vid:'s3086uy76r2',title:"Rust正版玩法授权 | 《失控进化》首曝PV发布",cover:"http://puui.qpic.cn/vpic_cover/s3086uy76r2/s3086uy76r2_hz.jpg/640",date:'2025-06-12',url:'https://v.qq.com/x/page/s3086uy76r2.html'},
+  {vid:'m3092bw8lf5',title:"《失控进化》腾讯游戏发布会爆料 | 新游评审团出击！",cover:"http://puui.qpic.cn/vpic_cover/m3092bw8lf5/m3092bw8lf5_hz.jpg/640",date:'2025-06-12',url:'https://v.qq.com/x/page/m3092bw8lf5.html'}
 ];
 
 function renderVideos() {
-  const btn = document.querySelector('.vst-btn.active');
-  const tab = btn ? btn.dataset.tab : 'all';
-  renderVideoGrid(tab);
+  renderVideoGrid('official');
 }
 
 function renderVideoGrid(tab) {
-  let filtered;
-  if(tab === 'newbie')      filtered = VIDEO_DATA.filter(v => v.isNewbie);
-  else if(tab === 'juchang') filtered = VIDEO_DATA.filter(v => v.cat === '失控小剧场');
-  else if(tab === '48h')    filtered = VIDEO_DATA.filter(v => v.cat === '失控48小时');
-  else                       filtered = VIDEO_DATA;
+  let filtered = VIDEO_DATA; // 全部都是官方攻略视频
 
   const container = document.getElementById('video-grid-main');
   if(!container) return;
@@ -2077,7 +2057,16 @@ function renderVideoGrid(tab) {
 function switchVideoTab(tab, el) {
   document.querySelectorAll('.vst-btn').forEach(b=>b.classList.remove('active'));
   if(el) el.classList.add('active');
-  renderVideoGrid(tab);
+  const gridMain = document.getElementById('video-grid-main');
+  const playerTab = document.getElementById('vtab-player');
+  if(tab === 'player') {
+    if(gridMain) gridMain.style.display = 'none';
+    if(playerTab) playerTab.style.display = 'block';
+  } else {
+    if(gridMain) gridMain.style.display = '';
+    if(playerTab) playerTab.style.display = 'none';
+    renderVideoGrid(tab);
+  }
 }
 
 // ── FAQ ──────────────────────────────────────────────────
