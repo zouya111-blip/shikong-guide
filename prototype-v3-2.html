@@ -547,7 +547,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 /* ════════ FAQ ════════ */
 .faq-container{max-width:1000px;margin:0 auto;padding:0 48px 48px;}
 /* Graphic category entry */
-.faq-cat-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:28px;}
+.faq-cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-bottom:28px;}
 .faq-cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center;cursor:pointer;transition:all .2s;}
 .faq-cat-card:hover{border-color:var(--border-bright);transform:translateY(-2px);}
 .faq-cat-card.active{border-color:var(--orange);background:var(--orange-dim);}
@@ -700,19 +700,19 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 </style>
 </head>
 <body>
-<div class="proto-badge">PROTOTYPE v3.1</div>
+<div class="proto-badge">PROTOTYPE v3.2</div>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-logo" onclick="switchPage('home')">
-    <span class="nav-logo-icon">🏝</span> 失控进化·新手站
+    <span class="nav-logo-icon"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/icon_logo.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" style="height:20px;vertical-align:middle;margin-right:2px"><span style="display:none">🏝</span></span> 失控进化·新手站
   </div>
   <div class="nav-tabs">
-    <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏠</span> 新手站</div>
-    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📖</span> 新手入门 <span class="nav-badge">STEP 1-7</span></div>
-    <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🔫</span> 武器图鉴</div>
-    <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>📍</span> 据点指南</div>
-    <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>🎬</span> 攻略视频</div>
+    <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏕️</span> 新手站</div>
+    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📋</span> 新手入门 <span class="nav-badge">STEP 1-7</span></div>
+    <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🪖</span> 武器图鉴</div>
+    <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>🏝️</span> 据点指南</div>
+    <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>▶️</span> 攻略视频</div>
     <div class="nav-tab" data-page="faq" onclick="switchPage('faq',this)"><span>❓</span> FAQ</div>
   </div>
   <a class="nav-official-btn" href="https://rm.qq.com" target="_blank" title="返回官网">
@@ -785,11 +785,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <h2>初次登岛？</h2>
         <p>跟着 6 步走完第一天，从出生到建好第一个家，不掉线、不饿死、不被偷家。</p>
         <div class="card-features">
-          <div class="feat-row"><span class="feat-icon">🗺</span>出生点怎么站稳脚跟</div>
-          <div class="feat-row"><span class="feat-icon">💊</span>血量 / 口渴 / 饱腹管理</div>
-          <div class="feat-row"><span class="feat-icon">🌲</span>高效资源收集路线</div>
-          <div class="feat-row"><span class="feat-icon">🏠</span>第一个家怎么建</div>
-          <div class="feat-row"><span class="feat-icon">🔫</span>武器与战斗入门</div>
+          <div class="feat-row"><span class="feat-icon"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-jssd-DJITnAK-.png" style="height:14px;vertical-align:middle" onerror="this.outerHTML='🗺'">/span>出生点怎么站稳脚跟</div>
+          <div class="feat-row"><span class="feat-icon">💉</span>血量 / 口渴 / 饱腹管理</div>
+          <div class="feat-row"><span class="feat-icon">🪵</span>高效资源收集路线</div>
+          <div class="feat-row"><span class="feat-icon">🏚️</span>第一个家怎么建</div>
+          <div class="feat-row"><span class="feat-icon">🪖</span>武器与战斗入门</div>
           <div class="feat-row"><span class="feat-icon">⚙️</span>科技树与变强路径</div>
         </div>
         <button class="card-cta">开始新手入门 →</button>
@@ -811,7 +811,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <h2>快速查阅工具</h2>
         <p>武器合成成本、据点攻略、进阶技巧——直接跳到你要找的内容。</p>
         <div class="card-features">
-          <div class="feat-row"><span class="feat-icon">🔫</span>武器图鉴：合成路径 + 工作台需求</div>
+          <div class="feat-row"><span class="feat-icon">🪖</span>武器图鉴：合成路径 + 工作台需求</div>
           <div class="feat-row"><span class="feat-icon">📍</span>据点指南：等级分类 + 推荐时机</div>
           <div class="feat-row"><span class="feat-icon">🎬</span>攻略视频：官方 + 玩家实战</div>
           <div class="feat-row"><span class="feat-icon">❓</span>FAQ：常见问题 + 机制解答</div>
@@ -851,7 +851,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- 玩法概述 7要素 官方原文 -->
     <div class="gi-section" id="gi-sec-overview">
       <div class="gi-section-hd">
-        <div class="gi-section-icon">🗺️</div>
+        <div class="gi-section-icon">🏝️</div>
         <div>
           <div class="gi-section-title">玩法概述</div>
           <div class="gi-section-sub">来自官网 · 原文呈现</div>
@@ -899,7 +899,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- ── 生存机制 ── -->
     <div class="gi-section" id="gi-sec-survive">
       <div class="gi-section-hd">
-        <div class="gi-section-icon">❤️</div>
+        <div class="gi-section-icon">💓</div>
         <div>
           <div class="gi-section-title">生存机制</div>
           <div class="gi-section-sub">游戏的核心玩法围绕生存展开</div>
@@ -929,7 +929,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- ── 资源采集 ── -->
     <div class="gi-section" id="gi-sec-resource">
       <div class="gi-section-hd">
-        <div class="gi-section-icon">⛏️</div>
+        <div class="gi-section-icon">⚒️</div>
         <div>
           <div class="gi-section-title">资源采集</div>
           <div class="gi-section-sub">资源是一切生存与发展的基础</div>
@@ -952,7 +952,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         </div>
         <div class="gi-res-group">
           <div class="gi-res-group-title">采集技巧</div>
-          <div class="gi-res-item"><span class="gi-res-icon">🎯</span><div>瞄准树木上的<strong>红色 X</strong> 和岩石节点上的<strong>闪光点</strong>，采集效率更高</div></div>
+          <div class="gi-res-item"><span class="gi-res-icon">🧭</span><div>瞄准树木上的<strong>红色 X</strong> 和岩石节点上的<strong>闪光点</strong>，采集效率更高</div></div>
           <div class="gi-res-item"><span class="gi-res-icon">👀</span><div>注意时不时检查周围环境，以免被老六偷袭</div></div>
         </div>
       </div>
@@ -961,7 +961,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- ── 领地建造 ── -->
     <div class="gi-section" id="gi-sec-build">
       <div class="gi-section-hd">
-        <div class="gi-section-icon">🏠</div>
+        <div class="gi-section-icon">🏚️</div>
         <div>
           <div class="gi-section-title">领地建造</div>
           <div class="gi-section-sub">保护资源和生存的关键</div>
@@ -1022,7 +1022,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- ── 探索与地标 ── -->
     <div class="gi-section" id="gi-sec-explore">
       <div class="gi-section-hd">
-        <div class="gi-section-icon">🗺️</div>
+        <div class="gi-section-icon">🏝️</div>
         <div>
           <div class="gi-section-title">探索与地标</div>
           <div class="gi-section-sub">散布全图的遗迹与危险区域</div>
@@ -1295,13 +1295,13 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- 右侧吸顶导航 -->
     <nav class="gi-sidenav" id="gi-sidenav">
       <div class="gi-sidenav-title">页面导航</div>
-      <a class="gi-sidenav-item active" href="#gi-sec-hero" onclick="giNavClick(this,'gi-sec-hero')"><span class="gi-sidenav-icon">🎯</span>游戏介绍</a>
-      <a class="gi-sidenav-item" href="#gi-sec-overview" onclick="giNavClick(this,'gi-sec-overview')"><span class="gi-sidenav-icon">🗺️</span>玩法概述</a>
-      <a class="gi-sidenav-item" href="#gi-sec-survive" onclick="giNavClick(this,'gi-sec-survive')"><span class="gi-sidenav-icon">❤️</span>生存机制</a>
-      <a class="gi-sidenav-item" href="#gi-sec-resource" onclick="giNavClick(this,'gi-sec-resource')"><span class="gi-sidenav-icon">⛏️</span>资源采集</a>
-      <a class="gi-sidenav-item" href="#gi-sec-build" onclick="giNavClick(this,'gi-sec-build')"><span class="gi-sidenav-icon">🏠</span>领地建造</a>
+      <a class="gi-sidenav-item active" href="#gi-sec-hero" onclick="giNavClick(this,'gi-sec-hero')"><span class="gi-sidenav-icon">🧭</span>游戏介绍</a>
+      <a class="gi-sidenav-item" href="#gi-sec-overview" onclick="giNavClick(this,'gi-sec-overview')"><span class="gi-sidenav-icon">🏝️</span>玩法概述</a>
+      <a class="gi-sidenav-item" href="#gi-sec-survive" onclick="giNavClick(this,'gi-sec-survive')"><span class="gi-sidenav-icon">💓</span>生存机制</a>
+      <a class="gi-sidenav-item" href="#gi-sec-resource" onclick="giNavClick(this,'gi-sec-resource')"><span class="gi-sidenav-icon">⚒️</span>资源采集</a>
+      <a class="gi-sidenav-item" href="#gi-sec-build" onclick="giNavClick(this,'gi-sec-build')"><span class="gi-sidenav-icon">🏗️</span>领地建造</a>
       <a class="gi-sidenav-item" href="#gi-sec-craft" onclick="giNavClick(this,'gi-sec-craft')"><span class="gi-sidenav-icon">⚗️</span>制作装备</a>
-      <a class="gi-sidenav-item" href="#gi-sec-explore" onclick="giNavClick(this,'gi-sec-explore')"><span class="gi-sidenav-icon">🗺️</span>探索地标</a>
+      <a class="gi-sidenav-item" href="#gi-sec-explore" onclick="giNavClick(this,'gi-sec-explore')"><span class="gi-sidenav-icon">🏝️</span>探索地标</a>
       <a class="gi-sidenav-item" href="#gi-sec-combat" onclick="giNavClick(this,'gi-sec-combat')"><span class="gi-sidenav-icon">⚔️</span>战斗掠夺</a>
       <a class="gi-sidenav-item" href="#gi-sec-social" onclick="giNavClick(this,'gi-sec-social')"><span class="gi-sidenav-icon">🤝</span>社交合作</a>
       <a class="gi-sidenav-item" href="#gi-sec-event" onclick="giNavClick(this,'gi-sec-event')"><span class="gi-sidenav-icon">🌍</span>动态事件</a>
@@ -1345,7 +1345,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       <!-- Page header - 与其他页面保持视觉一致 -->
       <div class="guide-page-hd">
         <div class="guide-page-title-row">
-          <span class="guide-page-title-icon">🗺️</span>
+          <span class="guide-page-title-icon">🏝️</span>
           <h1 class="guide-page-title">新手入门</h1>
           <span class="guide-page-badge">STEP 1-7</span>
         </div>
@@ -1508,7 +1508,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="lifeline-bars">
           <div class="ll-row">
             <div class="ll-header">
-              <div class="ll-name"><span class="ll-icon">❤️</span> 血量</div>
+              <div class="ll-name"><span class="ll-icon">💓</span> 血量</div>
               <div class="ll-status ok">稳定</div>
             </div>
             <div class="ll-bar"><div class="ll-fill ll-fill-hp"></div></div>
@@ -1572,7 +1572,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="crosslink-label">📎 延伸阅读</div>
           <div class="crosslink-cards">
             <div class="cc-card" onclick="goToPoi('tier-1')"><span class="cc-icon">📍</span>一级据点分布 →</div>
-            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🔫</span>武器合成废料成本 →</div>
+            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🪖</span>武器合成废料成本 →</div>
           </div>
         </div>
         <div class="step-nav-btns">
@@ -1606,7 +1606,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="sg-label">放睡袋<br>绑定重生点</div>
           </div>
           <div class="sg-step">
-            <div class="sg-dot">🏠</div>
+            <div class="sg-dot">🏗️</div>
             <div class="sg-label">封顶封门<br>1×2核心间</div>
           </div>
           <div class="sg-step">
@@ -1675,7 +1675,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="crosslink-section">
           <div class="crosslink-label">📎 延伸阅读</div>
           <div class="crosslink-cards">
-            <div class="cc-card" onclick="filterAndGoWeapons('bow')"><span class="cc-icon">🔫</span>弓弩类武器合成成本 →</div>
+            <div class="cc-card" onclick="filterAndGoWeapons('bow')"><span class="cc-icon">🪖</span>弓弩类武器合成成本 →</div>
             <div class="cc-card" onclick="switchPage('videos')"><span class="cc-icon">🎬</span>战斗技巧视频 →</div>
           </div>
         </div>
@@ -1701,7 +1701,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="cp-stages">
             <div class="cp-stage"><div class="cp-stage-icon">🪨</div><div class="cp-stage-name">石质工作台<br><span style="color:var(--text-muted);font-size:9px">基础解锁</span></div></div>
             <div class="cp-arrow">→</div>
-            <div class="cp-stage"><div class="cp-stage-icon">🔫</div><div class="cp-stage-name">战斗模块<br><span style="color:var(--orange);font-size:9px">优先解锁</span></div></div>
+            <div class="cp-stage"><div class="cp-stage-icon">🪖</div><div class="cp-stage-name">战斗模块<br><span style="color:var(--orange);font-size:9px">优先解锁</span></div></div>
             <div class="cp-arrow">→</div>
             <div class="cp-stage"><div class="cp-stage-icon">🔧</div><div class="cp-stage-name">金属工作台<br><span style="color:var(--text-muted);font-size:9px">二阶制造</span></div></div>
             <div class="cp-arrow">→</div>
@@ -1721,7 +1721,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="info-card-desc">情报文件→情报站<br>破译→情报币<br>跨局永久有效</div>
           </div>
           <div class="info-card">
-            <span class="info-card-icon">🎯</span>
+            <span class="info-card-icon">🧭</span>
             <div class="info-card-title">胜利路径</div>
             <div class="info-card-desc">先枪后守<br>用火力优势压制邻居<br>再扩张基地规模</div>
           </div>
@@ -1735,7 +1735,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="crosslink-section">
           <div class="crosslink-label">📎 接下来做什么</div>
           <div class="crosslink-cards">
-            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🔫</span>规划武器合成路径 →</div>
+            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🪖</span>规划武器合成路径 →</div>
             <div class="cc-card" onclick="switchPage('poi')"><span class="cc-icon">📍</span>探索更高级据点 →</div>
             <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>常见问题 FAQ →</div>
           </div>
@@ -1755,7 +1755,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 <div class="page" id="page-weapons">
   <div class="page-hd">
     <div class="page-title-row">
-      <div class="page-title"><span class="page-title-icon">🔫</span> 武器图鉴</div>
+      <div class="page-title"><span class="page-title-icon">🪖</span> 武器图鉴</div>
     </div>
     <div class="page-intro"><strong>使用场景：</strong>手头废料有限？先看合成成本和工作台需求，再选武器路线——客观数据，不推荐，你自己判断。</div>
   </div>
@@ -1795,11 +1795,12 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   <div class="poi-carousel" id="poi-main">
     <div class="tier-filter-row" id="poi-tier-filter">
       <div class="tier-chip t1 active" onclick="filterPoiTier('all',this)">全部</div>
-      <div class="tier-chip t1" onclick="filterPoiTier('tier-1',this)">🟢 一级遗迹</div>
-      <div class="tier-chip t2" onclick="filterPoiTier('tier-2',this)">🔵 二级遗迹</div>
-      <div class="tier-chip t3" onclick="filterPoiTier('tier-3',this)">🟡 三级遗迹</div>
-      <div class="tier-chip t4" onclick="filterPoiTier('tier-4',this)">🔴 四级遗迹</div>
-      <div class="tier-chip ts" onclick="filterPoiTier('tier-safe',this)">🟣 安全区</div>
+      <div class="tier-chip t1" onclick="filterPoiTier('tier-1',this)">🟢 一级据点</div>
+      <div class="tier-chip t2" onclick="filterPoiTier('tier-2',this)">🔵 二级据点</div>
+      <div class="tier-chip t3" onclick="filterPoiTier('tier-3',this)">🟡 三级据点</div>
+      <div class="tier-chip t4" onclick="filterPoiTier('tier-4',this)">🔴 四级据点</div>
+      <div class="tier-chip ts" onclick="filterPoiTier('tier-safe',this)">🟣 安全区遗迹</div>
+      <div class="tier-chip" onclick="filterPoiTier('terrain',this)" style="border-left:3px solid #94a3b8">⚪ 地形据点</div>
     </div>
     <!-- carousel rendered by JS -->
     <div id="poi-carousel-body"></div>
@@ -1838,7 +1839,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div id="vtab-player" class="video-subtab" style="display:none;">
       <div class="placeholder-grid">
         <div class="ph-card"><div class="ph-icon">🎮</div><div class="ph-text"><strong style="color:var(--text)">玩家攻略视频</strong><br>即将上线</div></div>
-        <div class="ph-card"><div class="ph-icon">🏠</div><div class="ph-text"><strong style="color:var(--text)">建家技巧分享</strong><br>即将上线</div></div>
+        <div class="ph-card"><div class="ph-icon">🏗️</div><div class="ph-text"><strong style="color:var(--text)">建家技巧分享</strong><br>即将上线</div></div>
         <div class="ph-card"><div class="ph-icon">⚔️</div><div class="ph-text"><strong style="color:var(--text)">PVP 实战录像</strong><br>即将上线</div></div>
         <div class="ph-card" style="border-color:var(--orange);color:var(--orange)"><div class="ph-icon">📤</div><div class="ph-text"><strong>投稿你的攻略</strong><br>联系官方社群</div></div>
       </div>
@@ -2224,66 +2225,106 @@ let termDrawerOpen = false;
 let currentTerm = null;
 
 const FAQ_DATA = {
-  basics: { label:'游戏必备', icon:'⬇️', count:8, items:[
+  basics: { label:'游戏必备', icon:'⬇️', count:10, items:[
     {src:'official', q:'游戏怎么下载？在哪里下载？', a:'PC端：前往失控进化官网（rm.qq.com）或腾讯游戏平台下载 Windows 客户端；移动端：在 App Store（iOS）或各大 Android 应用商店搜索「失控进化」下载安装。'},
     {src:'official', q:'游戏是免费的吗？', a:'失控进化基础游戏内容免费，可以免费下载畅玩。游戏内有皮肤等装饰性付费内容，不影响核心玩法体验。'},
     {src:'official', q:'PC 端配置要求是什么？', a:'最低配置：CPU Intel i5-8400 / AMD Ryzen 5 2600；内存 16GB；显卡 GTX 1060 6G / RX 580 8G；存储 40GB 可用空间。推荐配置：CPU Intel i7-10700K / AMD Ryzen 7 3700X；内存 16GB；显卡 RTX 2070 / RX 5700 XT。【以官方最新公告为准】'},
     {src:'official', q:'支持哪些平台？PC和手机可以一起玩吗？', a:'支持 PC（Windows）和移动端（iOS/Android），两端同服互通，可以在同一局游戏中合作或对抗。'},
     {src:'official', q:'账号怎么注册？需要实名认证吗？', a:'使用腾讯账号（QQ/微信）直接登录，无需单独注册。根据国家规定，未成年用户需要完成实名认证，并受到防沉迷系统的时间限制管理。'},
-    {src:'official', q:'PC和手机的操作差异大吗？', a:'PC端使用键鼠操作，手机端使用触屏虚拟摇杆。游戏内设有跨端平衡机制，官方表示会持续优化不同设备的游戏体验公平性。'},
-    {src:'official', q:'游戏会定期更新吗？如何获取最新资讯？', a:'会定期更新。关注官方渠道获取最新资讯：官网（rm.qq.com）、官方微信公众号「失控进化」、官方QQ群/频道、B站官方账号。'},
-    {src:'official', q:'游戏里遇到外挂/作弊如何举报？', a:'在游戏内可以通过「举报」功能对可疑玩家进行举报。同时可以前往官方安全中心（链接待配置）提交详细证据，官方会进行核查处理。'},
+    {src:'official', q:'PC和手机的操作差异大吗？', a:'PC端使用键鼠操作，手机端提供虚拟摇杆和自定义按键布局。两端均可正常游玩，PC端精准度较高，手机端方便随时游玩。'},
+    {src:'official', q:'游戏会定期更新吗？如何获取最新资讯？', a:'游戏会定期推出版本更新。最新资讯可关注官网（rm.qq.com）、官方B站账号、官方微信/微博等渠道。'},
+    {src:'official', q:'游戏里遇到外挂/作弊如何举报？', a:'可在游戏内对玩家右键选择举报，或通过官方客服渠道提交证据举报。官方有专项反外挂系统，违规行为将受到处罚。'},
+    {src:'bilibili', q:'游戏有几个服务器区？PC和手机同区吗？', a:'失控进化采用全平台同服设计，PC 和手机玩家在同一服务器游玩，无区服隔离。具体服务器信息以游戏内显示为准。来源：B站攻略视频'},
+    {src:'bilibili', q:'游戏数据会在版本结算时清空吗？', a:'每个局内按模式设定的天数结算后，该局数据清空重置，玩家重新开始。通过结算可获得永久货币等奖励。来源：B站攻略视频'},
   ]},
-
-  survive: { label:'生存基础', icon:'🏃', count:7, items:[
-    {src:'official', q:'进游戏后什么都不会，先做什么？', a:'先收集出生点资源：对树上红色X击打拿木头，对石头节点闪光点击打拿石头。收够后制作石斧，再去最近的一级遗迹（废弃超市、加油站）搜刮物资和废料。'},
-    {src:'official', q:'我一直饿/一直渴，该怎么办？', a:'口渴：在河流中直接喝水或用水瓶储水带走。饥饿：找蘑菇、南瓜、仙人掌等植物食物，或狩猎动物获取生肉烤熟食用。饱腹值清零会持续扣血，口渴值清零会无法奔跑。'},
-    {src:'official', q:'生命值怎么恢复？', a:'三种方式：① 保持较高的口渴值和饱腹值，角色会缓慢自动回血；② 在火源、家具等提供舒适度的环境旁休息；③ 制作绷带或医疗针快速恢复。'},
-    {src:'official', q:'倒地之后怎么复活？', a:'倒地后队友可以在规定时间内将你救起，你也有小概率自行原地复活。被淘汰后可在复活界面选择睡袋位置重生，注意及时找回凋落物，以免被敌人拾走。'},
-    {src:'player', q:'为什么我跑不动了？', a:'口渴值归零会导致角色失去奔跑能力。赶紧喝水即可解除，在河边直接按交互键就能喝水，不需要容器。'},
-    {src:'player', q:'辐射区是什么？能不能进？', a:'辐射区是地图中特定区域，会对玩家造成持续掉血伤害。需要穿着防护服才能安全进入。辐射区通常含有稀有资源，但风险很高，初期不建议裸装进入。'},
+  survival: { label:'生存入门', icon:'🥩', count:12, items:[
+    {src:'official', q:'进游戏后什么都不会，先做什么？', a:'出生后第一步：拳头打石头收集 100 石头，打树干收集 200 木头。用石头和木头制作斧头和石矛。随后找水喝（喝河水/海水会拉肚子，优先找南瓜等食物）、找食物。新手推荐去废弃超市或加油站搜刮初始物资。'},
+    {src:'official', q:'我一直饿/一直渴，该怎么办？', a:'口渴：优先收集南瓜/蘑菇等植物（含水分）、制作储水器收集雨水，或用熔炉烹饪肉食和蔬菜来补充水分。饱腹：击杀野猪/鹿等动物获取生肉，用篝火烤熟后食用。'},
+    {src:'official', q:'生命值怎么恢复？', a:'初期：靠进食恢复（吃熟食最高效）；制作绷带（布料×1）可快速止血；之后可制作医疗针（分初级/中级/高级）进行更高效的回血。高等级医疗针效果更强，可在战斗中快速恢复。'},
+    {src:'official', q:'倒地之后怎么复活？', a:'倒地后有一段时间进入"濒死"状态，队友可以靠近按互动键急救（需要医疗材料）。无人救援且倒计时归零则死亡，背包物资按模式规则掉落。'},
+    {src:'official', q:'为什么我跑不动了？', a:'负重超过上限时移速会大幅下降。解决方法：把不急用的材料存回基地箱子、制作大号背包提升负重上限、骑马或驾车代步。'},
+    {src:'official', q:'辐射区是什么？能不能进？', a:'辐射区会持续扣除生命值和增加辐射中毒层数。不穿防护装备不建议进入中高辐射区。可通过制作布质防护衣（低辐射）→ 皮革防护衣 → 金属防护衣（高辐射）逐步提升防护能力。'},
+    {src:'bilibili', q:'受伤了一直在流血怎么处理？', a:'流血状态会持续掉血，必须用绷带或医疗针处理。优先制作绷带（1块布料即可），进背包使用即可止血。出门前建议多备绷带。来源：B站攻略视频'},
+    {src:'bilibili', q:'游泳会不会溺死？', a:'长时间在水中会消耗耐力，耐力耗尽后会开始掉血。潜水时需要氧气瓶，可在渔村购买。日常过河问题不大，不要在深海停留太久。来源：B站攻略视频'},
+    {src:'bilibili', q:'夜间视野太差，怎么解决？', a:'制作火把（木头+布料）或购买/制作头灯。头盔可以安装前置头灯，是夜间探索的好帮手。安全区有电力设施，夜间光线充足。来源：B站攻略视频'},
+    {src:'bilibili', q:'天黑了要躲进基地吗？', a:'夜间确实危险，能见度低且其他玩家也会趁夜行动。建议新手夜间回基地整理物资、补充状态。有地下据点可探索（矿洞、地下地铁）视野问题不大。来源：B站攻略视频'},
+    {src:'bilibili', q:'掉进水里背包里的物资会不会损坏？', a:'不会损坏，但要注意部分武器在水中无法使用。涉水移动会减速，特别是在深水区，注意耐力管理。来源：B站攻略视频'},
+    {src:'bilibili', q:'怎么快速爬山？有没有技巧？', a:'利用地形中的斜坡和岩石跳跃攀爬；马匹也可以爬一定坡度的山地；部分据点有外部楼梯可以快速上到高处。来源：B站攻略视频'},
   ]},
-  build: { label:'建造基地', icon:'🏠', count:7, items:[
-    {src:'official', q:'基地建在哪里比较好？', a:'需要综合考虑三点：周边自然资源是否丰富、附近有多少据点、距安全区的距离。但注意，资源丰厚的地点也会吸引其他玩家觊觎，隐蔽性和资源量之间需要权衡。'},
-    {src:'official', q:'建基地怎么从零开始？', a:'从1×2或2×2的核心居住空间开始建造，慢慢向外拓展防炸层结构。注意及时摆放大门和封顶，防止其他玩家进来掠夺。也可以直接选择建造模板房，快速建立庇护所。'},
-    {src:'official', q:'工具柜有什么用？为什么很重要？', a:'工具柜是基地的核心建筑，管理建造权限。放置工具柜后，只有你和授权队友能在其范围内建造。基地维护同样依赖工具柜——需要定期向其中补充木材、石头和金属碎片等维护资源，否则基地会随时间衰退。'},
-    {src:'official', q:'基地为什么会自动消失/变差？', a:'基地会随时间自然衰退。原因是工具柜里的维护资源耗尽了。需要定期检查工具柜并补充必要资源（木材、石头、金属碎片），保持基地结构稳固。'},
-    {src:'official', q:'怎么提升基地防御力？', a:'尽快将建筑材质从木质升级为石头，再升级为金属。可以逐个交互单个建筑摆件升级，也可以在工具柜界面一键全部升级。金属结构抗爆炸能力远强于木质结构。'},
-    {src:'player', q:'睡袋放在哪里？有什么用？', a:'睡袋放在基地里，被淘汰后可以选择在睡袋位置附近复活，避免从地图边缘重新跑回来。注意睡袋复活有冷却时间，基地里多放几个可作为备用复活点。'},
-    {src:'player', q:'别人能不能随便在我的地盘建房子？', a:'放置工具柜后，工具柜范围内只有你和授权队友才能建造和拆除。但工具柜被摧毁后保护失效，所以要保护好工具柜，它是基地最关键的建筑。'},
+  building: { label:'建造领地', icon:'🏠', count:10, items:[
+    {src:'official', q:'基地建在哪里比较好？', a:'新手建议选在地图中部偏安全区附近，便于补给。避开主要路口和高价值据点附近（人多容易被打）。山地、树林中隐蔽度高，但资源运输也更麻烦。'},
+    {src:'official', q:'建基地怎么从零开始？', a:'首先制作建筑计划（木头×50）获得建造许可。选地放置建筑地基，选木质或石质结构。优先建一个封闭小屋（4墙+屋顶+木门），放置工具柜。'},
+    {src:'official', q:'工具柜有什么用？为什么很重要？', a:'工具柜是领地核心，放置后会产生一个「建筑保护范围」——范围内别人无法建造新建筑。同时工具柜内的废料决定了建筑的「稳固度」，废料耗尽后建筑会逐渐衰减损坏。必须每隔几天补充废料。'},
+    {src:'official', q:'基地为什么会自动消失/变差？', a:'每个结构都有稳固度，稳固度归零后会损毁。稳固度消耗来源：工具柜废料耗尽后开始倒计时衰减。每天往工具柜里补充足够废料即可维持。'},
+    {src:'official', q:'怎么提升基地防御力？', a:'升级建筑材料（木→石→金属→强化金属），血量依次提升；加装铁门替代木门；在门口铺设尖刺地板；在周围建造外墙增加攻击层数。'},
+    {src:'official', q:'睡袋放在哪里？有什么用？', a:'睡袋是复活点，死亡后会在最近的睡袋位置复活（有冷却时间）。建议放在基地最内部安全的位置。外出探索时可在安全的临时营地也放一个，缩短复活路程。'},
+    {src:'official', q:'别人能不能随便在我的地盘建房子？', a:'工具柜放置后，其保护半径内其他玩家无法建造新建筑。但如果你的工具柜被破坏，这个保护就失效了。保护好工具柜，隐藏位置、升级材料、加强防守都很重要。'},
+    {src:'bilibili', q:'工具柜需要放多少废料才够用？', a:'每个建筑块每天消耗少量废料，建筑越大消耗越多。新手小基地一般准备 500-1000 废料可维持几天。建议专门设一个箱子囤废料，定期查看工具柜余量。来源：B站攻略视频'},
+    {src:'bilibili', q:'建筑可以升级吗？怎么升？', a:'可以。站在建筑旁手持锤子，对准建筑会出现升级选项，消耗对应材料即可升级（木→石→金属→强化金属）。来源：B站攻略视频'},
+    {src:'bilibili', q:'门能加锁吗？别人会不会直接推开？', a:'门可以上锁，用钥匙锁（需要制作或购买）。锁上的门需要对应钥匙才能开启。强烈建议给所有对外的门上锁，防止被直接闯入。来源：B站攻略视频'},
   ]},
-  weapon: { label:'武器战斗', icon:'🔫', count:7, items:[
-    {src:'official', q:'前期用什么武器防身？', a:'石斧和石稿（镐）是初始制作的工具，也可以当近战武器用。前期最推荐的远程武器是弓：制作成本低（木头+布料），但弹道有抛物线，需要练习瞄准提前量。'},
-    {src:'official', q:'弓箭的弹道有点奇怪，怎么瞄准？', a:'弓有抛物线弹道，近距离影响不大，远距离需要适当往目标上方瞄准。对野生动物多练习几次，熟悉抛物线后命中率会明显提升。'},
-    {src:'official', q:'什么时候能用枪？枪怎么获得？', a:'枪械需要通过科技树解锁（废料解锁科技，并制作对应制作台）。官方建议前期优先解锁战斗模块科技，尽快制作自动化枪械——装备领先对手有绝对优势。'},
-    {src:'official', q:'遭遇其他玩家怎么处理？', a:'装备差的时候，跑比打更明智。不了解对方装备等级就不要轻易接触。尽量利用地形掩护，避免在开阔地带和装备好的玩家硬刚。'},
-    {src:'player', q:'子弹/箭矢打完了怎么补充？', a:'弹药可以在安全区的自动售货机购买（需要废料），也可以解锁科技树后自己制作。弩的箭矢被射出后可以拾回，经济性好，适合前期缺物资时使用。'},
-    {src:'player', q:'被多人围攻，倒地后队友能救我吗？', a:'可以。倒地后队友可以在规定时间内靠近救起。但被淘汰（彻底死亡）就无法原地救援了，只能去睡袋复活。高风险战斗前建议先确认队友位置。'},
-    {src:'player', q:'爆炸物怎么用？能不能炸别人的基地？', a:'爆炸物（炸药包、火箭弹等）可以对建筑结构造成破坏伤害。需要先解锁对应科技树并合成。使用时对准目标建筑投放即可。不同材质的建筑有不同的耐久值，金属墙需要多发才能破开。【具体爆炸物数值以游戏内为准】'},
+  combat: { label:'战斗技巧', icon:'⚔️', count:10, items:[
+    {src:'official', q:'前期用什么武器防身？', a:'初期：石矛（近战）→制作猎弓（远程）。从废旧超市和加油站可以找到绿卡，兑换到早期武器蓝图。优先科研「废料冲锋枪」或「土制手枪」作为初期枪械。'},
+    {src:'official', q:'弓箭的弹道有点奇怪，怎么瞄准？', a:'弓有弹道下坠，远距离需要提前抬高准心。建议先练习近中距离射击感受弹道特性。复合弓蓄力满后精度更高。移动时精度会下降，站立/蹲伏射击更准。'},
+    {src:'official', q:'什么时候能用枪？枪怎么获得？', a:'通过科研台「研究」蓝图后即可制作。前期：从据点战利品箱中找到武器零件，或科研从废弃超市/加油站拿到的绿卡箱子里的武器。'},
+    {src:'official', q:'遭遇其他玩家怎么处理？', a:'优先判断对方是否有恶意：如果对方不攻击可尝试绕路。迫不得已对抗时：利用地形掩体、先发制人是关键。如实力差距大，跑为上策。'},
+    {src:'official', q:'子弹/箭矢打完了怎么补充？', a:'子弹需要制作：解锁对应口径子弹蓝图后，用硫磺+金属碎片+火药在制作台制作。弓箭用木头+石头+羽毛制作。安全区（前哨战等）的自动售货机也可以购买部分弹药。'},
+    {src:'official', q:'被多人围攻，倒地后队友能救我吗？', a:'可以，队友靠近后按互动键进行急救，需要消耗急救包。急救时有明显动作，会暴露位置，救援时需掩护。庇护模式死亡惩罚较低，适合新手。'},
+    {src:'official', q:'爆炸物怎么用？能不能炸别人的基地？', a:'C4炸弹、火箭弹等可以对建筑造成伤害。C4需要贴在建筑上引爆，火箭筒可以远程打击。攻坚前建议事先侦察结构弱点（薄弱的木制或石制墙面）。'},
+    {src:'bilibili', q:'被人偷袭了对方却瞬间消失，怎么回事？', a:'可能是对方使用了「烟雾弹」制造视觉干扰，或绕到了遮挡角度。下次遭遇注意多角度查看，不要站在开阔地。来源：B站攻略视频'},
+    {src:'bilibili', q:'枪战中血量掉得很快，有什么保命技巧？', a:'①开枪前先扔烟雾弹；②腰射移动比站立更难被命中；③及时往大型掩体后撤；④边移动边按绷带/医疗针；⑤枪战中不要背对开阔地。来源：B站攻略视频'},
+    {src:'bilibili', q:'近战好用吗？有必要练吗？', a:'近战在偷袭和夜战中有一定优势（静音），但面对有枪的玩家劣势较大。斧头等工具兼顾采集和近战，可作为备用武器。来源：B站攻略视频'},
   ]},
-  craft: { label:'合成制作', icon:'⚙️', count:6, items:[
-    {src:'official', q:'废料是什么，去哪里找？', a:'废料是游戏里的硬通货，用于解锁科技树、在安全区商店购买物资。主要来源：搜刮铁桶和物资箱，以及用分解机分解多余材料。勤跑小型遗迹可以积累大量废料。'},
-    {src:'official', q:'捡到的材料看不懂（齿轮、篷布、管子）有什么用？', a:'这些是中高阶装备的制作材料，但前期你更需要基础资源和废料。把这些材料放入遗迹里的分解机，可以转化为基础资源或废料，别直接丢掉。'},
-    {src:'official', q:'科技树怎么解锁？有什么顺序建议？', a:'用废料解锁科技，但注意：每个等级的科技解锁前，需要先制作并摆放对应的制作台。官方建议前期优先解锁战斗模块科技，尽快获得自动化枪械。'},
-    {src:'official', q:'制作台是什么？需要几个？', a:'制作台是解锁高阶科技的前置条件，需要先制作并摆放在基地里，才能解锁对应等级的科技树。不同等级的科技需要对应等级的制作台。'},
-    {src:'player', q:'怎么炼金属矿？', a:'需要先制作熔炉并放置在基地内，将金属矿石放入熔炉，等待冶炼完成获得金属碎片或高质金属。熔炉需要燃料（木头）才能运作。【具体操作细节以游戏内为准】'},
-    {src:'player', q:'绷带和医疗针有什么区别？', a:'绷带制作成本低，回血量较少，适合日常轻伤；医疗针回血量更高，适合战斗后快速恢复。前期优先制作绷带，有条件再解锁医疗针配方。【具体数值以游戏内为准】'},
+  crafting: { label:'制作科技', icon:'⚙️', count:8, items:[
+    {src:'official', q:'废料是什么，去哪里找？', a:'废料（Scrap）是游戏核心货币和科研材料，用于研究蓝图和维持工具柜。获取方式：前往据点的战利品箱（油桶/板条箱等）搜刮；敲烂各种物件；在安全区自动售货机进行商品交换。'},
+    {src:'official', q:'捡到的材料看不懂（齿轮、篷布、管子）有什么用？', a:'这些是「可循环利用零件」，放进分解机可获得废料和金属碎片。分解机在各个据点都有，不需要自己建造。高价值零件（如高品质齿轮）分解量更多。'},
+    {src:'official', q:'科技树怎么解锁？有什么顺序建议？', a:'通过科研台「研究」捡到的物品即可解锁蓝图。新手推荐解锁顺序：石矛→猎弓→绷带→医疗针→储水器→废料冲锋枪/土制手枪→简单锁→睡袋→石质建筑。'},
+    {src:'official', q:'制作台是什么？需要几个？', a:'制作台分为不同等级：1级制作台（最基础）→ 2级 → 3级，高级制作台解锁更高级蓝图制作。建议一步步升级，不需要重复建多个同级制作台。'},
+    {src:'official', q:'怎么炼金属矿？', a:'将金属矿石放入熔炉，添加木头作为燃料，等待熔炉运作即可产出金属碎片。熔炉运作需要时间，建议出门采矿前就开始炼，回来时已炼好。'},
+    {src:'bilibili', q:'蓝图研究失败了怎么办？会返还废料吗？', a:'研究是消耗品，研究失败不会返还废料。建议先了解哪些蓝图值得优先研究，不要随机研究。捡到不需要研究的物品直接分解更划算。来源：B站攻略视频'},
+    {src:'bilibili', q:'炼炉/熔炉开着可以下线吗？', a:'可以，离线期间炼炉会继续工作（服务器在线）。但离线时基地没有保护，存在被抢的风险。建议离线前把炼好的材料存好。来源：B站攻略视频'},
+    {src:'bilibili', q:'怎么快速获取大量废料？', a:'①多跑一级据点（废弃超市/垃圾场/仓库）清箱子；②把不需要的零件全部放分解机分解；③中期安全区做商品交换任务；④攻坚二级以上据点回报翻倍。来源：B站攻略视频'},
   ]},
-  explore: { label:'探索遗迹', icon:'🧭', count:6, items:[
-    {src:'official', q:'据点（遗迹）是什么？有必要去吗？', a:'遗迹是地图上散布的可探索区域，分一到四级。一级遗迹：初期发育必去，资源采集和技术图纸的重要来源，威胁有限。二级：主流搜刮区域，有辐射，需要一定装备。三/四级：高价值战利品，有强敌驻守，竞争最激烈。'},
-    {src:'official', q:'什么是"红卡房"？怎么进？', a:'红卡房是大型遗迹中需要红色通行证才能解锁的特殊区域，里面有高价值战利品和情报文件，是刷情报等级效率最高的地点之一。获取红卡需要在遗迹探索中找到或从敌人处掉落。'},
-    {src:'official', q:'地图上有哪些载具？怎么用？', a:'地面载具：马匹、汽车、火车。空中：小型/大型直升机。水面：木舟、冲锋艇。载具能大幅提升探索效率，驾驶时目标明显，容易被其他玩家盯上。'},
-    {src:'official', q:'空投物资值得争抢吗？', a:'空投通常含有稀有资源和装备，会吸引大量玩家争夺。装备不足时建议先观望，等其他玩家拼完再捡漏，直接冲往往得不偿失。'},
-    {src:'player', q:'科学家NPC会主动攻击我吗？', a:'会。科学家是驻守在遗迹的NPC，会主动攻击靠近的玩家，击败后可掉落高级装备。前期建议绕开或用弓从远处射击，正面硬刚消耗较大。'},
-    {src:'player', q:'船怎么开？在哪里弄到船？', a:'小型船只可以在「渔村」安全区使用废料向快艇商人购买，也可以在沿海区域探索时找到。进入船只按交互键，操控方向驾驶即可。【具体操作按键以游戏内提示为准】'},
+  poi_explore: { label:'据点探索', icon:'🗺️', count:10, items:[
+    {src:'official', q:'据点（遗迹）是什么？有必要去吗？', a:'据点是地图上散布的特定建筑区域，内部有战利品箱可以搜刮资源（废料、武器、装备、蓝图等）。有必要去，是游戏资源的重要来源，后期高级物资基本靠据点获取。'},
+    {src:'official', q:'什么是"红卡房"？怎么进？', a:'据点内部分区域需要对应颜色的卡片才能开门（绿卡→蓝卡→红卡，等级越高越珍贵）。绿卡可在一级据点找到，蓝卡在二级，红卡需要更高级据点。进门后搜刮对应等级的高价值物资。'},
+    {src:'bilibili', q:'一级据点和四级据点的区别是什么？', a:'区别主要在危险程度和物资质量：一级（废弃超市等）无辐射、无NPC、物资基础；四级（军事隧道、火箭发射基地、钻井平台）高辐射、大量强力科学家NPC、物资顶级。选择据点要量力而行，做好防护。来源：B站攻略视频'},
+    {src:'bilibili', q:'安全区有什么用？可以在里面打人吗？', a:'安全区（前哨战、强盗营地等）禁止使用武器，违规会被自动防御装置消灭。但可以进行补给、交易、使用公共设施（分解机、研究台等）。是中立安全交流场所。来源：B站攻略视频'},
+    {src:'bilibili', q:'据点的战利品箱多久刷新一次？', a:'战利品箱有固定刷新周期，一般约 30-60 分钟刷新一次（以游戏内实际为准）。高价值据点的物资被抢后，等待一段时间可再次搜刮，不必每次换据点。来源：B站攻略视频'},
+    {src:'bilibili', q:'科学家 NPC 会掉落什么？值得打吗？', a:'科学家会掉落武器（包括高级枪械）、弹药、医疗物品、钥匙卡等。高级科学家（如军事隧道、火箭基地内）掉落更丰厚。有战斗力时打 NPC 是快速积累物资的好方式。来源：B站攻略视频'},
+    {src:'bilibili', q:'地下地铁怎么进？里面有什么？', a:'地下地铁有多个入口分布在地图各处，通常在铁路轨道附近。内部结构封闭昏暗，有战利品箱和敌对NPC。部分站台有汽油驱动的轨道车头可以在隧道中穿行。记得带照明工具。来源：B站攻略视频'},
+    {src:'bilibili', q:'火箭发射基地的布拉德利坦克怎么对付？', a:'布拉德利装甲坦克防御力很强，推荐使用火箭发射器（4发以上）或多人配合输出。注意坦克有机枪和炮，保持移动并利用建筑掩体。击毁后有高价值掉落。来源：B站攻略视频'},
+    {src:'bilibili', q:'钻井平台的运输机事件怎么触发？', a:'运输机事件会随机触发，出现时地图会有提示。需要登上钻井平台等待运输机降落并完成事件，有激烈战斗，建议多人队伍参与，收益极高。来源：B站攻略视频'},
+    {src:'bilibili', q:'矿洞里面有什么资源？', a:'矿洞内主要有石头和金属矿石，以及少量战利品箱。环境昏暗，需要火把照明。作为地形据点，没有大量NPC，相对安全，适合早中期积累矿物。来源：B站攻略视频'},
   ]},
-  meta: { label:'游戏机制', icon:'📊', count:6, items:[
-    {src:'official', q:'一局游戏多久结算？', a:'根据模式不同：庇护模式10天、标准模式7天、进阶模式6天（经典战局）、挑战模式5天、急速挑战2.5天（限时模式，均为游戏内时间）。结算后根据情报等级获得账号奖励。'},
-    {src:'official', q:'什么是"情报等级"？有什么用？', a:'情报等级是跨局永久有效的账号成长。在战利品箱获得情报文件，存入升级为情报站的工具柜缓慢破译，积累情报币后提升等级。情报等级能解锁独特高价值装备道具，提升后续的游玩优势。'},
-    {src:'official', q:'哪个模式适合初期游玩？', a:'庇护模式：死亡惩罚最轻（仅掉落部分物资），结算时间最长（10天），情报领地默认无敌，主动报名才解除保护。非常适合先熟悉游戏机制。'},
-    {src:'official', q:'什么是"抄家"？', a:'抄家是指攻击并摧毁其他玩家的领地，掠夺其中的资源和装备。不同模式对抄家的时间和规则有限制，庇护模式保护力度最强，挑战模式全天可抄家。'},
-    {src:'official', q:'被别人拆基地了怎么办？', a:'基地被拆是正常游戏内容，属于「抄家」玩法的一部分。建议：选隐蔽位置建基地、尽快将材质升级为金属、设计防炸层结构增加攻破成本，并保持工具柜内资源充足避免自然衰退。'},
-    {src:'official', q:'剧本系统是什么？', a:'剧本系统是单局服务器的进程推进机制，事件刷新、物资产出、PVP规则等都随剧本推进而改变，让每局游戏有不同节奏感。'},
+  vehicles: { label:'载具交通', icon:'🚗', count:7, items:[
+    {src:'official', q:'地图上有哪些载具？怎么用？', a:'主要载具：马匹（谷仓/牧场购买）、皮划艇、小型船只（渔村购买）、越野车和其他地面车辆（地图上随机刷新或制作）。找到载具后按互动键进入驾驶，车辆需要汽油燃料。'},
+    {src:'official', q:'船怎么开？在哪里弄到船？', a:'渔村（安全区）的快艇商人可以购买小型船只，需要废料。找到船只后按交互键上船驾驶，船可以用于水面探索和快速转移物资。'},
+    {src:'official', q:'马匹去哪里买？', a:'谷仓和牧场（都是安全区遗迹）各有马匹商人，可用废料购买马匹和马鞍装备。马匹可以加速移动并提升负重，是中期重要的代步工具。'},
+    {src:'bilibili', q:'地图上的汽车能开吗？怎么找到？', a:'地图随机刷新的载具可以修理后驾驶，需要汽车零件修复并加油。各级据点周围常有废弃车辆，部分只需加油即可驾驶，是重要的快速移动方式。来源：B站攻略视频'},
+    {src:'bilibili', q:'骑马和开车哪个更好用？', a:'马匹：不需要燃料、可以爬山、隐蔽性更好；车辆：速度更快、可以载多人、可以承受更多伤害。早中期骑马，后期有条件换车。来源：B站攻略视频'},
+    {src:'bilibili', q:'载具会被别人偷吗？有没有锁？', a:'载具可以被其他玩家驾驶，没有专属锁定机制。不用时停在自己基地里、或地形遮蔽处是最好的保护方式。来源：B站攻略视频'},
+    {src:'bilibili', q:'船可以用来做什么？海上有内容吗？', a:'船可以快速在海岸间移动，还可以前往海上遗迹（如钻井平台）。潜水探索水下区域需要潜水装备（渔村购买）。海洋探索是中后期的重要玩法。来源：B站攻略视频'},
+  ]},
+  mode_world: { label:'模式与世界', icon:'🌍', count:10, items:[
+    {src:'official', q:'一局游戏多久结算？', a:'庇护模式10天、标准模式7天、进阶模式6天、挑战模式5天（游戏内时间）。结算后数据清空重置，玩家获得结算奖励。'},
+    {src:'official', q:'什么是"情报等级"？有什么用？', a:'情报等级代表你在当前局的「声望」，越高说明你的领地越强大，会被系统标记为可攻打目标，同时解锁更多高价值事件和奖励。'},
+    {src:'official', q:'哪个模式适合初期游玩？', a:'强烈推荐「庇护模式」：领地默认无敌、死亡只掉落部分物资、结算时间10天，容错率最高。新手可以在这里学习游戏机制，熟练后再挑战标准/进阶模式。'},
+    {src:'official', q:'什么是"抄家"？', a:'抄家指破坏其他玩家的基地并搜刮其中的物资。庇护模式默认领地无敌（主动报名才解除），标准模式3-7天每天4小时可抄，进阶和挑战模式开放程度更高。'},
+    {src:'official', q:'被别人拆基地了怎么办？', a:'先确认是否在「可抄家」时间段被合法攻打。如确认被抢，及时检查工具柜余量并修缮建筑，加强薄弱位置的防御，考虑升级建筑材料或迁址重建。'},
+    {src:'official', q:'剧本系统是什么？', a:'剧本是游戏内的特殊玩法活动，提供特定的任务目标和奖励，通常与当前版本活动相关。可以在游戏内任务面板中查看当前可用剧本。'},
+    {src:'official', q:'空投物资值得争抢吗？', a:'空投提供高等级随机物资，竞争激烈。新手期装备不足时不建议强争，可以远观等其他玩家打完再捡漏。中后期有足够战力时是很好的物资来源。'},
+    {src:'bilibili', q:'庇护模式和标准模式最大的区别是什么？', a:'最大区别在于「抄家」：庇护模式默认领地无敌，不会被突袭；标准模式每天有4小时开放被抄时间。此外庇护死亡惩罚更低，更适合新手练习。来源：B站攻略视频'},
+    {src:'bilibili', q:'什么是"残骸保护"？', a:'建筑被摧毁后会变成残骸，庇护/标准模式下残骸会保护内部50%的物资不掉落；进阶模式第3日前50%保护，之后全掉落；挑战模式无保护，全部掉落。来源：B站攻略视频'},
+    {src:'bilibili', q:'结算时能带走哪些东西？', a:'结算时可以带走特定的「结算奖励」（如永久货币等），局内物资和建筑不会带到下一局。具体可带走的内容以官方公告为准。来源：B站攻略视频'},
+  ]},
+  team: { label:'组队社交', icon:'🤝', count:6, items:[
+    {src:'official', q:'怎么组队？队伍最多几人？', a:'在游戏内主界面或大厅可以创建/加入队伍。具体队伍人数上限以当前游戏版本为准。队伍内可以共享物资、互相急救，建议新手找有经验的玩家带队入门。'},
+    {src:'bilibili', q:'和陌生玩家交流有什么技巧？', a:'游戏内有语音和文字聊天。遭遇陌生玩家时可以先喊话说明无意攻击，部分玩家愿意临时合作。但要注意被"假好意"偷袭的情况，初见保持距离最安全。来源：B站攻略视频'},
+    {src:'bilibili', q:'被人骗了（假装友好然后偷袭），有没有机制防止？', a:'游戏本身无强制保护机制，PvP信任完全靠玩家自己判断。建议：①初见不要随意邀请进基地；②不要把核心物资给陌生人保管；③保持警惕，荒岛生存本来就是这样。来源：B站攻略视频'},
+    {src:'bilibili', q:'大公会（大团队）和小队有什么优势区别？', a:'大公会：资源共享效率高、攻坚能力强、可以24小时轮流防守；小队：灵活机动、目标小不容易被针对、内部信任度高。建议新手先加入中型公会学习。来源：B站攻略视频'},
+    {src:'bilibili', q:'有没有什么行为准则？比如不打新人？', a:'游戏没有强制行为守则，属于自由PvP。部分公会或服务器有自己的约定。庇护模式中新手保护相对较好，建议初期在庇护模式练习。来源：B站攻略视频'},
+    {src:'bilibili', q:'能加入大团队的战斗吗？大战是什么感觉？', a:'可以，加入大公会后会参与攻坚其他公会据点的「大战」。多人配合爆破敌方基地、争夺关键据点，是游戏最刺激的玩法之一。需要有一定装备和经验基础。来源：B站攻略视频'},
   ]},
 };
 
