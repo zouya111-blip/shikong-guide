@@ -214,7 +214,16 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .chip.active{background:var(--orange);border-color:var(--orange);color:#fff;}
 
 /* ════════ GAME INFO ════════ */
-.gameinfo-wrap{max-width:1100px;margin:0 auto;padding:0 48px 64px;display:flex;flex-direction:column;gap:40px;}
+.gameinfo-layout{max-width:1200px;margin:0 auto;padding:0 48px 64px;display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:start;}
+.gameinfo-wrap{display:flex;flex-direction:column;gap:40px;min-width:0;}
+
+/* 吸顶侧边导航 */
+.gi-sidenav{position:sticky;top:80px;display:flex;flex-direction:column;gap:4px;padding:16px 0;}
+.gi-sidenav-title{font-size:9px;font-family:'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);padding:0 12px;margin-bottom:8px;}
+.gi-sidenav-item{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:var(--r);cursor:pointer;transition:all .15s;color:var(--text-muted);font-size:12px;border-left:2px solid transparent;text-decoration:none;}
+.gi-sidenav-item:hover{background:var(--surface2);color:var(--text-dim);}
+.gi-sidenav-item.active{background:rgba(232,98,26,.1);color:var(--orange);border-left-color:var(--orange);}
+.gi-sidenav-icon{font-size:13px;flex-shrink:0;}
 
 /* Hero */
 .gi-hero{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);}
@@ -477,7 +486,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 /* ════════ FAQ ════════ */
 .faq-container{max-width:1000px;margin:0 auto;padding:0 48px 48px;}
 /* Graphic category entry */
-.faq-cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px;}
+.faq-cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:28px;}
 .faq-cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center;cursor:pointer;transition:all .2s;}
 .faq-cat-card:hover{border-color:var(--border-bright);transform:translateY(-2px);}
 .faq-cat-card.active{border-color:var(--orange);background:var(--orange-dim);}
@@ -622,10 +631,12 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="page-intro">官方内容直引，帮你快速了解这款游戏是什么、能玩什么、需要什么配置。</div>
   </div>
 
-  <div class="gameinfo-wrap">
+  <div class="gameinfo-layout">
+    <!-- 主内容区 -->
+    <div class="gameinfo-wrap">
 
     <!-- Hero 核心定位 -->
-    <div class="gi-hero">
+    <div class="gi-hero" id="gi-sec-hero">
       <div class="gi-hero-bg"></div>
       <div class="gi-hero-content">
         <div class="gi-tagline">Rust 正版玩法授权 · PC&移动跨端</div>
@@ -635,7 +646,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- 玩法概述 7要素 官方原文 -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-overview">
       <div class="gi-section-hd">
         <div class="gi-section-icon">🗺️</div>
         <div>
@@ -683,7 +694,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 生存机制 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-survive">
       <div class="gi-section-hd">
         <div class="gi-section-icon">❤️</div>
         <div>
@@ -713,7 +724,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 资源采集 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-resource">
       <div class="gi-section-hd">
         <div class="gi-section-icon">⛏️</div>
         <div>
@@ -745,7 +756,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 领地建造 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-build">
       <div class="gi-section-hd">
         <div class="gi-section-icon">🏠</div>
         <div>
@@ -775,7 +786,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 制作与装备 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-craft">
       <div class="gi-section-hd">
         <div class="gi-section-icon">⚗️</div>
         <div>
@@ -806,7 +817,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 探索与地标 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-explore">
       <div class="gi-section-hd">
         <div class="gi-section-icon">🗺️</div>
         <div>
@@ -844,7 +855,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 战斗与掠夺 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-combat">
       <div class="gi-section-hd">
         <div class="gi-section-icon">⚔️</div>
         <div>
@@ -874,7 +885,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 社交合作 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-social">
       <div class="gi-section-hd">
         <div class="gi-section-icon">🤝</div>
         <div>
@@ -900,7 +911,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 动态事件与环境 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-event">
       <div class="gi-section-hd">
         <div class="gi-section-icon">🌍</div>
         <div>
@@ -930,7 +941,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- ── 玩法模式 ── -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-mode">
       <div class="gi-section-hd">
         <div class="gi-section-icon">🎮</div>
         <div>
@@ -993,7 +1004,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- 配置要求 -->
-    <div class="gi-section">
+    <div class="gi-section" id="gi-sec-spec">
       <div class="gi-section-hd">
         <div class="gi-section-icon">🖥️</div>
         <div>
@@ -1077,6 +1088,24 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
   </div><!-- /gameinfo-wrap -->
+
+    <!-- 右侧吸顶导航 -->
+    <nav class="gi-sidenav" id="gi-sidenav">
+      <div class="gi-sidenav-title">页面导航</div>
+      <a class="gi-sidenav-item active" href="#gi-sec-hero" onclick="giNavClick(this,'gi-sec-hero')"><span class="gi-sidenav-icon">🎯</span>游戏介绍</a>
+      <a class="gi-sidenav-item" href="#gi-sec-overview" onclick="giNavClick(this,'gi-sec-overview')"><span class="gi-sidenav-icon">🗺️</span>玩法概述</a>
+      <a class="gi-sidenav-item" href="#gi-sec-survive" onclick="giNavClick(this,'gi-sec-survive')"><span class="gi-sidenav-icon">❤️</span>生存机制</a>
+      <a class="gi-sidenav-item" href="#gi-sec-resource" onclick="giNavClick(this,'gi-sec-resource')"><span class="gi-sidenav-icon">⛏️</span>资源采集</a>
+      <a class="gi-sidenav-item" href="#gi-sec-build" onclick="giNavClick(this,'gi-sec-build')"><span class="gi-sidenav-icon">🏠</span>领地建造</a>
+      <a class="gi-sidenav-item" href="#gi-sec-craft" onclick="giNavClick(this,'gi-sec-craft')"><span class="gi-sidenav-icon">⚗️</span>制作装备</a>
+      <a class="gi-sidenav-item" href="#gi-sec-explore" onclick="giNavClick(this,'gi-sec-explore')"><span class="gi-sidenav-icon">🗺️</span>探索地标</a>
+      <a class="gi-sidenav-item" href="#gi-sec-combat" onclick="giNavClick(this,'gi-sec-combat')"><span class="gi-sidenav-icon">⚔️</span>战斗掠夺</a>
+      <a class="gi-sidenav-item" href="#gi-sec-social" onclick="giNavClick(this,'gi-sec-social')"><span class="gi-sidenav-icon">🤝</span>社交合作</a>
+      <a class="gi-sidenav-item" href="#gi-sec-event" onclick="giNavClick(this,'gi-sec-event')"><span class="gi-sidenav-icon">🌍</span>动态事件</a>
+      <a class="gi-sidenav-item" href="#gi-sec-mode" onclick="giNavClick(this,'gi-sec-mode')"><span class="gi-sidenav-icon">🎮</span>玩法模式</a>
+      <a class="gi-sidenav-item" href="#gi-sec-spec" onclick="giNavClick(this,'gi-sec-spec')"><span class="gi-sidenav-icon">🖥️</span>配置要求</a>
+    </nav>
+  </div><!-- /gameinfo-layout -->
 </div><!-- /page-gameinfo -->
 
 <!-- ══════════════════════════════════════
@@ -1664,31 +1693,54 @@ const POIS = [
 ];
 
 const FAQ_DATA = {
-  survive: { label:'生存基础', icon:'🏃', count:4, items:[
-    {src:'official', q:'进游戏后什么都不会，先做什么？', a:'先在出生点收集基础资源：对树上红色X击打拿木头，对石头节点闪光点击打拿石头。收够木头200+石头100后，制作石斧，然后去最近的一级据点（废弃超市、加油站）搜刮基础物资。'},
-    {src:'player', q:'我一直在饿/一直在渴，该怎么办？', a:'口渴：找河边喝水或制作水瓶备水。饥饿：优先找蘑菇、南瓜、仙人掌，狩猎动物记得先烤熟再吃，生肉会导致呕吐加速消耗。'},
-    {src:'official', q:'倒地后怎么复活？', a:'倒地后队友可以在规定时间内救你，你也有小概率自行复活。被淘汰后可以在睡袋位置重生，注意及时找回凋落物。'},
-    {src:'player', q:'为什么我跑不动了？', a:'口渴值归零会导致无法奔跑。找水喝即可解除。'},
+  survive: { label:'生存基础', icon:'🏃', count:7, items:[
+    {src:'official', q:'进游戏后什么都不会，先做什么？', a:'先在出生点收集基础资源：对树上红色X击打拿木头，对石头节点闪光点击打拿石头。收够后制作石斧，再去最近的一级据点（废弃超市、加油站）搜刮物资和废料。'},
+    {src:'official', q:'我出生后只有石头和火把，怎么获取食物？', a:'初始附赠石头和火把。食物来源：大世界里找蘑菇、南瓜、仙人掌、方便食品；用弓或石矛狩猎动物获得生肉——记得先用篝火烤熟再吃，直接吃生肉会导致呕吐。'},
+    {src:'official', q:'我一直饿/一直渴，该怎么办？', a:'口渴：在河流中直接喝水或用水瓶储水带走。饥饿：找蘑菇、南瓜、仙人掌等植物食物，或狩猎动物获取生肉烤熟食用。饱腹值清零会持续扣血，口渴值清零会无法奔跑。'},
+    {src:'official', q:'生命值怎么恢复？', a:'三种方式：① 保持较高的口渴值和饱腹值，角色会缓慢自动回血；② 在火源、家具等提供舒适度的环境旁休息；③ 制作绷带或医疗针快速恢复。'},
+    {src:'official', q:'倒地之后怎么复活？', a:'倒地后队友可以在规定时间内将你救起，你也有小概率自行原地复活。被淘汰后可在复活界面选择睡袋位置重生，注意及时找回凋落物，以免被敌人拾走。'},
+    {src:'player', q:'为什么我跑不动了？', a:'口渴值归零会导致角色失去奔跑能力。赶紧喝水即可解除，在河边直接按交互键就能喝水，不需要容器。'},
+    {src:'player', q:'辐射区是什么？能不能进？', a:'辐射区是地图中特定区域，会对玩家造成持续掉血伤害。需要穿着防护服（官方原文提到需防护装备或抗辐射药物）才能安全进入。辐射区通常含有稀有资源，但风险很高，新手不建议裸装进入。'},
   ]},
-  build: { label:'建造基地', icon:'🏠', count:3, items:[
-    {src:'official', q:'基地建在哪里比较好？', a:'综合考虑周边自然资源、据点数量和距安全区的距离。但资源丰富的位置也容易被其他玩家觊觎，隐蔽性和资源量需要权衡。'},
-    {src:'player', q:'工具柜是什么，为什么重要？', a:'工具柜是基地的核心建筑，控制基地权限。没有工具柜任何人都可以在范围内建造，放置后只有你和队友可以。基地维护也需要往工具柜里放资源。'},
-    {src:'official', q:'基地为什么会自动消失？', a:'基地会随时间衰退，工具柜里需要保持足够的维护资源（木材、石头、金属碎片）。定期补充资源，避免基地衰退被拆除。'},
+  build: { label:'建造基地', icon:'🏠', count:6, items:[
+    {src:'official', q:'基地建在哪里比较好？', a:'需要综合考虑三点：周边自然资源是否丰富、附近有多少据点、距安全区的距离。但注意，资源丰厚的地点也会吸引其他玩家觊觎，隐蔽性和资源量之间需要权衡。'},
+    {src:'official', q:'建基地怎么从零开始？', a:'从1×2或2×2的核心居住空间开始建造，慢慢向外拓展防炸层结构。注意及时摆放大门和封顶，防止其他玩家进来掠夺。也可以直接选择建造模板房，适合新手快速建立庇护所。'},
+    {src:'official', q:'工具柜有什么用？为什么很重要？', a:'工具柜是基地的核心建筑，管理建造权限。放置工具柜后，只有你和授权队友能在其范围内建造。基地维护同样依赖工具柜——需要定期向其中补充木材、石头和金属碎片等维护资源，否则基地会随时间衰退。'},
+    {src:'official', q:'基地为什么会自动消失/变差？', a:'基地会随时间自然衰退。原因是工具柜里的维护资源耗尽了。需要定期检查工具柜并补充必要资源（木材、石头、金属碎片），保持基地结构稳固不倒。'},
+    {src:'official', q:'怎么提升基地防御力？', a:'尽快将建筑材质从木质升级为石头，再升级为金属。可以逐个交互单个建筑摆件升级，也可以在工具柜界面一键全部升级。金属结构抗爆炸能力远强于木质结构。'},
+    {src:'player', q:'睡袋放在哪里？有什么用？', a:'睡袋放在基地里，被淘汰后可以选择在睡袋位置附近复活，避免从地图边缘重新跑回来。注意睡袋复活有冷却时间。基地里多放几个睡袋可以作为备用复活点。'},
   ]},
-  weapon: { label:'武器战斗', icon:'🔫', count:3, items:[
-    {src:'player', q:'前期用什么武器防身？', a:'手工弓是前期最实用的远程武器，制作成本低（木头+布料），注意弹道有抛物线需要练习。石矛可以当近战保命用。'},
-    {src:'official', q:'遭遇其他玩家怎么处理？', a:'装备差的时候跑比打更明智。不熟悉对方装备等级就不要轻易接触。'},
-    {src:'player', q:'子弹打完了怎么办？', a:'可以在据点安全区的自动售货机购买弹药（需要废料），也可以在科技树里解锁弹药制作。弩的箭矢可以回收，经济性更好。'},
+  weapon: { label:'武器战斗', icon:'🔫', count:6, items:[
+    {src:'official', q:'前期用什么武器防身？', a:'石斧和石稿（镐）是初始制作的工具，也可以当近战武器用。前期最推荐的远程武器是弓：制作成本低（木头+布料），但弹道有抛物线，需要练习瞄准提前量。'},
+    {src:'official', q:'弓箭的弹道有点奇怪，怎么瞄准？', a:'弓有抛物线弹道，近距离影响不大，远距离需要适当往目标上方瞄准。可以在出生点对野生动物多练习几次，熟悉抛物线后命中率会明显提升。'},
+    {src:'official', q:'什么时候能用枪？枪怎么获得？', a:'枪械需要通过科技树解锁（废料解锁科技，并制作对应制作台）。官方建议前期优先解锁战斗模块科技，尽快制作自动化枪械——这样在别人还用石器时代武器时，你已经有绝对优势了。'},
+    {src:'official', q:'遭遇其他玩家怎么处理？', a:'装备差的时候，跑比打更明智。不了解对方装备等级就不要轻易接触。尽量利用地形掩护，避免在开阔地带和装备好的玩家硬刚。'},
+    {src:'player', q:'子弹/箭矢打完了怎么补充？', a:'弹药可以在据点安全区的自动售货机购买（需要废料），也可以解锁科技树后自己制作。弩的箭矢被射出后可以拾回，经济性好，适合前期缺物资时使用。'},
+    {src:'player', q:'被多人围攻，倒地后队友能救我吗？', a:'可以。倒地后队友可以在规定时间内靠近救起。但被淘汰（彻底死亡）就无法原地救援了，只能去睡袋复活。高风险战斗前建议先确认队友位置。'},
   ]},
-  craft: { label:'合成制作', icon:'⚙️', count:3, items:[
-    {src:'official', q:'废料是什么，去哪弄？', a:'废料是游戏里的硬通货，用于解锁科技树、在安全区购买物资。搜刮铁桶、物资箱，或通过分解机分解不需要的材料获取。'},
-    {src:'player', q:'那些看不懂的材料（齿轮、篷布）有什么用？', a:'主要用于中高阶装备制作，但前期更需要基础资源和废料。把它们放进据点的分解机，可以转化成基础资源或废料。'},
-    {src:'official', q:'科技树要怎么解锁？', a:'用废料解锁科技，每个等级的科技需要先制作并摆放对应的制作台。建议前期优先解锁战斗模块科技，先获得自动化枪械。'},
+  craft: { label:'合成制作', icon:'⚙️', count:6, items:[
+    {src:'official', q:'废料是什么，去哪里找？', a:'废料是游戏里的硬通货，用于解锁科技树、在安全区商店购买物资。主要来源：搜刮铁桶和物资箱，以及用分解机分解多余材料。优先勤跑小型据点可以积累大量废料。'},
+    {src:'official', q:'捡到的材料看不懂（齿轮、篷布、管子）有什么用？', a:'这些是中高阶装备的制作材料，但前期你更需要基础资源和废料。把这些材料放入据点里的分解机，可以转化为基础资源或废料，别直接丢掉。'},
+    {src:'official', q:'科技树怎么解锁？有什么顺序建议？', a:'用废料解锁科技，但注意：每个等级的科技解锁前，需要先制作并摆放对应的制作台。官方建议前期优先解锁战斗模块科技，尽快获得自动化枪械。'},
+    {src:'official', q:'制作台是什么？需要几个？', a:'制作台是解锁高阶科技的前置条件，需要先制作并摆放在基地里，才能解锁对应等级的科技树。不同等级的科技需要对应等级的制作台。'},
+    {src:'player', q:'怎么炼金属矿？', a:'需要先制作熔炉并放置在基地内，将金属矿石放入熔炉，等待冶炼完成获得金属碎片或高质金属。熔炉需要燃料（木头）才能运作。【注：熔炉具体操作细节以游戏内为准】'},
+    {src:'player', q:'绷带和医疗针有什么区别？', a:'绷带制作成本低，回血量较少，适合日常轻伤；医疗针回血量更高，适合战斗后快速恢复。前期优先制作绷带即可，有条件再解锁医疗针配方。【具体数值以游戏内为准】'},
   ]},
-  meta: { label:'游戏机制', icon:'📊', count:3, items:[
-    {src:'official', q:'一局游戏多久结算？', a:'根据模式不同：庇护模式10天、标准模式7天、进阶模式6天、挑战模式5天、急速挑战2.5天。结算后根据情报等级获得账号奖励。'},
-    {src:'official', q:'什么是"情报等级"？', a:'在战利品箱获得情报文件，存入升级为情报站的工具柜缓慢破译，积累情报币后提升情报等级。情报等级跨局永久有效，可解锁独特装备。'},
-    {src:'player', q:'庇护模式适合新手吗？', a:'庇护模式死亡惩罚最轻，结算时间最长（10天），情报领地默认无敌。非常适合新手熟悉游戏机制。'},
+  explore: { label:'探索遗迹', icon:'🧭', count:5, items:[
+    {src:'official', q:'据点是什么？有必要去吗？', a:'据点是地图上散布的可探索区域，分大中小三类。小型据点：前期发育必去，资源采集和技术图纸的重要来源，风险较低。中型据点：主流搜刮区域，需要一定装备。大型据点：高价值战利品，但有强敌驻守，竞争最激烈。'},
+    {src:'official', q:'什么是"红卡房"？怎么进？', a:'红卡房是大型据点中需要红色通行证才能解锁的特殊区域，里面有高价值战利品和情报文件，是刷情报等级效率最高的地点之一。获取红卡需要在据点探索中找到或从敌人处掉落。'},
+    {src:'official', q:'地图上有哪些载具？怎么用？', a:'地面载具：马匹、汽车、火车。空中载具：小型直升机、大型直升机。水面载具：木舟、冲锋艇。载具能大幅提升探索效率，但驾驶时目标明显，容易被其他玩家盯上。'},
+    {src:'official', q:'空投物资是什么？值得争抢吗？', a:'空投是随机掉落在地图上的补给，通常含有稀有资源和装备，会吸引大量玩家争夺。新手装备不足时建议先观望，等其他玩家拼完再捡漏，直接冲往往得不偿失。'},
+    {src:'player', q:'科学家NPC会主动攻击我吗？', a:'会。科学家是驻守在据点的NPC，会主动攻击靠近的玩家。击败后可掉落高级装备。前期建议绕开或用弓从远处射击，正面硬刚消耗较大。'},
+  ]},
+  meta: { label:'游戏机制', icon:'📊', count:7, items:[
+    {src:'official', q:'一局游戏多久结算？', a:'根据模式不同：庇护模式10天、标准模式7天、进阶模式6天、挑战模式5天、急速挑战2.5天（均为游戏内时间，非现实时间）。结算后根据情报等级获得账号奖励。'},
+    {src:'official', q:'什么是"情报等级"？有什么用？', a:'情报等级是跨局永久有效的账号成长。在战利品箱获得情报文件，存入升级为情报站的工具柜缓慢破译，积累情报币后提升等级。情报等级能解锁独特高价值装备道具，提升后续的游玩优势。'},
+    {src:'official', q:'哪个模式适合新手入门？', a:'庇护模式：死亡惩罚最轻（仅掉落部分物资），结算时间最长（10天），情报领地默认无敌，主动报名才解除保护。非常适合新手先熟悉游戏机制。'},
+    {src:'official', q:'什么是"抄家"？', a:'抄家是指攻击并摧毁其他玩家的领地，掠夺其中的资源和装备。不同模式对抄家的时间和规则有限制，庇护模式保护力度最强，挑战模式全天可抄家，是PVP烈度最高的模式。'},
+    {src:'official', q:'被别人拆基地了怎么办？', a:'基地被拆是正常游戏内容，属于"抄家"玩法的一部分。建议：选隐蔽位置建基地、尽快将材质升级为金属、设计防炸层结构增加攻破成本，以及保持工具柜内资源充足避免自然衰退。'},
+    {src:'official', q:'剧本系统是什么？', a:'剧本系统是单局服务器的进程推进机制，会告知玩家每个阶段的变化——事件刷新、物资产出、PVP规则等都随剧本推进而改变，让每局游戏有不同节奏感。'},
+    {src:'player', q:'跨平台玩家（PC和手机）可以一起玩吗？', a:'可以。游戏支持PC和移动端跨端游戏，同一服务器内PC和手机玩家可以互相遭遇和组队。不过操控方式有差异，PC玩家在精准射击上通常有一定优势。'},
   ]},
 };
 
@@ -2003,6 +2055,48 @@ renderWeaponCarousel();
 renderPoiCarousel();
 renderVideos();
 renderFaqCats();
+
+// ── 游戏介绍侧边导航 ──────────────────────────────────
+function giNavClick(el, targetId) {
+  event.preventDefault();
+  // 高亮
+  document.querySelectorAll('.gi-sidenav-item').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+  // 平滑滚动到目标
+  const target = document.getElementById(targetId);
+  if(!target) return;
+  const page = document.getElementById('page-gameinfo');
+  const offset = target.getBoundingClientRect().top - page.getBoundingClientRect().top + page.scrollTop - 16;
+  page.scrollTo({top: offset, behavior:'smooth'});
+}
+
+// 滚动时自动高亮导航项
+(function initGiScrollSpy() {
+  const sectionIds = ['gi-sec-hero','gi-sec-overview','gi-sec-survive','gi-sec-resource','gi-sec-build','gi-sec-craft','gi-sec-explore','gi-sec-combat','gi-sec-social','gi-sec-event','gi-sec-mode','gi-sec-spec'];
+
+  function updateGiNav() {
+    const page = document.getElementById('page-gameinfo');
+    if(!page) return;
+    const scrollTop = page.scrollTop + 100;
+    let current = sectionIds[0];
+    for(const id of sectionIds) {
+      const el = document.getElementById(id);
+      if(el && el.offsetTop <= scrollTop) current = id;
+    }
+    document.querySelectorAll('.gi-sidenav-item').forEach(a => {
+      const href = a.getAttribute('href');
+      a.classList.toggle('active', href === '#'+current);
+    });
+  }
+
+  // 等 page 渲染后再绑
+  const tryBind = () => {
+    const page = document.getElementById('page-gameinfo');
+    if(page) { page.addEventListener('scroll', updateGiNav, {passive:true}); }
+    else { setTimeout(tryBind, 500); }
+  };
+  tryBind();
+})();
 renderFaqItems('survive');
 
 function switchSpecTab(tab, el) {
