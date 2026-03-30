@@ -48,7 +48,8 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 
 /* ── PAGE ── */
 .page{display:none;}
-.page.active{display:block;}
+.page.active{display:block;animation:pageFadeIn .22s ease-out;}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
 /* ════════ HOME ════════ */
 .home-hero{position:relative;height:420px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;}
@@ -568,8 +569,8 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .src-player{background:rgba(96,165,250,.12);color:#60a5fa;}
 .faq-toggle{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--surface2);border:1px solid var(--border);transition:transform .2s;flex-shrink:0;}
 .faq-item.open .faq-toggle{transform:rotate(45deg);background:var(--orange);border-color:var(--orange);color:#fff;}
-.faq-a{display:none;padding:14px 16px;font-size:12px;color:var(--text-dim);line-height:1.8;background:var(--surface);border-top:1px solid var(--border);}
-.faq-item.open .faq-a{display:block;}
+.faq-a{display:block;max-height:0;overflow:hidden;padding:0 16px;font-size:12px;color:var(--text-dim);line-height:1.8;background:var(--surface);border-top:1px solid var(--border);transition:max-height .28s ease,padding .2s ease;}
+.faq-item.open .faq-a{max-height:600px;padding:12px 16px 16px;}
 
 /* ════════ SECTION DIVIDER ════════ */
 .sec-div{display:flex;align-items:center;gap:12px;padding:0 48px 20px;max-width:1200px;margin:0 auto;}
@@ -696,6 +697,38 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .step-nav-row{display:flex;justify-content:space-between;margin-top:28px;}
 .step-nav-btn{padding:10px 20px;border-radius:var(--r);background:var(--orange);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s;}
 .step-nav-btn:hover{background:#f07030;}
+
+/* ══ 美观优化补丁 ══════════════════════════════════════════ */
+
+/* 1. 武器卡片 stat 条颜色渐变（高=绿，中=黄，低=红） */
+.stat-fill{background:linear-gradient(90deg,#e84040 0%,#fbbf24 50%,#22c55e 100%);background-size:200% 100%;}
+
+/* 2. stat 标签动态颜色（通过行内var覆盖实现，保持渐变） */
+
+/* 3. 武器类型筛选chip 激活状态更突出——加光晕 */
+.tier-chip.active{box-shadow:0 0 0 2px currentColor, 0 0 12px rgba(232,98,26,.3);}
+
+/* 4. 据点 tag chip 悬停效果 */
+.poi-tag-chip{transition:background .15s,border-color .15s,color .15s;}
+.poi-tag-chip:hover{background:var(--orange-dim);border-color:rgba(232,98,26,.35);color:var(--orange);}
+
+/* 5. 武器类型筛选chip 激活状态更突出——加光晕 */
+.tier-chip.active{box-shadow:0 0 0 2px currentColor, 0 0 12px rgba(232,98,26,.3);}
+
+/* 6. 据点 tag chip 悬停效果 */
+.wep-carousel-card,.poi-carousel-card{box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+
+/* 7. 危险等级文字语义着色 */
+.danger-label{font-size:12px;font-weight:700;letter-spacing:.5px;}
+
+/* 8. 首页 Hero 副标题渐变文字 */
+.home-hero-sub{background:linear-gradient(90deg,var(--text-dim),var(--text));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* 9. 导航 tab 悬停底部橙线过渡 */
+.nav-tab{border-bottom:2px solid transparent;transition:color .18s,border-color .18s,background .18s;}
+
+/* 10. 步骤完成状态文字颜色微调 */
+.snav-item.done .snav-label{color:var(--green);}
 
 </style>
 </head>
