@@ -2290,6 +2290,9 @@ const TERMS = {
     {icon:'🍗', name:'饱腹值', desc:'需定期进食，否则健康值将逐渐下降。食物可通过狩猎动物、采集浆果或种植农作物获得。'},
     {icon:'🌡️', name:'体温管理', desc:'在寒冷环境中玩家会逐渐失温，需要点燃篝火或穿着保暖衣物；在炎热环境中需避免长时间暴露于阳光下。'},
     {icon:'☢️', name:'辐射', desc:'地图中特定区域存在的持续伤害。需穿着防护服或使用抗辐射药物方可进入，辐射区通常含有稀有资源，但风险较高。'},
+    {icon:'🏕️', name:'开荒', src:'player', source:'玩家（TapTap / 各攻略站）', desc:'服务器开局阶段，指玩家刚进服务器、从零积累资源的时期。例："开荒期别主动PVP"'},
+    {icon:'⚖️', name:'超重', src:'player', source:'玩家（TapTap / 876uc 攻略）', desc:'背包物资超出负重上限，移动速度大幅降低。'},
+    {icon:'🛏️', name:'复活点', src:'player', source:'玩家（心愿游戏 / 9游）', desc:'可以重生的位置，包括睡袋和安全区两类。'},
   ]},
   base: { label:'建造', icon:'🏗️', terms:[
     {icon:'🗝️', name:'工具柜', desc:'领地的核心建筑，管理建造权限。放置后仅拥有权限的玩家可进入领地或使用领地设施，需定期维护，否则建筑会衰退。'},
@@ -2298,6 +2301,10 @@ const TERMS = {
     {icon:'⚙️', name:'分解机', desc:'将多余材料分解为基础资源或废料的建筑，前期必备。'},
     {icon:'🔧', name:'工作台', desc:'解锁科技、制作高级物品的前置建筑。需先摆放在领地内，才能解锁并制作对应等级的装备与科技。'},
     {icon:'🧱', name:'建筑等级', desc:'领地建筑分木质、石质、金属三个等级，通过收集更高级材料逐步升级，金属结构耐久最高，最难被摧毁。'},
+    {icon:'🏠', name:'领地柜（工具柜）', src:'player', source:'玩家（TapTap / 9游）', desc:'基地核心建筑，控制领地范围、一键升级、情报站功能。例："工具柜记得常补材料，不然房子会坍塌"'},
+    {icon:'💣', name:'防炸层', src:'player', source:'玩家（官网 / 各攻略站）', desc:'基地外围专门用来消耗炸药的隔离层结构。例："从2×2核心向外拓展防炸层结构"'},
+    {icon:'🔒', name:'封顶', src:'player', source:'玩家（TapTap 30分钟攻略）', desc:'建筑加上屋顶，防止玩家从上方进入。例："必须封顶！不然别人能从房顶跳进来"'},
+    {icon:'📦', name:'诱饵箱', src:'player', source:'玩家（搜狐 / 心愿游戏）', desc:'放少量低价值物资的储物箱，用来迷惑掠夺者。'},
   ]},
   combat: { label:'战斗', icon:'⚔️', terms:[
     {icon:'🪙', name:'废料', desc:'荒岛上的硬通货。通过搜刮地图散落物资或分解杂物获得，可在前哨站等中立区域购买物资、武器甚至载具，也可用于解锁科技树。'},
@@ -2305,6 +2312,8 @@ const TERMS = {
     {icon:'💀', name:'倒地', desc:'生命值归零后进入倒地状态，队友可在规定时间内将你救起；超时或被再次攻击则彻底淘汰，掉落物资。'},
     {icon:'💣', name:'爆炸物', desc:'用于摧毁敌方建筑的道具（炸药、火箭弹等），解锁对应科技后可合成。进攻策略：预判建筑结构，规划最优破坏路径，以最高效率摧毁敌方领地。'},
     {icon:'🚂', name:'环线车队', desc:'地图中巡逻的武装车队，会攻击有威胁值的玩家；部分车队也可与玩家进行交易。'},
+    {icon:'🥷', name:'偷家', src:'player', source:'玩家（B站 / 心愿游戏 / 各社区）', desc:'趁对方不在或防守薄弱时突袭、洗劫对方基地，同"抄家"。'},
+    {icon:'💥', name:'抄家', src:'player', source:'玩家（9游 / 游侠手游 / 心愿游戏）', desc:'强行攻破对方基地并掠夺全部资源。例："被抄家了所有物资就会被清空"'},
   ]},
   explore: { label:'探索', icon:'🗺️', terms:[
     {icon:'🏚️', name:'遗迹据点', desc:'地图上可探索的特定区域。小型遗迹：威胁低，适合前期发育；中型遗迹：中等难度，搜刮主流区域；大型遗迹：高价值战利品，有强敌驻守，玩家竞争最激烈。'},
@@ -2313,6 +2322,14 @@ const TERMS = {
     {icon:'📦', name:'物资空投', desc:'游戏中随机出现的高价值物资补给，会吸引大量玩家争夺，装备不足时建议观望捡漏。'},
     {icon:'🌙', name:'昼夜交替', desc:'游戏世界有昼夜变化，夜晚视野受限，需点燃火把或使用夜视装备。'},
     {icon:'📋', name:'情报文件', desc:'在战利品箱中获取，存入情报站后缓慢破译，积累情报币提升情报等级，解锁独特高价值装备。'},
+    {icon:'🃏', name:'三色卡', src:'player', source:'玩家（TapTap / 腾讯频道 / 抖音）', desc:'绿卡/蓝卡/红卡的统称，用于解锁不同等级的卡房获取高价值物资。'},
+    {icon:'🚪', name:'卡房', src:'player', source:'玩家（TapTap / 抖音评论）', desc:'需要用对应颜色门卡才能进入的房间，内有高级物资定期刷新。'},
+    {icon:'📍', name:'刷新点', src:'player', source:'玩家（抖音评论）', desc:'物资/卡牌定期重新生成的位置。例："一分钟记全所有刷新点"'},
+    {icon:'🔴', name:'红点', src:'player', source:'玩家（游侠手游 / TapTap）', desc:'树干上标注的高密度资源采集点。例："砍树认准树干上的红色X标记"'},
+    {icon:'✨', name:'闪光点', src:'player', source:'玩家（TapTap 30分钟攻略）', desc:'岩石上标注的高效采集点。例："挖石头盯着岩石上的闪光点"'},
+    {icon:'🏪', name:'前哨站', src:'player', source:'玩家（腾讯频道 三色卡帖）', desc:'地图上的特殊商人NPC据点，可购买物资、装备甚至载具。'},
+    {icon:'⚙️', name:'分解机（黑话）', src:'player', source:'玩家（游侠 / 9游 / 各攻略）', desc:'将物品分解成基础资源的设备，据点中常见，前期必备。'},
+    {icon:'🪙', name:'废料（黑话）', src:'player', source:'玩家（游侠手游）', desc:'核心流通资源，解锁科技树/商店购买的主要货币。例："世界中至关重要的流通货币"'},
   ]},
   mode: { label:'模式', icon:'🎮', terms:[
     {icon:'🛡️', name:'庇护模式', desc:'【经典战局】结算周期10天。死亡后掉落部分物资。情报领地默认无敌，主动报复才限时解除保护。残骸保护50%资源。适合新手熟悉游戏机制。'},
@@ -2321,25 +2338,6 @@ const TERMS = {
     {icon:'💀', name:'挑战模式', desc:'【经典战局】结算周期5天。死亡后掉落所有物资。全天可抄家。被摧毁所有资源全掉落，无残骸保护。竞争最激烈。'},
     {icon:'⚡', name:'急速挑战', desc:'【限时模式】结算周期2.5天。死亡后掉落所有物资。前12小时禁止抄家，12小时后全程自由抄家。无残骸保护，节奏极快。'},
     {icon:'📜', name:'剧本系统', desc:'单局服务器的进程推进机制，事件刷新、物资产出和PVP规则随剧本推进而改变，让每局游戏有独特节奏感。'},
-  ]},
-  player: { label:'玩家黑话', icon:'🗣️', terms:[
-    {icon:'🏕️', name:'开荒', src:'player', source:'玩家（TapTap / 各攻略站）', desc:'服务器开局阶段，指玩家刚进服务器、从零积累资源的时期。例："开荒期别主动PVP"'},
-    {icon:'⚖️', name:'超重', src:'player', source:'玩家（TapTap / 876uc 攻略）', desc:'背包物资超出负重上限，移动速度大幅降低。'},
-    {icon:'🛏️', name:'复活点', src:'player', source:'玩家（心愿游戏 / 9游）', desc:'可以重生的位置，包括睡袋和安全区两类。'},
-    {icon:'🏠', name:'领地柜', src:'player', source:'玩家（TapTap / 9游）', desc:'基地核心建筑，控制领地范围、一键升级、情报站功能。例："工具柜记得常补材料，不然房子会坍塌"'},
-    {icon:'🧱', name:'防炸层', src:'player', source:'玩家（官网 / 各攻略站）', desc:'基地外围专门用来消耗炸药的隔离层结构。例："从2×2核心向外拓展防炸层结构"'},
-    {icon:'🔒', name:'封顶', src:'player', source:'玩家（TapTap 30分钟攻略）', desc:'建筑加上屋顶，防止玩家从上方进入。例："必须封顶！不然别人能从房顶跳进来"'},
-    {icon:'📦', name:'诱饵箱', src:'player', source:'玩家（搜狐 / 心愿游戏）', desc:'放少量低价值物资的储物箱，用来迷惑掠夺者。'},
-    {icon:'🥷', name:'偷家', src:'player', source:'玩家（B站 / 心愿游戏 / 各社区）', desc:'趁对方不在或防守薄弱时突袭、洗劫对方基地，同"抄家"。'},
-    {icon:'💥', name:'抄家', src:'player', source:'玩家（9游 / 游侠手游 / 心愿游戏）', desc:'强行攻破对方基地并掠夺全部资源。例："被抄家了所有物资就会被清空"'},
-    {icon:'🃏', name:'三色卡', src:'player', source:'玩家（TapTap / 腾讯频道 / 抖音）', desc:'绿卡/蓝卡/红卡的统称，用于解锁不同等级的卡房获取高价值物资。'},
-    {icon:'🚪', name:'卡房', src:'player', source:'玩家（TapTap / 抖音评论）', desc:'需要用对应颜色门卡才能进入的房间，内有高级物资定期刷新。'},
-    {icon:'📍', name:'刷新点', src:'player', source:'玩家（抖音评论）', desc:'物资/卡牌定期重新生成的位置。例："一分钟记全所有刷新点"'},
-    {icon:'🔴', name:'红点', src:'player', source:'玩家（游侠手游 / TapTap）', desc:'树干上标注的高密度资源采集点。例："砍树认准树干上的红色X标记"'},
-    {icon:'✨', name:'闪光点', src:'player', source:'玩家（TapTap 30分钟攻略）', desc:'岩石上标注的高效采集点。例："挖石头盯着岩石上的闪光点"'},
-    {icon:'🏪', name:'前哨站', src:'player', source:'玩家（腾讯频道 三色卡帖）', desc:'地图上的特殊商人NPC据点，可购买物资、装备甚至载具。'},
-    {icon:'⚙️', name:'分解机', src:'player', source:'玩家（游侠 / 9游 / 各攻略）', desc:'将物品分解成基础资源的设备，据点中常见，前期必备。'},
-    {icon:'🪙', name:'废料（黑话）', src:'player', source:'玩家（游侠手游）', desc:'核心流通资源，解锁科技树/商店购买的主要货币。例："世界中至关重要的流通货币"'},
   ]},
 };
 
@@ -2633,7 +2631,7 @@ function renderTerms() {
   gridEl.innerHTML = cat.terms.map((t,i)=>`
     <div class="term-chip" onclick="openTermDrawer('${currentTermCat}',${i})">
       <span class="term-chip-ico">${t.icon||cat.icon}</span>
-      <span class="term-chip-name">${t.name}</span>
+      <span class="term-chip-name">${t.name}${t.src==='player'?'<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#60a5fa;vertical-align:middle;margin-left:5px;margin-bottom:2px;" title="待校对"></span>':''}</span>
       <span class="term-chip-arrow">›</span>
     </div>
   `).join('');
@@ -2650,7 +2648,7 @@ function switchTermCat(key, el) {
     gridEl.innerHTML = cat.terms.map((t,i)=>`
       <div class="term-chip" onclick="openTermDrawer('${key}',${i})">
         <span class="term-chip-ico">${t.icon||cat.icon}</span>
-        <span class="term-chip-name">${t.name}</span>
+        <span class="term-chip-name">${t.name}${t.src==='player'?'<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#60a5fa;vertical-align:middle;margin-left:5px;margin-bottom:2px;" title="待校对"></span>':''}</span>
         <span class="term-chip-arrow">›</span>
       </div>
     `).join('');
