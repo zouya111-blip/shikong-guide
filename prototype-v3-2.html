@@ -2322,6 +2322,25 @@ const TERMS = {
     {icon:'⚡', name:'急速挑战', desc:'【限时模式】结算周期2.5天。死亡后掉落所有物资。前12小时禁止抄家，12小时后全程自由抄家。无残骸保护，节奏极快。'},
     {icon:'📜', name:'剧本系统', desc:'单局服务器的进程推进机制，事件刷新、物资产出和PVP规则随剧本推进而改变，让每局游戏有独特节奏感。'},
   ]},
+  player: { label:'玩家黑话', icon:'🗣️', terms:[
+    {icon:'🏕️', name:'开荒', src:'player', source:'玩家（TapTap / 各攻略站）', desc:'服务器开局阶段，指玩家刚进服务器、从零积累资源的时期。例："开荒期别主动PVP"'},
+    {icon:'⚖️', name:'超重', src:'player', source:'玩家（TapTap / 876uc 攻略）', desc:'背包物资超出负重上限，移动速度大幅降低。'},
+    {icon:'🛏️', name:'复活点', src:'player', source:'玩家（心愿游戏 / 9游）', desc:'可以重生的位置，包括睡袋和安全区两类。'},
+    {icon:'🏠', name:'领地柜', src:'player', source:'玩家（TapTap / 9游）', desc:'基地核心建筑，控制领地范围、一键升级、情报站功能。例："工具柜记得常补材料，不然房子会坍塌"'},
+    {icon:'🧱', name:'防炸层', src:'player', source:'玩家（官网 / 各攻略站）', desc:'基地外围专门用来消耗炸药的隔离层结构。例："从2×2核心向外拓展防炸层结构"'},
+    {icon:'🔒', name:'封顶', src:'player', source:'玩家（TapTap 30分钟攻略）', desc:'建筑加上屋顶，防止玩家从上方进入。例："必须封顶！不然别人能从房顶跳进来"'},
+    {icon:'📦', name:'诱饵箱', src:'player', source:'玩家（搜狐 / 心愿游戏）', desc:'放少量低价值物资的储物箱，用来迷惑掠夺者。'},
+    {icon:'🥷', name:'偷家', src:'player', source:'玩家（B站 / 心愿游戏 / 各社区）', desc:'趁对方不在或防守薄弱时突袭、洗劫对方基地，同"抄家"。'},
+    {icon:'💥', name:'抄家', src:'player', source:'玩家（9游 / 游侠手游 / 心愿游戏）', desc:'强行攻破对方基地并掠夺全部资源。例："被抄家了所有物资就会被清空"'},
+    {icon:'🃏', name:'三色卡', src:'player', source:'玩家（TapTap / 腾讯频道 / 抖音）', desc:'绿卡/蓝卡/红卡的统称，用于解锁不同等级的卡房获取高价值物资。'},
+    {icon:'🚪', name:'卡房', src:'player', source:'玩家（TapTap / 抖音评论）', desc:'需要用对应颜色门卡才能进入的房间，内有高级物资定期刷新。'},
+    {icon:'📍', name:'刷新点', src:'player', source:'玩家（抖音评论）', desc:'物资/卡牌定期重新生成的位置。例："一分钟记全所有刷新点"'},
+    {icon:'🔴', name:'红点', src:'player', source:'玩家（游侠手游 / TapTap）', desc:'树干上标注的高密度资源采集点。例："砍树认准树干上的红色X标记"'},
+    {icon:'✨', name:'闪光点', src:'player', source:'玩家（TapTap 30分钟攻略）', desc:'岩石上标注的高效采集点。例："挖石头盯着岩石上的闪光点"'},
+    {icon:'🏪', name:'前哨站', src:'player', source:'玩家（腾讯频道 三色卡帖）', desc:'地图上的特殊商人NPC据点，可购买物资、装备甚至载具。'},
+    {icon:'⚙️', name:'分解机', src:'player', source:'玩家（游侠 / 9游 / 各攻略）', desc:'将物品分解成基础资源的设备，据点中常见，前期必备。'},
+    {icon:'🪙', name:'废料（黑话）', src:'player', source:'玩家（游侠手游）', desc:'核心流通资源，解锁科技树/商店购买的主要货币。例："世界中至关重要的流通货币"'},
+  ]},
 };
 
 let currentTermCat = 'survive';
@@ -2647,7 +2666,10 @@ function openTermDrawer(catKey, termIdx) {
   
   document.getElementById('termDrawerCat').textContent = cat.icon + ' ' + cat.label;
   document.getElementById('termDrawerName').innerHTML = `<span style='margin-right:10px'>${term.icon||cat.icon}</span>${term.name}`;
-  document.getElementById('termDrawerBody').innerHTML = '<p>' + term.desc + '</p>';
+  const srcBadge = term.src === 'player'
+    ? `<span class="src-player" style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-bottom:10px;">🗣️ 待校对 · ${term.source||'玩家社区'}</span><br>`
+    : '';
+  document.getElementById('termDrawerBody').innerHTML = srcBadge + '<p>' + term.desc + '</p>';
   
   // 相关词条（同分类其他词）
   const related = cat.terms.filter((_,i) => i !== termIdx).slice(0,3);
