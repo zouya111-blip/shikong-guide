@@ -2570,10 +2570,19 @@ function filterWeapons(type, el) {
   document.querySelectorAll('#wep-type-filter .tier-chip').forEach(c=>c.classList.remove('active'));
   if(el) el.classList.add('active');
   weaponFilter = type;
-  const typeMap = {all:'all',rifle:'步枪',mg:'机枪',smg:'冲锋枪',
-                   pistol:'手枪',shotgun:'霰弹枪',bow:'弓弩',special:'特殊武器'};
-  const cat = typeMap[type] || type;
-  filteredWeapons = type === 'all' ? [...WEAPONS] : WEAPONS.filter(w => w.category === cat || w.typeName === cat);
+  // rifle 大类合并突击步枪(rifle)和狙击步枪(sniper)
+  const typeGroups = {
+    all: null,
+    rifle: ['rifle','sniper'],
+    mg: ['lmg'],
+    smg: ['smg'],
+    pistol: ['pistol'],
+    shotgun: ['shotgun'],
+    bow: ['bow'],
+    special: ['special']
+  };
+  const types = typeGroups[type];
+  filteredWeapons = type === 'all' ? [...WEAPONS] : WEAPONS.filter(w => types && types.includes(w.type));
   currentWepIdx = 0;
   renderWeaponCarousel();
 }
