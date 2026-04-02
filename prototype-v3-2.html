@@ -730,6 +730,40 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 /* 10. 步骤完成状态文字颜色微调 */
 .snav-item.done .snav-label{color:var(--green);}
 
+
+/* ════════ 小程序悬浮引导 ════════ */
+#mp-float{position:fixed;bottom:28px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-family:'Noto Sans SC',sans-serif;}
+#mp-float-bubble{background:linear-gradient(135deg,#1a1410 0%,#2a1f14 100%);border:1px solid var(--orange);border-radius:16px;padding:16px 18px;width:220px;box-shadow:0 8px 32px rgba(0,0,0,.6);display:none;flex-direction:column;gap:10px;}
+#mp-float-bubble.open{display:flex;}
+.mpf-title{font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:6px;}
+.mpf-desc{font-size:12px;color:var(--text-dim);line-height:1.6;}
+.mpf-rewards{display:flex;flex-direction:column;gap:4px;}
+.mpf-reward-item{font-size:11px;color:var(--text);background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.25);border-radius:6px;padding:4px 8px;display:flex;align-items:center;gap:6px;}
+.mpf-reward-item .ri-badge{font-size:9px;font-weight:700;letter-spacing:.5px;color:var(--orange);background:rgba(200,146,42,.15);border-radius:3px;padding:1px 4px;}
+.mpf-qr{width:100%;aspect-ratio:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:2px;}
+.mpf-qr img{width:100%;height:100%;object-fit:contain;}
+.mpf-qr-placeholder{font-size:11px;color:var(--text-dim);text-align:center;padding:16px 8px;line-height:1.6;}
+.mpf-close{font-size:10px;color:var(--text-muted);text-align:right;cursor:pointer;margin-top:2px;}
+.mpf-close:hover{color:var(--text-dim);}
+#mp-float-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#c8922a,#c8331a);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(200,146,42,.4);transition:transform .2s,box-shadow .2s;position:relative;}
+#mp-float-btn:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(200,146,42,.6);}
+#mp-float-btn svg{width:24px;height:24px;fill:white;}
+.mpf-dot{position:absolute;top:4px;right:4px;width:10px;height:10px;border-radius:50%;background:#ff4444;border:2px solid #1a1410;animation:mpf-pulse 2s infinite;}
+@keyframes mpf-pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.7;}}
+
+
+/* ════════ Step 内嵌 FAQ ════════ */
+.step-faq{margin-top:28px;padding-top:22px;border-top:1px solid var(--border);}
+.step-faq-title{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.step-faq-title::before{content:'';display:block;width:16px;height:1px;background:var(--text-dim);}
+.sfaq-item{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden;}
+.sfaq-q{padding:11px 14px;cursor:pointer;font-size:13px;color:var(--text);display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.sfaq-q:hover{color:var(--orange);}
+.sfaq-arr{font-size:10px;color:var(--text-muted);transition:transform .2s;flex-shrink:0;}
+.sfaq-item.open .sfaq-arr{transform:rotate(180deg);}
+.sfaq-a{display:none;padding:0 14px 12px;font-size:12px;color:var(--text-dim);line-height:1.7;border-top:1px solid var(--border);}
+.sfaq-item.open .sfaq-a{display:block;}
+
 </style>
 </head>
 <body>
@@ -742,7 +776,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   </div>
   <div class="nav-tabs">
     <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏕️</span> 新手站</div>
-    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📋</span> 新手入门 <span class="nav-badge">STEP 1-7</span></div>
+    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📋</span> 新手入门 <span class="nav-badge">7 STEPS</span></div>
     <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🪖</span> 武器图鉴</div>
     <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>🏝️</span> 据点指南</div>
     <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>▶️</span> 攻略视频</div>
@@ -816,7 +850,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       <div class="card-body">
         <div class="card-tag">🔰 NEWCOMER</div>
         <h2>初次登岛？</h2>
-        <p>跟着 6 步走完第一天，从出生到建好第一个家，不掉线、不饿死、不被偷家。</p>
+        <p>跟着 7 步走完第一天，从出生到建好第一个家，不掉线、不饿死、不被偷家。</p>
         <div class="card-features">
           <div class="feat-row"><span class="feat-icon"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-jssd-DJITnAK-.png" style="height:14px;vertical-align:middle" onerror="this.outerHTML='🗺'"></span>出生点怎么站稳脚跟</div>
           <div class="feat-row"><span class="feat-icon">💉</span>血量 / 口渴 / 饱腹管理</div>
@@ -1380,7 +1414,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="guide-page-title-row">
           <span class="guide-page-title-icon">🏝️</span>
           <h1 class="guide-page-title">新手入门</h1>
-          <span class="guide-page-badge">STEP 1-7</span>
+          <span class="guide-page-badge">7 STEPS</span>
         </div>
         <div class="guide-page-intro">从零出生到站稳脚跟——跟着 7 个步骤，避开 90% 的新手坑。</div>
       </div>
@@ -1521,6 +1555,38 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>出生常见问题 →</div>
           </div>
         </div>
+
+        <div class="step-faq">
+          <div class="step-faq-title">相关常见问题</div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">庇护模式和标准模式最大的区别是什么？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">最大区别在于「抄家」：庇护模式默认领地无敌，不会被突袭；标准模式每天有4小时开放被抄时间。此外庇护死亡惩罚更低，更适合新手练习。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">哪个模式适合初期游玩？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">强烈推荐「庇护模式」：领地默认无敌、死亡只掉落部分物资、结算时间10天，容错率最高。新手可以在这里学习游戏机制，熟练后再挑战标准/进阶模式。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">一局游戏多久结算？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">庇护模式10天、标准模式7天、进阶模式6天、挑战模式5天（游戏内时间）。结算后数据清空重置，玩家获得结算奖励。</div>
+      </div>
+        </div>
+
+        <div class="step-faq">
+          <div class="step-faq-title">相关常见问题</div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">进游戏后什么都不会，先做什么？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">出生后第一步：拳头打石头收集 100 石头，打树干收集 200 木头。用石头和木头制作斧头和石矛。随后找水喝（喝河水/海水会拉肚子，优先找南瓜等食物）、找食物。新手推荐去废弃超市或加油站搜刮初始物资。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">新手有没有保护期？一开始不会被打吗？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">庇护模式下领地默认有保护，相对安全。但人物本身在野外依然可以被其他玩家攻击。建议刚开始快速建好第一个基地并锁门，减少在外暴露的时间。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">为什么我跑不动了？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">负重超过上限时移速会大幅下降。解决方法：把不急用的材料存回基地箱子、制作大号背包提升负重上限、骑马或驾车代步。</div>
+      </div>
+        </div>
         <div class="step-nav-btns">
           <button class="snbtn" disabled>← 上一步</button>
           <button class="snbtn primary" onclick="switchStep(3)">三条生命线 →</button>
@@ -1571,6 +1637,22 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>一直在饿/渴的原因 →</div>
           </div>
         </div>
+
+        <div class="step-faq">
+          <div class="step-faq-title">相关常见问题</div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">我一直饿/一直渴，该怎么办？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">口渴：优先收集南瓜/蘑菇等植物（含水分）、制作储水器收集雨水，或用熔炉烹饪肉食和蔬菜来补充水分。饱腹：击杀野猪/鹿等动物获取生肉，用篝火烤熟后食用。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">生命值怎么恢复？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">初期：靠进食恢复（吃熟食最高效）；制作绷带（布料×1）可快速止血；之后可制作医疗针进行更高效的回血。高等级医疗针效果更强，可在战斗中快速恢复。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">受伤了一直在流血怎么处理？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">流血状态会持续掉血，必须用绷带或医疗针处理。优先制作绷带（1块布料即可），进背包使用即可止血。出门前建议多备绷带。</div>
+      </div>
+        </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(2)">← 出生后先做什么</button>
           <button class="snbtn primary" onclick="switchStep(4)">资源收集 →</button>
@@ -1607,6 +1689,22 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="cc-card" onclick="goToPoi('tier-1')"><span class="cc-icon">📍</span>一级据点分布 →</div>
             <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🪖</span>武器合成废料成本 →</div>
           </div>
+        </div>
+
+        <div class="step-faq">
+          <div class="step-faq-title">相关常见问题</div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">布料从哪里获取？老是不够用怎么办？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">布料主要来源：①地图随机刷新的Hemp植物（采集）；②搜刮据点衣物箱；③安全区自动售货机有售。布料需求量大，建议在基地旁种植Hemp，定期收割稳定供应。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">硫磺和木炭怎么获取？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">硫磺：矿洞或露天矿石节点（黄色）挖掘；木炭：木头放入熔炉煅烧获得。两者是制作火药的原料，火药又是子弹的必需品，中后期需求量大，建议提前囤积。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">哪些东西绝对不能分解？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">不要分解：研究台、制作台、医疗物品（急救包）、钥匙卡（绿/蓝/红卡）、高级武器蓝图。这些物品稀少或有极高使用价值，分解只能拿回少量废料但损失巨大。</div>
+      </div>
         </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(3)">← 三条生命线</button>
@@ -1666,6 +1764,22 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
+
+        <div class="step-faq">
+          <div class="step-faq-title">相关常见问题</div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">第一次被偷家了，所有东西都没了怎么办？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">别灰心，这是游戏正常体验的一部分。对策：①换到偏远位置重建；②提升门锁和建筑等级；③分散储存物资，不要全放一个箱子。被偷家是学习如何防守的最好动力。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">什么是"抄家"？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">抄家指破坏其他玩家的基地并搜刮其中的物资。庇护模式默认领地无敌（主动报名才解除），标准模式3-7天每天4小时可抄，进阶和挑战模式开放程度更高。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">被人拆基地了怎么办？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">先确认是否在「可抄家」时间段被合法攻打。如确认被抢，及时检查工具柜余量并修缮建筑，加强薄弱位置的防御，考虑升级建筑材料或迁址重建。</div>
+      </div>
+        </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(4)">← 资源收集</button>
           <button class="snbtn primary" onclick="switchStep(6)">武器与战斗 →</button>
@@ -1711,6 +1825,22 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="cc-card" onclick="filterAndGoWeapons('bow')"><span class="cc-icon">🪖</span>弓弩类武器合成成本 →</div>
             <div class="cc-card" onclick="switchPage('videos')"><span class="cc-icon">🎬</span>战斗技巧视频 →</div>
           </div>
+        </div>
+
+        <div class="step-faq">
+          <div class="step-faq-title">相关常见问题</div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">倒地之后怎么复活？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">倒地后有一段时间进入"濒死"状态，队友可以靠近按互动键急救（需要医疗材料）。无人救援且倒计时归零则死亡，背包物资按模式规则掉落。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">辐射区是什么？能不能进？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">辐射区会持续扣除生命值和增加辐射中毒层数。不穿防护装备不建议进入中高辐射区。可通过制作布质防护衣→皮革防护衣→金属防护衣逐步提升防护能力。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">遇到挂机队友怎么办？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">可以在队伍界面踢出不活跃的队员，或者直接单人继续。游戏没有强制踢人CD，队长可以随时操作。</div>
+      </div>
         </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(5)">← 建造第一个家</button>
@@ -1762,7 +1892,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 
         <div class="tip-box" style="border-left-color:var(--green)">
           <span class="tip-box-icon">🎉</span>
-          <div class="tip-box-text" style="color:var(--text)"><strong style="color:var(--green)">新手 6 步完成！</strong>接下来查看武器图鉴规划合成路径，或前往据点指南找更好的资源点。</div>
+          <div class="tip-box-text" style="color:var(--text)"><strong style="color:var(--green)">🎉 7步全部完成！</strong>接下来查看武器图鉴规划合成路径，或前往据点指南找更好的资源点。</div>
         </div>
 
         <div class="crosslink-section">
@@ -1772,6 +1902,22 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="cc-card" onclick="switchPage('poi')"><span class="cc-icon">📍</span>探索更高级据点 →</div>
             <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>常见问题 FAQ →</div>
           </div>
+        </div>
+
+        <div class="step-faq">
+          <div class="step-faq-title">相关常见问题</div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">什么是"情报等级"？有什么用？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">情报等级代表你在当前局的「声望」，越高说明你的领地越强大，会被系统标记为可攻打目标，同时解锁更多高价值事件和奖励。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">空投物资值得争抢吗？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">空投提供高等级随机物资，竞争激烈。新手期装备不足时不建议强争，可以远观等其他玩家打完再捡漏。中后期有足够战力时是很好的物资来源。</div>
+      </div>
+      <div class="sfaq-item" onclick="this.classList.toggle('open')">
+        <div class="sfaq-q">结算时能带走哪些东西？<span class="sfaq-arr">▼</span></div>
+        <div class="sfaq-a">结算时可以带走特定的「结算奖励」（如永久货币等），局内物资和建筑不会带到下一局。具体可带走的内容以官方公告为准。</div>
+      </div>
         </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(6)">← 武器与战斗</button>
@@ -3035,6 +3181,39 @@ function switchSpecTab(tab, el) {
     <span class="float-btn-label">安全</span>
   </div>
 </div>
+
+
+<!-- ══ 小程序悬浮引导 ══ -->
+<div id="mp-float">
+  <div id="mp-float-bubble">
+    <div class="mpf-title">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      去小程序领奖励
+    </div>
+    <div class="mpf-desc">完成任务解锁小程序<strong style="color:var(--yellow)">永久独占</strong>外观，限量发放</div>
+    <div class="mpf-rewards">
+      <div class="mpf-reward-item"><span class="ri-badge">答题</span>🎨 小程序专属喷漆</div>
+      <div class="mpf-reward-item"><span class="ri-badge">答题</span>🖼️ 小程序专属头像框</div>
+      <div class="mpf-reward-item"><span class="ri-badge">全完成</span>🚪 蓝色熔炉（限定）</div>
+      <div class="mpf-reward-item"><span class="ri-badge">签到</span>🔫 蟒蛇左轮枪皮</div>
+    </div>
+    <div class="mpf-qr">
+      <div class="mpf-qr-placeholder">📱 扫码进小程序<br>完成任务领取外观</div>
+    </div>
+    <div class="mpf-close" onclick="toggleMpFloat()">收起 ▲</div>
+  </div>
+  <button id="mp-float-btn" onclick="toggleMpFloat()" title="去小程序领奖励">
+    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+    <span class="mpf-dot"></span>
+  </button>
+</div>
+<script>
+function toggleMpFloat(){
+  var b=document.getElementById('mp-float-bubble');
+  b.classList.toggle('open');
+  document.querySelector('.mpf-dot').style.display=b.classList.contains('open')?'none':'block';
+}
+</script>
 
 </body>
 </html>
