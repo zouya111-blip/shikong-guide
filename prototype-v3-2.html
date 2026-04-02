@@ -740,6 +740,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 
 /* ════════ 小程序任务引导悬浮卡 ════════ */
 #mp-banner{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:9999;width:200px;background:linear-gradient(160deg,#1e1509 0%,#2a1b0e 100%);border:1px solid rgba(200,146,42,.5);border-right:none;border-radius:14px 0 0 14px;box-shadow:-4px 0 24px rgba(0,0,0,.5);padding:16px 14px;display:flex;flex-direction:column;gap:10px;transition:transform .3s cubic-bezier(.4,0,.2,1),right .3s;}
+@media(max-width:768px){#mp-banner{right:-210px;}#mp-banner.mobile-open{right:0;}}
 #mp-banner.hidden{right:-210px;}
 .mpb-close{position:absolute;top:8px;right:10px;font-size:16px;color:var(--text-muted);cursor:pointer;line-height:1;}
 .mpb-close:hover{color:var(--text);}
@@ -774,6 +775,9 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 
 /* ════════ FAQ 搜索高亮 ════════ */
 .faq-item .faq-highlight{background:rgba(200,146,42,.25);border-radius:2px;padding:0 1px;}
+
+
+.poi-card-badge{position:absolute;top:2px;right:2px;font-size:10px;line-height:1;}
 
 </style>
 </head>
@@ -822,7 +826,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       <div class="terms-title-row">
         <span class="terms-title-icon">📖</span>
         <h2 class="terms-title">新手必读词典</h2>
-        <span class="terms-badge">出生前先看这里</span>
+        <span class="terms-badge">不懂术语？点这里查</span>
       </div>
       <div class="terms-subtitle">失控进化核心机制速查——点击任意词条，30秒理解一个关键概念</div>
     </div>
@@ -861,7 +865,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       <div class="card-body">
         <div class="card-tag">🔰 NEWCOMER</div>
         <h2>初次登岛？</h2>
-        <p>跟着 7 步走完第一天，从出生到建好第一个家，不掉线、不饿死、不被偷家。</p>
+        <p>跟着 7 步走完第一天<br>从出生到建好第一个家，不掉线、不饿死、不被偷家。</p>
         <div class="card-features">
           <div class="feat-row"><span class="feat-icon"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-jssd-DJITnAK-.png" style="height:14px;vertical-align:middle" onerror="this.outerHTML='🗺'"></span>出生点怎么站稳脚跟</div>
           <div class="feat-row"><span class="feat-icon">💉</span>血量 / 口渴 / 饱腹管理</div>
@@ -2371,7 +2375,7 @@ let termDrawerOpen = false;
 let currentTerm = null;
 
 const FAQ_DATA = {
-  basics: { label:'游戏必备', icon:'⬇️', count:10, items:[
+  basics: { label:'游戏必备', icon:'🎮', count:10, items:[
     {src:'official', q:'游戏怎么下载？在哪里下载？', a:'PC端：前往失控进化官网（skjh.qq.com）或腾讯游戏平台下载 Windows 客户端；移动端：在 App Store（iOS）或各大 Android 应用商店搜索「失控进化」下载安装。'},
     {src:'official', q:'游戏是免费的吗？', a:'失控进化基础游戏内容免费，可以免费下载畅玩。游戏内有皮肤等装饰性付费内容，不影响核心玩法体验。'},
     {src:'official', q:'配置要求是什么？', a:'PC：\nIntel Core i5‑7500 /AMD FX-8350，内存16G以上，Nvidia Geforce GTX 1060 5G /AMD Radeon RX 580，显存5G以上。\n\n移动端：\nAndroid 10及以上，骁龙 710 / 天玑 700 / 麒麟 970或同等芯片，运行内存6G以上'},
@@ -2383,7 +2387,7 @@ const FAQ_DATA = {
     {src:'player', q:'新手有没有保护期？一开始不会被打吗？', a:'庇护模式下领地默认有保护，相对安全。但人物本身在野外依然可以被其他玩家攻击。建议刚开始快速建好第一个基地并锁门，减少在外暴露的时间。'},
     {src:'player', q:'手机端界面太小，怎么调整HUD布局？', a:'在游戏设置→操作界面中，可以自定义按键大小和位置。建议把常用的急救包、食物快捷键调到顺手的位置，大幅提升操作流畅度'},
   ]},
-  survival: { label:'生存入门', icon:'🥩', count:22, items:[
+  survival: { label:'生存入门', icon:'🏕️', count:22, items:[
     {src:'official', q:'进游戏后什么都不会，先做什么？', a:'出生后第一步：拳头打石头收集 100 石头，打树干收集 200 木头。用石头和木头制作斧头和石矛。随后找水喝（喝河水/海水会拉肚子，优先找南瓜等食物）、找食物。新手推荐去废弃超市或加油站搜刮初始物资。'},
     {src:'official', q:'我一直饿/一直渴，该怎么办？', a:'口渴：优先收集南瓜/蘑菇等植物（含水分）、制作储水器收集雨水，或用熔炉烹饪肉食和蔬菜来补充水分。饱腹：击杀野猪/鹿等动物获取生肉，用篝火烤熟后食用。'},
     {src:'official', q:'生命值怎么恢复？', a:'初期：靠进食恢复（吃熟食最高效）；制作绷带（布料×1）可快速止血；之后可制作医疗针（分初级/中级/高级）进行更高效的回血。高等级医疗针效果更强，可在战斗中快速恢复。'},
@@ -2407,7 +2411,7 @@ const FAQ_DATA = {
     {src:'official', q:'情报系统是什么？', a:'情报系统是一种类似战令的新机制，旨在提升玩家活跃度，通过局内奖励（加速发育）和局外奖励（如皮肤）增强游戏体验。玩家可从不同难度资源点获取初级/中级/高级加密情报，等级越高，破译时间和经验加成越多。该功能集成在TC工具柜/领地柜中，激活情报站后放入情报即可破译，积累经验升级后即可领取相应奖励。'},
     {src:'official', q:'剧本系统是什么意思？', a:'剧本系统结合了动态资源倍率和炸家保护机制，类似于Rust的设定但进行了手游化调整。资源倍率（如矿石、废料）每天动态变化并呈递增趋势，而炸家保护则限制抄家时间段（仅在局内特定时段开放），其余时间建筑受系统保护，以适应玩家作息。'},
   ]},
-  building: { label:'建造领地', icon:'🏠', count:21, items:[
+  building: { label:'建造领地', icon:'🔨', count:21, items:[
     {src:'official', q:'基地建在哪里比较好？', a:'新手建议选在地图中部偏安全区附近，便于补给。避开主要路口和高价值据点附近（人多容易被打）。山地、树林中隐蔽度高，但资源运输也更麻烦。'},
     {src:'official', q:'建基地怎么从零开始？', a:'首先制作建筑计划（木头×50）获得建造许可。选地放置建筑地基，选木质或石质结构。优先建一个封闭小屋（4墙+屋顶+木门），放置工具柜。'},
     {src:'official', q:'工具柜有什么用？为什么很重要？', a:'工具柜是领地核心，放置后会产生一个「建筑保护范围」——范围内别人无法建造新建筑。同时工具柜内的废料决定了建筑的「稳固度」，废料耗尽后建筑会逐渐衰减损坏。必须每隔几天补充废料。'},
@@ -2430,7 +2434,7 @@ const FAQ_DATA = {
     {src:'official', q:'游戏有没有基地和pve模式呀', a:'你可以尝试我们的休闲战局，这里默认是无法抄家，你可以放心建造'},
     {src:'official', q:'抄家保护机制是怎样的？主领/分领是什么意思', a:'首先消除一个误区，抄家保护不点味着完全不允许开展有效的抄家行为。\n我们游戏中，有主领与分领的区别。\n主领:情报柜的所在领地。(最多只能有一处)\n分领:领地柜的领地。(允许有多处)\n1.受抄家保护机制影响的只有主领，分领是不受保护的。\n2.人机房也是同样不受保护的。'},
   ]},
-  combat: { label:'战斗技巧', icon:'⚔️', count:16, items:[
+  combat: { label:'战斗技巧', icon:'🔫', count:16, items:[
     {src:'official', q:'前期用什么武器防身？', a:'初期：石矛（近战）→制作猎弓（远程）。从废旧超市和加油站可以找到绿卡，兑换到早期武器蓝图。优先科研「废料冲锋枪」或「土制手枪」作为初期枪械。'},
     {src:'official', q:'弓箭的弹道有点奇怪，怎么瞄准？', a:'弓有弹道下坠，远距离需要提前抬高准心。建议先练习近中距离射击感受弹道特性。复合弓蓄力满后精度更高。移动时精度会下降，站立/蹲伏射击更准。'},
     {src:'official', q:'什么时候能用枪？枪怎么获得？', a:'通过科研台「研究」蓝图后即可制作。前期：从据点战利品箱中找到武器零件，或科研从废弃超市/加油站拿到的绿卡箱子里的武器。'},
@@ -2851,14 +2855,17 @@ function renderPoiCarousel() {
 
     <!-- Thumbnail strip -->
     <div class="poi-strip">
-      ${filteredPois.map((p,i)=>`
-        <div class="poi-thumb${i===currentPoiIdx?' active':''}" onclick="selectPoi(${i})">
-          <div class="poi-thumb-img" style="background:${p.tierColor}15">
+      ${filteredPois.map((p,i)=>{
+        const rw = p.rewards.join('|');
+        const cardBadge = rw.includes('红卡')?'<span class="poi-card-badge red">🔴</span>':rw.includes('蓝卡')?'<span class="poi-card-badge blue">🔵</span>':rw.includes('绿卡')?'<span class="poi-card-badge green">🟢</span>':'';
+        return `<div class="poi-thumb${i===currentPoiIdx?' active':''}" onclick="selectPoi(${i})">
+          <div class="poi-thumb-img" style="background:${p.tierColor}15;position:relative">
             ${p.mapIconUrl ? `<img src="${p.mapIconUrl}" alt="${p.name}" class="poi-thumb-icon" onerror="this.style.display='none'"><span class="poi-thumb-emoji-fallback" style="display:none">${p.emoji}</span>` : p.emoji}
+            ${cardBadge}
           </div>
           <div class="poi-thumb-label">${p.name}</div>
-        </div>
-      `).join('')}
+        </div>`;
+      }).join('')}
     </div>
   `;
 }
@@ -3267,8 +3274,9 @@ function switchSpecTab(tab, el) {
 
 
 <!-- ══ 小程序任务引导卡 ══ -->
+<div id="mp-float-tab" onclick="toggleMpBannerMobile()" title="领取专属外观" style="position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:10000;background:linear-gradient(135deg,#c8922a,#c8331a);color:white;font-size:10px;font-weight:700;writing-mode:vertical-rl;padding:12px 6px;border-radius:8px 0 0 8px;cursor:pointer;box-shadow:-2px 0 12px rgba(0,0,0,.4);display:none;letter-spacing:1px;">🎁 领外观</div>
 <div id="mp-banner">
-  <span class="mpb-close" onclick="document.getElementById('mp-banner').classList.add('hidden')" title="关闭">×</span>
+  <span class="mpb-close" onclick="closeMpBanner()" title="关闭">×</span>
   <div class="mpb-title">去小程序完成任务<br>领取专属外观</div>
   <div class="mpb-sub">完成答题任务解锁<strong>永久独占</strong>外观，限量发放</div>
   <div class="mpb-rewards">
@@ -3281,5 +3289,35 @@ function switchSpecTab(tab, el) {
     <div class="mpb-qr-ph">📱 扫码进<br>小程序</div>
   </div>
 </div>
+
+<script>
+(function(){
+  var isMobile = window.innerWidth <= 768;
+  var banner = document.getElementById('mp-banner');
+  var tab = document.getElementById('mp-float-tab');
+  if(isMobile){
+    banner.style.right = '-210px';
+    if(tab) tab.style.display = 'block';
+  }
+})();
+function toggleMpBannerMobile(){
+  var banner = document.getElementById('mp-banner');
+  var tab = document.getElementById('mp-float-tab');
+  banner.style.right = '0';
+  if(tab) tab.style.display = 'none';
+}
+function closeMpBanner(){
+  var banner = document.getElementById('mp-banner');
+  var isMobile = window.innerWidth <= 768;
+  if(isMobile){
+    banner.style.right = '-210px';
+    var tab = document.getElementById('mp-float-tab');
+    if(tab) tab.style.display = 'block';
+  } else {
+    banner.classList.add('hidden');
+  }
+}
+</script>
+
 </body>
 </html>
