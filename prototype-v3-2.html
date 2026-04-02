@@ -753,6 +753,24 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .mpb-qr-ph{font-size:10px;color:var(--text-dim);text-align:center;padding:12px 6px;line-height:1.8;}
 .mpb-qr img{width:100%;height:100%;object-fit:contain;}
 
+
+/* ════════ 据点维度筛选 ════════ */
+.poi-dim-chip{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--text-dim);background:var(--surface2);transition:all .15s;white-space:nowrap;}
+.poi-dim-chip:hover{border-color:var(--orange);color:var(--orange);}
+.poi-dim-chip.active{background:rgba(200,146,42,.15);border-color:var(--orange);color:var(--orange);}
+/* ════════ 产出资源图标强化 ════════ */
+.reward-row{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);margin-bottom:5px;}
+.reward-cat-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+.rcat-base{background:rgba(100,120,100,.2);color:#8ab08a;border:1px solid rgba(100,120,100,.3);}
+.rcat-green{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.3);}
+.rcat-blue{background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.3);}
+.rcat-red{background:rgba(248,113,113,.12);color:#f87171;border:1px solid rgba(248,113,113,.3);}
+.rcat-special{background:rgba(192,132,252,.12);color:#c084fc;border:1px solid rgba(192,132,252,.3);}
+.reward-item-icon{font-size:16px;flex-shrink:0;width:20px;text-align:center;}
+.reward-item-name{font-size:12px;color:var(--text);}
+/* 产出搜索高亮 */
+.reward-highlight{background:rgba(200,146,42,.2);border-color:var(--orange);}
+
 </style>
 </head>
 <body>
@@ -2791,8 +2809,25 @@ function renderPoiCarousel() {
               const m = r.match(/^\[([^\]]+)\]\s*(.+)$/);
               const cat = m ? m[1] : '';
               const item = m ? m[2] : r;
-              const catIcon = {'据点基础资源':'📦','绿卡房资源':'🟢','蓝卡房资源':'🔵','红卡房资源':'🔴','特遣队保险房资源':'🔐'}[cat] || '📋';
-              return `<div class="reward-row"><span class="reward-icon">${catIcon}</span><span class="reward-text"><span style="color:var(--text-muted);font-size:10px;margin-right:4px">${cat}</span>${item}</span></div>`;
+              const catMap = {
+                '据点基础资源':  {cls:'rcat-base',   label:'基础'},
+                '绿卡房资源':    {cls:'rcat-green',  label:'🟢绿卡'},
+                '蓝卡房资源':    {cls:'rcat-blue',   label:'🔵蓝卡'},
+                '红卡房资源':    {cls:'rcat-red',    label:'🔴红卡'},
+                '特遣队保险房资源':{cls:'rcat-special',label:'🔐特遣'},
+              };
+              const c = catMap[cat] || {cls:'rcat-base', label:cat||'产出'};
+              const ITEM_ICON = {
+                '绿卡':'🟢','蓝卡':'🔵','红卡':'🔴','废料':'🗑️','大量废料':'🗑️','废料&战利品':'🎁',
+                '若干废料&战利品':'🎁','大量废料&战利品':'🎁','战利品':'🎁','食物':'🍖','大量食物':'🍖','少量食物':'🍖',
+                '高级金属':'⚙️','大量高级金属':'⚙️','金属矿石':'🪨','大量金属矿石':'🪨','石头':'🪨','大量石头':'🪨',
+                '硫磺':'🌋','初级加密情报':'📄','中级加密情报':'📋','高级加密情报':'📑',
+                '基础武器&道具':'🔫','稀有武器&道具':'⭐','自动化武器&配件':'🤖',
+                '燃料':'⛽','若干燃料':'⛽','爆炸物':'💣',
+              };
+              const icon = Object.entries(ITEM_ICON).find(([k])=>item.includes(k))?.[1] || '📦';
+              const isHighlight = _poiSearchTerm && (item.includes(_poiSearchTerm)||cat.includes(_poiSearchTerm));
+              return \`<div class="reward-row\${isHighlight?' reward-highlight':''}"><span class="reward-item-icon">\${icon}</span><span class="reward-cat-badge \${c.cls}">\${c.label}</span><span class="reward-item-name">\${item}</span></div>\`;
             }).join('')}
           </div>
         </div>` : ''}
@@ -2818,12 +2853,67 @@ function selectPoi(idx) {
   renderPoiCarousel();
 }
 
-function filterPoiTier(tier, el) {
-  document.querySelectorAll('.tier-chip').forEach(c=>c.classList.remove('active'));
-  if(el) el.classList.add('active');
-  filteredPois = tier==='all' ? [...POIS] : POIS.filter(p=>p.tier===tier);
+
+
+
+// ── 据点搜索 + 维度筛选 ───────────────────────────────────────
+let _poiSearchTerm = '';
+let _poiTierFilter = 'all';
+let _poiDimFilter = 'all';
+
+function _applyPoiFilters(){
+  filteredPois = POIS.filter(p=>{
+    // 等级筛选
+    if(_poiTierFilter !== 'all' && p.tier !== _poiTierFilter) return false;
+    // 维度筛选
+    if(_poiDimFilter !== 'all'){
+      const r = p.rewards.join('|');
+      const dimMap = {
+        green: ()=> r.includes('绿卡'),
+        blue:  ()=> r.includes('蓝卡'),
+        red:   ()=> r.includes('红卡'),
+        safe_zone: ()=> p.dangerLevel <= 1,
+        scrap: ()=> r.includes('大量废料') || r.includes('大量废料&战利品'),
+        food:  ()=> r.includes('大量食物'),
+        decomp: ()=> p.tags.includes('分解机'),
+      };
+      if(dimMap[_poiDimFilter] && !dimMap[_poiDimFilter]()) return false;
+    }
+    // 搜索
+    if(_poiSearchTerm){
+      const q = _poiSearchTerm;
+      return p.name.includes(q) || p.rewards.some(r=>r.includes(q)) || p.desc.includes(q) || p.tags.some(t=>t.includes(q));
+    }
+    return true;
+  });
   currentPoiIdx = 0;
   renderPoiCarousel();
+}
+
+function searchPoi(val){
+  _poiSearchTerm = val.trim();
+  _applyPoiFilters();
+}
+
+function clearPoiSearch(){
+  _poiSearchTerm = '';
+  const inp = document.getElementById('poi-search');
+  if(inp) inp.value = '';
+  _applyPoiFilters();
+}
+
+function filterPoiTier(tier, el){
+  document.querySelectorAll('#poi-tier-filter .tier-chip').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+  _poiTierFilter = tier;
+  _applyPoiFilters();
+}
+
+function filterPoiDim(dim, el){
+  document.querySelectorAll('.poi-dim-chip').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+  _poiDimFilter = dim;
+  _applyPoiFilters();
 }
 
 function goToPoi(tier) {
