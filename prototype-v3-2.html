@@ -49,6 +49,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 /* ── PAGE ── */
 .page{display:none;}
 .page.active{display:block;animation:pageFadeIn .22s ease-out;}
+#page-guide.active{display:grid;}
 @keyframes pageFadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
 /* ════════ HOME ════════ */
@@ -1571,9 +1572,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
-        </div>
-
-        </div>
         <div class="step-nav-btns">
           <button class="snbtn" disabled>← 上一步</button>
           <button class="snbtn primary" onclick="switchStep(3)">三条生命线 →</button>
@@ -1625,7 +1623,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
-        </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(2)">← 出生后先做什么</button>
           <button class="snbtn primary" onclick="switchStep(4)">资源收集 →</button>
@@ -1664,7 +1661,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
-        </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(3)">← 三条生命线</button>
           <button class="snbtn primary" onclick="switchStep(5)">建造第一个家 →</button>
@@ -1724,7 +1720,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         </div>
 
 
-        </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(4)">← 资源收集</button>
           <button class="snbtn primary" onclick="switchStep(6)">武器与战斗 →</button>
@@ -1772,7 +1767,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
-        </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(5)">← 建造第一个家</button>
           <button class="snbtn primary" onclick="switchStep(7)">科技树 →</button>
@@ -1835,7 +1829,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
-        </div>
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(6)">← 武器与战斗</button>
           <button class="snbtn primary" onclick="switchPage('weapons')">查看武器图鉴 →</button>
