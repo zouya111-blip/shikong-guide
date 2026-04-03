@@ -1882,7 +1882,16 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
     <div class="page-intro"><strong>使用场景：</strong>想刷什么等级的资源？选难度，找对应据点——装备不够别硬冲高级区。</div>
   </div>
+  <!-- 搜索栏 -->
+  <div class="page-search-bar" style="margin-bottom:12px">
+    <div class="psb-inner">
+      <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="psb-input" id="poi-search" type="text" placeholder="搜索据点名称、资源、关键词…" oninput="searchPoi(this.value)">
+      <button class="psb-clear" onclick="clearPoiSearch()" title="清除">✕</button>
+    </div>
+  </div>
   <div class="poi-carousel" id="poi-main">
+    <!-- 等级筛选 -->
     <div class="tier-filter-row" id="poi-tier-filter">
       <div class="tier-chip t1 active" onclick="filterPoiTier('all',this)">全部</div>
       <div class="tier-chip t1" onclick="filterPoiTier('tier-1',this)">🟢 一级据点</div>
@@ -1890,7 +1899,17 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       <div class="tier-chip t3" onclick="filterPoiTier('tier-3',this)">🟡 三级据点</div>
       <div class="tier-chip t4" onclick="filterPoiTier('tier-4',this)">🔴 四级据点</div>
       <div class="tier-chip ts" onclick="filterPoiTier('safe',this)">🟣 安全区遗迹</div>
-
+    </div>
+    <!-- 资源维度筛选 -->
+    <div class="tier-filter-row" id="poi-dim-filter" style="margin-top:6px">
+      <div class="poi-dim-chip tier-chip t1 active" onclick="filterPoiDim('all',this)">全部资源</div>
+      <div class="poi-dim-chip tier-chip t1" onclick="filterPoiDim('green',this)">🟢 绿卡房</div>
+      <div class="poi-dim-chip tier-chip t2" onclick="filterPoiDim('blue',this)">🔵 蓝卡房</div>
+      <div class="poi-dim-chip tier-chip t4" onclick="filterPoiDim('red',this)">🔴 红卡房</div>
+      <div class="poi-dim-chip tier-chip ts" onclick="filterPoiDim('safe_zone',this)">🛡️ 安全区</div>
+      <div class="poi-dim-chip tier-chip t3" onclick="filterPoiDim('scrap',this)">🗑️ 大量废料</div>
+      <div class="poi-dim-chip tier-chip t3" onclick="filterPoiDim('food',this)">🍖 大量食物</div>
+      <div class="poi-dim-chip tier-chip t2" onclick="filterPoiDim('decomp',this)">🔧 有分解机</div>
     </div>
     <!-- carousel rendered by JS -->
     <div id="poi-carousel-body"></div>
