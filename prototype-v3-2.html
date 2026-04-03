@@ -587,26 +587,6 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .mt16{margin-top:16px;}
 .mt20{margin-top:20px;}
 
-/* ════════ 右侧悬浮快捷入口 ════════ */
-.float-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;gap:0;pointer-events:auto;}
-.float-btn{width:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px 0;background:var(--surface2);border:1px solid var(--border);cursor:pointer;transition:all .2s;position:relative;border-right:none;}
-.float-btn:first-child{border-radius:8px 0 0 0;}
-.float-btn:last-child{border-radius:0 0 0 8px;}
-.float-btn:not(:last-child){border-bottom:none;}
-.float-btn:hover{background:var(--surface);width:52px;}
-.float-btn-icon{font-size:18px;line-height:1;}
-.float-btn-label{font-size:9px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;letter-spacing:.5px;writing-mode:horizontal-tb;}
-/* 小程序二维码 popup */
-.float-qr-popup{position:absolute;right:56px;top:50%;transform:translateY(-50%);background:var(--surface2);border:1px solid var(--border-bright);border-radius:8px;padding:12px;width:140px;display:none;flex-direction:column;align-items:center;gap:8px;box-shadow:0 4px 24px rgba(0,0,0,.5);}
-.float-btn:hover .float-qr-popup{display:flex;}
-.float-qr-img{width:108px;height:108px;background:var(--surface);border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.float-qr-img img{width:100%;height:100%;object-fit:contain;}
-.float-qr-label{font-size:11px;color:var(--text-dim);text-align:center;}
-/* 客服/安全站 tooltip */
-.float-tooltip{position:absolute;right:56px;top:50%;transform:translateY(-50%);background:var(--surface2);border:1px solid var(--border-bright);border-radius:6px;padding:6px 12px;font-size:11px;color:var(--text-dim);white-space:nowrap;display:none;box-shadow:0 4px 16px rgba(0,0,0,.4);}
-.float-btn:hover .float-tooltip{display:block;}
-
-
 /* ════════ 返回官网按钮 ════════ */
 .nav-official-btn{display:flex;align-items:center;gap:6px;padding:0 18px;height:52px;font-size:12px;color:var(--text-muted);text-decoration:none;white-space:nowrap;border-left:1px solid var(--border);transition:color .2s;flex-shrink:0;}
 .nav-official-btn:hover{color:var(--orange);}
@@ -3224,30 +3204,8 @@ function switchSpecTab(tab, el) {
 }
 </script>
 
-<!-- ═══════ 右侧悬浮快捷入口 ═══════ -->
-<div class="float-sidebar">
-  <!-- 小程序二维码 -->
-  <div class="float-btn">
-    <div class="float-qr-popup">
-      <div class="float-qr-img"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/qrcode_wx-VLqfNOP9.png" alt="小程序二维码"></div>
-      <div class="float-qr-label">扫码进入小程序</div>
-    </div>
-    <span class="float-btn-icon">📱</span>
-    <span class="float-btn-label">小程序</span>
-  </div>
-  <!-- 客服站占位 -->
-  <div class="float-btn">
-    <div class="float-tooltip">官方客服中心<br><span style="color:var(--text-muted);font-size:10px">链接待配置</span></div>
-    <span class="float-btn-icon">🎧</span>
-    <span class="float-btn-label">客服</span>
-  </div>
-  <!-- 安全站占位 -->
-  <div class="float-btn">
-    <div class="float-tooltip">游戏安全中心<br><span style="color:var(--text-muted);font-size:10px">链接待配置</span></div>
-    <span class="float-btn-icon">🛡️</span>
-    <span class="float-btn-label">安全</span>
-  </div>
-</div>
+
+
 
 
 
@@ -3284,7 +3242,7 @@ function switchSpecTab(tab, el) {
 
 
 <!-- ══ 小程序任务引导卡 ══ -->
-<div id="mp-float-tab" onclick="toggleMpBannerMobile()" title="领取专属外观" style="position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:10000;background:linear-gradient(135deg,#c8922a,#c8331a);color:white;font-size:10px;font-weight:700;writing-mode:vertical-rl;padding:12px 6px;border-radius:8px 0 0 8px;cursor:pointer;box-shadow:-2px 0 12px rgba(0,0,0,.4);display:none;letter-spacing:1px;">🎁 领外观</div>
+<div id="mp-float-tab" onclick="openMpBanner()" title="领取专属外观" style="display:none;position:fixed;right:24px;bottom:24px;z-index:10000;background:linear-gradient(135deg,#c8922a,#c8331a);color:#fff;font-size:11px;font-weight:700;padding:10px 14px;border-radius:10px;cursor:pointer;box-shadow:0 4px 18px rgba(200,51,26,.5);white-space:nowrap;letter-spacing:.5px;">📱 领取专属外观</div>
 <div id="mp-banner">
   <span class="mpb-close" onclick="closeMpBanner()" title="关闭">×</span>
   <div class="mpb-title">去小程序完成任务<br>领取专属外观</div>
@@ -3302,30 +3260,22 @@ function switchSpecTab(tab, el) {
 
 <script>
 (function(){
-  var isMobile = window.innerWidth <= 768;
-  var banner = document.getElementById('mp-banner');
-  var tab = document.getElementById('mp-float-tab');
-  if(isMobile){
-    banner.style.right = '-210px';
-    if(tab) tab.style.display = 'block';
+  if(window.innerWidth <= 768){
+    document.getElementById('mp-banner').style.right = '-210px';
+    document.getElementById('mp-float-tab').style.display = 'block';
   }
 })();
-function toggleMpBannerMobile(){
+function openMpBanner(){
   var banner = document.getElementById('mp-banner');
-  var tab = document.getElementById('mp-float-tab');
+  banner.classList.remove('hidden');
   banner.style.right = '0';
-  if(tab) tab.style.display = 'none';
+  document.getElementById('mp-float-tab').style.display = 'none';
 }
+function toggleMpBannerMobile(){ openMpBanner(); }
 function closeMpBanner(){
-  var banner = document.getElementById('mp-banner');
-  var isMobile = window.innerWidth <= 768;
-  if(isMobile){
-    banner.style.right = '-210px';
-    var tab = document.getElementById('mp-float-tab');
-    if(tab) tab.style.display = 'block';
-  } else {
-    banner.classList.add('hidden');
-  }
+  document.getElementById('mp-banner').classList.add('hidden');
+  document.getElementById('mp-banner').style.right = '-210px';
+  document.getElementById('mp-float-tab').style.display = 'block';
 }
 </script>
 
