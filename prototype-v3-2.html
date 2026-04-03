@@ -128,6 +128,96 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .snav-text{font-size:12px;line-height:1.4;}
 .snav-item.active .snav-text{color:var(--orange);}
 .snav-item.done .snav-text{color:var(--text-dim);}
+/* ══════════════════════════════════════════════
+   方案A — 首页新玩家路径（三阶段 + 学习进度条）
+   ══════════════════════════════════════════════ */
+
+/* 学习进度条 */
+.np-progress-wrap{margin:16px 0 18px;}
+.np-progress-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.np-progress-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;}
+.np-progress-val{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);}
+.np-progress-track{height:4px;background:var(--surface3);border-radius:4px;overflow:hidden;}
+.np-progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow),var(--orange));border-radius:4px;transition:width .5s ease;}
+
+/* 三阶段容器 */
+.np-phases{display:flex;align-items:stretch;gap:0;margin-bottom:18px;}
+.np-phase-divider{display:flex;align-items:center;color:var(--text-muted);font-size:18px;padding:0 6px;flex-shrink:0;}
+.np-phase{flex:1;min-width:0;}
+
+/* 阶段标签 */
+.np-phase-label{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;padding:0 4px;}
+.np-phase.survival .np-phase-label{color:#4caf50;}
+.np-phase.develop  .np-phase-label{color:#f0b429;}
+.np-phase.combat   .np-phase-label{color:#ef4444;}
+.np-phase-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.np-phase.survival .np-phase-dot{background:#4caf50;box-shadow:0 0 6px #4caf5080;}
+.np-phase.develop  .np-phase-dot{background:#f0b429;box-shadow:0 0 6px #f0b42980;}
+.np-phase.combat   .np-phase-dot{background:#ef4444;box-shadow:0 0 6px #ef444480;}
+
+/* 步骤卡片 */
+.np-steps{display:flex;flex-direction:column;gap:5px;}
+.np-step{display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
+.np-step::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;}
+.np-phase.survival .np-step::before{background:#4caf50;}
+.np-phase.develop  .np-step::before{background:#f0b429;}
+.np-phase.combat   .np-step::before{background:#ef4444;}
+.np-step:hover{background:rgba(255,255,255,.07);border-color:var(--border-bright);transform:translateX(2px);}
+.np-step.done{opacity:.65;}
+.np-step.done::after{content:'✓';position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:700;color:#4caf50;}
+.np-step-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0;line-height:1;}
+.np-phase.survival .np-step-num{color:#4caf50;}
+.np-phase.develop  .np-step-num{color:#f0b429;}
+.np-phase.combat   .np-step-num{color:#ef4444;}
+.np-step-text{flex:1;min-width:0;font-size:11px;line-height:1.5;color:var(--text-dim);}
+.np-step-text span{color:var(--text-muted);font-size:10px;}
+.np-step-arrow{color:var(--text-muted);font-size:13px;flex-shrink:0;transition:transform .18s;}
+.np-step:hover .np-step-arrow{transform:translateX(3px);color:var(--text);}
+
+/* ══════════════════════════════════════════════
+   方案B — 新手入门侧边栏（阶段分组 + 废土感）
+   ══════════════════════════════════════════════ */
+
+/* 阶段标题行 */
+.snav-phase-header{display:flex;align-items:center;gap:8px;padding:12px 20px 6px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-top:4px;}
+.snav-phase-header:first-child{margin-top:0;}
+.snav-phase-header .snav-phase-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.snav-phase-header.survival{color:#4caf50;}
+.snav-phase-header.survival .snav-phase-dot{background:#4caf50;box-shadow:0 0 5px #4caf5099;}
+.snav-phase-header.develop{color:#f0b429;}
+.snav-phase-header.develop .snav-phase-dot{background:#f0b429;box-shadow:0 0 5px #f0b42999;}
+.snav-phase-header.combat{color:#ef4444;}
+.snav-phase-header.combat .snav-phase-dot{background:#ef4444;box-shadow:0 0 5px #ef444499;}
+
+/* 步骤项重设计 */
+.snav-item{display:flex;align-items:center;gap:12px;padding:10px 20px;cursor:pointer;transition:all .15s;position:relative;}
+.snav-item:hover{background:var(--surface2);}
+.snav-item.active{background:rgba(255,255,255,.04);}
+.snav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;}
+
+/* 激活状态的左侧色条跟阶段走 */
+#snav-0.active::before,#snav-1.active::before{background:#4caf50;}
+#snav-2.active::before,#snav-3.active::before{background:#f0b429;}
+#snav-4.active::before,#snav-5.active::before{background:#ef4444;}
+
+/* 编号圆圈 */
+.snav-num{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;flex-shrink:0;transition:all .15s;border:1px solid var(--border);}
+.snav-num.survival{color:#4caf50;background:rgba(76,175,80,.1);border-color:rgba(76,175,80,.25);}
+.snav-num.develop {color:#f0b429;background:rgba(240,180,41,.1);border-color:rgba(240,180,41,.25);}
+.snav-num.combat  {color:#ef4444;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);}
+.snav-item.active .snav-num.survival{background:rgba(76,175,80,.2);border-color:#4caf50;}
+.snav-item.active .snav-num.develop {background:rgba(240,180,41,.2);border-color:#f0b429;}
+.snav-item.active .snav-num.combat  {background:rgba(239,68,68,.2);border-color:#ef4444;}
+.snav-item.done .snav-num{opacity:.5;}
+
+/* 文字双行 */
+.snav-text{flex:1;min-width:0;}
+.snav-title{font-size:12px;font-weight:600;color:var(--text-dim);line-height:1.3;transition:color .15s;}
+.snav-sub{font-size:10px;color:var(--text-muted);margin-top:1px;font-style:italic;}
+.snav-item:hover .snav-title{color:var(--text);}
+.snav-item.active .snav-title{color:var(--text);}
+.snav-item.done .snav-title{color:var(--text-muted);}
+
 
 /* ═══════════════════════════════════════════════
    GUIDE — Design System
@@ -974,13 +1064,71 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="card-tag">🔰 NEWCOMER</div>
         <h2>初次登岛？</h2>
         <p>跟着 6 步走完前期核心路线<br>从出生到站稳脚跟，生存、发育、战斗一步步来。</p>
-        <div class="card-features">
-          <div class="feat-row"><span class="feat-icon">🪨</span>从一块石头开始，活过第一天</div>
-          <div class="feat-row"><span class="feat-icon">🍗</span>饿了、渴了、冷了，怎么撑下去</div>
-          <div class="feat-row"><span class="feat-icon">🗑️</span>重要物资，缺一样都寸步难行</div>
-          <div class="feat-row"><span class="feat-icon">🏠</span>建一个拆不垮的家</div>
-          <div class="feat-row"><span class="feat-icon">⚔️</span>三种遭遇，三种应对，别慌</div>
-          <div class="feat-row"><span class="feat-icon">⚙️</span>废料换科技，情报换实力</div>
+        <!-- 学习进度条 -->
+        <div class="np-progress-wrap">
+          <div class="np-progress-meta">
+            <span class="np-progress-label">学习进度</span>
+            <span class="np-progress-val" id="np-progress-val">0 / 6 完成</span>
+          </div>
+          <div class="np-progress-track">
+            <div class="np-progress-fill" id="np-progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <!-- 三阶段路径 -->
+        <div class="np-phases">
+          <div class="np-phase survival">
+            <div class="np-phase-label">
+              <span class="np-phase-dot"></span>生存
+            </div>
+            <div class="np-steps">
+              <div class="np-step" data-step="1" onclick="switchPage('guide');switchStep(1)">
+                <div class="np-step-num">01</div>
+                <div class="np-step-text">从一块石头开始<br><span>活过第一天</span></div>
+                <div class="np-step-arrow">›</div>
+              </div>
+              <div class="np-step" data-step="2" onclick="switchPage('guide');switchStep(2)">
+                <div class="np-step-num">02</div>
+                <div class="np-step-text">饿了、渴了、冷了<br><span>怎么撑下去</span></div>
+                <div class="np-step-arrow">›</div>
+              </div>
+            </div>
+          </div>
+          <div class="np-phase-divider">›</div>
+          <div class="np-phase develop">
+            <div class="np-phase-label">
+              <span class="np-phase-dot"></span>发育
+            </div>
+            <div class="np-steps">
+              <div class="np-step" data-step="3" onclick="switchPage('guide');switchStep(3)">
+                <div class="np-step-num">03</div>
+                <div class="np-step-text">重要物资<br><span>缺一样都寸步难行</span></div>
+                <div class="np-step-arrow">›</div>
+              </div>
+              <div class="np-step" data-step="4" onclick="switchPage('guide');switchStep(4)">
+                <div class="np-step-num">04</div>
+                <div class="np-step-text">建一个<br><span>拆不垮的家</span></div>
+                <div class="np-step-arrow">›</div>
+              </div>
+            </div>
+          </div>
+          <div class="np-phase-divider">›</div>
+          <div class="np-phase combat">
+            <div class="np-phase-label">
+              <span class="np-phase-dot"></span>战斗
+            </div>
+            <div class="np-steps">
+              <div class="np-step" data-step="5" onclick="switchPage('guide');switchStep(5)">
+                <div class="np-step-num">05</div>
+                <div class="np-step-text">三种遭遇<br><span>三种应对，别慌</span></div>
+                <div class="np-step-arrow">›</div>
+              </div>
+              <div class="np-step" data-step="6" onclick="switchPage('guide');switchStep(6)">
+                <div class="np-step-num">06</div>
+                <div class="np-step-text">废料换科技<br><span>情报换实力</span></div>
+                <div class="np-step-arrow">›</div>
+              </div>
+            </div>
+          </div>
         </div>
         <button class="card-cta">开始新手入门 →</button>
       </div>
@@ -1507,30 +1655,59 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 <div class="page" id="page-guide">
   <div class="guide-layout">
     <div class="guide-sidebar">
-      <div class="sidebar-section-label">新手入门 GUIDE</div>
+      <!-- 阶段：生存 -->
+      <div class="snav-phase-header survival">
+        <span class="snav-phase-dot"></span>生存阶段
+      </div>
       <div class="snav-item active" id="snav-0" onclick="switchStep(1)">
-        <div class="snav-num">1</div><div class="snav-text">从一块石头开始，活过第一天</div>
-        <div class="snav-stage-dot" style="background:#4caf50"></div>
+        <div class="snav-num survival">01</div>
+        <div class="snav-text">
+          <div class="snav-title">从一块石头开始</div>
+          <div class="snav-sub">活过第一天</div>
+        </div>
       </div>
       <div class="snav-item" id="snav-1" onclick="switchStep(2)">
-        <div class="snav-num">2</div><div class="snav-text">饿了、渴了、冷了，怎么撑下去</div>
-        <div class="snav-stage-dot" style="background:#4caf50"></div>
+        <div class="snav-num survival">02</div>
+        <div class="snav-text">
+          <div class="snav-title">饿了、渴了、冷了</div>
+          <div class="snav-sub">怎么撑下去</div>
+        </div>
+      </div>
+      <!-- 阶段：发育 -->
+      <div class="snav-phase-header develop">
+        <span class="snav-phase-dot"></span>发育阶段
       </div>
       <div class="snav-item" id="snav-2" onclick="switchStep(3)">
-        <div class="snav-num">3</div><div class="snav-text">重要物资，缺一样都寸步难行</div>
-        <div class="snav-stage-dot" style="background:#c8922a"></div>
+        <div class="snav-num develop">03</div>
+        <div class="snav-text">
+          <div class="snav-title">重要物资</div>
+          <div class="snav-sub">缺一样都寸步难行</div>
+        </div>
       </div>
       <div class="snav-item" id="snav-3" onclick="switchStep(4)">
-        <div class="snav-num">4</div><div class="snav-text">建一个拆不垮的家</div>
-        <div class="snav-stage-dot" style="background:#c8922a"></div>
+        <div class="snav-num develop">04</div>
+        <div class="snav-text">
+          <div class="snav-title">建一个拆不垮的家</div>
+          <div class="snav-sub">选址·建造·升级</div>
+        </div>
+      </div>
+      <!-- 阶段：战斗 -->
+      <div class="snav-phase-header combat">
+        <span class="snav-phase-dot"></span>战斗阶段
       </div>
       <div class="snav-item" id="snav-4" onclick="switchStep(5)">
-        <div class="snav-num">5</div><div class="snav-text">三种遭遇，三种应对，别慌</div>
-        <div class="snav-stage-dot" style="background:#e05252"></div>
+        <div class="snav-num combat">05</div>
+        <div class="snav-text">
+          <div class="snav-title">三种遭遇，三种应对</div>
+          <div class="snav-sub">别慌</div>
+        </div>
       </div>
       <div class="snav-item" id="snav-5" onclick="switchStep(6)">
-        <div class="snav-num">6</div><div class="snav-text">废料换科技，情报换实力</div>
-        <div class="snav-stage-dot" style="background:#e05252"></div>
+        <div class="snav-num combat">06</div>
+        <div class="snav-text">
+          <div class="snav-title">废料换科技</div>
+          <div class="snav-sub">情报换实力</div>
+        </div>
       </div>
     </div>
 
@@ -3454,6 +3631,16 @@ function switchStep(n) {
   const pct = Math.round((n/6)*100);
   document.getElementById('progress-fill').style.width = pct+'%';
   document.getElementById('progress-pct').textContent = pct+'%';
+  // 同步首页进度条 & 步骤 done 状态
+  const npFill = document.getElementById('np-progress-fill');
+  const npVal  = document.getElementById('np-progress-val');
+  const done = n - 1;
+  if(npFill) npFill.style.width = Math.round(done/6*100)+'%';
+  if(npVal)  npVal.textContent  = done+' / 6 完成';
+  document.querySelectorAll('.np-step').forEach(el=>{
+    const s = parseInt(el.dataset.step);
+    el.classList.toggle('done', s < n);
+  });
   currentStep = n;
   window.scrollTo(0,0);
 }
