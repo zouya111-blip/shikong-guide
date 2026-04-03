@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控进化·厂商渠道社区维护报告</title>
+<style>
+  :root {
+    --red: #c8331a;
+    --gold: #c8922a;
+    --dark: #0c0a08;
+    --dark2: #1a1512;
+    --dark3: #241f18;
+    --border: #3a2e1e;
+    --text: #e8dcc8;
+    --muted: #9a8870;
+    --green: #4caf7d;
+    --orange: #e07c2a;
+    --blue: #4a8fc8;
+    --purple: #9b6eb8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ---- HEADER ---- */
+  .header {
+    background: linear-gradient(135deg, #1a0d06 0%, #2a1508 50%, #1a1005 100%);
+    border-bottom: 2px solid var(--red);
+    padding: 32px 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200,51,26,0.03) 40px, rgba(200,51,26,0.03) 41px);
+  }
+  .header-tag {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .header-meta {
+    margin-top: 12px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .meta-item .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ---- LAYOUT ---- */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 40px; }
+  .section { margin-bottom: 48px; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    background: var(--red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+  .section-title .desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: 4px;
+  }
+
+  /* ---- PART 1: 竞品 ---- */
+  .rivals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .rival-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .rival-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .rival-card.r1::before { background: var(--blue); }
+  .rival-card.r2::before { background: var(--purple); }
+  .rival-card.r3::before { background: var(--green); }
+  .rival-card .rname {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .rival-card.r1 .rname { color: var(--blue); }
+  .rival-card.r2 .rname { color: var(--purple); }
+  .rival-card.r3 .rname { color: var(--green); }
+  .rival-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .rival-card.r1 .rival-tag { background: rgba(74,143,200,0.15); color: var(--blue); border: 1px solid rgba(74,143,200,0.3); }
+  .rival-card.r2 .rival-tag { background: rgba(155,110,184,0.15); color: var(--purple); border: 1px solid rgba(155,110,184,0.3); }
+  .rival-card.r3 .rival-tag { background: rgba(76,175,125,0.15); color: var(--green); border: 1px solid rgba(76,175,125,0.3); }
+  .rival-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .rstat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .rstat .label { min-width: 56px; }
+  .rstat .val { color: var(--text); font-weight: 500; }
+
+  /* ---- PART 2: 现状 ---- */
+  .platform-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .pcard {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .pcard .pname {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--gold);
+  }
+  .pcard .pfans {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .pcard .pfans-unit { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .pcard .ptag {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    display: inline-block;
+  }
+  .ptag.hot { background: rgba(200,51,26,0.2); color: var(--red); border: 1px solid rgba(200,51,26,0.3); }
+  .ptag.mid { background: rgba(200,146,42,0.2); color: var(--gold); border: 1px solid rgba(200,146,42,0.3); }
+  .ptag.low { background: rgba(100,100,100,0.2); color: var(--muted); border: 1px solid rgba(100,100,100,0.2); }
+  .pcard .pscore {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .pscore .score-num {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .score-bad { color: var(--red); }
+  .score-ok { color: var(--orange); }
+  .score-good { color: var(--green); }
+
+  /* bar chart */
+  .fan-chart { margin-bottom: 28px; }
+  .fan-chart-title { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .bar-label { width: 40px; font-size: 12px; color: var(--muted); text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; background: var(--dark3); border-radius: 4px; height: 22px; position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding: 0 8px; font-size: 11px; font-weight: 600; color: #fff; transition: width 0.5s ease; min-width: 40px; }
+  .bar-fill.b-hw { background: linear-gradient(90deg, #c8331a, #a82818); }
+  .bar-fill.b-op { background: linear-gradient(90deg, #c8922a, #a87420); }
+  .bar-fill.b-mi { background: linear-gradient(90deg, #4a8fc8, #3870a0); }
+  .bar-fill.b-rong { background: linear-gradient(90deg, #9b6eb8, #7a5090); }
+  .bar-fill.b-vivo { background: linear-gradient(90deg, #4caf7d, #369060); }
+  .bar-val { width: 60px; font-size: 12px; color: var(--text); flex-shrink: 0; }
+
+  /* status table */
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .sg-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .sg-card .sg-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sg-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  .sg-row .k { color: var(--muted); }
+  .sg-row .v { color: var(--text); font-weight: 500; }
+  .badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+  .badge.done { background: rgba(76,175,125,0.15); color: var(--green); }
+  .badge.partial { background: rgba(200,146,42,0.15); color: var(--gold); }
+  .badge.todo { background: rgba(100,100,100,0.15); color: var(--muted); }
+  .badge.none { background: rgba(200,51,26,0.1); color: var(--red); }
+
+  /* suggest box */
+  .suggest-box {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .suggest-box .sb-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .suggest-box ul { padding-left: 16px; }
+  .suggest-box li { font-size: 12px; color: var(--text); margin-bottom: 3px; }
+  .suggest-box li span.hl { color: var(--red); font-weight: 600; }
+  .suggest-box li span.hlg { color: var(--green); font-weight: 600; }
+
+  /* ---- PART 3: 竞品对比大表 ---- */
+  .compare-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  th {
+    background: var(--dark3);
+    color: var(--gold);
+    font-weight: 700;
+    padding: 10px 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  td {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    color: var(--text);
+    vertical-align: middle;
+    line-height: 1.5;
+    font-size: 12px;
+  }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  tr:hover td { background: rgba(200,146,42,0.04); }
+  td.left { text-align: left; }
+  .cell-good { color: var(--green); font-weight: 600; }
+  .cell-warn { color: var(--orange); font-weight: 600; }
+  .cell-bad { color: var(--red); }
+  .cell-muted { color: var(--muted); }
+  .row-header td {
+    background: rgba(200,146,42,0.06);
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .rival-label {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .rl-blue { background: rgba(74,143,200,0.15); color: var(--blue); }
+  .rl-purple { background: rgba(155,110,184,0.15); color: var(--purple); }
+  .rl-green { background: rgba(76,175,125,0.15); color: var(--green); }
+  .rl-red { background: rgba(200,51,26,0.15); color: var(--red); }
+
+  /* 关注量对比分组图 */
+  .fan-compare-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .fcol { background: var(--dark2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 10px; }
+  .fcol-name { font-size: 12px; font-weight: 700; color: var(--gold); text-align: center; margin-bottom: 12px; }
+  .fcol-bar-group { display: flex; flex-direction: column; gap: 6px; }
+  .fcol-bar-item { }
+  .fcol-label { font-size: 10px; color: var(--muted); margin-bottom: 2px; display: flex; justify-content: space-between; }
+  .fcol-track { background: var(--dark3); border-radius: 3px; height: 12px; overflow: hidden; }
+  .fcol-fill { height: 100%; border-radius: 3px; }
+  .fcol-fill.s-skz { background: var(--red); }
+  .fcol-fill.s-sjz { background: var(--blue); }
+  .fcol-fill.s-ww { background: var(--purple); }
+  .fcol-fill.s-hpjy { background: var(--green); }
+
+  /* priority radar */
+  .priority-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .prio-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .prio-card .prio-name { font-size: 12px; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+  .prio-dot-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 6px; }
+  .prio-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .pd-fill { background: var(--red); }
+  .pd-empty { background: var(--dark3); border: 1px solid var(--border); }
+  .prio-level { font-size: 11px; color: var(--muted); }
+  .prio-card .prio-action {
+    font-size: 10px;
+    color: var(--text);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* note */
+  .note {
+    background: rgba(200,146,42,0.06);
+    border: 1px solid rgba(200,146,42,0.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+  .note strong { color: var(--gold); }
+
+  /* divider */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* footer */
+  .footer {
+    padding: 20px 40px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .rivals-grid, .platform-cards, .status-grid, .fan-compare-grid, .priority-grid { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">厂商渠道社区维护</div>
+  <h1>《失控进化》厂商渠道社区维护报告</h1>
+  <div class="subtitle">华为 · OPPO · 小米 · 荣耀 · vivo 五大渠道 | 竞品参照：三角洲行动 / 无畏契约 / 和平精英</div>
+  <div class="header-meta">
+    <div class="meta-item"><div class="dot"></div>数据截止：2026年3月下旬</div>
+    <div class="meta-item"><div class="dot"></div>公测预期：2026年5月1日</div>
+    <div class="meta-item"><div class="dot"></div>覆盖维度：关注量 · 活动频次 · 攻略站 · 评分页 · 论坛</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ===== PART 1: 竞品 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>参考竞品</h2>
+    <span class="desc">—— 三款同类品类头部游戏，覆盖华为/OPPO/小米/荣耀/vivo五大厂商渠道</span>
+  </div>
+
+  <div class="rivals-grid">
+
+    <div class="rival-card r1">
+      <div class="rname">三角洲行动</div>
+      <div class="rival-tag">射击竞技 · 腾讯</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+        头部射击品类，厂商渠道成熟运营，活动体系完整。<br>
+        华为渠道近期只有1次活动（2025年7月），其余渠道活动节奏单/双周1个，是最直接参照对象。
+      </div>
+      <div class="rival-stats">
+        <div class="rstat"><span class="label">活动频次</span><span class="val">单/双周 1 次</span></div>
+        <div class="rstat"><span class="label">攻略站</span><span class="val">华为无，其余有</span></div>
+        <div class="rstat"><span class="label">评分维护</span><span class="val">部分回复差评</span></div>
+      </div>
+    </div>
+
+    <div class="rival-card r2">
+      <div class="rname">无畏契约：源能行动</div>
+      <div class="rival-tag">战术射击 · 腾讯</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+        TapTap 评分 8.0，关注 1315 万，社区成熟度高。<br>
+        各渠道近期活动节奏低，oppo/华为/小米渠道近半年无新活动，活跃度明显下滑。
+      </div>
+      <div class="rival-stats">
+        <div class="rstat"><span class="label">活动频次</span><span class="val">约每月 1～2 次</span></div>
+        <div class="rstat"><span class="label">攻略站</span><span class="val">vivo 有</span></div>
+        <div class="rstat"><span class="label">评分维护</span><span class="val">部分渠道有回复</span></div>
+      </div>
+    </div>
+
+    <div class="rival-card r3">
+      <div class="rname">和平精英</div>
+      <div class="rival-tag">大逃杀 · 腾讯</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+        TapTap 关注 7932 万，体量是失控的 26 倍，活动密度最高。<br>
+        各渠道几乎 10 天 1 个活动，vivo/华为/小米 联动分发，论坛维护最积极（回帖机械但全覆盖）。
+      </div>
+      <div class="rival-stats">
+        <div class="rstat"><span class="label">活动频次</span><span class="val">约 10 天 1 次</span></div>
+        <div class="rstat"><span class="label">攻略站</span><span class="val">各渠道均有</span></div>
+        <div class="rstat"><span class="label">评分维护</span><span class="val">几乎全覆盖回复</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <strong>关键认知：</strong>竞品活动均以<strong>低门槛晒图/回帖</strong>为主，奖励体量低门槛 250-500 Q币/京东卡，高门槛 900-2000 Q币；回帖内容高度模板化，部分疑似平台号而非游戏官方账号操作。
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== PART 2: 失控进化现状 + 建议 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>失控进化各平台现状与维护建议</h2>
+    <span class="desc">—— 五大厂商渠道现状速览 + 优先级策略</span>
+  </div>
+
+  <!-- 粉丝量 bar chart -->
+  <div class="fan-chart">
+    <div class="fan-chart-title">📊 失控进化·五大渠道粉丝量对比（截至 2026 年 3 月）</div>
+    <div class="bar-row">
+      <div class="bar-label">华为</div>
+      <div class="bar-track">
+        <div class="bar-fill b-hw" style="width:100%">176 万</div>
+      </div>
+      <div class="bar-val">176 万 ⬆️</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">OPPO</div>
+      <div class="bar-track">
+        <div class="bar-fill b-op" style="width:86%">151 万</div>
+      </div>
+      <div class="bar-val">151 万 🔥</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">荣耀</div>
+      <div class="bar-track">
+        <div class="bar-fill b-rong" style="width:5%">8.5 万</div>
+      </div>
+      <div class="bar-val">8.5 万 ↘️</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">小米</div>
+      <div class="bar-track">
+        <div class="bar-fill b-mi" style="width:2.5%">4.3 万</div>
+      </div>
+      <div class="bar-val">4.3 万 →</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">vivo</div>
+      <div class="bar-track">
+        <div class="bar-fill b-vivo" style="width:1%">1.9 万</div>
+      </div>
+      <div class="bar-val">1.9 万 →</div>
+    </div>
+  </div>
+
+  <!-- 各平台状态卡片 -->
+  <div class="status-grid">
+
+    <div class="sg-card">
+      <div class="sg-name">🔴 华为</div>
+      <div class="sg-row"><span class="k">粉丝量</span><span class="v" style="color:var(--red)">176 万 · 第一</span></div>
+      <div class="sg-row"><span class="k">评分</span><span class="v" style="color:var(--red)">3.7～3.8 ⚠️</span></div>
+      <div class="sg-row"><span class="k">背景图</span><span class="v"><span class="badge none">无位置</span></span></div>
+      <div class="sg-row"><span class="k">攻略站</span><span class="v"><span class="badge none">无</span></span></div>
+      <div class="sg-row"><span class="k">论坛板块</span><span class="v"><span class="badge partial">规划完成</span></span></div>
+      <div class="sg-row"><span class="k">论坛维护</span><span class="v">攻略需后台移贴</span></div>
+      <div class="sg-row"><span class="k">评分页</span><span class="v"><span class="badge none">待启动</span></span></div>
+    </div>
+
+    <div class="sg-card">
+      <div class="sg-name">🟠 OPPO</div>
+      <div class="sg-row"><span class="k">粉丝量</span><span class="v" style="color:var(--gold)">151 万 · 增速最猛</span></div>
+      <div class="sg-row"><span class="k">评分</span><span class="v" style="color:var(--muted)">暂无数据</span></div>
+      <div class="sg-row"><span class="k">背景图</span><span class="v"><span class="badge todo">应用号未过审</span></span></div>
+      <div class="sg-row"><span class="k">攻略站</span><span class="v"><span class="badge todo">待搭建</span></span></div>
+      <div class="sg-row"><span class="k">论坛板块</span><span class="v"><span class="badge partial">规划完成</span></span></div>
+      <div class="sg-row"><span class="k">论坛维护</span><span class="v">反馈帖有回复</span></div>
+      <div class="sg-row"><span class="k">评分页</span><span class="v"><span class="badge none">无数据</span></span></div>
+    </div>
+
+    <div class="sg-card">
+      <div class="sg-name">🔵 小米</div>
+      <div class="sg-row"><span class="k">粉丝量</span><span class="v">4.3 万</span></div>
+      <div class="sg-row"><span class="k">评分</span><span class="v" style="color:var(--orange)">4.7～4.8</span></div>
+      <div class="sg-row"><span class="k">背景图</span><span class="v"><span class="badge done">可更新</span></span></div>
+      <div class="sg-row"><span class="k">攻略站</span><span class="v"><span class="badge todo">待搭建</span></span></div>
+      <div class="sg-row"><span class="k">论坛板块</span><span class="v"><span class="badge partial">规划完成</span></span></div>
+      <div class="sg-row"><span class="k">论坛维护</span><span class="v">回复反馈帖</span></div>
+      <div class="sg-row"><span class="k">评分页</span><span class="v"><span class="badge partial">部分有回复</span></span></div>
+    </div>
+
+    <div class="sg-card">
+      <div class="sg-name">🟣 荣耀</div>
+      <div class="sg-row"><span class="k">粉丝量</span><span class="v">8.5 万</span></div>
+      <div class="sg-row"><span class="k">评分</span><span class="v" style="color:var(--muted)">暂无数据</span></div>
+      <div class="sg-row"><span class="k">背景图</span><span class="v"><span class="badge done">可更新</span></span></div>
+      <div class="sg-row"><span class="k">攻略站</span><span class="v"><span class="badge todo">待搭建</span></span></div>
+      <div class="sg-row"><span class="k">论坛板块</span><span class="v"><span class="badge partial">规划完成</span></span></div>
+      <div class="sg-row"><span class="k">论坛维护</span><span class="v">部分有回复</span></div>
+      <div class="sg-row"><span class="k">评分页</span><span class="v"><span class="badge none">无</span></span></div>
+    </div>
+
+    <div class="sg-card">
+      <div class="sg-name">🟢 vivo</div>
+      <div class="sg-row"><span class="k">粉丝量</span><span class="v">1.9 万</span></div>
+      <div class="sg-row"><span class="k">评分</span><span class="v" style="color:var(--green)">8.9 ✓</span></div>
+      <div class="sg-row"><span class="k">背景图</span><span class="v"><span class="badge done">可更新</span></span></div>
+      <div class="sg-row"><span class="k">攻略站</span><span class="v"><span class="badge todo">待搭建</span></span></div>
+      <div class="sg-row"><span class="k">论坛板块</span><span class="v"><span class="badge partial">规划完成</span></span></div>
+      <div class="sg-row"><span class="k">论坛维护</span><span class="v">回复反馈帖</span></div>
+      <div class="sg-row"><span class="k">评分页</span><span class="v"><span class="badge none">无</span></span></div>
+    </div>
+
+  </div>
+
+  <!-- 维护优先级 -->
+  <div style="font-size:12px; color:var(--muted); margin-bottom:10px;">🎯 维护优先级</div>
+  <div class="priority-grid">
+    <div class="prio-card">
+      <div class="prio-name">华为</div>
+      <div class="prio-dot-row">
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+      </div>
+      <div class="prio-level">P0 最高优先</div>
+      <div class="prio-action">评分低、体量大<br>评分页+论坛双线启动</div>
+    </div>
+    <div class="prio-card">
+      <div class="prio-name">OPPO</div>
+      <div class="prio-dot-row">
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-empty"></div>
+      </div>
+      <div class="prio-level">P0 次高优先</div>
+      <div class="prio-action">增速猛、先推进<br>应用号过审</div>
+    </div>
+    <div class="prio-card">
+      <div class="prio-name">小米</div>
+      <div class="prio-dot-row">
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-empty"></div>
+        <div class="prio-dot pd-empty"></div>
+      </div>
+      <div class="prio-level">P1 常规运营</div>
+      <div class="prio-action">评分偏低需关注<br>公测期重点维护</div>
+    </div>
+    <div class="prio-card">
+      <div class="prio-name">荣耀</div>
+      <div class="prio-dot-row">
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-empty"></div>
+        <div class="prio-dot pd-empty"></div>
+        <div class="prio-dot pd-empty"></div>
+      </div>
+      <div class="prio-level">P2 保底维护</div>
+      <div class="prio-action">体量小、活跃低<br>公测争取1次推荐</div>
+    </div>
+    <div class="prio-card">
+      <div class="prio-name">vivo</div>
+      <div class="prio-dot-row">
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-fill"></div>
+        <div class="prio-dot pd-empty"></div>
+        <div class="prio-dot pd-empty"></div>
+        <div class="prio-dot pd-empty"></div>
+      </div>
+      <div class="prio-level">P2 保底维护</div>
+      <div class="prio-action">评分好但体量小<br>维持基础内容同步</div>
+    </div>
+  </div>
+
+  <!-- 维护建议 -->
+  <div style="font-size:12px; color:var(--muted); margin-bottom:10px;">📋 后续维护建议</div>
+
+  <div class="suggest-box">
+    <div class="sb-title">🔴 华为·重点突破</div>
+    <ul>
+      <li>评分仅 <span class="hl">3.7～3.8</span>，是厂商渠道最大风险点，公测前需优先提升</li>
+      <li>攻略需后台手动移贴——建议<span class="hl">每周集中移贴1次</span>，降低日常成本约 70%</li>
+      <li>差评<span class="hl">逐条人工回复</span>（非模板），公测期目标：评分从 3.8 提升至 4.5+</li>
+      <li>无背景图位 → 以置顶帖封面图补位，弥补视觉劣势</li>
+    </ul>
+  </div>
+
+  <div class="suggest-box" style="border-left-color: var(--orange);">
+    <div class="sb-title" style="color:var(--orange);">🟠 OPPO·待激活</div>
+    <ul>
+      <li><span class="hl">应用号过审</span>是首要任务，过审后立即更换背景图为公测 KV</li>
+      <li>增速居各渠道之首，公测前持续投入内容，巩固增长动能</li>
+      <li>活动与华为同步分发，降低内容制作成本</li>
+    </ul>
+  </div>
+
+  <div class="suggest-box" style="border-left-color: var(--blue);">
+    <div class="sb-title" style="color:var(--blue);">🔵 小米/荣耀/vivo·差异化</div>
+    <ul>
+      <li>小米评分 4.7～4.8，公测期关注1星差评，回复合理反馈</li>
+      <li>vivo 评分 8.9 表现好，维持基础内容同步即可</li>
+      <li>荣耀活跃度最低，以公测推荐申请为主，不做高频维护</li>
+      <li>三个渠道合计粉丝不足 15 万，<span class="hl">不建议单独拨付活动预算</span>，同步华为/OPPO活动文案即可</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== PART 3: 竞品横向对比 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>五大平台·失控进化 vs 竞品横向对比</h2>
+    <span class="desc">—— 关注量 · 活动频次 · 攻略站 · 评分页维护 · 论坛维护</span>
+  </div>
+
+  <!-- 关注量对比分组图 -->
+  <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">📊 各平台关注量对比（竞品一手调研数据）</div>
+  <div style="font-size:11px; color:var(--muted); margin-bottom:12px;">⚠️ vivo 平台为「讨论量」，其余平台为「关注/订阅量」，性质不同，不可横向对比</div>
+  <div class="fan-compare-grid">
+
+    <div class="fcol">
+      <div class="fcol-name">华为</div>
+      <div class="fcol-bar-group">
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>失控进化</span><span style="color:var(--red)">176万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-skz" style="width:4%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>三角洲</span><span style="color:var(--blue)">3025万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-sjz" style="width:68%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>无畏契约</span><span style="color:var(--purple)">1202万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-ww" style="width:27%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>和平精英</span><span style="color:var(--green)">4463万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-hpjy" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fcol">
+      <div class="fcol-name">OPPO</div>
+      <div class="fcol-bar-group">
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>失控进化</span><span style="color:var(--red)">151万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-skz" style="width:1%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>三角洲</span><span style="color:var(--blue)">918万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-sjz" style="width:77%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>无畏契约</span><span style="color:var(--purple)">674万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-ww" style="width:56%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>和平精英</span><span style="color:var(--green)">1.2亿</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-hpjy" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fcol">
+      <div class="fcol-name">小米</div>
+      <div class="fcol-bar-group">
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>失控进化</span><span style="color:var(--red)">4.3万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-skz" style="width:2%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>三角洲</span><span style="color:var(--blue)">18.5万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-sjz" style="width:9%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>无畏契约</span><span style="color:var(--purple)">8万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-ww" style="width:4%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>和平精英</span><span style="color:var(--green)">208万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-hpjy" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fcol">
+      <div class="fcol-name">荣耀</div>
+      <div class="fcol-bar-group">
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>失控进化</span><span style="color:var(--red)">8.5万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-skz" style="width:1%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>三角洲</span><span style="color:var(--blue)">479.6万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-sjz" style="width:48%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>无畏契约</span><span style="color:var(--purple)">205.4万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-ww" style="width:20%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>和平精英</span><span style="color:var(--green)">1008万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-hpjy" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fcol">
+      <div class="fcol-name">vivo <span style="font-size:9px;color:var(--muted)">（讨论量）</span></div>
+      <div class="fcol-bar-group">
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>失控进化</span><span style="color:var(--red)">1.9万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-skz" style="width:1%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>三角洲</span><span style="color:var(--blue)">53.1万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-sjz" style="width:34%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>无畏契约</span><span style="color:var(--purple)">36.7万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-ww" style="width:23%"></div></div>
+        </div>
+        <div class="fcol-bar-item">
+          <div class="fcol-label"><span>和平精英</span><span style="color:var(--green)">157.2万</span></div>
+          <div class="fcol-track"><div class="fcol-fill s-hpjy" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note" style="margin-bottom:20px;">
+    <strong>关键差距（真实数据）：</strong>华为——失控 176万 vs 和平精英 4463万（25×差距）、三角洲 3025万（17×）；OPPO——失控 151万 vs 和平精英 <strong>1.2亿</strong>（约 79×差距，差距最悬殊）；小米——失控 4.3万 vs 和平精英 208万（48×），但三角洲仅 18.5万，说明小米渠道整体体量偏小；荣耀——失控 8.5万 vs 和平精英 1008万（118×）；vivo 为讨论量口径，失控 1.9万 vs 和平精英 157.2万（82×）。综合来看：华为+OPPO 是失控进化绝对优先的发力渠道，关注量基数大，公测借力推荐位可获最大增量。
+  </div>
+
+  <!-- 活动频次 + 攻略站 + 社区维护 大表 -->
+  <div class="compare-wrap">
+    <table>
+      <colgroup>
+        <col style="width:60px">
+        <col style="width:80px">
+        <col style="width:100px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col style="width:90px">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>平台</th>
+          <th>游戏</th>
+          <th>活动频次</th>
+          <th>活动奖励</th>
+          <th>攻略站搭建</th>
+          <th>评分页维护</th>
+          <th>论坛维护</th>
+          <th>综合活跃度</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- vivo -->
+        <tr class="row-header"><td colspan="8">📱 vivo &nbsp;<span style="font-size:10px;font-weight:400;color:var(--muted)">（以下为「讨论量」）</span></td></tr>
+        <tr>
+          <td rowspan="4">vivo</td>
+          <td><span class="rival-label rl-red">失控进化</span></td>
+          <td class="cell-warn">1月 1～2 次</td>
+          <td class="cell-warn">50～100元礼品卡</td>
+          <td><span class="badge none">未搭建</span></td>
+          <td class="cell-muted">—</td>
+          <td class="cell-good">回复反馈帖</td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-blue">三角洲行动</span><br><span class="cell-muted" style="font-size:10px">53.1万讨论</span></td>
+          <td class="cell-good">单/双周 1 次</td>
+          <td class="cell-good">500Q币，50/人</td>
+          <td><span class="badge done">有攻略标签</span></td>
+          <td class="cell-good">回复差评</td>
+          <td class="cell-good">回复反馈帖</td>
+          <td class="cell-good">★★★★☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-purple">无畏契约</span><br><span class="cell-muted" style="font-size:10px">36.7万讨论</span></td>
+          <td class="cell-warn">1个月 1 次</td>
+          <td class="cell-warn">250Q币，50/人</td>
+          <td><span class="badge done">有</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-green">和平精英</span><br><span class="cell-muted" style="font-size:10px">157.2万讨论</span></td>
+          <td class="cell-good">约 10 天 1 次</td>
+          <td class="cell-good">300京东卡，100/人</td>
+          <td><span class="badge done">有</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-good">回复反馈帖</td>
+          <td class="cell-good">★★★★★</td>
+        </tr>
+
+        <!-- 华为 -->
+        <tr class="row-header"><td colspan="8">📱 华为</td></tr>
+        <tr>
+          <td rowspan="4">华为</td>
+          <td><span class="rival-label rl-red">失控进化</span><br><span class="cell-muted" style="font-size:10px">176万关注</span></td>
+          <td class="cell-bad">暂无活动</td>
+          <td class="cell-bad">待规划</td>
+          <td><span class="badge none">未搭建<br>（tag需移贴）</span></td>
+          <td><span class="badge none">未启动</span></td>
+          <td class="cell-bad">攻略移贴成本高</td>
+          <td class="cell-bad">★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-blue">三角洲行动</span><br><span class="cell-muted" style="font-size:10px">3025万关注</span></td>
+          <td class="cell-bad">近期仅 1 次<br><span class="cell-muted">(2025.07)</span></td>
+          <td class="cell-good">高价值周边奖励</td>
+          <td><span class="badge none">无</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-bad">★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-purple">无畏契约</span><br><span class="cell-muted" style="font-size:10px">1202万关注</span></td>
+          <td class="cell-muted">近期无活动</td>
+          <td class="cell-muted">—</td>
+          <td><span class="badge none">无</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-bad">★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-green">和平精英</span><br><span class="cell-muted" style="font-size:10px">4463万关注</span></td>
+          <td class="cell-good">约 10 天 1 次</td>
+          <td class="cell-good">500Q币，50/人</td>
+          <td><span class="badge done">有</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-good">机械全覆盖回复</td>
+          <td class="cell-good">★★★★☆</td>
+        </tr>
+
+        <!-- OPPO -->
+        <tr class="row-header"><td colspan="8">📱 OPPO</td></tr>
+        <tr>
+          <td rowspan="4">OPPO</td>
+          <td><span class="rival-label rl-red">失控进化</span><br><span class="cell-muted" style="font-size:10px">151万关注</span></td>
+          <td class="cell-warn">1月 1～2 次</td>
+          <td class="cell-warn">50～100元礼品卡</td>
+          <td><span class="badge none">未搭建</span></td>
+          <td class="cell-muted">无数据</td>
+          <td class="cell-good">回复反馈帖</td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-blue">三角洲行动</span><br><span class="cell-muted" style="font-size:10px">918万关注</span></td>
+          <td class="cell-muted">近期无活动</td>
+          <td class="cell-muted">—</td>
+          <td><span class="badge none">无</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-bad">★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-purple">无畏契约</span><br><span class="cell-muted" style="font-size:10px">674万关注</span></td>
+          <td class="cell-warn">近期 1 次活动</td>
+          <td class="cell-warn">500Q币，50/人</td>
+          <td><span class="badge done">有（基础）</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-green">和平精英</span><br><span class="cell-muted" style="font-size:10px">1.2亿关注</span></td>
+          <td class="cell-good">约 10 天 1 次</td>
+          <td class="cell-good">300京东卡，100/人</td>
+          <td><span class="badge done">有</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-good">机械全覆盖回复</td>
+          <td class="cell-good">★★★★★</td>
+        </tr>
+
+        <!-- 小米 -->
+        <tr class="row-header"><td colspan="8">📱 小米</td></tr>
+        <tr>
+          <td rowspan="4">小米</td>
+          <td><span class="rival-label rl-red">失控进化</span><br><span class="cell-muted" style="font-size:10px">4.3万关注</span></td>
+          <td class="cell-warn">1月 1～2 次</td>
+          <td class="cell-warn">50～100元礼品卡</td>
+          <td><span class="badge none">未搭建</span></td>
+          <td class="cell-warn">部分有回复</td>
+          <td class="cell-good">回复反馈帖</td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-blue">三角洲行动</span><br><span class="cell-muted" style="font-size:10px">18.5万关注</span></td>
+          <td class="cell-muted">近期无活动</td>
+          <td class="cell-muted">—</td>
+          <td><span class="badge none">无</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-bad">★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-purple">无畏契约</span><br><span class="cell-muted" style="font-size:10px">8万关注</span></td>
+          <td class="cell-warn">近期 1 次</td>
+          <td class="cell-warn">150-300Q币</td>
+          <td><span class="badge done">有（基础）</span></td>
+          <td class="cell-good">部分有回复</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-green">和平精英</span><br><span class="cell-muted" style="font-size:10px">208万关注</span></td>
+          <td class="cell-good">约 10 天 1 次</td>
+          <td class="cell-good">500Q币，50/人</td>
+          <td><span class="badge done">有</span></td>
+          <td class="cell-good">回复差评</td>
+          <td class="cell-good">回复反馈帖</td>
+          <td class="cell-good">★★★★★</td>
+        </tr>
+
+        <!-- 荣耀 -->
+        <tr class="row-header"><td colspan="8">📱 荣耀</td></tr>
+        <tr>
+          <td rowspan="4">荣耀</td>
+          <td><span class="rival-label rl-red">失控进化</span><br><span class="cell-muted" style="font-size:10px">8.5万关注</span></td>
+          <td class="cell-bad">暂无活动</td>
+          <td class="cell-bad">待规划</td>
+          <td><span class="badge none">未搭建</span></td>
+          <td class="cell-muted">无数据</td>
+          <td class="cell-warn">部分有回复</td>
+          <td class="cell-bad">★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-blue">三角洲行动</span><br><span class="cell-muted" style="font-size:10px">479.6万关注</span></td>
+          <td class="cell-muted">近期无活动</td>
+          <td class="cell-muted">—</td>
+          <td><span class="badge none">无</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-muted">无</td>
+          <td class="cell-bad">★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-purple">无畏契约</span><br><span class="cell-muted" style="font-size:10px">205.4万关注</span></td>
+          <td class="cell-warn">1月 2 次</td>
+          <td class="cell-warn">10元京东卡×3</td>
+          <td><span class="badge none">无</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-warn">部分有回复<br><span class="cell-muted">(疑似平台号)</span></td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><span class="rival-label rl-green">和平精英</span><br><span class="cell-muted" style="font-size:10px">1008万关注</span></td>
+          <td class="cell-warn">1月 2 次</td>
+          <td class="cell-warn">10元京东卡×3</td>
+          <td><span class="badge done">有</span></td>
+          <td class="cell-muted">无</td>
+          <td class="cell-warn">部分有回复</td>
+          <td class="cell-warn">★★★☆☆</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note" style="margin-top:16px;">
+    <strong>综合结论：</strong>
+    ① 活动频次——失控进化当前节奏与无畏契约持平（月均 1～2 次），预算制约下合理；竞品中仅和平精英维持高频，体量差异过大，不宜强行对标。
+    ② 攻略站——五大渠道<strong>均未搭建</strong>，华为因平台限制（tag需移贴）建议以"每周集中维护"替代独立攻略站；OPPO/小米/荣耀/vivo 在应用号/账号条件具备后可逐步搭建基础攻略专区。
+    ③ 评分页——竞品即便回复也高度机械，用户感知价值有限；建议失控进化<strong>华为</strong>渠道以人工个性化回复为差异点，其余渠道保底监控即可。
+    ④ 论坛——竞品论坛维护深度有限，失控进化当前板块规划已领先，待推进历史内容归档 + 互助/组队专区引导。
+  </div>
+
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  《失控进化》厂商渠道社区维护报告 · 数据截止 2026.03 · 内部参考文档
+</div>
+
+</body>
+</html>
