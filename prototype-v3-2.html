@@ -338,6 +338,22 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .cc-icon{font-size:16px;}
 
 /* ── 下一步按钮 ── */
+
+/* ── Step 内嵌 FAQ ── */
+.step-faq{margin-top:32px;padding:20px 24px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--r);}
+.step-faq-header{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.step-faq-icon{font-size:14px;}
+.step-faq-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);}
+.step-faq-list{display:flex;flex-direction:column;gap:6px;}
+.step-faq-item{border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.step-faq-q{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;cursor:pointer;background:rgba(255,255,255,.02);transition:background .15s;}
+.step-faq-q:hover{background:rgba(255,255,255,.05);}
+.step-faq-q-text{font-size:13px;color:var(--text);font-weight:600;line-height:1.5;}
+.step-faq-chevron{font-size:11px;color:var(--text-muted);flex-shrink:0;transition:transform .2s;}
+.step-faq-item.open .step-faq-chevron{transform:rotate(180deg);}
+.step-faq-a{display:none;padding:10px 14px 12px;font-size:13px;color:var(--text-dim);line-height:1.75;border-top:1px solid var(--border);white-space:pre-line;}
+.step-faq-item.open .step-faq-a{display:block;}
+
 .step-nav-btns{display:flex;justify-content:flex-end;gap:10px;margin-top:36px;padding-top:20px;border-top:1px solid var(--border);}
 .snbtn{padding:10px 22px;border-radius:6px;font-size:13px;font-weight:600;border:1px solid var(--border);background:var(--surface2);color:var(--text-dim);cursor:pointer;transition:all .2s;}
 .snbtn:hover{border-color:var(--border-bright);color:var(--text);}
@@ -1815,6 +1831,36 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
+                <div class="step-faq">
+          <div class="step-faq-header">
+            <span class="step-faq-icon">❓</span>
+            <span class="step-faq-title">本节常见问题</span>
+          </div>
+          <div class="step-faq-list">
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">新手有没有保护期？一开始不会被打吗？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">庇护模式下领地默认有保护，相对安全。但人物本身在野外依然可以被其他玩家攻击。建议刚开始快速建好第一个基地并锁门，减少在外暴露的时间。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">进游戏后什么都不会，先做什么？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">出生后第一步：拳头打石头收集 100 石头，打树干收集 200 木头。用石头和木头制作斧头和石矛。随后找水喝（喝河水/海水会拉肚子，优先找南瓜等食物）、找食物。新手推荐去废弃超市或加油站搜刮初始物资。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">前期用什么武器防身？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">初期：石矛（近战）→制作猎弓（远程）。从废旧超市和加油站可以找到绿卡，兑换到早期武器蓝图。优先科研「废料冲锋枪」或「土制手枪」作为初期枪械。</div>
+          </div>
+          </div>
+        </div>
+
         <div class="step-nav-btns">
           <button class="snbtn primary" onclick="switchStep(2)">下一步：生存数值 →</button>
         </div>
@@ -1902,6 +1948,36 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
+                <div class="step-faq">
+          <div class="step-faq-header">
+            <span class="step-faq-icon">❓</span>
+            <span class="step-faq-title">本节常见问题</span>
+          </div>
+          <div class="step-faq-list">
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">我一直饿/一直渴，该怎么办？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">口渴：优先收集南瓜/蘑菇等植物（含水分）、制作储水器收集雨水，或用熔炉烹饪肉食和蔬菜来补充水分。饱腹：击杀野猪/鹿等动物获取生肉，用篝火烤熟后食用。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">生命值怎么恢复？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">初期：靠进食恢复（吃熟食最高效）；制作绷带（布料×1）可快速止血；之后可制作医疗针（分初级/中级/高级）进行更高效的回血。高等级医疗针效果更强，可在战斗中快速恢复。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">受伤了一直在流血怎么处理？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">流血状态会持续掉血，必须用绷带或医疗针处理。优先制作绷带（1块布料即可），进背包使用即可止血。出门前建议多备绷带。</div>
+          </div>
+          </div>
+        </div>
+
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(1)">← 上一步</button>
           <button class="snbtn primary" onclick="switchStep(3)">下一步：物资收集 →</button>
@@ -1975,6 +2051,43 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="gs-cap">左：拾取亚麻纤维 · 右：砍仙人掌获布料</div>
           </div>
           <div class="gs-tip">💡 跑图时地面上的亚麻纤维随处可见，路过沙漠区域时可砍仙人掌，顺路翻垃圾堆还能捡零件盒，获取布料轻轻松松。</div>
+        </div>
+
+                <div class="step-faq">
+          <div class="step-faq-header">
+            <span class="step-faq-icon">❓</span>
+            <span class="step-faq-title">本节常见问题</span>
+          </div>
+          <div class="step-faq-list">
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">废料是什么，去哪里找？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">废料（Scrap）是游戏核心货币和科研材料，用于研究蓝图和维持工具柜。获取方式：前往据点的战利品箱（油桶/板条箱等）搜刮；敲烂各种物件；在安全区自动售货机进行商品交换。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">怎么快速获取大量废料？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">①多跑一级据点（废弃超市/垃圾场/仓库）清箱子；②把不需要的零件全部放分解机分解；③中期安全区做商品交换任务；④攻坚二级以上据点回报翻倍。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">如何快速获得布啊？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">在草地可以拾取亚麻纤维，在沙漠可以砍伐仙人掌，也可以在小型资源点找到分解机，分解多余的服饰、绳子和针线包获取。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">游戏初期资源点选择哪些？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">废弃超市、灯塔、仓库、矿场和垃圾场都是不错的选择，在获取基础战利品和废料的同时，还有分解机、维修台可以使用，还有概率获得绿卡，不过要注意周围的游荡者和其他幸存者。</div>
+          </div>
+          </div>
         </div>
 
         <div class="step-nav-btns">
@@ -2082,6 +2195,43 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             </tbody>
           </table>
           <div class="gs-warn">⚠️ 注意——放置工具柜后，无论什么模式，激活情报领地才会受到拆家保护。</div>
+        </div>
+
+                <div class="step-faq">
+          <div class="step-faq-header">
+            <span class="step-faq-icon">❓</span>
+            <span class="step-faq-title">本节常见问题</span>
+          </div>
+          <div class="step-faq-list">
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">基地建在哪里比较好？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">新手建议选在地图中部偏安全区附近，便于补给。避开主要路口和高价值据点附近（人多容易被打）。山地、树林中隐蔽度高，但资源运输也更麻烦。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">工具柜有什么用？为什么很重要？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">工具柜是领地核心，放置后会产生一个「建筑保护范围」——范围内别人无法建造新建筑。同时工具柜内的废料决定了建筑的「稳固度」，废料耗尽后建筑会逐渐衰减损坏。必须每隔几天补充废料。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">怎么提升基地防御力？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">升级建筑材料（木→石→金属→强化金属），血量依次提升；加装铁门替代木门；在门口铺设尖刺地板；在周围建造外墙增加攻击层数。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">下线之后别人能拆房吗？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">可以。</div>
+          </div>
+          </div>
         </div>
 
         <div class="step-nav-btns">
@@ -2192,6 +2342,43 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
         </div>
 
+                <div class="step-faq">
+          <div class="step-faq-header">
+            <span class="step-faq-icon">❓</span>
+            <span class="step-faq-title">本节常见问题</span>
+          </div>
+          <div class="step-faq-list">
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">遭遇其他玩家怎么处理？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">优先判断对方是否有恶意：如果对方不攻击可尝试绕路。迫不得已对抗时：利用地形掩体、先发制人是关键。如实力差距大，跑为上策。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">倒地之后怎么复活？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">倒地后有一段时间进入"濒死"状态，队友可以靠近按互动键急救（需要医疗材料）。无人救援且倒计时归零则死亡，背包物资按模式规则掉落。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">被多人围攻，倒地后队友能救我吗？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">可以，队友靠近后按互动键进行急救，需要消耗急救包。急救时有明显动作，会暴露位置，救援时需掩护。庇护模式死亡惩罚较低，适合新手。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">枪战中血量掉得很快，有什么保命技巧？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">①开枪前先扔烟雾弹；②腰射移动比站立更难被命中；③及时往大型掩体后撤；④边移动边按绷带/医疗针；⑤枪战中不要背对开阔地。</div>
+          </div>
+          </div>
+        </div>
+
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(4)">← 上一步</button>
           <button class="snbtn primary" onclick="switchStep(6)">下一步：变强路径 →</button>
@@ -2297,6 +2484,43 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
                 <div class="gs-flow-item end">💡 建议组队，降低风险，效率更高</div>
               </div>
             </div>
+          </div>
+        </div>
+
+                <div class="step-faq">
+          <div class="step-faq-header">
+            <span class="step-faq-icon">❓</span>
+            <span class="step-faq-title">本节常见问题</span>
+          </div>
+          <div class="step-faq-list">
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">科技树怎么解锁？有什么顺序建议？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">通过科研台「研究」捡到的物品即可解锁蓝图。新手推荐解锁顺序：石矛→猎弓→绷带→医疗针→储水器→废料冲锋枪/土制手枪→简单锁→睡袋→石质建筑。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">捡到的材料看不懂（齿轮、篷布、管子）有什么用？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">这些是「可循环利用零件」，放进分解机可获得废料和金属碎片。分解机在各个据点都有，不需要自己建造。高价值零件（如高品质齿轮）分解量更多。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">情报系统是什么？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">情报系统是一种类似战令的新机制，旨在提升玩家活跃度，通过局内奖励（加速发育）和局外奖励（如皮肤）增强游戏体验。玩家可从不同难度资源点获取初级/中级/高级加密情报，等级越高，破译时间和经验加成越多。该功能集成在TC工具柜/领地柜中，激活情报站后放入情报即可破译，积累经验升级后即可领取相应奖励。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">什么是"情报等级"？有什么用？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">情报等级代表你在当前局的「声望」，越高说明你的领地越强大，会被系统标记为可攻打目标，同时解锁更多高价值事件和奖励。</div>
+          </div>
           </div>
         </div>
 
