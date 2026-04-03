@@ -783,7 +783,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   </div>
   <div class="nav-tabs">
     <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏕️</span> 新手站</div>
-    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📋</span> 新手入门 <span class="nav-badge">7 STEPS</span></div>
+    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📋</span> 新手入门 <span class="nav-badge">6 STEPS</span></div>
     <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🪖</span> 武器图鉴</div>
     <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>🏝️</span> 据点指南</div>
     <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>▶️</span> 攻略视频</div>
@@ -857,14 +857,14 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       <div class="card-body">
         <div class="card-tag">🔰 NEWCOMER</div>
         <h2>初次登岛？</h2>
-        <p>跟着 7 步走完第一天<br>从出生到建好第一个家，不掉线、不饿死、不被偷家。</p>
+        <p>跟着 6 步走完前期核心路线<br>从出生到站稳脚跟，生存、发育、战斗一步步来。</p>
         <div class="card-features">
-          <div class="feat-row"><span class="feat-icon"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/swip-jssd-DJITnAK-.png" style="height:14px;vertical-align:middle" onerror="this.outerHTML='🗺'"></span>出生点怎么站稳脚跟</div>
-          <div class="feat-row"><span class="feat-icon">💉</span>血量 / 口渴 / 饱腹管理</div>
-          <div class="feat-row"><span class="feat-icon">🪵</span>高效资源收集路线</div>
-          <div class="feat-row"><span class="feat-icon">🏚️</span>第一个家怎么建</div>
-          <div class="feat-row"><span class="feat-icon">🪖</span>武器与战斗入门</div>
-          <div class="feat-row"><span class="feat-icon">⚙️</span>科技树与变强路径</div>
+          <div class="feat-row"><span class="feat-icon">🪨</span>从一块石头开始，活过第一天</div>
+          <div class="feat-row"><span class="feat-icon">🍗</span>饿了、渴了、冷了，怎么撑下去</div>
+          <div class="feat-row"><span class="feat-icon">🗑️</span>重要物资，缺一样都寸步难行</div>
+          <div class="feat-row"><span class="feat-icon">🏠</span>建一个拆不垮的家</div>
+          <div class="feat-row"><span class="feat-icon">⚔️</span>三种遭遇，三种应对，别慌</div>
+          <div class="feat-row"><span class="feat-icon">⚙️</span>废料换科技，情报换实力</div>
         </div>
         <button class="card-cta">开始新手入门 →</button>
       </div>
@@ -1393,37 +1393,41 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="guide-sidebar">
       <div class="sidebar-section-label">新手入门 GUIDE</div>
       <div class="snav-item active" id="snav-0" onclick="switchStep(1)">
-        <div class="snav-num">0</div><div class="snav-text">选择你的首局模式</div>
+        <div class="snav-num">1</div><div class="snav-text">从一块石头开始，活过第一天</div>
+        <div class="snav-stage-dot" style="background:#4caf50"></div>
       </div>
       <div class="snav-item" id="snav-1" onclick="switchStep(2)">
-        <div class="snav-num">1</div><div class="snav-text">出生后先做什么</div>
+        <div class="snav-num">2</div><div class="snav-text">饿了、渴了、冷了，怎么撑下去</div>
+        <div class="snav-stage-dot" style="background:#4caf50"></div>
       </div>
       <div class="snav-item" id="snav-2" onclick="switchStep(3)">
-        <div class="snav-num">2</div><div class="snav-text">三条生命线</div>
+        <div class="snav-num">3</div><div class="snav-text">重要物资，缺一样都寸步难行</div>
+        <div class="snav-stage-dot" style="background:#c8922a"></div>
       </div>
       <div class="snav-item" id="snav-3" onclick="switchStep(4)">
-        <div class="snav-num">3</div><div class="snav-text">资源收集路线</div>
+        <div class="snav-num">4</div><div class="snav-text">建一个拆不垮的家</div>
+        <div class="snav-stage-dot" style="background:#c8922a"></div>
       </div>
       <div class="snav-item" id="snav-4" onclick="switchStep(5)">
-        <div class="snav-num">4</div><div class="snav-text">第一个家怎么建</div>
+        <div class="snav-num">5</div><div class="snav-text">三种遭遇，三种应对，别慌</div>
+        <div class="snav-stage-dot" style="background:#e05252"></div>
       </div>
       <div class="snav-item" id="snav-5" onclick="switchStep(6)">
-        <div class="snav-num">5</div><div class="snav-text">武器与战斗入门</div>
-      </div>
-      <div class="snav-item" id="snav-6" onclick="switchStep(7)">
-        <div class="snav-num">6</div><div class="snav-text">科技树与变强路径</div>
+        <div class="snav-num">6</div><div class="snav-text">废料换科技，情报换实力</div>
+        <div class="snav-stage-dot" style="background:#e05252"></div>
       </div>
     </div>
 
     <div class="guide-main">
-      <!-- Page header - 与其他页面保持视觉一致 -->
+
+      <!-- Page header -->
       <div class="guide-page-hd">
         <div class="guide-page-title-row">
           <span class="guide-page-title-icon">🏝️</span>
           <h1 class="guide-page-title">新手入门</h1>
-          <span class="guide-page-badge">7 STEPS</span>
+          <span class="guide-page-badge">6 STEPS</span>
         </div>
-        <div class="guide-page-intro">从零出生到站稳脚跟——跟着 7 个步骤，避开 90% 的新手坑。</div>
+        <div class="guide-page-intro">从零出生到站稳脚跟——跟着 6 个步骤，避开 90% 的新手坑。</div>
       </div>
       <!-- Progress -->
       <div class="progress-wrap">
@@ -1434,394 +1438,434 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:17%"></div></div>
       </div>
 
-      <!-- STEP 1 · 选择首局模式 -->
+      <!-- STEP 1 -->
       <div class="step-content active" id="step-1">
         <div class="step-hd">
-          <div class="step-tag">STEP 01 / 07</div>
+          <div class="step-tag">STEP 01 / 06</div>
           <div>
-            <h2>选择你的首局模式</h2>
-            <div class="step-subtitle">进入游戏的第一个决策——选对模式，少走弯路</div>
+            <div class="step-stage-label" style="color:#4caf50;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🟢 生存阶段</div>
+            <h2>从一块石头开始，活过第一天</h2>
+            <div class="step-subtitle">工具制作 · 武器防身 · 初遇玩家</div>
           </div>
         </div>
+        <p style="color:var(--text-dim);margin:0 0 20px;padding:12px 16px;background:rgba(255,255,255,.03);border-radius:6px;font-style:italic">刚进游戏一脸懵？睡醒啥都没有，站在原地不知道干啥？</p>
 
-        <p style="color:var(--text-dim);line-height:1.8;margin-bottom:24px;">进入服务器前，你需要选择一个游戏模式。不同模式的<strong>死亡惩罚、结算周期和抄家规则</strong>差异很大。新手<strong>强烈推荐选择庇护模式</strong>，先把核心机制摸清楚。</p>
+        <div class="step-section">
+          <div class="step-section-title">🏝️ 初入荒岛</div>
+          <p style="color:var(--text-dim);margin:6px 0 10px">出生随机在地图边缘，初始物品：🪨 石头×1、🔦 火把×1（火把留给夜晚或阴暗处使用）</p>
+          <ul class="step-list">
+            <li>打树采石：使用白送的肥皂完整采集 1 树 1 石，随着目标消失的最后一击会采集更多资源</li>
+            <li>制作工具：打开制作页面，在推荐常用分类下制作石斧和石镐</li>
+          </ul>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0">
+            <div class="recipe-box" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:8px 12px;border-radius:6px">
+              <span>🪵 200</span><span style="color:var(--text-muted)">＋</span><span>🪨 100</span>
+              <span style="color:var(--text-muted);margin:0 4px">→</span>
+              <span style="color:var(--orange);font-weight:700">🪓 石斧</span>
+            </div>
+            <div class="recipe-box" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:8px 12px;border-radius:6px">
+              <span>🪵 200</span><span style="color:var(--text-muted)">＋</span><span>🪨 100</span>
+              <span style="color:var(--text-muted);margin:0 4px">→</span>
+              <span style="color:var(--orange);font-weight:700">⛏️ 石镐</span>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border-left:3px solid var(--yellow);padding:10px 14px;border-radius:4px;margin:12px 0">💡 砍树时对准树木上的黄色标记打；采石时对准矿石上的闪光点打，采集速度更快！</div>
+        </div>
 
-        <div class="mode-compare-grid">
-          <!-- 庇护模式（推荐） -->
-          <div class="mode-card mode-recommended">
-            <div class="mode-card-hd">
-              <span class="mode-icon">🛡️</span>
-              <div>
-                <div class="mode-name">庇护模式</div>
-                <div class="mode-rec-badge">✦ 新手推荐</div>
+        <div class="step-section">
+          <div class="step-section-title">🗡️ 制作武器防身</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0">
+            <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:12px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:6px">🏹 木矛</div>
+              <div class="recipe-box" style="display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-size:12px">
+                <span>🪵 300</span><span style="color:var(--text-muted);margin:0 4px">→</span><span style="color:var(--orange)">木矛</span>
               </div>
+              <p style="color:var(--text-dim);font-size:12px;margin:0">最基础近战武器，可用 50 石头升级成石矛（伤害提升）。缺点：无远程能力，只有一次投掷机会</p>
             </div>
-            <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">10天</span></div>
-              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val green">掉落部分物资</span></div>
-              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val green">默认情报领地无敌，主动报名才限时解除</span></div>
-              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val green">残骸保护50%资源</span></div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:12px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:6px">🏹 猎弓</div>
+              <div class="recipe-box" style="display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-size:12px">
+                <span>🧵 50 ＋ 🪵 200</span><span style="color:var(--text-muted);margin:0 4px">→</span><span style="color:var(--orange)">猎弓</span>
+              </div>
+              <p style="color:var(--text-dim);font-size:12px;margin:0">远程武器，配合箭矢（石头＋木头）使用，箭矢多备。布料来源：地面亚麻纤维、砍沙漠仙人掌</p>
             </div>
-            <div class="mode-tip">情报领地默认受保护，主动报名才解除。死亡惩罚最低，机制最宽容。</div>
-          </div>
-
-          <!-- 标准模式 -->
-          <div class="mode-card">
-            <div class="mode-card-hd">
-              <span class="mode-icon">⚔️</span>
-              <div><div class="mode-name">标准模式</div></div>
-            </div>
-            <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">7天</span></div>
-              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val green">掉落部分物资</span></div>
-              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val yellow">第1-2日禁止；第3-7日每天4小时允许</span></div>
-              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val green">残骸保护50%资源</span></div>
-            </div>
-            <div class="mode-tip">常规体验，适合熟悉庇护后进阶。</div>
-          </div>
-
-          <!-- 进阶模式 -->
-          <div class="mode-card">
-            <div class="mode-card-hd">
-              <span class="mode-icon">🔱</span>
-              <div><div class="mode-name">进阶模式</div></div>
-            </div>
-            <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">6天</span></div>
-              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val red">掉落所有物资</span></div>
-              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val red">第1日禁止；第2-6日每天12小时允许</span></div>
-              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val yellow">第3日12:00前保护50%，之后全掉落</span></div>
-            </div>
-            <div class="mode-tip">高压生存，不建议新手初次体验。</div>
-          </div>
-
-          <!-- 挑战模式 -->
-          <div class="mode-card">
-            <div class="mode-card-hd">
-              <span class="mode-icon">💀</span>
-              <div><div class="mode-name">挑战模式</div></div>
-            </div>
-            <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">结算周期</span><span class="attr-val">5天</span></div>
-              <div class="mode-attr"><span class="attr-label">死亡惩罚</span><span class="attr-val red">掉落所有物资</span></div>
-              <div class="mode-attr"><span class="attr-label">抄家保护</span><span class="attr-val red">全天可抄家</span></div>
-              <div class="mode-attr"><span class="attr-label">残骸保护</span><span class="attr-val red">被摧毁所有资源全掉落</span></div>
-            </div>
-            <div class="mode-tip">最高强度，硬核玩法，损失极大。</div>
           </div>
         </div>
 
-        <div class="tip-box" style="margin-top:24px;">
-          <div class="tip-box-icon">💡</div>
-          <div class="tip-box-text" style="color:var(--text)"><strong style="color:var(--green)">新手建议：</strong>第一局选<strong>庇护模式</strong>，死亡只掉部分物资，情报领地默认受保护，可以安心探索和建家，把7个核心步骤走完再考虑升级难度。</div>
-        </div>
-
-        <div class="step-nav-row">
-          <div></div>
-          <button class="step-nav-btn" onclick="switchStep(2);document.getElementById('snav-1').click()">下一步：出生后先做什么 →</button>
-        </div>
-      </div>
-
-      <div class="step-content" id="step-2">
-        <div class="step-hd">
-          <div class="step-tag">STEP 02 / 07</div>
-          <div>
-            <h2>出生后先做什么</h2>
-            <div class="step-subtitle">5 分钟内站稳脚跟的关键动作</div>
-          </div>
-        </div>
-
-        <!-- Graphic: 3 key actions -->
-        <div class="info-cards">
-          <div class="info-card">
-            <span class="info-card-icon">🪨</span>
-            <div class="info-card-title">收集基础资源</div>
-            <div class="info-card-desc">对石头闪光点击打<br>对树红色X击打<br>目标：木头200 + 石头100</div>
-          </div>
-          <div class="info-card">
-            <span class="info-card-icon">🪓</span>
-            <div class="info-card-title">制作石斧</div>
-            <div class="info-card-desc">按 Q 打开制作界面<br>先做石斧<br>采集效率直接翻倍</div>
-          </div>
-          <div class="info-card">
-            <span class="info-card-icon">🗺</span>
-            <div class="info-card-title">确认位置</div>
-            <div class="info-card-desc">打开地图<br>找最近的一级据点<br>废弃超市 / 加油站</div>
-          </div>
-        </div>
-
-        <div class="tip-box">
-          <span class="tip-box-icon">💡</span>
-          <div class="tip-box-text"><strong>出生点技巧：</strong>出生点附近通常有灌木和石块，先就地解决基础资源，别跑太远暴露位置。</div>
-        </div>
-
-        <div class="crosslink-section">
-          <div class="crosslink-label">📎 延伸阅读</div>
-          <div class="crosslink-cards">
-            <div class="cc-card" onclick="goToPoi('tier-1')"><span class="cc-icon">📍</span>一级遗迹推荐 →</div>
-            <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>出生常见问题 →</div>
+        <div class="step-section">
+          <div class="step-section-title">👥 初遇其他玩家</div>
+          <p style="color:var(--text-dim);margin:6px 0 10px">刚进服发育还没成型，遇到其他玩家千万别慌：</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <span style="font-size:18px">⚔️</span>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">对方只有近战武器</div><div style="color:var(--text-dim);font-size:13px">手持弓箭，进可攻退可守</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <span style="font-size:18px">🏃</span>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">对方有弓或钉枪</div><div style="color:var(--text-dim);font-size:13px">格外小心，可主动搭话表明是萌新，找安全地方继续发育</div></div>
+            </div>
           </div>
         </div>
 
         <div class="step-nav-btns">
-          <button class="snbtn" disabled>← 上一步</button>
-          <button class="snbtn primary" onclick="switchStep(3)">三条生命线 →</button>
+          <button class="snbtn primary" onclick="switchStep(2)">下一步：生存数值 →</button>
         </div>
       </div>
 
       <!-- STEP 2 -->
-      <div class="step-content" id="step-3">
+      <div class="step-content" id="step-2">
         <div class="step-hd">
-          <div class="step-tag">STEP 03 / 07</div>
+          <div class="step-tag">STEP 02 / 06</div>
           <div>
-            <h2>三条生命线</h2>
-            <div class="step-subtitle">任何一条归零都会让你立刻陷入危机</div>
+            <div class="step-stage-label" style="color:#4caf50;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🟢 生存阶段</div>
+            <h2>饿了、渴了、冷了，怎么撑下去</h2>
+            <div class="step-subtitle">生命值 · 饱腹值 · 口渴值 · 体温值</div>
           </div>
         </div>
+        <p style="color:var(--text-dim);margin:0 0 20px;padding:12px 16px;background:rgba(255,255,255,.03);border-radius:6px;font-style:italic">刚进服没多久，就一直饥渴交加、频频掉血？</p>
 
-        <!-- Graphic: lifeline bars -->
-        <div class="lifeline-bars">
-          <div class="ll-row">
-            <div class="ll-header">
-              <div class="ll-name"><span class="ll-icon">💓</span> 血量</div>
-              <div class="ll-status ok">稳定</div>
-            </div>
-            <div class="ll-bar"><div class="ll-fill ll-fill-hp"></div></div>
-            <div class="ll-tip">被打、饥饿、冻伤都会掉血。保持饱腹+口渴较高会<strong style="color:var(--green)">自动缓慢回血</strong>，绷带可快速补。</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:18px;margin-bottom:4px">❤️ 生命值</div>
+            <div style="font-size:11px;color:#e05252;font-weight:700;letter-spacing:.5px;margin-bottom:8px">危险：清零→倒地→被淘汰</div>
+            <ol style="color:var(--text-dim);font-size:13px;padding-left:16px;margin:0;line-height:1.8">
+              <li>吃健康食物</li>
+              <li>生命值低于 40 时喝水可缓慢恢复</li>
+              <li>火源或家具舒适环境下，保持高饱腹和口渴值可缓慢恢复</li>
+              <li>制作绷带，快速恢复生命值</li>
+            </ol>
           </div>
-          <div class="ll-row">
-            <div class="ll-header">
-              <div class="ll-name"><span class="ll-icon">💧</span> 口渴</div>
-              <div class="ll-status warn">注意</div>
-            </div>
-            <div class="ll-bar"><div class="ll-fill ll-fill-thirst"></div></div>
-            <div class="ll-tip">随时间自然下降。归零 → <strong style="color:var(--red)">无法奔跑</strong>。去河边喝水或用水瓶备水。</div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:18px;margin-bottom:4px">🍗 饱腹值</div>
+            <div style="font-size:11px;color:#e05252;font-weight:700;letter-spacing:.5px;margin-bottom:8px">危险：低于 40→持续扣除生命值</div>
+            <ol style="color:var(--text-dim);font-size:13px;padding-left:16px;margin:0;line-height:1.8">
+              <li>木矛扎野猪→采集工具获生肉→篝火烤熟食用</li>
+              <li>野外浆果、蘑菇、土豆、仙人掌果肉、农作物</li>
+              <li>遗迹货架食物箱（超市、加油站）</li>
+            </ol>
+            <div style="background:rgba(200,98,26,.1);border-left:3px solid var(--orange);padding:10px 14px;border-radius:4px;margin:12px 0;margin-top:8px">⚠️ 生肉会中毒掉血，必须用篝火烤熟再食用</div>
           </div>
-          <div class="ll-row">
-            <div class="ll-header">
-              <div class="ll-name"><span class="ll-icon">🍖</span> 饱腹</div>
-              <div class="ll-status danger">危险</div>
-            </div>
-            <div class="ll-bar"><div class="ll-fill ll-fill-hunger"></div></div>
-            <div class="ll-tip">归零 → <strong style="color:var(--red)">持续掉血</strong>。优先找蘑菇、南瓜、仙人掌。<strong style="color:var(--yellow)">生肉必须烤熟！</strong>直接吃会呕吐。</div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:18px;margin-bottom:4px">💧 口渴值</div>
+            <div style="font-size:11px;color:#e05252;font-weight:700;letter-spacing:.5px;margin-bottom:8px">危险：清零→失去奔跑能力</div>
+            <ol style="color:var(--text-dim);font-size:13px;padding-left:16px;margin:0;line-height:1.8">
+              <li>家园放小型露水收集器（20 废料学蓝图，100 木头＋50 铁＋1 篷布制作）</li>
+              <li>野外找淡水河流，靠近直接喝</li>
+              <li>食物箱内的饮用水</li>
+            </ol>
           </div>
-        </div>
-
-        <div class="crosslink-section">
-          <div class="crosslink-label">📎 延伸阅读</div>
-          <div class="crosslink-cards">
-            <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>一直在饿/渴的原因 →</div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="font-size:18px;margin-bottom:4px">🌡️ 体温值</div>
+            <div style="font-size:11px;color:#e05252;font-weight:700;letter-spacing:.5px;margin-bottom:8px">危险：雪地、夜晚过低→持续掉血</div>
+            <ol style="color:var(--text-dim);font-size:13px;padding-left:16px;margin:0;line-height:1.8">
+              <li>临时搭个篝火取暖（顺便烤生肉）</li>
+              <li>收集布料制作保暖衣物</li>
+            </ol>
           </div>
         </div>
 
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(2)">← 出生后先做什么</button>
-          <button class="snbtn primary" onclick="switchStep(4)">资源收集 →</button>
+          <button class="snbtn" onclick="switchStep(1)">← 上一步</button>
+          <button class="snbtn primary" onclick="switchStep(3)">下一步：物资收集 →</button>
         </div>
       </div>
 
       <!-- STEP 3 -->
-      <div class="step-content" id="step-4">
+      <div class="step-content" id="step-3">
         <div class="step-hd">
-          <div class="step-tag">STEP 04 / 07</div>
+          <div class="step-tag">STEP 03 / 06</div>
           <div>
-            <h2>资源收集路线</h2>
-            <div class="step-subtitle">知道去哪收集，比乱跑效率高 3 倍</div>
+            <div class="step-stage-label" style="color:#c8922a;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🟡 发育阶段</div>
+            <h2>重要物资，缺一样都寸步难行</h2>
+            <div class="step-subtitle">废料 · 木头 · 石头 · 布料</div>
           </div>
         </div>
+        <p style="color:var(--text-dim);margin:0 0 20px;padding:12px 16px;background:rgba(255,255,255,.03);border-radius:6px;font-style:italic">废料不够点科技，木头不够建房子，石头不够做工具，布料不够做绷带？</p>
 
-        <div class="resource-grid">
-          <div class="res-row"><span class="res-icon">🪵</span><div class="res-info"><div class="res-name">木材</div><div class="res-desc">砍树，用于建造基地</div></div></div>
-          <div class="res-row"><span class="res-icon">🪨</span><div class="res-info"><div class="res-name">石头</div><div class="res-desc">敲矿石节点，升级基地</div></div></div>
-          <div class="res-row"><span class="res-icon">⚙️</span><div class="res-info"><div class="res-name">废料</div><div class="res-desc">搜铁桶/物资箱，硬通货</div></div></div>
-          <div class="res-row"><span class="res-icon">🧵</span><div class="res-info"><div class="res-name">布料</div><div class="res-desc">采亚麻/仙人掌，制绷带</div></div></div>
-          <div class="res-row"><span class="res-icon">🍖</span><div class="res-info"><div class="res-name">食物</div><div class="res-desc">野外采集或狩猎</div></div></div>
-          <div class="res-row"><span class="res-icon">🔩</span><div class="res-info"><div class="res-name">金属碎片</div><div class="res-desc">冶炼矿石/分解废品</div></div></div>
-        </div>
-
-        <div class="tip-box">
-          <span class="tip-box-icon">💡</span>
-          <div class="tip-box-text"><strong>废料提示：</strong>暂时用不上的齿轮、篷布等，放进据点分解机转化成基础资源，别直接丢掉。</div>
-        </div>
-
-        <div class="crosslink-section">
-          <div class="crosslink-label">📎 延伸阅读</div>
-          <div class="crosslink-cards">
-            <div class="cc-card" onclick="goToPoi('tier-1')"><span class="cc-icon">📍</span>一级据点分布 →</div>
-            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🪖</span>武器合成废料成本 →</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span style="font-size:20px">🗑️</span><div><div style="font-weight:700;color:var(--text)">废料</div><div style="font-size:11px;color:var(--orange);letter-spacing:.3px">科技树解锁唯一关键</div></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">用途</div>
+            <p style="color:var(--text-dim);font-size:13px;margin:0 0 8px">安全区兑换物资 ＋ 解锁科技树（最核心）</p>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">获取方式</div>
+            <ol style="color:var(--text-dim);font-size:13px;padding-left:16px;margin:0 0 8px;line-height:1.8">
+              <li>跑马路沿线垃圾堆顺路搜刮</li>
+              <li>跑一级遗迹：加油站、废弃超市（少量低级 NPC）</li>
+              <li>分解机：金属管、齿轮、弹簧等杂物 → 废料</li>
+            </ol>
+            <div style="background:rgba(255,255,255,.04);border-left:3px solid var(--yellow);padding:10px 14px;border-radius:4px;margin:12px 0">💡 效率路线：一级遗迹 → 顺路翻垃圾堆 → 遗迹内分解机处理杂物</div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span style="font-size:20px">🪵</span><div><div style="font-weight:700;color:var(--text)">木头</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:.3px">万物基础，缺一不可</div></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">用途</div>
+            <p style="color:var(--text-dim);font-size:13px;margin:0 0 8px">制作石斧、木矛等基础工具 ＋ 搭建家园</p>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">获取方式</div>
+            <p style="color:var(--text-dim);font-size:13px;margin:0 0 8px">野外树木随处可见，石斧直接砍</p>
+            <div style="background:rgba(255,255,255,.04);border-left:3px solid var(--yellow);padding:10px 14px;border-radius:4px;margin:12px 0">💡 盯树干黄色标记打；工具升级：石斧 → 铁斧 → 圆斧 → 电锯，高级工具采集速度翻倍</div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span style="font-size:20px">🪨</span><div><div style="font-weight:700;color:var(--text)">石头</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:.3px">工具基石，坚固基地</div></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">用途</div>
+            <p style="color:var(--text-dim);font-size:13px;margin:0 0 8px">制作石镐、石矛、熔炉，升级家园建筑</p>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">获取方式</div>
+            <p style="color:var(--text-dim);font-size:13px;margin:0 0 8px">地图各处均有，石镐直接开采</p>
+            <div style="background:rgba(255,255,255,.04);border-left:3px solid var(--yellow);padding:10px 14px;border-radius:4px;margin:12px 0">💡 对矿石上的闪光点敲击；工具升级：石镐 → 铁镐 → 废料十字镐 → 电镐</div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span style="font-size:20px">🧵</span><div><div style="font-weight:700;color:var(--text)">布料</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:.3px">保命刚需，御寒疗伤</div></div></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">用途</div>
+            <p style="color:var(--text-dim);font-size:13px;margin:0 0 8px">绷带疗伤 ＋ 简易衣物御寒 ＋ 后期高级装备和医疗物品</p>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">获取方式</div>
+            <ol style="color:var(--text-dim);font-size:13px;padding-left:16px;margin:0 0 8px;line-height:1.8">
+              <li>采集地面亚麻纤维，砍沙漠区域仙人掌</li>
+              <li>搜刮遗迹或垃圾堆中的零件盒</li>
+              <li>分解机分解针线包、绳子</li>
+            </ol>
+            <div style="background:rgba(255,255,255,.04);border-left:3px solid var(--yellow);padding:10px 14px;border-radius:4px;margin:12px 0">💡 跑图时随手捡亚麻纤维，路过沙漠砍仙人掌，翻垃圾堆捡零件盒</div>
           </div>
         </div>
 
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(3)">← 三条生命线</button>
-          <button class="snbtn primary" onclick="switchStep(5)">建造第一个家 →</button>
+          <button class="snbtn" onclick="switchStep(2)">← 上一步</button>
+          <button class="snbtn primary" onclick="switchStep(4)">下一步：建造家园 →</button>
         </div>
       </div>
 
       <!-- STEP 4 -->
-      <div class="step-content" id="step-5">
+      <div class="step-content" id="step-4">
         <div class="step-hd">
-          <div class="step-tag">STEP 05 / 07</div>
+          <div class="step-tag">STEP 04 / 06</div>
           <div>
-            <h2>第一个家怎么建</h2>
-            <div class="step-subtitle">不是越大越好，是够用、不被偷</div>
+            <div class="step-stage-label" style="color:#c8922a;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🟡 发育阶段</div>
+            <h2>建一个拆不垮的家</h2>
+            <div class="step-subtitle">选址 · 最简房型 · 材质升级 · 抄家机制</div>
+          </div>
+        </div>
+        <p style="color:var(--text-dim);margin:0 0 20px;padding:12px 16px;background:rgba(255,255,255,.03);border-radius:6px;font-style:italic">刚建家就被拆，辛苦攒的物资全被洗劫一空？</p>
+
+        <div class="step-section">
+          <div class="step-section-title">🗺️ 选址 3 要点</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin:10px 0">
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <span style="font-size:18px;flex-shrink:0">🗺️</span>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">靠近资源点但不显眼</div><div style="color:var(--text-dim);font-size:13px">利用资源点快速发育，找隐蔽山坡、岩石后面，越低调越好，避免被路过玩家盯上</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <span style="font-size:18px;flex-shrink:0">🏥</span>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">离安全区不要太远</div><div style="color:var(--text-dim);font-size:13px">安全区能躲避敌对玩家、兑换物资、分解物资绘制蓝图，新手前期发育离不开它</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <span style="font-size:18px;flex-shrink:0">🚫</span>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">避开开阔地带</div><div style="color:var(--text-dim);font-size:13px">马路边、空地这类开阔地方，敌人一眼就能看到</div></div>
+            </div>
           </div>
         </div>
 
-        <!-- Build order graphic -->
-        <div class="steps-graphic">
-          <div class="sg-step active">
-            <div class="sg-dot">🏗</div>
-            <div class="sg-label">选址<br>远离主干道</div>
+        <div class="step-section">
+          <div class="step-section-title">🏠 最简可用房型 1×2</div>
+          <p style="color:var(--text-dim);margin:6px 0 10px">一间用来存物资，一间用来放睡袋，最简配置满足基础生存，还不容易被盯上。</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0">
+            <div style="padding:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:6px">🛏️ 睡袋</div>
+              <p style="color:var(--text-dim);font-size:13px;margin:0">放在房间里即成为复活点，被淘汰后可直接复活在家</p>
+            </div>
+            <div style="padding:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:6px">🗄️ 工具柜</div>
+              <p style="color:var(--text-dim);font-size:13px;margin:0">锁定领地，别人无法在你家附近建造，相当于给家上了一把基础锁</p>
+            </div>
           </div>
-          <div class="sg-step active">
-            <div class="sg-dot">🔒</div>
-            <div class="sg-label">放工具柜<br>确立所有权</div>
-          </div>
-          <div class="sg-step active">
-            <div class="sg-dot">🛏</div>
-            <div class="sg-label">放睡袋<br>绑定重生点</div>
-          </div>
-          <div class="sg-step">
-            <div class="sg-dot">🏗️</div>
-            <div class="sg-label">封顶封门<br>1×2核心间</div>
-          </div>
-          <div class="sg-step">
-            <div class="sg-dot">🧱</div>
-            <div class="sg-label">木质升石质<br>防爆炸物</div>
-          </div>
+          <div style="background:rgba(200,98,26,.1);border-left:3px solid var(--orange);padding:10px 14px;border-radius:4px;margin:12px 0">⚠️ 放置工具柜后，必须添加领地维护，否则建筑会缓慢掉血直到消失</div>
         </div>
 
-        <div class="info-cards">
-          <div class="info-card">
-            <span class="info-card-icon">📍</span>
-            <div class="info-card-title">选址原则</div>
-            <div class="info-card-desc">靠近一级据点<br>不在主干道旁<br>周围有资源节点</div>
+        <div class="step-section">
+          <div class="step-section-title">🧱 建筑材质升级路线</div>
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0;padding:12px;background:rgba(255,255,255,.04);border-radius:8px">
+            <span style="color:var(--text-dim);font-size:13px">茅草</span>
+            <span style="color:var(--text-muted)">→</span>
+            <span style="color:var(--text-dim);font-size:13px">木制</span>
+            <span style="color:var(--text-muted)">→</span>
+            <span style="color:var(--orange);font-weight:700;font-size:14px;background:rgba(200,98,26,.15);padding:2px 8px;border-radius:4px">石质 ★</span>
+            <span style="color:var(--text-muted)">→</span>
+            <span style="color:var(--text-dim);font-size:13px">铁制</span>
+            <span style="color:var(--text-muted)">→</span>
+            <span style="color:var(--text-dim);font-size:13px">钢制</span>
           </div>
-          <div class="info-card">
-            <span class="info-card-icon">📐</span>
-            <div class="info-card-title">最小可用基地</div>
-            <div class="info-card-desc">1×2 核心空间<br>工具柜+睡袋+箱子<br>后续向外扩防炸层</div>
-          </div>
-          <div class="info-card">
-            <span class="info-card-icon">🛡</span>
-            <div class="info-card-title">升级优先</div>
-            <div class="info-card-desc">尽早升石质墙<br>石墙防爆远强于木<br>先封核心间再扩建</div>
-          </div>
+          <p style="color:var(--text-dim);font-size:13px;margin:4px 0">★ 石质房是初期核心目标，普通工具很难拆破，前期多攒石头尽快升级。</p>
+          <div style="background:rgba(200,98,26,.1);border-left:3px solid var(--orange);padding:10px 14px;border-radius:4px;margin:12px 0">⚠️ 门是建筑突破口，优先级：木门 → 铁门 → 钢门，初期尽快升级到铁质门</div>
         </div>
 
+        <div class="step-section">
+          <div class="step-section-title">🔓 抄家机制（必读）</div>
+          <div style="background:rgba(255,255,255,.04);border-radius:8px;overflow:hidden;margin:10px 0">
+            <div style="display:grid;grid-template-columns:1fr 2fr;background:rgba(255,255,255,.06)">
+              <div style="padding:8px 12px;font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:.5px">模式</div>
+              <div style="padding:8px 12px;font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:.5px">保护规则</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;border-top:1px solid var(--border)">
+              <div style="padding:10px 12px;color:var(--text);font-size:13px;font-weight:600">庇护模式</div>
+              <div style="padding:10px 12px;color:var(--text-dim);font-size:13px">情报领地全天保护（报名夺榜后取消保护）</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;border-top:1px solid var(--border)">
+              <div style="padding:10px 12px;color:var(--text);font-size:13px;font-weight:600">标准、进阶模式</div>
+              <div style="padding:10px 12px;color:var(--text-dim);font-size:13px">情报领地在特定时间内取消保护</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;border-top:1px solid var(--border)">
+              <div style="padding:10px 12px;color:var(--text);font-size:13px;font-weight:600">挑战模式</div>
+              <div style="padding:10px 12px;color:var(--text-dim);font-size:13px">情报领地没有任何保护</div>
+            </div>
+          </div>
+          <div style="background:rgba(200,98,26,.1);border-left:3px solid var(--orange);padding:10px 14px;border-radius:4px;margin:12px 0">⚠️ 核心：无论什么模式，放置工具柜后必须激活情报领地，才会受到拆家保护</div>
+        </div>
 
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(4)">← 资源收集</button>
-          <button class="snbtn primary" onclick="switchStep(6)">武器与战斗 →</button>
+          <button class="snbtn" onclick="switchStep(3)">← 上一步</button>
+          <button class="snbtn primary" onclick="switchStep(5)">下一步：遭遇战斗 →</button>
         </div>
       </div>
 
       <!-- STEP 5 -->
-      <div class="step-content" id="step-6">
+      <div class="step-content" id="step-5">
         <div class="step-hd">
-          <div class="step-tag">STEP 06 / 07</div>
+          <div class="step-tag">STEP 05 / 06</div>
           <div>
-            <h2>武器与战斗入门</h2>
-            <div class="step-subtitle">先活下来，再考虑打别人</div>
+            <div class="step-stage-label" style="color:#e05252;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🔴 战斗阶段</div>
+            <h2>三种遭遇，三种应对，别慌</h2>
+            <div class="step-subtitle">武器获取 · 遭遇判断 · 倒地应对</div>
+          </div>
+        </div>
+        <p style="color:var(--text-dim);margin:0 0 20px;padding:12px 16px;background:rgba(255,255,255,.03);border-radius:6px;font-style:italic">萌新遇到其他玩家是不是特别慌？手里没武器只能任人拿捏？</p>
+
+        <div class="step-section">
+          <div class="step-section-title">🔫 前期武器获取两条路</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0">
+            <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:12px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:8px;font-size:13px">🤲 手工制作（无需科技台）</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="color:var(--text-dim);font-size:12px"><span style="color:var(--orange);font-weight:600">石矛</span> — 最基础近战，前期防身够用</div>
+                <div style="color:var(--text-dim);font-size:12px"><span style="color:var(--orange);font-weight:600">猎弓</span> — 远程偷袭消耗，箭矢可回收</div>
+                <div style="color:var(--text-dim);font-size:12px"><span style="color:var(--orange);font-weight:600">土制手枪</span> — 近距离高伤害，射速慢不稳定</div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:12px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:8px;font-size:13px">⚙️ 科技台解锁（废料）</div>
+              <div style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text-dim)">
+                <div>弩 <span style="color:var(--orange)">15 废料</span></div>
+                <div style="color:var(--text-muted)">↓</div>
+                <div>单管霰弹枪 <span style="color:var(--orange)">100 废料</span></div>
+                <div style="color:var(--text-muted)">↓</div>
+                <div>废料冲锋枪 <span style="color:var(--orange)">125 废料</span></div>
+                <div style="color:var(--text-muted)">↓</div>
+                <div>二级工作台 <span style="color:var(--orange)">250 废料</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="info-cards">
-          <div class="info-card">
-            <span class="info-card-icon">🏹</span>
-            <div class="info-card-title">手工弓</div>
-            <div class="info-card-desc">前期首选远程武器<br>成本低：木头+布料<br>弹道有抛物线需练习</div>
-          </div>
-          <div class="info-card">
-            <span class="info-card-icon">🗡</span>
-            <div class="info-card-title">石矛</div>
-            <div class="info-card-desc">近战保命神器<br>成本极低<br>倒地前最后一搏</div>
-          </div>
-          <div class="info-card">
-            <span class="info-card-icon">🏃</span>
-            <div class="info-card-title">遭遇玩家</div>
-            <div class="info-card-desc">装备差时跑比打强<br>不熟悉对方不要接触<br>保住资源第一</div>
+        <div class="step-section">
+          <div class="step-section-title">⚔️ 3 种遭遇情境，该打该跑分清楚</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin:10px 0">
+            <div style="padding:12px 14px;background:rgba(255,255,255,.04);border-left:3px solid #666;border-radius:4px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:4px">🚶 情境 1：你武器差，对方有高级武器（霰弹枪、冲锋枪）</div>
+              <div style="color:var(--text-dim);font-size:13px">赶紧跑，利用地形往安全区或自己家方向撤，等有了对等武器再考虑反击，硬刚只会白白送物资</div>
+            </div>
+            <div style="padding:12px 14px;background:rgba(255,255,255,.04);border-left:3px solid var(--orange);border-radius:4px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:4px">⚔️ 情境 2：双方武器差距不大（都是石矛或猎弓）</div>
+              <div style="color:var(--text-dim);font-size:13px">找隐蔽处蹲好，等对方靠近或专注采集时偷袭打先手，打不过及时撤退，避免两败俱伤</div>
+            </div>
+            <div style="padding:12px 14px;background:rgba(255,255,255,.04);border-left:3px solid #e05252;border-radius:4px">
+              <div style="font-weight:700;color:var(--text);margin-bottom:4px">💥 情境 3：你武器比对方强</div>
+              <div style="color:var(--text-dim);font-size:13px">保持安全距离远程消耗，快速解决，避免拖延太久引来其他玩家，捡完对方掉落物资后立刻撤离</div>
+            </div>
           </div>
         </div>
 
-        <div class="tip-box">
-          <span class="tip-box-icon">💡</span>
-          <div class="tip-box-text"><strong>倒地提示：</strong>倒地后队友可救起你，也有小概率自行复活。被淘汰后去睡袋重生，记得及时找回凋落物。</div>
-        </div>
-
-        <div class="crosslink-section">
-          <div class="crosslink-label">📎 延伸阅读</div>
-          <div class="crosslink-cards">
-            <div class="cc-card" onclick="filterAndGoWeapons('bow')"><span class="cc-icon">🪖</span>弓弩类武器合成成本 →</div>
-            <div class="cc-card" onclick="switchPage('videos')"><span class="cc-icon">🎬</span>战斗技巧视频 →</div>
+        <div class="step-section">
+          <div class="step-section-title">💀 被打倒 3 阶段，不慌不忙</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin:10px 0">
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <div style="min-width:28px;height:28px;background:rgba(200,98,26,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--orange);font-size:13px;flex-shrink:0">1</div>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">倒地（濒死状态）</div><div style="color:var(--text-dim);font-size:13px">生命值归零进入濒死，可以移动但无法攻击，等待救援或概率自救</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <div style="min-width:28px;height:28px;background:rgba(200,98,26,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--orange);font-size:13px;flex-shrink:0">2</div>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">淘汰</div><div style="color:var(--text-dim);font-size:13px">倒地后无人救援且自救失败，身上物资装备全部掉落在倒地位置，敌人可以捡走</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:6px">
+              <div style="min-width:28px;height:28px;background:rgba(76,175,80,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#4caf50;font-size:13px;flex-shrink:0">3</div>
+              <div><div style="color:var(--text);font-weight:600;margin-bottom:2px">复活</div><div style="color:var(--text-dim);font-size:13px">优先选择睡袋复活（提前放置睡袋），复活点离掉落物资近，可以快速取回剩余装备</div></div>
+            </div>
           </div>
         </div>
 
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(5)">← 建造第一个家</button>
-          <button class="snbtn primary" onclick="switchStep(7)">科技树 →</button>
+          <button class="snbtn" onclick="switchStep(4)">← 上一步</button>
+          <button class="snbtn primary" onclick="switchStep(6)">下一步：变强路径 →</button>
         </div>
       </div>
 
       <!-- STEP 6 -->
-      <div class="step-content" id="step-7">
+      <div class="step-content" id="step-6">
         <div class="step-hd">
-          <div class="step-tag">STEP 07 / 07</div>
+          <div class="step-tag">STEP 06 / 06</div>
           <div>
-            <h2>科技树与变强路径</h2>
-            <div class="step-subtitle">废料怎么花，决定你的发育速度</div>
+            <div class="step-stage-label" style="color:#e05252;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🔴 战斗阶段</div>
+            <h2>废料换科技，情报换实力</h2>
+            <div class="step-subtitle">科技树路线 · 情报等级 · 高效刷取</div>
+          </div>
+        </div>
+        <p style="color:var(--text-dim);margin:0 0 20px;padding:12px 16px;background:rgba(255,255,255,.03);border-radius:6px;font-style:italic">玩了很久，还是搞不懂科技树和情报到底是啥？不知道怎么推进才算真正在进步？</p>
+
+        <div class="step-section">
+          <div class="step-section-title">🚀 变强的两条核心路</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0">
+            <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+              <div style="font-weight:700;color:var(--orange);margin-bottom:6px">⚙️ 科技树</div>
+              <p style="color:var(--text-dim);font-size:12px;margin:0 0 10px">靠废料推进，解锁制造能力，让你从"只能捡物资"变成"能造物资"</p>
+              <div style="display:flex;flex-direction:column;gap:4px;font-size:12px">
+                <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--orange)">废料</span><span style="color:var(--text-muted)">→</span><span style="color:var(--text-dim)">研究台（复刻蓝图节省废料）</span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--text-muted);padding-left:4px">→</span><span style="color:var(--text-dim)">一级科技台</span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--text-muted);padding-left:4px">→</span><span style="color:var(--text-dim)">逐步解锁武器、建筑、生存科技</span></div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:14px">
+              <div style="font-weight:700;color:var(--orange);margin-bottom:6px">🕵️ 情报等级</div>
+              <p style="color:var(--text-dim);font-size:12px;margin:0 0 10px">靠情报文件推进，解锁独特道具，获得专属优势</p>
+              <div style="display:flex;flex-direction:column;gap:4px;font-size:12px">
+                <div style="color:var(--text-dim)">前往遗迹搜刮</div>
+                <div style="display:flex;align-items:center;gap:4px"><span style="color:var(--text-muted)">→</span><span style="color:var(--text-dim)">获取情报文件 → 存入领地柜</span></div>
+                <div style="display:flex;align-items:center;gap:4px"><span style="color:var(--text-muted)">→</span><span style="color:var(--text-dim)">破译情报文件 → 获得情报积分</span></div>
+                <div style="display:flex;align-items:center;gap:4px"><span style="color:var(--text-muted)">→</span><span style="color:var(--text-dim)">消耗积分提升情报等级</span></div>
+                <div style="display:flex;align-items:center;gap:4px"><span style="color:var(--text-muted)">→</span><span style="color:var(--orange);font-weight:600">解锁独特道具</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Tech tree graphic -->
-        <div class="craft-path">
-          <div class="cp-title">推荐发育路径</div>
-          <div class="cp-stages">
-            <div class="cp-stage"><div class="cp-stage-icon">🪨</div><div class="cp-stage-name">石质工作台<br><span style="color:var(--text-muted);font-size:9px">基础解锁</span></div></div>
-            <div class="cp-arrow">→</div>
-            <div class="cp-stage"><div class="cp-stage-icon">🪖</div><div class="cp-stage-name">战斗模块<br><span style="color:var(--orange);font-size:9px">优先解锁</span></div></div>
-            <div class="cp-arrow">→</div>
-            <div class="cp-stage"><div class="cp-stage-icon">🔧</div><div class="cp-stage-name">金属工作台<br><span style="color:var(--text-muted);font-size:9px">二阶制造</span></div></div>
-            <div class="cp-arrow">→</div>
-            <div class="cp-stage"><div class="cp-stage-icon">🏆</div><div class="cp-stage-name">高阶武装<br><span style="color:var(--yellow);font-size:9px">目标</span></div></div>
+        <div class="step-section">
+          <div class="step-section-title">📈 情报等级高效刷取</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0">
+            <div style="padding:14px;background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.3);border-radius:8px">
+              <div style="font-weight:700;color:#e05252;margin-bottom:6px">🔴 探索高级据点红卡房</div>
+              <p style="color:var(--text-dim);font-size:13px;margin:0">红卡房内刷新高级情报，破译积分远高于普通情报。记得携带红卡前往解锁。</p>
+            </div>
+            <div style="padding:14px;background:rgba(200,98,26,.08);border:1px solid rgba(200,98,26,.3);border-radius:8px">
+              <div style="font-weight:700;color:var(--orange);margin-bottom:6px">⚔️ 攻占敌方领地</div>
+              <p style="color:var(--text-dim);font-size:13px;margin:0">摧毁敌方领地柜，不仅能获得情报文件，还有已破译完成的情报碟片。组队前往更安全，效率更高。</p>
+            </div>
           </div>
-        </div>
-
-        <div class="info-cards">
-          <div class="info-card">
-            <span class="info-card-icon">⚙️</span>
-            <div class="info-card-title">科技树逻辑</div>
-            <div class="info-card-desc">废料解锁科技<br>需先制作对应制作台<br>摆放后才能解锁</div>
-          </div>
-          <div class="info-card">
-            <span class="info-card-icon">🕵️</span>
-            <div class="info-card-title">情报等级</div>
-            <div class="info-card-desc">情报文件→情报站<br>破译→情报币<br>跨局永久有效</div>
-          </div>
-          <div class="info-card">
-            <span class="info-card-icon">🧭</span>
-            <div class="info-card-title">胜利路径</div>
-            <div class="info-card-desc">先枪后守<br>用火力优势压制邻居<br>再扩张基地规模</div>
-          </div>
-        </div>
-
-        <div class="tip-box" style="border-left-color:var(--green)">
-          <span class="tip-box-icon">🎉</span>
-          <div class="tip-box-text" style="color:var(--text)"><strong style="color:var(--green)">🎉 7步全部完成！</strong>接下来查看武器图鉴规划合成路径，或前往据点指南找更好的资源点。</div>
         </div>
 
         <div class="crosslink-section">
-          <div class="crosslink-label">📎 接下来做什么</div>
+          <div class="crosslink-label">📎 新手入门完成！接下来</div>
           <div class="crosslink-cards">
-            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🪖</span>规划武器合成路径 →</div>
+            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🪖</span>规划武器合成路线 →</div>
             <div class="cc-card" onclick="switchPage('poi')"><span class="cc-icon">📍</span>探索更高级据点 →</div>
             <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>常见问题 FAQ →</div>
           </div>
         </div>
 
         <div class="step-nav-btns">
-          <button class="snbtn" onclick="switchStep(6)">← 武器与战斗</button>
+          <button class="snbtn" onclick="switchStep(5)">← 上一步</button>
           <button class="snbtn primary" onclick="switchPage('weapons')">查看武器图鉴 →</button>
         </div>
       </div>
@@ -3147,7 +3191,7 @@ function switchStep(n) {
     const s=document.getElementById('snav-'+i);
     if(s) s.classList.add('done');
   }
-  const pct = Math.round((n/7)*100);
+  const pct = Math.round((n/6)*100);
   document.getElementById('progress-fill').style.width = pct+'%';
   document.getElementById('progress-pct').textContent = pct+'%';
   currentStep = n;
