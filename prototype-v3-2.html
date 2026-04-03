@@ -3924,42 +3924,6 @@ function switchSpecTab(tab, el) {
 </script>
 
 
-
-
-
-
-<script>
-// ── Step 内嵌 FAQ 渲染 ────────────────────────────────────────
-(function(){
-  const STEP_FAQ_KEYS = {
-    'step-1': ['哪个模式适合初期游玩','庇护模式和标准模式最大的区别','一局游戏多久结算'],
-    'step-2': ['进游戏后什么都不会，先做什么','新手有没有保护期','为什么我跑不动了'],
-    'step-3': ['我一直饿/一直渴','生命值怎么恢复','受伤了一直在流血'],
-    'step-4': ['布料从哪里获取','硫磺和木炭怎么获取','哪些东西绝对不能分解'],
-    'step-5': ['第一次被偷家了','什么是\u201c抄家\u201d','被别人拆基地了怎么办'],
-    'step-6': ['倒地之后怎么复活','辐射区是什么','空投物资值得争抢吗'],
-    'step-7': ['什么是\u201c情报等级\u201d','结算时能带走哪些东西','标准模式和挑战模式哪个奖励更多'],
-  };
-  const ALL_FAQ = Object.values(FAQ_DATA).flatMap(cat => cat.items || []);
-  function findFaq(key){ return ALL_FAQ.find(f=>f && f.q && f.q.includes(key)); }
-  Object.entries(STEP_FAQ_KEYS).forEach(([stepId, keys])=>{
-    const stepEl = document.getElementById(stepId);
-    if(!stepEl) return;
-    const navBtns = stepEl.querySelector('.step-nav-btns,.step-nav-row');
-    if(!navBtns) return;
-    const items = keys.map(k=>{
-      const f = findFaq(k);
-      if(!f) return '';
-      return `<div class="sfaq-item" onclick="this.classList.toggle('open')"><div class="sfaq-q">${f.q}<span class="sfaq-arr">▼</span></div><div class="sfaq-a">${f.a.replace(/\n/g,'<br>')}</div></div>`;
-    }).join('');
-    const block = `<div class="step-faq"><div class="step-faq-title">相关常见问题</div>${items}</div>`;
-    navBtns.insertAdjacentHTML('beforebegin', block);
-  });
-})();
-
-</script>
-
-
 <!-- ══ 小程序任务引导卡 ══ -->
 <div id="mp-float-tab" onclick="openMpBanner()" title="领取专属外观" style="display:none;position:fixed;right:24px;bottom:24px;z-index:10000;background:linear-gradient(135deg,#c8922a,#c8331a);color:#fff;font-size:11px;font-weight:700;padding:10px 14px;border-radius:10px;cursor:pointer;box-shadow:0 4px 18px rgba(200,51,26,.5);white-space:nowrap;letter-spacing:.5px;">📱 领取专属外观</div>
 <div id="mp-banner">
