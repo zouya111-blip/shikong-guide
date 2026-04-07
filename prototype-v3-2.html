@@ -866,7 +866,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .terms-hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
 .terms-hero-title{font-size:34px;font-weight:900;line-height:1.1;letter-spacing:-.5px;margin-bottom:10px;}
 .terms-hero-title em{color:var(--orange);font-style:normal;}
-.terms-hero-sub{font-size:13px;color:var(--text-dim);line-height:1.7;max-width:480px;}
+.terms-hero-sub{font-size:13px;color:var(--text-dim);line-height:1.7;max-width:480px;margin-bottom:20px;}
+.terms-hero-guide{display:flex;align-items:center;gap:10px;padding:12px 18px;background:rgba(232,98,26,.07);border:1px solid rgba(232,98,26,.2);border-radius:10px;max-width:460px;}
+.terms-hero-guide-ico{font-size:20px;flex-shrink:0;}
+.terms-hero-guide-text{font-size:12px;color:var(--text-dim);line-height:1.6;}
+.terms-hero-guide-text strong{color:var(--orange);font-weight:700;}
 
 /* ── 分类大卡片（第一屏）── */
 .terms-cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:1100px;margin:0 auto;padding:0 48px 60px;}
@@ -876,15 +880,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .terms-cat-card:hover::after{opacity:1;}
 .terms-cat-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
 .terms-cat-card-icon{font-size:40px;line-height:1;}
-.terms-cat-card-arr{font-size:18px;color:var(--orange);opacity:0;transition:all .2s;transform:translateX(-4px);}
-.terms-cat-card:hover .terms-cat-card-arr{opacity:1;transform:translateX(0);}
+.terms-cat-card-arr{font-size:18px;color:var(--orange);opacity:.35;transition:all .2s;transform:translateX(-2px);}
+.terms-cat-card:hover .terms-cat-card-arr{opacity:1;transform:translateX(2px);}
 .terms-cat-card-name{font-size:20px;font-weight:900;color:var(--text);margin-bottom:14px;letter-spacing:-.2px;}
 .terms-cat-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
 .terms-cat-tag{font-size:11px;color:var(--text-muted);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:4px;padding:3px 8px;line-height:1.4;}
 .terms-cat-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border);margin-top:auto;}
 .terms-cat-card-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);}
-.terms-cat-card-cta{font-size:12px;color:var(--orange);font-weight:600;display:flex;align-items:center;gap:5px;opacity:0;transition:opacity .2s;}
-.terms-cat-card:hover .terms-cat-card-cta{opacity:1;}
+.terms-cat-card-cta{font-size:12px;color:var(--orange);font-weight:600;display:inline-flex;align-items:center;gap:6px;background:rgba(232,98,26,.1);border:1px solid rgba(232,98,26,.25);border-radius:6px;padding:5px 12px;transition:all .18s;}
+.terms-cat-card:hover .terms-cat-card-cta{background:rgba(232,98,26,.2);border-color:var(--orange);}
 
 /* ── 二级词条列表 ── */
 .terms-detail-view{max-width:1100px;margin:0 auto;padding:0 48px 60px;display:none;}
@@ -2731,7 +2735,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="terms-hero-bg"></div>
     <div class="terms-hero-eyebrow">GLOSSARY · 失控进化</div>
     <h1 class="terms-hero-title">游戏<em>术语</em>词典</h1>
-    <p class="terms-hero-sub">选择一个分类，查找你不熟悉的词汇。</p>
+    <p class="terms-hero-sub">选择分类，查找你不熟悉的词汇。</p>
+    <div class="terms-hero-guide">
+      <span class="terms-hero-guide-ico">👇</span>
+      <span class="terms-hero-guide-text"><strong>点击下方分类卡片</strong>，展开该分类的所有词条，再点击词条查看详细解释。</span>
+    </div>
   </div>
 
   <!-- 第一屏：分类大卡片 -->
