@@ -859,56 +859,76 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 
 /* ── 游戏术语独立页适配 ── */
 .terms-page-section{padding-top:24px;}
-.terms-section{max-width:1100px;margin:0 auto;padding:40px 48px 48px;}
-.terms-hd{margin-bottom:24px;}
-.terms-title-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.terms-title-icon{font-size:20px;}
-.terms-title{font-size:22px;font-weight:900;}
-.terms-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);background:var(--orange-dim);border:1px solid var(--orange-glow);padding:3px 8px;border-radius:4px;letter-spacing:1px;}
-.terms-subtitle{font-size:13px;color:var(--text-dim);}
-/* ── 游戏术语：分类卡片横排 ── */
-.terms-cat-tabs{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:28px;}
-.terms-cat-tab{padding:16px 14px 14px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface2);color:var(--text-dim);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:flex-start;gap:6px;position:relative;text-align:left;}
-.terms-cat-tab:hover{border-color:var(--border-bright);background:var(--surface);color:var(--text);}
-.terms-cat-tab.active{background:var(--orange-dim);border-color:var(--orange);color:var(--orange);box-shadow:0 0 0 1px var(--orange-glow),0 4px 16px rgba(232,98,26,.18);}
-.terms-cat-tab-icon{font-size:28px;line-height:1;}
-.terms-cat-tab-label{font-size:13px;font-weight:700;line-height:1.2;}
-.terms-cat-tab-count{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:1px 5px;position:absolute;top:10px;right:10px;}
-.terms-cat-tab.active .terms-cat-tab-count{background:rgba(232,98,26,.15);border-color:var(--orange-glow);color:var(--orange);}
+/* ════════ 游戏术语页 ════════ */
+/* Hero */
+.terms-hero{position:relative;overflow:hidden;padding:64px 48px 48px;max-width:1100px;margin:0 auto;}
+.terms-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(200,146,42,.08) 0%,transparent 70%);pointer-events:none;}
+.terms-hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:14px;}
+.terms-hero-title{font-size:38px;font-weight:900;line-height:1.1;letter-spacing:-.5px;margin-bottom:12px;}
+.terms-hero-title em{color:var(--orange);font-style:normal;}
+.terms-hero-sub{font-size:14px;color:var(--text-dim);line-height:1.7;max-width:480px;}
+.terms-hero-stats{display:flex;gap:24px;margin-top:28px;}
+.terms-stat{display:flex;flex-direction:column;gap:2px;}
+.terms-stat-num{font-size:28px;font-weight:900;color:var(--orange);font-family:'JetBrains Mono',monospace;line-height:1;}
+.terms-stat-label{font-size:11px;color:var(--text-muted);letter-spacing:.5px;}
 
-/* ── 游戏术语：词条卡片（带简介预览）── */
-.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
-.term-chip{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all .2s;position:relative;display:flex;flex-direction:column;gap:8px;}
-.term-chip:hover{border-color:var(--orange);background:var(--surface);transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,98,26,.14);}
-.term-chip-hd{display:flex;align-items:center;gap:8px;}
-.term-chip-ico{font-size:18px;flex-shrink:0;line-height:1;}
-.term-chip-name{font-size:13px;font-weight:700;color:var(--text);flex:1;line-height:1.3;}
-.term-chip-arrow{color:var(--orange);font-size:11px;opacity:0;transition:opacity .15s;flex-shrink:0;font-weight:700;}
-.term-chip:hover .term-chip-arrow{opacity:1;}
-.term-chip-preview{font-size:11px;color:var(--text-muted);line-height:1.6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+/* 锚点快跳条 */
+.terms-anchor-bar{max-width:1100px;margin:0 auto;padding:0 48px 32px;display:flex;gap:8px;flex-wrap:wrap;}
+.terms-anchor-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);color:var(--text-dim);font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;}
+.terms-anchor-btn:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-dim);}
 
-/* 侧边抽屉 */
-.term-drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1100;display:none;opacity:0;transition:opacity .25s;backdrop-filter:blur(2px);}
-.term-drawer-overlay.open{display:block;opacity:1;}
-.term-drawer{position:fixed;right:-460px;top:0;bottom:0;width:440px;background:linear-gradient(160deg,#141008 0%,#0e0c0a 60%,#0a0c0f 100%);border-left:1px solid rgba(200,146,42,.2);z-index:1101;transition:right .32s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column;}
-.term-drawer.open{right:0;}
-.term-drawer-hd{display:flex;align-items:center;justify-content:space-between;padding:24px 28px 0;flex-shrink:0;}
-.term-drawer-cat{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);background:rgba(200,146,42,.12);border:1px solid rgba(200,146,42,.3);padding:4px 10px;border-radius:4px;}
-.term-drawer-close{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-dim);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-.term-drawer-close:hover{border-color:var(--orange);color:var(--orange);background:rgba(232,98,26,.1);}
-.term-drawer-name{font-size:26px;font-weight:900;padding:20px 28px 0;line-height:1.25;color:var(--text);letter-spacing:-.3px;}
-.term-drawer-divider{height:1px;background:linear-gradient(90deg,rgba(200,146,42,.35),transparent);margin:18px 28px;}
-.term-drawer-body{padding:0 28px;font-size:13.5px;color:var(--text-dim);line-height:1.9;flex:1;}
-.term-drawer-body p{margin:0;white-space:pre-line;}
-.term-drawer-related{padding:24px 28px 0;}
-.term-drawer-related-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
-.term-drawer-related .term-chip{margin-bottom:8px;background:rgba(255,255,255,.03);padding:10px 14px;}
-.term-drawer-related .term-chip .term-chip-preview{display:none;}
-.term-drawer-footer{padding:20px 28px 36px;border-top:1px solid var(--border);margin-top:24px;flex-shrink:0;}
-.term-nav-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-dim);padding:8px 14px;border-radius:6px;font-size:12px;cursor:pointer;transition:all .15s;max-width:48%;}
-.term-nav-btn:hover{border-color:var(--orange);color:var(--orange);background:rgba(232,98,26,.08);}
-.term-nav-btn.primary{background:rgba(200,146,42,.1);border-color:rgba(200,146,42,.35);color:var(--yellow);}
-.term-nav-btns{display:flex;justify-content:space-between;gap:10px;}
+/* 分类区块 */
+.terms-body{max-width:1100px;margin:0 auto;padding:0 48px 80px;}
+.terms-section-block{margin-bottom:52px;}
+.terms-section-hd{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);position:relative;}
+.terms-section-hd::after{content:'';position:absolute;bottom:-1px;left:0;width:60px;height:2px;background:var(--orange);border-radius:1px;}
+.terms-section-icon{font-size:26px;line-height:1;}
+.terms-section-label{font-size:17px;font-weight:800;color:var(--text);}
+.terms-section-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:4px;margin-left:auto;}
+
+/* 词条卡片网格 */
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+.term-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.term-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--orange);opacity:0;transition:opacity .2s;}
+.term-card:hover{border-color:rgba(232,98,26,.45);background:rgba(232,98,26,.04);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.term-card:hover::before{opacity:1;}
+.term-card.active{border-color:var(--orange);background:rgba(232,98,26,.06);box-shadow:0 0 0 1px rgba(232,98,26,.2),0 8px 32px rgba(0,0,0,.4);}
+.term-card.active::before{opacity:1;}
+.term-card-hd{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.term-card-ico{font-size:20px;flex-shrink:0;line-height:1;}
+.term-card-name{font-size:14px;font-weight:700;color:var(--text);flex:1;}
+.term-card-arr{font-size:12px;color:var(--orange);opacity:0;transition:all .2s;flex-shrink:0;}
+.term-card:hover .term-card-arr,.term-card.active .term-card-arr{opacity:1;transform:rotate(90deg);}
+.term-card-preview{font-size:11.5px;color:var(--text-muted);line-height:1.6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+
+/* ── Bottom Sheet 详情面板 ── */
+.term-sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(3px);}
+.term-sheet-overlay.open{opacity:1;pointer-events:auto;}
+.term-sheet{position:fixed;left:0;right:0;bottom:-100%;z-index:1101;background:linear-gradient(180deg,#13100a 0%,#0e0c09 100%);border-top:1px solid rgba(200,146,42,.3);border-radius:20px 20px 0 0;padding:0;transition:bottom .35s cubic-bezier(.32,0,.67,0);max-height:72vh;display:flex;flex-direction:column;}
+.term-sheet.open{bottom:0;}
+.term-sheet-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:14px auto 0;flex-shrink:0;}
+.term-sheet-hd{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 32px 0;flex-shrink:0;}
+.term-sheet-meta{display:flex;flex-direction:column;gap:8px;}
+.term-sheet-cat{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);background:rgba(200,146,42,.12);border:1px solid rgba(200,146,42,.3);padding:3px 10px;border-radius:4px;display:inline-block;}
+.term-sheet-name{font-size:28px;font-weight:900;color:var(--text);line-height:1.2;letter-spacing:-.4px;}
+.term-sheet-name-ico{margin-right:10px;}
+.term-sheet-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text-dim);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;margin-top:4px;}
+.term-sheet-close:hover{border-color:var(--orange);color:var(--orange);background:rgba(232,98,26,.1);}
+.term-sheet-divider{height:1px;background:linear-gradient(90deg,rgba(200,146,42,.3),transparent);margin:18px 32px 0;}
+.term-sheet-body{padding:16px 32px 24px;font-size:14px;color:var(--text-dim);line-height:1.9;overflow-y:auto;flex:1;}
+.term-sheet-body p{margin:0;white-space:pre-line;}
+.term-sheet-footer{padding:16px 32px 28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.term-sheet-related-row{display:flex;gap:8px;flex-wrap:wrap;flex:1;}
+.term-sheet-related-label{font-size:11px;color:var(--text-muted);white-space:nowrap;margin-right:4px;}
+.term-sheet-related-chip{font-size:12px;color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:4px 12px;border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.term-sheet-related-chip:hover{border-color:var(--orange);color:var(--orange);}
+.term-sheet-nav{display:flex;gap:8px;flex-shrink:0;}
+.term-sheet-nav-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-dim);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.term-sheet-nav-btn:hover{border-color:var(--orange);color:var(--orange);}
+.term-sheet-nav-btn.next{background:rgba(200,146,42,.1);border-color:rgba(200,146,42,.3);color:var(--yellow);}
+
+/* ── 游戏术语独立页适配 ── */
+.terms-page-section{padding-top:0;}
 .term-nav-btn{flex:1;padding:9px 16px;border-radius:var(--r);border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:12px;cursor:pointer;transition:all .15s;text-align:center;}
 .term-nav-btn:hover{border-color:var(--orange);color:var(--orange);}
 .term-nav-btn.primary{background:var(--orange);border-color:var(--orange);color:#fff;}
@@ -2721,16 +2741,31 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
      TERMS（游戏术语）
 ══════════════════════════════════════ -->
 <div class="page" id="page-terms">
-  <div class="page-hd">
-    <div class="page-title-row">
-      <div class="page-title"><span class="page-title-icon">📖</span> 游戏专业术语</div>
+
+  <!-- Hero -->
+  <div class="terms-hero">
+    <div class="terms-hero-bg"></div>
+    <div class="terms-hero-eyebrow">GLOSSARY · 失控进化</div>
+    <h1 class="terms-hero-title">游戏<em>术语</em>词典</h1>
+    <p class="terms-hero-sub">失控进化核心机制与玩法词汇速查——点击任意词条查看详细解释。</p>
+    <div class="terms-hero-stats">
+      <div class="terms-stat">
+        <span class="terms-stat-num" id="terms-total-count">47</span>
+        <span class="terms-stat-label">词条总数</span>
+      </div>
+      <div class="terms-stat">
+        <span class="terms-stat-num">6</span>
+        <span class="terms-stat-label">分类</span>
+      </div>
     </div>
-    <div class="page-intro">失控进化核心机制速查——点击任意词条，30秒理解一个关键概念。</div>
   </div>
-  <div class="terms-section terms-page-section">
-    <div class="terms-cat-tabs" id="terms-cat-tabs"></div>
-    <div class="terms-grid" id="terms-grid"></div>
-  </div>
+
+  <!-- 锚点快跳条 -->
+  <div class="terms-anchor-bar" id="terms-anchor-bar"></div>
+
+  <!-- 分类区块 -->
+  <div class="terms-body" id="terms-body"></div>
+
 </div>
 
 <script>
@@ -3430,89 +3465,90 @@ function filterAndGoWeapons(type) {
 
 // ── 术语词条 ──────────────────────────────────────────────────
 function renderTerms() {
-  const tabsEl = document.getElementById('terms-cat-tabs');
-  const gridEl = document.getElementById('terms-grid');
-  if(!tabsEl || !gridEl) return;
-  
-  tabsEl.innerHTML = Object.entries(TERMS).map(([key,cat])=>`
-    <button class="terms-cat-tab${key===currentTermCat?' active':''}" onclick="switchTermCat('${key}',this)">
-      <span class="terms-cat-tab-count">${cat.terms.length}</span>
-      <span class="terms-cat-tab-icon">${cat.icon}</span>
-      <span class="terms-cat-tab-label">${cat.label}</span>
-    </button>
+  const anchorBar = document.getElementById('terms-anchor-bar');
+  const bodyEl    = document.getElementById('terms-body');
+  if(!anchorBar || !bodyEl) return;
+
+  // 统计总词条数
+  const total = Object.values(TERMS).reduce((s,c)=>s+c.terms.length,0);
+  const countEl = document.getElementById('terms-total-count');
+  if(countEl) countEl.textContent = total;
+
+  // 锚点快跳条
+  anchorBar.innerHTML = Object.entries(TERMS).map(([key,cat])=>`
+    <a class="terms-anchor-btn" href="#terms-sec-${key}" onclick="event.preventDefault();document.getElementById('terms-sec-${key}').scrollIntoView({behavior:'smooth',block:'start'})">
+      ${cat.icon} ${cat.label}
+    </a>
   `).join('');
 
-  const cat = TERMS[currentTermCat];
-  gridEl.innerHTML = cat.terms.map((t,i)=>`
-    <div class="term-chip" onclick="openTermDrawer('${currentTermCat}',${i})">
-      <div class="term-chip-hd">
-        <span class="term-chip-ico">${t.icon||cat.icon}</span>
-        <span class="term-chip-name">${t.name}</span>
-        <span class="term-chip-arrow">›</span>
+  // 分类区块 + 词条网格
+  bodyEl.innerHTML = Object.entries(TERMS).map(([key,cat])=>`
+    <div class="terms-section-block" id="terms-sec-${key}">
+      <div class="terms-section-hd">
+        <span class="terms-section-icon">${cat.icon}</span>
+        <span class="terms-section-label">${cat.label}</span>
+        <span class="terms-section-count">${cat.terms.length} 词条</span>
       </div>
-      <div class="term-chip-preview">${(t.desc||'').replace(/\n/g,' ')}</div>
+      <div class="terms-grid">
+        ${cat.terms.map((t,i)=>`
+          <div class="term-card" onclick="openTermSheet('${key}',${i})" id="term-card-${key}-${i}">
+            <div class="term-card-hd">
+              <span class="term-card-ico">${t.icon||cat.icon}</span>
+              <span class="term-card-name">${t.name}</span>
+              <span class="term-card-arr">▾</span>
+            </div>
+            <div class="term-card-preview">${(t.desc||'').replace(/\n/g,' ')}</div>
+          </div>
+        `).join('')}
+      </div>
     </div>
   `).join('');
 }
 
-function switchTermCat(key, el) {
-  currentTermCat = key;
-  document.querySelectorAll('.terms-cat-tab').forEach(b=>b.classList.remove('active'));
-  if(el) el.classList.add('active');
-  const cat = TERMS[key];
-  const gridEl = document.getElementById('terms-grid');
-  gridEl.style.opacity = '0';
-  setTimeout(()=>{
-    gridEl.innerHTML = cat.terms.map((t,i)=>`
-      <div class="term-chip" onclick="openTermDrawer('${key}',${i})">
-        <div class="term-chip-hd">
-          <span class="term-chip-ico">${t.icon||cat.icon}</span>
-          <span class="term-chip-name">${t.name}</span>
-          <span class="term-chip-arrow">›</span>
-        </div>
-        <div class="term-chip-preview">${(t.desc||'').replace(/\n/g,' ')}</div>
-      </div>
-    `).join('');
-    gridEl.style.opacity = '1';
-  }, 120);
-}
-
-function openTermDrawer(catKey, termIdx) {
-  const cat = TERMS[catKey];
+function openTermSheet(catKey, termIdx) {
+  const cat  = TERMS[catKey];
   const term = cat.terms[termIdx];
-  currentTermCat = catKey;
   currentTerm = {catKey, termIdx};
-  
-  document.getElementById('termDrawerCat').textContent = cat.icon + ' ' + cat.label;
-  document.getElementById('termDrawerName').innerHTML = `<span style='margin-right:10px'>${term.icon||cat.icon}</span>${term.name}`;
-  document.getElementById('termDrawerBody').innerHTML = '<p>' + term.desc + '</p>';
-  
-  // 相关词条（同分类其他词）
-  const related = cat.terms.filter((_,i) => i !== termIdx).slice(0,3);
-  const relEl = document.getElementById('termDrawerRelated');
-  if(related.length) {
-    relEl.innerHTML = `<div class="term-drawer-related-label">同类词条</div>` +
-      related.map((t,i)=>{
-        const realIdx = cat.terms.indexOf(t);
-        return `<div class="term-chip" style="margin-bottom:8px" onclick="openTermDrawer('${catKey}',${realIdx})"><div class="term-chip-hd"><span class="term-chip-ico">${t.icon||cat.icon}</span><span class="term-chip-name">${t.name}</span><span class="term-chip-arrow">›</span></div></div>`;
+
+  // 高亮选中卡片
+  document.querySelectorAll('.term-card').forEach(c=>c.classList.remove('active'));
+  const card = document.getElementById(`term-card-${catKey}-${termIdx}`);
+  if(card) card.classList.add('active');
+
+  document.getElementById('termSheetCat').textContent  = cat.icon + ' ' + cat.label;
+  document.getElementById('termSheetName').innerHTML   = `<span class="term-sheet-name-ico">${term.icon||cat.icon}</span>${term.name}`;
+  document.getElementById('termSheetBody').innerHTML   = `<p>${term.desc}</p>`;
+
+  // 相关词条
+  const related = cat.terms.filter((_,i)=>i!==termIdx).slice(0,4);
+  const relEl = document.getElementById('termSheetRelated');
+  if(related.length){
+    relEl.innerHTML = `<span class="term-sheet-related-label">同类：</span>` +
+      related.map(t=>{
+        const ri = cat.terms.indexOf(t);
+        return `<span class="term-sheet-related-chip" onclick="openTermSheet('${catKey}',${ri})">${t.name}</span>`;
       }).join('');
   } else relEl.innerHTML = '';
-  
-  // 前后导航
+
+  // 前后翻
   const total = cat.terms.length;
-  const prev = termIdx > 0 ? `<button class="term-nav-btn" onclick="openTermDrawer('${catKey}',${termIdx-1})">← ${cat.terms[termIdx-1].name}</button>` : '<span></span>';
-  const next = termIdx < total-1 ? `<button class="term-nav-btn primary" onclick="openTermDrawer('${catKey}',${termIdx+1})">${cat.terms[termIdx+1].name} →</button>` : '<span></span>';
-  document.getElementById('termNavBtns').innerHTML = prev + next;
-  
-  document.getElementById('termDrawerOverlay').classList.add('open');
-  document.getElementById('termDrawer').classList.add('open');
+  const prev = termIdx > 0
+    ? `<button class="term-sheet-nav-btn" onclick="openTermSheet('${catKey}',${termIdx-1})">← ${cat.terms[termIdx-1].name}</button>` : '';
+  const next = termIdx < total-1
+    ? `<button class="term-sheet-nav-btn next" onclick="openTermSheet('${catKey}',${termIdx+1})">${cat.terms[termIdx+1].name} →</button>` : '';
+  document.getElementById('termSheetNav').innerHTML = prev + next;
+
+  document.getElementById('termSheetOverlay').classList.add('open');
+  document.getElementById('termSheet').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-function closeTermDrawer() {
-  document.getElementById('termDrawerOverlay').classList.remove('open');
-  document.getElementById('termDrawer').classList.remove('open');
+function closeTermSheet() {
+  document.getElementById('termSheetOverlay').classList.remove('open');
+  document.getElementById('termSheet').classList.remove('open');
   document.body.style.overflow = '';
+  document.querySelectorAll('.term-card').forEach(c=>c.classList.remove('active'));
+  currentTerm = null;
 }
 
 // ── 武器搜索 ──────────────────────────────────────────────────
@@ -4041,19 +4077,22 @@ function closeMpBanner(){
 }
 </script>
 
-<!-- ══ 术语侧边抽屉（全局顶层，不受 page 显示状态影响）══ -->
-<div class="term-drawer-overlay" id="termDrawerOverlay" onclick="closeTermDrawer()"></div>
-<div class="term-drawer" id="termDrawer">
-  <div class="term-drawer-hd">
-    <div class="term-drawer-cat" id="termDrawerCat"></div>
-    <button class="term-drawer-close" onclick="closeTermDrawer()">✕</button>
+<!-- ══ 术语 Bottom Sheet（全局顶层）══ -->
+<div class="term-sheet-overlay" id="termSheetOverlay" onclick="closeTermSheet()"></div>
+<div class="term-sheet" id="termSheet">
+  <div class="term-sheet-handle"></div>
+  <div class="term-sheet-hd">
+    <div class="term-sheet-meta">
+      <span class="term-sheet-cat" id="termSheetCat"></span>
+      <div class="term-sheet-name" id="termSheetName"></div>
+    </div>
+    <button class="term-sheet-close" onclick="closeTermSheet()">✕</button>
   </div>
-  <div class="term-drawer-name" id="termDrawerName"></div>
-  <div class="term-drawer-divider"></div>
-  <div class="term-drawer-body" id="termDrawerBody"></div>
-  <div class="term-drawer-related" id="termDrawerRelated"></div>
-  <div class="term-drawer-footer">
-    <div class="term-nav-btns" id="termNavBtns"></div>
+  <div class="term-sheet-divider"></div>
+  <div class="term-sheet-body" id="termSheetBody"></div>
+  <div class="term-sheet-footer">
+    <div class="term-sheet-related-row" id="termSheetRelated"></div>
+    <div class="term-sheet-nav" id="termSheetNav"></div>
   </div>
 </div>
 
