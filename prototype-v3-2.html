@@ -828,6 +828,37 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .crossplay-divider{font-size:22px;color:var(--orange);font-weight:900;}
 
 /* ════════ 核心术语词条区块 ════════ */
+
+/* ── 首页：术语轻入口条 ── */
+.terms-entry-bar{max-width:1100px;margin:0 auto 0;padding:0 48px;display:flex;align-items:center;gap:12px;cursor:pointer;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(232,98,26,.04);transition:background .2s;}
+.terms-entry-bar:hover{background:rgba(232,98,26,.09);}
+.terms-entry-icon{font-size:18px;flex-shrink:0;padding:14px 0;}
+.terms-entry-text{flex:1;font-size:13px;color:var(--text-dim);}
+.terms-entry-text strong{color:var(--orange);}
+.terms-entry-arrow{color:var(--orange);font-size:15px;font-weight:700;flex-shrink:0;transition:transform .18s;}
+.terms-entry-bar:hover .terms-entry-arrow{transform:translateX(4px);}
+
+/* ── 首页工具卡：每行独立跳转 ── */
+.feat-row-link{cursor:pointer;border-radius:6px;padding:8px 10px;border:1px solid transparent;transition:all .18s;justify-content:space-between;}
+.feat-row-link:hover{background:rgba(240,180,41,.06);border-color:rgba(240,180,41,.25);}
+.feat-text{flex:1;color:var(--text-dim);}
+.feat-text strong{color:var(--text);}
+.feat-goto{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--yellow);opacity:0;transition:opacity .18s;white-space:nowrap;flex-shrink:0;}
+.feat-row-link:hover .feat-goto{opacity:1;}
+
+/* ── 首页：FAQ 导航横条 ── */
+.faq-nav-bar{max-width:1100px;margin:0 auto 48px;padding:0 48px;cursor:pointer;}
+.faq-nav-inner{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 22px;transition:all .22s;}
+.faq-nav-bar:hover .faq-nav-inner{border-color:rgba(96,165,250,.4);background:rgba(96,165,250,.04);}
+.faq-nav-icon{font-size:28px;flex-shrink:0;}
+.faq-nav-text{flex:1;display:flex;flex-direction:column;gap:3px;}
+.faq-nav-title{font-size:15px;font-weight:700;color:var(--text);}
+.faq-nav-sub{font-size:12px;color:var(--text-dim);}
+.faq-nav-cta{font-size:13px;font-weight:700;color:#60a5fa;font-family:'JetBrains Mono',monospace;white-space:nowrap;flex-shrink:0;transition:transform .18s;}
+.faq-nav-bar:hover .faq-nav-cta{transform:translateX(4px);}
+
+/* ── 游戏术语独立页适配 ── */
+.terms-page-section{padding-top:24px;}
 .terms-section{max-width:1100px;margin:0 auto;padding:40px 48px 48px;}
 .terms-hd{margin-bottom:24px;}
 .terms-title-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
@@ -1010,6 +1041,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>🏝️</span> 据点指南</div>
     <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>▶️</span> 攻略视频</div>
     <div class="nav-tab" data-page="faq" onclick="switchPage('faq',this)"><span>❓</span> FAQ</div>
+    <div class="nav-tab" data-page="terms" onclick="switchPage('terms',this)"><span>📖</span> 游戏术语</div>
   </div>
   <a class="nav-official-btn" href="https://rm.qq.com" target="_blank" title="返回官网">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1034,21 +1066,14 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   </div>
 
 
-  <!-- ✦ 新手必读词典（核心术语） ✦ -->
-  <div class="terms-section">
-    <div class="terms-hd">
-      <div class="terms-title-row">
-        <span class="terms-title-icon">📖</span>
-        <h2 class="terms-title">新手必读词典</h2>
-        <span class="terms-badge">不懂术语？点这里查</span>
-      </div>
-      <div class="terms-subtitle">失控进化核心机制速查——点击任意词条，30秒理解一个关键概念</div>
-    </div>
-    <div class="terms-cat-tabs" id="terms-cat-tabs"></div>
-    <div class="terms-grid" id="terms-grid"></div>
+  <!-- ✦ 术语入口轻提示条 ✦ -->
+  <div class="terms-entry-bar" onclick="switchPage('terms')">
+    <span class="terms-entry-icon">📖</span>
+    <span class="terms-entry-text">不懂游戏术语？查阅<strong>游戏术语</strong>词典，30秒搞懂核心概念</span>
+    <span class="terms-entry-arrow">→</span>
   </div>
 
-  <!-- 术语侧边抽屉 -->
+  <!-- 术语侧边抽屉（全局，Terms 页使用） -->
   <div class="term-drawer-overlay" id="termDrawerOverlay" onclick="closeTermDrawer()"></div>
   <div class="term-drawer" id="termDrawer">
     <div class="term-drawer-hd">
@@ -1151,7 +1176,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- 老玩家 -->
-    <div class="split-card veteran" onclick="switchPage('weapons')">
+    <div class="split-card veteran">
       <div class="card-illus">
         <div class="illus-glow-vet"></div>
         <div class="illus-placeholder">
@@ -1165,13 +1190,41 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <h2>快速查阅工具</h2>
         <p>武器合成成本、据点攻略、进阶技巧——直接跳到你要找的内容。</p>
         <div class="card-features">
-          <div class="feat-row"><span class="feat-icon">🪖</span>武器图鉴：合成路径 + 工作台需求</div>
-          <div class="feat-row"><span class="feat-icon">📍</span>据点指南：等级分类 + 推荐时机</div>
-          <div class="feat-row"><span class="feat-icon">🎬</span>攻略视频：官方 + 玩家实战</div>
-          <div class="feat-row"><span class="feat-icon">❓</span>FAQ：常见问题 + 机制解答</div>
+          <div class="feat-row feat-row-link" onclick="switchPage('weapons')">
+            <span class="feat-icon">🪖</span>
+            <span class="feat-text"><strong>武器图鉴</strong>：合成路径 + 工作台需求</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
+          <div class="feat-row feat-row-link" onclick="switchPage('poi')">
+            <span class="feat-icon">📍</span>
+            <span class="feat-text"><strong>据点指南</strong>：等级分类 + 推荐时机</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
+          <div class="feat-row feat-row-link" onclick="switchPage('videos')">
+            <span class="feat-icon">🎬</span>
+            <span class="feat-text"><strong>攻略视频</strong>：官方 + 玩家实战</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
+          <div class="feat-row feat-row-link" onclick="switchPage('faq')">
+            <span class="feat-icon">❓</span>
+            <span class="feat-text"><strong>FAQ</strong>：常见问题 + 机制解答</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
         </div>
-        <button class="card-cta">进入工具区 →</button>
+        <button class="card-cta" onclick="switchPage('weapons')">浏览全部工具 →</button>
       </div>
+    </div>
+  </div>
+
+  <!-- ✦ FAQ 导航横条 ✦ -->
+  <div class="faq-nav-bar" onclick="switchPage('faq')">
+    <div class="faq-nav-inner">
+      <span class="faq-nav-icon">❓</span>
+      <div class="faq-nav-text">
+        <span class="faq-nav-title">常见问题解答</span>
+        <span class="faq-nav-sub">游戏机制不懂？掉线了？账号问题？——在 FAQ 里找答案</span>
+      </div>
+      <span class="faq-nav-cta">查看 FAQ →</span>
     </div>
   </div>
 
@@ -2670,6 +2723,22 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- 搜索结果提示 -->
     <div id="faq-search-hint" style="display:none;font-size:12px;color:var(--text-dim);margin-bottom:12px;padding:0 2px"></div>
     <div id="faq-list"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TERMS（游戏术语）
+══════════════════════════════════════ -->
+<div class="page" id="page-terms">
+  <div class="page-hd">
+    <div class="page-title-row">
+      <div class="page-title"><span class="page-title-icon">📖</span> 游戏专业术语</div>
+    </div>
+    <div class="page-intro">失控进化核心机制速查——点击任意词条，30秒理解一个关键概念。</div>
+  </div>
+  <div class="terms-section terms-page-section">
+    <div class="terms-cat-tabs" id="terms-cat-tabs"></div>
+    <div class="terms-grid" id="terms-grid"></div>
   </div>
 </div>
 
