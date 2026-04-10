@@ -860,15 +860,35 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
 .feat-row-link:hover .feat-goto{background:rgba(227,219,178,.16);border-color:rgba(227,219,178,.45);}
 
 /* ── 首页：FAQ 导航横条 ── */
-.faq-nav-bar{max-width:1100px;margin:0 auto 48px;padding:0 48px;cursor:pointer;}
-.faq-nav-inner{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 22px;transition:all .22s;}
-.faq-nav-bar:hover .faq-nav-inner{border-color:rgba(96,165,250,.4);background:rgba(96,165,250,.04);}
-.faq-nav-icon{font-size:28px;flex-shrink:0;}
-.faq-nav-text{flex:1;display:flex;flex-direction:column;gap:3px;}
-.faq-nav-title{font-size:15px;font-weight:700;color:var(--text);}
-.faq-nav-sub{font-size:12px;color:var(--text-dim);}
-.faq-nav-cta{font-size:13px;font-weight:700;color:#60a5fa;font-family:'JetBrains Mono',monospace;white-space:nowrap;flex-shrink:0;transition:transform .18s;}
-.faq-nav-bar:hover .faq-nav-cta{transform:translateX(4px);}
+/* ── 速查手册 ── */
+.qref-wrap{max-width:1100px;margin:0 auto 48px;padding:0 48px;}
+.qref-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.qref-hd{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px 16px;}
+.qref-hd-left{display:flex;align-items:center;gap:12px;}
+.qref-hd-icon{font-size:22px;flex-shrink:0;}
+.qref-hd-text{display:flex;flex-direction:column;gap:3px;}
+.qref-hd-title{font-size:15px;font-weight:800;color:var(--text);letter-spacing:.3px;}
+.qref-hd-sub{font-size:12px;color:var(--text-dim);}
+.qref-faq-link{font-size:12px;font-weight:600;color:var(--text-muted);font-family:'JetBrains Mono',monospace;white-space:nowrap;flex-shrink:0;cursor:pointer;transition:color .18s;border:1px solid var(--border);padding:4px 10px;border-radius:4px;}
+.qref-faq-link:hover{color:var(--text-dim);border-color:var(--border-bright);}
+.qref-divider{height:1px;background:var(--border);margin:0 22px;}
+.qref-list{padding:12px 22px 16px;display:flex;flex-direction:column;gap:6px;}
+.qref-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .18s;}
+.qref-item:hover{border-color:var(--border-bright);}
+.qref-item.open{border-color:var(--orange-glow);}
+.qref-q{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;background:transparent;transition:background .15s;}
+.qref-q:hover{background:rgba(255,255,255,.02);}
+.qref-item.open .qref-q{background:rgba(196,63,36,.06);}
+.qref-q-icon{font-size:16px;flex-shrink:0;width:24px;text-align:center;}
+.qref-q-text{flex:1;font-size:13px;font-weight:700;color:var(--text);}
+.qref-q-tag{font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--orange);background:var(--orange-dim);border:1px solid var(--orange-glow);padding:2px 7px;border-radius:3px;flex-shrink:0;}
+.qref-chevron{font-size:11px;color:var(--text-muted);flex-shrink:0;transition:transform .2s;}
+.qref-item.open .qref-chevron{transform:rotate(180deg);color:var(--orange);}
+.qref-a{display:none;padding:12px 16px 14px 52px;font-size:13px;color:var(--text-dim);line-height:1.8;border-top:1px solid var(--border);white-space:pre-line;}
+.qref-item.open .qref-a{display:block;}
+.qref-a strong{color:var(--text);font-weight:700;}
+.qref-a-step-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:12px;font-weight:700;color:var(--orange);font-family:'JetBrains Mono',monospace;cursor:pointer;transition:opacity .15s;}
+.qref-a-step-link:hover{opacity:.75;}
 
 /* ── 游戏术语独立页适配 ── */
 .terms-page-section{padding-top:24px;}
@@ -1270,15 +1290,91 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
     </div>
   </div>
 
-  <!-- ✦ FAQ 导航横条 ✦ -->
-  <div class="faq-nav-bar" onclick="switchPage('faq')">
-    <div class="faq-nav-inner">
-      <span class="faq-nav-icon">❓</span>
-      <div class="faq-nav-text">
-        <span class="faq-nav-title">常见问题解答</span>
-        <span class="faq-nav-sub">游戏机制不懂？掉线了？账号问题？——在 FAQ 里找答案</span>
+  <!-- ✦ 速查手册 ✦ -->
+  <div class="qref-wrap">
+    <div class="qref-box">
+      <div class="qref-hd">
+        <div class="qref-hd-left">
+          <span class="qref-hd-icon">⚡</span>
+          <div class="qref-hd-text">
+            <span class="qref-hd-title">速查手册</span>
+            <span class="qref-hd-sub">太麻烦了？点击查看速成攻略，直接找到你现在最需要的那个答案</span>
+          </div>
+        </div>
+        <span class="qref-faq-link" onclick="switchPage('faq')">完整 FAQ →</span>
       </div>
-      <span class="faq-nav-cta">查看 FAQ →</span>
+      <div class="qref-divider"></div>
+      <div class="qref-list">
+
+        <!-- 速成攻略 1：如何快速回血 -->
+        <div class="qref-item" onclick="this.classList.toggle('open')">
+          <div class="qref-q">
+            <span class="qref-q-icon">💊</span>
+            <span class="qref-q-text">如何快速回血？</span>
+            <span class="qref-q-tag">速成攻略</span>
+            <span class="qref-chevron">▼</span>
+          </div>
+          <div class="qref-a">前期靠<strong>进食恢复</strong>，吃熟食效率最高。
+制作<strong>绷带（布料×1）</strong>可快速止血，随身备几个。
+之后解锁<strong>医疗针</strong>（初级→中级→高级），战斗中一针快速回满。
+
+💡 关键优先级：熟食 &gt; 绷带 &gt; 医疗针，前期不要囤太多布料做绷带，后期直接上医疗针。
+            <span class="qref-a-step-link" onclick="event.stopPropagation();switchPage('guide');switchStep(2)">→ 查看 STEP 02 生命线详解</span>
+          </div>
+        </div>
+
+        <!-- 速成攻略 2：如何快速建基地 -->
+        <div class="qref-item" onclick="this.classList.toggle('open')">
+          <div class="qref-q">
+            <span class="qref-q-icon">🏠</span>
+            <span class="qref-q-text">如何快速建造基地？</span>
+            <span class="qref-q-tag">速成攻略</span>
+            <span class="qref-chevron">▼</span>
+          </div>
+          <div class="qref-a">最小可用基地只需：<strong>1个房间 + 1扇门 + 工具柜</strong>。
+建造顺序：地基 → 墙体 → 门框 → 木门（加锁）→ 工具柜（必须放）。
+工具柜放置后<strong>立刻激活</strong>，进入情报领地，离线保护才生效。
+
+💡 前期不要造大，先造"能住"再扩建。工具柜是最重要的一件事，没有它离线必被拆。
+            <span class="qref-a-step-link" onclick="event.stopPropagation();switchPage('guide');switchStep(4)">→ 查看 STEP 04 建造基地详解</span>
+          </div>
+        </div>
+
+        <!-- 速成攻略 3：如何快速获得武器 -->
+        <div class="qref-item" onclick="this.classList.toggle('open')">
+          <div class="qref-q">
+            <span class="qref-q-icon">⚔️</span>
+            <span class="qref-q-text">如何快速获得武器？</span>
+            <span class="qref-q-tag">速成攻略</span>
+            <span class="qref-chevron">▼</span>
+          </div>
+          <div class="qref-a">最快路线：出生后<strong>捡石头打树</strong>，先做石斧/石矛，5分钟内完成。
+想要枪械：去<strong>一级遗迹（加油站、废弃超市）</strong>搜刮，有概率找到零件和弹药。
+或者用废料换<strong>弓箭配方</strong>，制作台解锁后优先做弓，性价比最高的远程武器。
+
+💡 前期宁可用弓箭，不要硬冲枪械。弓箭安静、材料便宜，适合前期低调发育。
+            <span class="qref-a-step-link" onclick="event.stopPropagation();switchPage('guide');switchStep(5)">→ 查看 STEP 05 战斗遭遇详解</span>
+          </div>
+        </div>
+
+        <!-- 速成攻略 4：如何快速提升装备 -->
+        <div class="qref-item" onclick="this.classList.toggle('open')">
+          <div class="qref-q">
+            <span class="qref-q-icon">🔧</span>
+            <span class="qref-q-text">如何快速提升装备？</span>
+            <span class="qref-q-tag">速成攻略</span>
+            <span class="qref-chevron">▼</span>
+          </div>
+          <div class="qref-a">核心路线：<strong>废料 → 制作台配方 → 解锁高级装备</strong>。
+前期优先解锁：<strong>医疗针配方、弓箭、布甲</strong>，这三样性价比最高。
+情报币的用法：去<strong>情报站</strong>积累情报，兑换支援包含高级装备图纸。
+
+💡 不要乱花废料，先把制作台点满到二级，装备上限才会打开。等级越高，支援越强。
+            <span class="qref-a-step-link" onclick="event.stopPropagation();switchPage('guide');switchStep(6)">→ 查看 STEP 06 科技树详解</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
