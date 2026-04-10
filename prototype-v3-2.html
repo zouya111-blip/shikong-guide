@@ -1765,6 +1765,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 <div class="page" id="page-guide">
   <div class="guide-layout">
     <div class="guide-sidebar">
+      <!-- Step 0：选好模式 -->
+      <div class="snav-item active" id="snav-mode" onclick="switchStep(0)" style="margin-bottom:8px;">
+        <div class="snav-num" style="background:rgba(167,139,250,.15);color:#a78bfa;border-color:rgba(167,139,250,.3);font-size:9px;letter-spacing:.5px;">PRE</div>
+        <div class="snav-text">
+          <div class="snav-title">🎮 选好模式</div>
+          <div class="snav-sub">上岛前必做</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--border);margin:0 0 12px;"></div>
       <!-- 阶段：生存 -->
       <div class="snav-phase-header survival">
         <span class="snav-phase-dot"></span>生存阶段
@@ -1841,8 +1850,9 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:17%"></div></div>
       </div>
 
-      <!-- ═══ 上岛前：选好模式 ═══ -->
-      <div class="mode-pre-section">
+      <!-- ═══ STEP 0：上岛前选好模式 ═══ -->
+      <div class="step-content active" id="step-0">
+        <div class="mode-pre-section">
         <div class="mode-pre-hd">
           <span class="mode-pre-tag">BEFORE YOU START</span>
           <h3 class="mode-pre-title">🎮 上岛前先选好模式</h3>
@@ -1949,10 +1959,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="mode-pre-advice">
           💬 第一次上岛，选庇护模式——家有保护、死亡代价低，给你最多的空间去摸清楚游戏节奏。熟悉后再换模式不迟。
         </div>
-      </div>
+        </div><!-- /mode-pre-section -->
+        <div class="step-nav-row">
+          <span></span>
+          <button class="step-nav-btn" onclick="switchStep(1)">进入 STEP 01 →</button>
+        </div>
+      </div><!-- /step-0 -->
 
       <!-- ═══ STEP 1 ═══ -->
-      <div class="step-content active" id="step-1">
+      <div class="step-content" id="step-1">
         <div class="step-hd">
           <div class="step-tag">STEP 01 / 06</div>
           <div>
@@ -4118,26 +4133,36 @@ function switchPage(page, tabEl) {
   window.scrollTo(0,0);
 }
 
-let currentStep = 1;
+let currentStep = 0;
 function switchStep(n) {
   document.querySelectorAll('.step-content').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.snav-item').forEach(s=>s.classList.remove('active','done'));
   document.getElementById('step-'+n).classList.add('active');
-  // snav-0 对应 step-1，snav-1 对应 step-2，以此类推
-  const snavId = 'snav-'+(n-1);
-  const snavEl = document.getElementById(snavId);
-  if(snavEl) snavEl.classList.add('active');
-  for(let i=0;i<n-1;i++){
-    const s=document.getElementById('snav-'+i);
-    if(s) s.classList.add('done');
+
+  // step-0：激活 snav-mode，progress 归零
+  if(n === 0) {
+    const snavMode = document.getElementById('snav-mode');
+    if(snavMode) snavMode.classList.add('active');
+    document.getElementById('progress-fill').style.width = '0%';
+    document.getElementById('progress-pct').textContent = '0%';
+  } else {
+    // snav-0 对应 step-1，snav-1 对应 step-2，以此类推
+    const snavId = 'snav-'+(n-1);
+    const snavEl = document.getElementById(snavId);
+    if(snavEl) snavEl.classList.add('active');
+    for(let i=0;i<n-1;i++){
+      const s=document.getElementById('snav-'+i);
+      if(s) s.classList.add('done');
+    }
+    const pct = Math.round((n/6)*100);
+    document.getElementById('progress-fill').style.width = pct+'%';
+    document.getElementById('progress-pct').textContent = pct+'%';
   }
-  const pct = Math.round((n/6)*100);
-  document.getElementById('progress-fill').style.width = pct+'%';
-  document.getElementById('progress-pct').textContent = pct+'%';
-  // 同步首页进度条 & 步骤 done 状态
+
+  // 同步首页进度条 & 步骤 done 状态（step-0 不计入进度）
   const npFill = document.getElementById('np-progress-fill');
   const npVal  = document.getElementById('np-progress-val');
-  const done = n - 1;
+  const done = n > 0 ? n - 1 : 0;
   if(npFill) npFill.style.width = Math.round(done/6*100)+'%';
   if(npVal)  npVal.textContent  = done+' / 6 完成';
   document.querySelectorAll('.np-step').forEach(el=>{
