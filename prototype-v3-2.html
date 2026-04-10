@@ -1766,14 +1766,16 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   <div class="guide-layout">
     <div class="guide-sidebar">
       <!-- Step 0：选好模式 -->
-      <div class="snav-item active" id="snav-mode" onclick="switchStep(0)" style="margin-bottom:8px;">
-        <div class="snav-num" style="background:rgba(167,139,250,.15);color:#a78bfa;border-color:rgba(167,139,250,.3);font-size:9px;letter-spacing:.5px;">PRE</div>
+      <div class="snav-phase-header" style="color:#a78bfa;border-color:rgba(167,139,250,.25);">
+        <span class="snav-phase-dot" style="background:#a78bfa;"></span>上岛准备
+      </div>
+      <div class="snav-item active" id="snav-mode" onclick="switchStep(0)">
+        <div class="snav-num" style="background:rgba(167,139,250,.15);color:#a78bfa;border-color:rgba(167,139,250,.3);">00</div>
         <div class="snav-text">
-          <div class="snav-title">🎮 选好模式</div>
+          <div class="snav-title">选好模式</div>
           <div class="snav-sub">上岛前必做</div>
         </div>
       </div>
-      <div style="height:1px;background:var(--border);margin:0 0 12px;"></div>
       <!-- 阶段：生存 -->
       <div class="snav-phase-header survival">
         <span class="snav-phase-dot"></span>生存阶段
