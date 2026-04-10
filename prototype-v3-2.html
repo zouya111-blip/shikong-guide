@@ -106,13 +106,13 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
 .feat-row{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-dim);}
 .feat-icon{font-size:14px;width:20px;text-align:center;flex-shrink:0;}
 .card-cta{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.5px;border:none;transition:all .2s;}
-.np-mode-tip{display:flex;align-items:center;gap:10px;padding:10px 13px;margin-bottom:10px;background:rgba(196,63,36,.07);border:1px solid rgba(196,63,36,.28);border-radius:7px;cursor:pointer;transition:all .18s;text-decoration:none;}
-.np-mode-tip:hover{background:rgba(196,63,36,.14);border-color:var(--orange);transform:translateX(2px);}
-.np-mode-tip-icon{font-size:18px;flex-shrink:0;}
-.np-mode-tip-body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;}
-.np-mode-tip-title{font-size:12px;font-weight:700;color:var(--orange);letter-spacing:.3px;}
+.np-mode-tip{display:flex;align-items:center;gap:10px;padding:9px 12px;margin:10px 0 12px;background:rgba(196,63,36,.06);border:1px solid rgba(196,63,36,.22);border-radius:6px;cursor:pointer;transition:all .18s;}
+.np-mode-tip:hover{background:rgba(196,63,36,.13);border-color:var(--orange);transform:translateX(2px);}
+.np-mode-tip-icon{font-size:16px;flex-shrink:0;}
+.np-mode-tip-body{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0;}
+.np-mode-tip-title{font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.4px;text-transform:uppercase;}
 .np-mode-tip-sub{font-size:11px;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.np-mode-tip-arrow{font-size:16px;color:var(--orange);flex-shrink:0;opacity:.7;}
+.np-mode-tip-arrow{font-size:14px;color:var(--orange);flex-shrink:0;opacity:.65;}
 .new-player .card-cta{background:var(--orange);color:#fff;}
 .new-player .card-cta:hover{background:var(--orange-bright);}
 .veteran .card-cta{background:transparent;color:var(--yellow);border:1px solid rgba(227,219,178,.4);}
@@ -1184,6 +1184,15 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
         <div class="card-tag">🔰 NEWCOMER</div>
         <h2>初次登岛？</h2>
         <p>跟着 6 步走完前期核心路线<br>从出生到站稳脚跟，生存、发育、战斗一步步来。</p>
+        <!-- 模式前置提示 -->
+        <div class="np-mode-tip" onclick="event.stopPropagation();switchPage('guide');switchStep(0)">
+          <span class="np-mode-tip-icon">🎮</span>
+          <div class="np-mode-tip-body">
+            <span class="np-mode-tip-title">上岛前先选好模式</span>
+            <span class="np-mode-tip-sub">新手推荐「庇护模式」，家有保护 · 不怕被抄 →</span>
+          </div>
+          <span class="np-mode-tip-arrow">›</span>
+        </div>
         <!-- 学习进度条 -->
         <div class="np-progress-wrap">
           <div class="np-progress-meta">
@@ -1249,14 +1258,6 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
               </div>
             </div>
           </div>
-        </div>
-        <div class="np-mode-tip" onclick="event.stopPropagation();switchPage('guide');switchStep(0)">
-          <span class="np-mode-tip-icon">🎮</span>
-          <div class="np-mode-tip-body">
-            <span class="np-mode-tip-title">上岛前先选好模式</span>
-            <span class="np-mode-tip-sub">新手推荐「庇护模式」，家有保护 · 不怕被抄 →</span>
-          </div>
-          <span class="np-mode-tip-arrow">›</span>
         </div>
         <button class="card-cta">开始新手入门 →</button>
       </div>
