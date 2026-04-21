@@ -3,855 +3,580 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>失控进化 · 社区运营数据面板</title>
+<title>失控进化 · 社区活动数据面板</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --orange:   #C43F24;
-    --orange-lt:#FF7132;
-    --dark:     #1E2020;
-    --dark2:    #2A2928;
-    --dark3:    #3D1D1D;
-    --cream:    #E3DBD2;
-    --rust:     #882818;
-    --text:     #E3DBD2;
-    --muted:    #9A8F85;
-    --border:   rgba(196,63,36,.35);
-  }
+:root {
+  --orange:  #C43F24;
+  --orange2: #FF7132;
+  --dark:    #1C1C1C;
+  --dark2:   #242322;
+  --dark3:   #2A2928;
+  --rust:    #882818;
+  --cream:   #E3DBD2;
+  --muted:   #9A8F85;
+  --border:  rgba(196,63,36,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--dark);color:var(--cream);font-family:'Noto Sans SC',sans-serif;min-height:100vh}
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+/* 扫描线纹理 */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px)}
 
-  body {
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'Noto Sans SC', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* HEADER */
+header{position:relative;z-index:10;background:linear-gradient(180deg,#111 0%,var(--dark) 100%);
+  border-bottom:2px solid var(--orange)}
+.h-inner{max-width:1380px;margin:0 auto;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.9rem}
+.logo-hex{width:38px;height:38px;background:var(--orange);
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;font-weight:700;font-size:.65rem;color:#fff;letter-spacing:.05em}
+.logo-text h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.15rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--cream)}
+.logo-text p{font-size:.6rem;color:var(--orange2);letter-spacing:.2em;text-transform:uppercase;margin-top:.1rem}
+.h-meta{font-size:.68rem;color:var(--muted);letter-spacing:.08em}
+.h-meta span{color:var(--orange2)}
 
-  /* ── 背景纹理 ── */
-  body::before {
-    content:'';
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:
-      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.08) 2px, rgba(0,0,0,.08) 4px),
-      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.04) 2px, rgba(0,0,0,.04) 4px);
-  }
+/* TABS */
+nav{position:relative;z-index:10;background:var(--dark3);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1380px;margin:0 auto;display:flex;padding:0 2rem}
+.tab-btn{padding:.8rem 1.4rem;background:transparent;border:none;border-bottom:2px solid transparent;
+  color:var(--muted);font-family:'Oswald',sans-serif;font-size:.82rem;letter-spacing:.12em;
+  text-transform:uppercase;cursor:pointer;transition:color .2s;margin-bottom:-1px}
+.tab-btn:hover{color:var(--cream)}
+.tab-btn.active{color:var(--orange2);border-bottom-color:var(--orange)}
+.tab-num{font-size:.6rem;color:var(--orange);opacity:.8;margin-right:.35rem}
 
-  /* ── HEADER ── */
-  header {
-    position:relative; z-index:10;
-    border-bottom: 2px solid var(--orange);
-    background: linear-gradient(180deg, #0f0f0f 0%, var(--dark) 100%);
-    padding: 0 2rem;
-  }
-  .header-inner {
-    max-width:1400px; margin:0 auto;
-    display:flex; align-items:center; justify-content:space-between;
-    padding: 1.25rem 0;
-  }
-  .logo-area { display:flex; align-items:center; gap:1rem; }
-  .logo-badge {
-    width:42px; height:42px;
-    background: var(--orange);
-    clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Oswald',sans-serif; font-weight:700; font-size:.75rem;
-    color:#fff; letter-spacing:.05em;
-  }
-  .logo-text h1 {
-    font-family:'Oswald',sans-serif; font-weight:700;
-    font-size:1.25rem; letter-spacing:.15em; text-transform:uppercase;
-    color:var(--cream);
-  }
-  .logo-text p {
-    font-size:.65rem; color:var(--orange-lt); letter-spacing:.2em;
-    text-transform:uppercase; margin-top:.1rem;
-  }
-  .header-meta {
-    display:flex; align-items:center; gap:1.5rem;
-  }
-  .last-update {
-    font-size:.7rem; color:var(--muted); letter-spacing:.1em;
-    text-transform:uppercase;
-  }
-  .last-update span { color:var(--orange-lt); }
-  .refresh-btn {
-    padding:.4rem 1rem;
-    border: 1px solid var(--orange);
-    background:transparent; color:var(--orange-lt);
-    font-family:'Oswald',sans-serif; font-size:.8rem;
-    letter-spacing:.1em; cursor:pointer;
-    transition: all .2s;
-  }
-  .refresh-btn:hover { background:var(--orange); color:#fff; }
+/* MAIN */
+main{position:relative;z-index:5;max-width:1380px;margin:0 auto;padding:2rem}
+.panel{display:none}.panel.active{display:block}
 
-  /* ── NAV TABS ── */
-  .nav-tabs {
-    position:relative; z-index:10;
-    background:var(--dark2);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    max-width:1400px; margin:0 auto;
-    display:flex; gap:0; padding:0 2rem;
-  }
-  .tab-btn {
-    padding:.85rem 1.5rem;
-    background:transparent; border:none;
-    color:var(--muted); font-family:'Oswald',sans-serif;
-    font-size:.85rem; letter-spacing:.12em; text-transform:uppercase;
-    cursor:pointer; position:relative; transition: color .2s;
-    border-bottom: 2px solid transparent;
-    margin-bottom:-1px;
-  }
-  .tab-btn:hover { color:var(--cream); }
-  .tab-btn.active {
-    color:var(--orange-lt);
-    border-bottom-color: var(--orange);
-  }
-  .tab-num {
-    display:inline-block; margin-right:.4rem;
-    font-size:.65rem; color:var(--orange); opacity:.7;
-  }
+/* SECTION HEAD */
+.sec-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.sec-head::before{content:'';display:block;width:3px;height:1.3rem;
+  background:linear-gradient(180deg,var(--orange) 0%,var(--orange2) 100%)}
+.sec-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--cream)}
+.sec-sub{font-size:.68rem;color:var(--muted);margin-left:.4rem}
 
-  /* ── MAIN ── */
-  main {
-    position:relative; z-index:5;
-    max-width:1400px; margin:0 auto;
-    padding:2rem;
-  }
-  .panel { display:none; }
-  .panel.active { display:block; }
+/* STAT CARDS */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:.9rem;margin-bottom:2rem}
+.scard{background:var(--dark3);border:1px solid var(--border);border-top:2px solid var(--orange);
+  padding:1.1rem 1rem;position:relative;overflow:hidden}
+.scard::after{content:'';position:absolute;bottom:-15px;right:-15px;width:70px;height:70px;
+  border-radius:50%;background:radial-gradient(circle,rgba(196,63,36,.1) 0%,transparent 70%)}
+.sl{font-size:.62rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.45rem}
+.sv{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.9rem;color:var(--orange2);line-height:1}
+.su{font-size:.85rem;color:var(--muted);margin-left:.2rem}
+.ss{font-size:.62rem;color:var(--muted);margin-top:.35rem}
 
-  /* ── SECTION HEADER ── */
-  .section-header {
-    display:flex; align-items:center; gap:1rem;
-    margin-bottom:1.5rem;
-  }
-  .section-header::before {
-    content:'';
-    display:block; width:4px; height:1.5rem;
-    background: linear-gradient(180deg, var(--orange) 0%, var(--orange-lt) 100%);
-  }
-  .section-title {
-    font-family:'Oswald',sans-serif; font-weight:600;
-    font-size:1.1rem; letter-spacing:.15em; text-transform:uppercase;
-    color:var(--cream);
-  }
-  .section-sub { font-size:.72rem; color:var(--muted); margin-left:.5rem; }
+/* CHART CARDS */
+.chart-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));gap:1.25rem;margin-bottom:2rem}
+.chart-card{background:var(--dark3);border:1px solid var(--border);padding:1.35rem}
+.cc-title{font-family:'Oswald',sans-serif;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.cc-title::before{content:'▶';font-size:.5rem;color:var(--orange)}
+.cbox{height:280px}
 
-  /* ── STAT CARDS ── */
-  .stat-grid {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:1rem; margin-bottom:2rem;
-  }
-  .stat-card {
-    background:var(--dark2);
-    border:1px solid var(--border);
-    border-top:2px solid var(--orange);
-    padding:1.25rem 1rem;
-    position:relative; overflow:hidden;
-  }
-  .stat-card::after {
-    content:''; position:absolute; bottom:-20px; right:-20px;
-    width:80px; height:80px; border-radius:50%;
-    background: radial-gradient(circle, rgba(196,63,36,.12) 0%, transparent 70%);
-  }
-  .stat-label {
-    font-size:.65rem; color:var(--muted); letter-spacing:.15em;
-    text-transform:uppercase; margin-bottom:.5rem;
-  }
-  .stat-value {
-    font-family:'Oswald',sans-serif; font-weight:700;
-    font-size:2rem; color:var(--orange-lt);
-    line-height:1;
-  }
-  .stat-unit { font-size:.9rem; color:var(--muted); margin-left:.25rem; }
-  .stat-sub { font-size:.65rem; color:var(--muted); margin-top:.4rem; }
+/* ACTIVITY SELECTOR */
+.act-select-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.act-select-row label{font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-family:'Oswald',sans-serif}
+.act-sel{background:var(--dark3);border:1px solid var(--border);color:var(--cream);
+  padding:.45rem .9rem;font-family:'Noto Sans SC',sans-serif;font-size:.82rem;cursor:pointer;
+  min-width:320px;outline:none}
+.act-sel option{background:var(--dark)}
 
-  /* ── CHART CARDS ── */
-  .chart-grid {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(480px,1fr));
-    gap:1.5rem; margin-bottom:2rem;
-  }
-  .chart-card {
-    background:var(--dark2);
-    border:1px solid var(--border);
-    padding:1.5rem;
-    position:relative;
-  }
-  .chart-card-title {
-    font-family:'Oswald',sans-serif; font-size:.8rem;
-    letter-spacing:.15em; text-transform:uppercase;
-    color:var(--muted); margin-bottom:1rem;
-    display:flex; align-items:center; gap:.5rem;
-  }
-  .chart-card-title::before {
-    content:'▶'; font-size:.5rem; color:var(--orange);
-  }
-  .chart-box { height:280px; }
+/* CHANNEL SELECTOR */
+.ch-sel-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.ch-btn{padding:.35rem .85rem;background:transparent;border:1px solid var(--border);
+  color:var(--muted);font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.1em;
+  cursor:pointer;transition:all .18s}
+.ch-btn:hover{border-color:var(--orange);color:var(--cream)}
+.ch-btn.active{background:var(--orange);border-color:var(--orange);color:#fff}
 
-  /* ── TABLE ── */
-  .data-table {
-    width:100%; border-collapse:collapse;
-    font-size:.82rem;
-  }
-  .data-table th {
-    padding:.6rem 1rem; text-align:left;
-    font-family:'Oswald',sans-serif; font-size:.7rem;
-    letter-spacing:.15em; text-transform:uppercase;
-    color:var(--muted); border-bottom:1px solid var(--border);
-    background:rgba(0,0,0,.2);
-  }
-  .data-table td {
-    padding:.65rem 1rem; border-bottom:1px solid rgba(255,255,255,.04);
-    color:var(--cream);
-  }
-  .data-table tr:hover td { background:rgba(196,63,36,.06); }
-  .data-table .num { font-family:'Oswald',sans-serif; color:var(--orange-lt); }
-  .data-table .null { color:var(--muted); font-style:italic; font-size:.75rem; }
-  .tag {
-    display:inline-block; padding:.15rem .45rem;
-    font-size:.62rem; letter-spacing:.1em;
-    text-transform:uppercase; font-family:'Oswald',sans-serif;
-  }
-  .tag-activity { background:rgba(196,63,36,.25); color:var(--orange-lt); border:1px solid var(--border); }
-  .tag-column   { background:rgba(255,113,50,.15); color:#ffd0a0; border:1px solid rgba(255,113,50,.3); }
-  .tag-info     { background:rgba(30,32,32,.8); color:var(--muted); border:1px solid rgba(255,255,255,.08); }
+/* TABLE */
+.dtable{width:100%;border-collapse:collapse;font-size:.8rem}
+.dtable th{padding:.6rem .9rem;text-align:left;font-family:'Oswald',sans-serif;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);
+  background:rgba(0,0,0,.2);white-space:nowrap}
+.dtable td{padding:.6rem .9rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--cream)}
+.dtable tr:hover td{background:rgba(196,63,36,.05)}
+.num{font-family:'Oswald',sans-serif;color:var(--orange2)}
+.null{color:var(--muted);font-style:italic;font-size:.72rem}
+.rank1{color:var(--orange2);font-weight:700}
+.rank2{color:#ffd0a0}
+.rank3{color:var(--cream)}
 
-  /* ── INSIGHT BOX ── */
-  .insight-grid {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:1rem; margin-top:2rem;
-  }
-  .insight-card {
-    background: linear-gradient(135deg, var(--dark3) 0%, var(--dark2) 100%);
-    border:1px solid var(--border);
-    border-left:3px solid var(--orange);
-    padding:1.25rem;
-  }
-  .insight-icon { font-size:1.4rem; margin-bottom:.5rem; }
-  .insight-title {
-    font-family:'Oswald',sans-serif; font-size:.85rem;
-    letter-spacing:.1em; color:var(--orange-lt); margin-bottom:.5rem;
-  }
-  .insight-body { font-size:.78rem; color:var(--cream); line-height:1.7; }
-  .insight-body strong { color:var(--orange-lt); }
+/* INSIGHT */
+.insight-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.9rem;margin-top:1.5rem}
+.icard{background:linear-gradient(135deg,#3D1D1D 0%,var(--dark3) 100%);
+  border:1px solid var(--border);border-left:3px solid var(--orange);padding:1.1rem}
+.ititle{font-family:'Oswald',sans-serif;font-size:.82rem;letter-spacing:.1em;color:var(--orange2);margin-bottom:.4rem}
+.ibody{font-size:.76rem;color:var(--cream);line-height:1.75}
+.ibody strong{color:var(--orange2)}
 
-  /* ── COLUMN TRACKER ── */
-  .col-tracker {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:1rem; margin-bottom:2rem;
-  }
-  .col-card {
-    background:var(--dark2); border:1px solid var(--border);
-    overflow:hidden;
-  }
-  .col-card-head {
-    padding:1rem 1.25rem;
-    background: linear-gradient(90deg, var(--dark3) 0%, var(--dark2) 100%);
-    border-bottom:1px solid var(--border);
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .col-name {
-    font-family:'Oswald',sans-serif; font-weight:600;
-    font-size:.9rem; letter-spacing:.1em; color:var(--cream);
-  }
-  .col-status {
-    font-size:.65rem; padding:.2rem .5rem;
-    background:rgba(196,63,36,.2); color:var(--orange-lt);
-    border:1px solid var(--border); letter-spacing:.1em;
-    text-transform:uppercase; font-family:'Oswald',sans-serif;
-  }
-  .col-status.new { background:rgba(255,113,50,.2); color:#ffd0a0; border-color:rgba(255,113,50,.4); }
-  .col-episodes { padding:.5rem 0; }
-  .col-ep {
-    display:flex; align-items:center;
-    padding:.55rem 1.25rem; gap:.75rem;
-    border-bottom:1px solid rgba(255,255,255,.04);
-    transition: background .15s;
-  }
-  .col-ep:last-child { border-bottom:none; }
-  .col-ep:hover { background:rgba(196,63,36,.06); }
-  .col-ep-date { font-size:.7rem; color:var(--muted); min-width:3.5rem; }
-  .col-ep-title {
-    flex:1; font-size:.78rem; color:var(--cream);
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-  }
-  .col-ep-stats {
-    display:flex; gap:.75rem; font-family:'Oswald',sans-serif;
-    font-size:.75rem;
-  }
-  .ep-stat { display:flex; flex-direction:column; align-items:center; min-width:2.5rem; }
-  .ep-stat .val { color:var(--orange-lt); font-size:.85rem; }
-  .ep-stat .lbl { color:var(--muted); font-size:.55rem; letter-spacing:.05em; text-transform:uppercase; }
-  .col-empty {
-    padding:1.5rem; text-align:center; color:var(--muted);
-    font-size:.78rem;
-  }
-  .pending-badge {
-    display:inline-block; padding:.3rem .75rem;
-    background:rgba(255,113,50,.1); border:1px dashed rgba(255,113,50,.4);
-    color:var(--orange-lt); font-size:.7rem; letter-spacing:.1em;
-    text-transform:uppercase; font-family:'Oswald',sans-serif;
-    margin-top:.5rem;
-  }
+/* EMPTY */
+.empty{text-align:center;padding:3rem;color:var(--muted);font-size:.82rem}
 
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width:4px; }
-  ::-webkit-scrollbar-track { background:var(--dark); }
-  ::-webkit-scrollbar-thumb { background:var(--rust); border-radius:2px; }
-
-  /* ── FOOTER ── */
-  footer {
-    position:relative; z-index:5;
-    border-top:1px solid var(--border);
-    padding:1rem 2rem; text-align:center;
-    font-size:.65rem; color:var(--muted); letter-spacing:.1em;
-  }
-  footer span { color:var(--orange); }
+footer{position:relative;z-index:5;border-top:1px solid var(--border);padding:.9rem 2rem;
+  text-align:center;font-size:.62rem;color:var(--muted);letter-spacing:.1em}
+footer span{color:var(--orange)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--rust);border-radius:2px}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo-area">
-      <div class="logo-badge">RM</div>
-      <div class="logo-text">
-        <h1>失控进化 · 社区运营数据面板</h1>
-        <p>Community Operations Dashboard · RUST Mobile</p>
-      </div>
-    </div>
-    <div class="header-meta">
-      <div class="last-update">数据更新 <span id="updateTime">—</span></div>
-      <button class="refresh-btn" onclick="location.reload()">↺ 刷新</button>
+<div class="h-inner">
+  <div class="logo">
+    <div class="logo-hex">RM</div>
+    <div class="logo-text">
+      <h1>失控进化 · 活动数据面板</h1>
+      <p>Community Activity Dashboard · RUST Mobile</p>
     </div>
   </div>
+  <div class="h-meta">数据截至 <span id="ts">—</span> &nbsp;·&nbsp; 来源：社区内容管理总表</div>
+</div>
 </header>
 
-<nav class="nav-tabs">
-  <div class="nav-inner">
-    <button class="tab-btn active" onclick="switchTab('activity',this)">
-      <span class="tab-num">01</span>渠道活动对比
-    </button>
-    <button class="tab-btn" onclick="switchTab('health',this)">
-      <span class="tab-num">02</span>渠道健康趋势
-    </button>
-    <button class="tab-btn" onclick="switchTab('columns',this)">
-      <span class="tab-num">03</span>栏目追踪
-    </button>
-  </div>
+<nav>
+<div class="nav-inner">
+  <button class="tab-btn active" onclick="switchTab('overview',this)"><span class="tab-num">01</span>活动整体效果</button>
+  <button class="tab-btn" onclick="switchTab('cross',this)"><span class="tab-num">02</span>单活动跨渠道对比</button>
+  <button class="tab-btn" onclick="switchTab('channel',this)"><span class="tab-num">03</span>单渠道活动排行</button>
+</div>
 </nav>
 
 <main>
 
-<!-- ====== PANEL 01: 渠道活动对比 ====== -->
-<section class="panel active" id="panel-activity">
+<!-- ===== PANEL 01: 活动整体效果 ===== -->
+<section class="panel active" id="panel-overview">
 
-  <div class="section-header">
-    <div>
-      <span class="section-title">渠道活动效果对比</span>
-      <span class="section-sub">来源：发布内容统计 · 社区活动类</span>
-    </div>
-  </div>
+<div class="sec-head">
+  <div><span class="sec-title">活动整体效果评估</span><span class="sec-sub">所有活动按总评论数排行</span></div>
+</div>
 
-  <div class="stat-grid">
-    <div class="stat-card">
-      <div class="stat-label">活动帖总数</div>
-      <div class="stat-value">67<span class="stat-unit">条</span></div>
-      <div class="stat-sub">覆盖 7 个主要渠道</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">总阅读量（活动帖）</div>
-      <div class="stat-value">79.3<span class="stat-unit">万</span></div>
-      <div class="stat-sub">TAPTAP + 微信圈 + QQ频道主导</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">总评论/参与数</div>
-      <div class="stat-value">1.97<span class="stat-unit">万</span></div>
-      <div class="stat-sub">TAPTAP 评论占比 65%</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">总点赞数</div>
-      <div class="stat-value">8,220</div>
-      <div class="stat-sub">TAPTAP 点赞率最高</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">最活跃渠道</div>
-      <div class="stat-value" style="font-size:1.4rem">TAPTAP</div>
-      <div class="stat-sub">评论 12,897 · 均评 645/帖</div>
-    </div>
-  </div>
+<div class="stat-row">
+  <div class="scard"><div class="sl">统计活动数</div><div class="sv">6<span class="su">个</span></div><div class="ss">含跨渠道数据的活动</div></div>
+  <div class="scard"><div class="sl">总评论/参与数</div><div class="sv">2.7<span class="su">万</span></div><div class="ss">全活动累计</div></div>
+  <div class="scard"><div class="sl">最强单活动</div><div class="sv" style="font-size:1.1rem">攻略有奖征集</div><div class="ss">总评论 15,251</div></div>
+  <div class="scard"><div class="sl">最强单渠道</div><div class="sv" style="font-size:1.1rem">QQ频道</div><div class="ss">多活动参与最稳定</div></div>
+  <div class="scard"><div class="sl">最高单帖评论</div><div class="sv">4,324</div><div class="ss">QQ频道·攻略征集单周</div></div>
+</div>
 
-  <div class="chart-grid">
-    <div class="chart-card">
-      <div class="chart-card-title">各渠道活动帖 · 总阅读量对比</div>
-      <div class="chart-box" id="chart-read"></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-card-title">各渠道活动帖 · 总评论数对比</div>
-      <div class="chart-box" id="chart-comment"></div>
-    </div>
+<div class="chart-grid" style="grid-template-columns:1fr">
+  <div class="chart-card">
+    <div class="cc-title">各活动总评论数对比（点击柱子查看渠道明细）</div>
+    <div class="cbox" style="height:320px" id="c-overview-bar"></div>
   </div>
+</div>
 
-  <div class="chart-grid">
-    <div class="chart-card">
-      <div class="chart-card-title">各渠道互动效率 · 评论/阅读比（%）</div>
-      <div class="chart-box" id="chart-ratio"></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-card-title">各渠道活动帖数量 vs 均评论数</div>
-      <div class="chart-box" id="chart-scatter"></div>
-    </div>
+<div class="chart-grid">
+  <div class="chart-card">
+    <div class="cc-title">活动整体效率：各活动评论分布</div>
+    <div class="cbox" id="c-overview-pie"></div>
   </div>
+  <div class="chart-card">
+    <div class="cc-title">渠道活跃度汇总：跨活动各渠道总评论</div>
+    <div class="cbox" id="c-overview-ch"></div>
+  </div>
+</div>
 
-  <div class="section-header" style="margin-top:1rem">
-    <div>
-      <span class="section-title">运营洞察</span>
-    </div>
-  </div>
-  <div class="insight-grid">
-    <div class="insight-card">
-      <div class="insight-icon">📢</div>
-      <div class="insight-title">TAPTAP — 评论主力，高参与</div>
-      <div class="insight-body">
-        评论总量占全渠道 <strong>65%</strong>，均评论数 <strong>645/帖</strong>，
-        是其他渠道的 3-10 倍。内容深度讨论氛围强，适合征集建议类、有奖互动类活动。
-      </div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon">👁️</div>
-      <div class="insight-title">微信圈 — 曝光最强，转化偏低</div>
-      <div class="insight-body">
-        阅读量 <strong>32 万</strong>（活动帖最高），但评论仅 2,185。
-        用户"刷过"多于"参与"，适合里程碑宣告、晒图活动等低门槛形式。
-      </div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon">⚖️</div>
-      <div class="insight-title">QQ频道 — 最均衡的主力渠道</div>
-      <div class="insight-body">
-        阅读 27 万 + 评论 3,939，均评 <strong>281/帖</strong>。
-        发帖数最多（14条），适合作为活动主阵地，覆盖面广、参与质量稳定。
-      </div>
-    </div>
-    <div class="insight-card">
-      <div class="insight-icon">🎯</div>
-      <div class="insight-title">小程序 — 评论有效，阅读缺失</div>
-      <div class="insight-body">
-        累计评论 611，但阅读数据未记录。作为私域入口，
-        应重点追踪用户留存，评论质量值得关注。
-      </div>
-    </div>
-  </div>
-</section>
+<!-- 活动明细表 -->
+<div class="sec-head" style="margin-top:.5rem">
+  <div><span class="sec-title">活动效果明细表</span></div>
+</div>
+<div style="overflow-x:auto">
+<table class="dtable" id="t-overview"></table>
+</div>
 
-<!-- ====== PANEL 02: 渠道健康趋势 ====== -->
-<section class="panel" id="panel-health">
-
-  <div class="section-header">
-    <div>
-      <span class="section-title">渠道健康趋势</span>
-      <span class="section-sub">来源：社区数据 · 每日18点</span>
-    </div>
+<div class="insight-row">
+  <div class="icard">
+    <div class="ititle">🏆 最高效活动类型</div>
+    <div class="ibody">「攻略有奖征集」以<strong>15,251</strong>总评论领先，持续多周铺设多渠道，积累效应明显。适合作为常态化活动形式。</div>
   </div>
-
-  <div class="stat-grid">
-    <div class="stat-card">
-      <div class="stat-label">论坛关注合计（内渠）</div>
-      <div class="stat-value">235<span class="stat-unit">万</span></div>
-      <div class="stat-sub">QQ频道 + 微信圈为主</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">论坛关注合计（外渠）</div>
-      <div class="stat-value">719<span class="stat-unit">万</span></div>
-      <div class="stat-sub">TapTap + 好游快爆 + 4399</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">社媒官号粉丝合计</div>
-      <div class="stat-value">160<span class="stat-unit">万</span></div>
-      <div class="stat-sub">抖音+B站+快手+公众号等</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">私域累计人数</div>
-      <div class="stat-value">31.5<span class="stat-unit">万</span></div>
-      <div class="stat-sub">测试群+玩家交流群</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">风讯指数（最新）</div>
-      <div class="stat-value">83.9</div>
-      <div class="stat-sub">口碑健康区间 &gt; 75</div>
-    </div>
+  <div class="icard">
+    <div class="ititle">📡 前瞻直播问答值得关注</div>
+    <div class="ibody">「前瞻直播提问」总评论<strong>11,182</strong>，OPPO单渠道贡献3,147，说明厂商渠道用户在特定内容形式下参与度极高。</div>
   </div>
-
-  <div class="chart-grid" style="grid-template-columns:1fr">
-    <div class="chart-card">
-      <div class="chart-card-title">核心渠道粉丝/关注数 · 近90天趋势（万）</div>
-      <div class="chart-box" style="height:360px" id="chart-trend"></div>
-    </div>
+  <div class="icard">
+    <div class="ititle">⚠️ 多数活动数据待完善</div>
+    <div class="ibody">历史活动中仍有部分<strong>阅读量未录入</strong>。建议后续每次活动结束后统一补录，数据越完整，下次选渠道越有依据。</div>
   </div>
-
-  <div class="chart-grid">
-    <div class="chart-card">
-      <div class="chart-card-title">社媒官号粉丝对比（当前）</div>
-      <div class="chart-box" id="chart-social"></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-card-title">风讯指数 · 近30天趋势</div>
-      <div class="chart-box" id="chart-fengxun"></div>
-    </div>
-  </div>
+</div>
 
 </section>
 
-<!-- ====== PANEL 03: 栏目追踪 ====== -->
-<section class="panel" id="panel-columns">
+<!-- ===== PANEL 02: 单活动跨渠道对比 ===== -->
+<section class="panel" id="panel-cross">
 
-  <div class="section-header">
-    <div>
-      <span class="section-title">社区专属栏目追踪</span>
-      <span class="section-sub">小岛每周速递 · 今天你失控了 · 荒岛玄学</span>
-    </div>
+<div class="sec-head">
+  <div><span class="sec-title">单活动 · 跨渠道效果对比</span><span class="sec-sub">选择活动，查看各渠道表现</span></div>
+</div>
+
+<div class="act-select-row">
+  <label>选择活动</label>
+  <select class="act-sel" id="act-sel" onchange="renderCross()"></select>
+</div>
+
+<div class="chart-grid">
+  <div class="chart-card">
+    <div class="cc-title">各渠道评论数</div>
+    <div class="cbox" id="c-cross-bar"></div>
   </div>
-
-  <div class="col-tracker">
-
-    <!-- 小岛每周速递 -->
-    <div class="col-card">
-      <div class="col-card-head">
-        <div class="col-name">📡 小岛每周速递</div>
-        <div class="col-status">每周更新</div>
-      </div>
-      <div class="col-episodes">
-        <div class="col-ep">
-          <div class="col-ep-date">4月10日</div>
-          <div class="col-ep-title">第3期·小黄福利送送送！平台活动进行中</div>
-          <div class="col-ep-stats">
-            <div class="ep-stat"><span class="val">29</span><span class="lbl">阅读</span></div>
-            <div class="ep-stat"><span class="val">1</span><span class="lbl">点赞</span></div>
-            <div class="ep-stat"><span class="val">0</span><span class="lbl">评论</span></div>
-          </div>
-        </div>
-        <div class="col-ep">
-          <div class="col-ep-date">4月3日</div>
-          <div class="col-ep-title">第2期·3200万预约达成，回顾测试重要内容</div>
-          <div class="col-ep-stats">
-            <div class="ep-stat"><span class="val" style="color:var(--muted)">—</span><span class="lbl">阅读</span></div>
-            <div class="ep-stat"><span class="val">1</span><span class="lbl">点赞</span></div>
-            <div class="ep-stat"><span class="val">0</span><span class="lbl">评论</span></div>
-          </div>
-        </div>
-        <div class="col-ep">
-          <div class="col-ep-date">3月27日</div>
-          <div class="col-ep-title">第1期·测试即将收官，老手带路活动进行中</div>
-          <div class="col-ep-stats">
-            <div class="ep-stat"><span class="val" style="color:var(--muted)">—</span><span class="lbl">阅读</span></div>
-            <div class="ep-stat"><span class="val">0</span><span class="lbl">点赞</span></div>
-            <div class="ep-stat"><span class="val">0</span><span class="lbl">评论</span></div>
-          </div>
-        </div>
-        <div class="col-empty" style="padding:.75rem 1.25rem; text-align:left; font-size:.7rem;">
-          ⚠️ 目前仅在贴吧发布，数据偏低。建议同步铺开至 TAPTAP / QQ频道。
-        </div>
-      </div>
-    </div>
-
-    <!-- 今天你失控了 -->
-    <div class="col-card">
-      <div class="col-card-head">
-        <div class="col-name">🎬 今天你失控了吗</div>
-        <div class="col-status">每周更新</div>
-      </div>
-      <div class="col-episodes">
-        <div class="col-ep">
-          <div class="col-ep-date">4月18日</div>
-          <div class="col-ep-title">第4期·"优势在我！"最会整活的荒岛喜剧人</div>
-          <div class="col-ep-stats">
-            <div class="ep-stat"><span class="val" style="color:var(--muted)">—</span><span class="lbl">阅读</span></div>
-            <div class="ep-stat"><span class="val" style="color:var(--muted)">—</span><span class="lbl">点赞</span></div>
-            <div class="ep-stat"><span class="val" style="color:var(--muted)">—</span><span class="lbl">评论</span></div>
-          </div>
-        </div>
-        <div class="col-ep">
-          <div class="col-ep-date">4月11日</div>
-          <div class="col-ep-title">第3期·从第一次登岛到再次回家</div>
-          <div class="col-ep-stats">
-            <div class="ep-stat"><span class="val">66</span><span class="lbl">阅读</span></div>
-            <div class="ep-stat"><span class="val">1</span><span class="lbl">点赞</span></div>
-            <div class="ep-stat"><span class="val">1</span><span class="lbl">评论</span></div>
-          </div>
-        </div>
-        <div class="col-ep">
-          <div class="col-ep-date">4月4日</div>
-          <div class="col-ep-title">第2期·没有手法全是基因，老玩家的本能生存</div>
-          <div class="col-ep-stats">
-            <div class="ep-stat"><span class="val" style="color:var(--muted)">—</span><span class="lbl">阅读</span></div>
-            <div class="ep-stat"><span class="val">1</span><span class="lbl">点赞</span></div>
-            <div class="ep-stat"><span class="val">0</span><span class="lbl">评论</span></div>
-          </div>
-        </div>
-        <div class="col-ep">
-          <div class="col-ep-date">3月28日</div>
-          <div class="col-ep-title">第1期·有人叫他老司机，有人叫他兄弟</div>
-          <div class="col-ep-stats">
-            <div class="ep-stat"><span class="val" style="color:var(--muted)">—</span><span class="lbl">阅读</span></div>
-            <div class="ep-stat"><span class="val">0</span><span class="lbl">点赞</span></div>
-            <div class="ep-stat"><span class="val">0</span><span class="lbl">评论</span></div>
-          </div>
-        </div>
-        <div class="col-empty" style="padding:.75rem 1.25rem; text-align:left; font-size:.7rem;">
-          ⚠️ 目前仅在贴吧发布，建议同步至 TAPTAP / QQ频道 / 微信圈。
-        </div>
-      </div>
-    </div>
-
-    <!-- 荒岛玄学 -->
-    <div class="col-card">
-      <div class="col-card-head">
-        <div class="col-name">🧪 荒岛玄学</div>
-        <div class="col-status new">本周三首发</div>
-      </div>
-      <div class="col-episodes">
-        <div class="col-empty">
-          <div style="font-size:1.5rem; margin-bottom:.5rem;">📭</div>
-          <div>本栏目将于本周三首发</div>
-          <div style="margin-top:.35rem; color:var(--orange-lt);">发布后数据将在下次刷新时同步</div>
-          <div style="margin-top:.75rem">
-            <span class="pending-badge">PENDING FIRST ISSUE</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <div class="chart-card">
+    <div class="cc-title">各渠道阅读量</div>
+    <div class="cbox" id="c-cross-read"></div>
   </div>
+</div>
 
-  <!-- 全部内容帖数据表 -->
-  <div class="section-header" style="margin-top:.5rem">
-    <div>
-      <span class="section-title">全部发布内容 · 效果明细</span>
-      <span class="section-sub">社区活动 + 三大栏目</span>
-    </div>
-  </div>
+<div class="sec-head" style="margin-top:.5rem">
+  <div><span class="sec-title">渠道明细</span></div>
+</div>
+<div style="overflow-x:auto">
+<table class="dtable" id="t-cross"></table>
+</div>
 
-  <div style="overflow-x:auto">
-    <table class="data-table" id="all-table"></table>
+</section>
+
+<!-- ===== PANEL 03: 单渠道活动排行 ===== -->
+<section class="panel" id="panel-channel">
+
+<div class="sec-head">
+  <div><span class="sec-title">单渠道 · 活动效果排行</span><span class="sec-sub">选择渠道，查看该渠道各活动表现</span></div>
+</div>
+
+<div class="ch-sel-row" id="ch-btns"></div>
+
+<div class="chart-grid" style="grid-template-columns:1fr">
+  <div class="chart-card">
+    <div class="cc-title" id="ch-chart-title">渠道活动评论数排行</div>
+    <div class="cbox" style="height:320px" id="c-channel-bar"></div>
   </div>
+</div>
+
+<div class="sec-head" style="margin-top:.5rem">
+  <div><span class="sec-title">该渠道活动明细</span></div>
+</div>
+<div style="overflow-x:auto">
+<table class="dtable" id="t-channel"></table>
+</div>
 
 </section>
 
 </main>
 
 <footer>
-  <strong style="color:var(--orange-lt); font-family:'Oswald',sans-serif; letter-spacing:.1em">INFILTRATOR COMMAND</strong>
-  &nbsp;·&nbsp; 失控进化社区运营数据面板 &nbsp;·&nbsp;
-  数据来源：社区内容管理总表 &nbsp;·&nbsp;
-  每周一自动刷新 &nbsp;·&nbsp;
-  <span>Powered by OpenClaw</span>
+  <strong style="color:var(--orange2);font-family:'Oswald',sans-serif;letter-spacing:.1em">INFILTRATOR CMD</strong>
+  &nbsp;·&nbsp; 失控进化社区活动数据面板 &nbsp;·&nbsp; 来源：社区内容管理总表·活动信息收集
+  &nbsp;·&nbsp; <span>Powered by OpenClaw</span>
 </footer>
 
 <script>
-// ── 数据 ──────────────────────────────────────────────
-const ACT_CH = {
-  'TAPTAP':   { read: 192544, like: 4897, comment: 12897, count: 20 },
-  '微信圈':   { read: 321804, like: 1075, comment: 2185,  count: 6  },
-  'QQ频道':   { read: 273953, like: 1618, comment: 3939,  count: 14 },
-  'wegame':   { read: 4178,   like: 23,   comment: 121,   count: 3  },
-  '好游快爆': { read: 266,    like: 15,   comment: 10,    count: 1  },
-  '4399':     { read: 627,    like: 28,   comment: 16,    count: 2  },
-  '小程序':   { read: 0,      like: 564,  comment: 611,   count: 17 },
-};
-
-const SOCIAL = {
-  '抖音': 239000, 'B站': 120000, '快手': 1012000,
-  '公众号': 201724, '小红书': 11000, '视频号': 16877,
-};
-
-const FENGXUN_DATES = ['4月21日','4月20日','4月19日','4月18日','4月17日','4月16日','4月15日','4月14日','4月13日','4月12日','4月11日','4月10日','4月9日','4月8日','3月31日','3月30日','3月28日','3月25日','3月20日','3月15日','3月10日','3月5日','3月1日','2月28日','2月25日','2月20日','2月15日','2月10日','2月5日','2月1日'];
-const FENGXUN_VALS = [82.07,81.74,77.06,87.03,82.79,83.09,84.07,86.48,83.38,86.03,90,89.95,93.38,94.07,84.89,87.59,83.33,80.69,82.44,78.26,85.26,90.57,86.85,85.71,86.32,82.59,81.54,82.22,88.57,80.4];
-
-const TREND_DATA = {
-  dates: ['9月','10月','11月','12月','1月','2月','3月','4月'],
-  qq:      [54, 47, 41, 34, 27, 22, 16, 8],
-  wx:      [96, 88, 79, 70, 62, 52, 42, 34],
-  taptap:  [82, 75, 68, 62, 55, 48, 40, 35],
-  good:    [18, 16, 14, 13, 12, 11, 10, 9],
-};
-
-const ALL_DATA = [
-  { date:'4月10日', cat:'小岛每周速递', title:'第3期·小黄福利', ch:'贴吧', read:29, like:1, comment:0 },
-  { date:'4月11日', cat:'今天你失控了', title:'第3期·从第一次登岛', ch:'贴吧', read:66, like:1, comment:1 },
-  { date:'4月4日',  cat:'今天你失控了', title:'第2期·老玩家本能生存', ch:'贴吧', read:null, like:1, comment:0 },
-  { date:'4月3日',  cat:'小岛每周速递', title:'第2期·3200万预约', ch:'贴吧', read:null, like:1, comment:0 },
-  { date:'4月15日', cat:'社区活动', title:'有建议！这里提！赢测试资格', ch:'TAPTAP', read:24780, like:584, comment:4835 },
-  { date:'4月18日', cat:'社区活动', title:'小黄听你说【送企鹅币】', ch:'TAPTAP', read:15000, like:300, comment:1940 },
-  { date:'4月19日', cat:'社区活动', title:'老玩家集结！晒图赢Q币', ch:'TAPTAP', read:8000, like:200, comment:731 },
-  { date:'6月16日', cat:'社区活动', title:'双端互通守家接力', ch:'QQ频道', read:7847, like:31, comment:210 },
-  { date:'8月8日',  cat:'社区活动', title:'八月招募-盖楼', ch:'QQ频道', read:45754, like:253, comment:598 },
-  { date:'9月12日', cat:'社区活动', title:'晒预约截图赢百份资格', ch:'QQ频道', read:46000, like:216, comment:329 },
-  { date:'10月21日',cat:'社区活动', title:'资格大放送-盖楼', ch:'QQ频道', read:44935, like:144, comment:590 },
-  { date:'10月31日',cat:'社区活动', title:'花式建造征集', ch:'微信圈', read:40000, like:108, comment:13 },
-  { date:'9月28日', cat:'社区活动', title:'攻略征集-京东卡', ch:'微信圈', read:1000000, like:2207, comment:363 },
+// ─── 数据 ───────────────────────────────────────────
+const ACTIVITIES = [
+  {
+    id: 'atk', date: '9月28日-10月30日',
+    activity: '官方社区「登岛测试」攻略有奖征集',
+    reward: '京东卡/Q币',
+    channels: {
+      'QQ频道':   { comment: 6148, read: 406257 },
+      '微信圈':   { comment: 3110, read: 204607 },
+      '好游快爆': { comment: 2527, read: 47254  },
+      'TAPTAP':  { comment: 2514, read: 8528   },
+      '4399':    { comment: 522,  read: 157    },
+      '小程序':   { comment: 430,  read: 26     },
+    }
+  },
+  {
+    id: 'live', date: '1月23-1月24日',
+    activity: '【有奖互动】前瞻直播提问赢京东卡',
+    reward: '京东卡',
+    channels: {
+      'OPPO':    { comment: 3147, read: 0    },
+      '小程序':   { comment: 2195, read: 7    },
+      'QQ频道':   { comment: 1712, read: 79792},
+      '好游快爆': { comment: 1575, read: 20750},
+      '微信圈':   { comment: 924,  read: 0    },
+      'TAPTAP':  { comment: 892,  read: 0    },
+      '4399':    { comment: 624,  read: 111  },
+      '华为':     { comment: 113,  read: 0    },
+    }
+  },
+  {
+    id: 'mj', date: '6月30日-7月9日',
+    activity: '【互动有奖】线下面基企划·Rust老兵集结',
+    reward: '周边礼品',
+    channels: {
+      'QQ频道': { comment: 183, read: 6293 },
+    }
+  },
+  {
+    id: 'survey', date: '9月1日-9月12日',
+    activity: '【有奖调研】您的反馈超重要！',
+    reward: '京东卡',
+    channels: {
+      '微信圈':  { comment: 158, read: 0 },
+      'QQ频道':  { comment: 19,  read: 0 },
+    }
+  },
+  {
+    id: 'pre200', date: '4月9日-4月13日',
+    activity: '【资格活动】全网预约200w达成',
+    reward: '测试资格*30',
+    channels: {
+      '微信圈':  { comment: 138, read: 0 },
+      'QQ频道':  { comment: 32,  read: 0 },
+    }
+  },
+  {
+    id: 'wg', date: '7月16日-7月31日',
+    activity: '有奖活动·评论区互动留言赢周边',
+    reward: '精美周边',
+    channels: {
+      'WeGame': { comment: 1, read: 0 },
+    }
+  },
 ];
 
-// ── 工具函数 ──────────────────────────────────────────
-const DARK='#1E2020', ORANGE='#C43F24', ORANGE_LT='#FF7132', CREAM='#E3DBD2', MUTED='#9A8F85';
-const COLORS = ['#FF7132','#C43F24','#E3DBD2','#882818','#FF9965','#B87156','#D4A090'];
+// ─── 配色 ───────────────────────────────────────────
+const DARK='#1C1C1C', ORANGE='#C43F24', OL='#FF7132', CREAM='#E3DBD2', MUTED='#9A8F85';
+const CH_COLORS = {
+  'QQ频道':'#FF7132','微信圈':'#E3DBD2','TAPTAP':'#C43F24','好游快爆':'#D4855A',
+  '4399':'#B87156','小程序':'#FF9965','OPPO':'#9A8F85','WeGame':'#7A6F67',
+  '华为':'#c0a090','wegame':'#7A6F67',
+};
+const CH_ORDER = ['QQ频道','微信圈','TAPTAP','好游快爆','4399','小程序','OPPO','华为','WeGame'];
 
-function initChart(id) {
-  const el = document.getElementById(id);
+function chColor(ch){ return CH_COLORS[ch] || '#888'; }
+
+function eInit(id){
+  const el=document.getElementById(id);
   if(!el) return null;
-  const c = echarts.getInstanceByDom(el) || echarts.init(el, null, { renderer:'svg' });
-  return c;
+  return echarts.getInstanceByDom(el)||echarts.init(el,null,{renderer:'svg'});
 }
 
-const BASE_OPT = {
+const BASE={
   backgroundColor:'transparent',
-  grid:{ top:30, right:20, bottom:60, left:60, containLabel:true },
-  tooltip:{ trigger:'axis', backgroundColor:'#2A2928', borderColor:ORANGE, borderWidth:1,
-            textStyle:{ color:CREAM, fontSize:12 } },
-  legend:{ textStyle:{ color:MUTED }, top:5 },
+  grid:{top:30,right:20,bottom:55,left:55,containLabel:true},
+  tooltip:{trigger:'axis',backgroundColor:'#2A2928',borderColor:ORANGE,borderWidth:1,
+    textStyle:{color:CREAM,fontSize:12}},
 };
 
-// ── Panel 01 Charts ───────────────────────────────────
-function renderActivityCharts() {
-  const chs = Object.keys(ACT_CH);
-  const reads = chs.map(c => ACT_CH[c].read);
-  const comms = chs.map(c => ACT_CH[c].comment);
-  const ratios = chs.map(c => ACT_CH[c].read > 0
-    ? +((ACT_CH[c].comment / ACT_CH[c].read) * 100).toFixed(2) : 0);
+// ─── Panel 01 ─────────────────────────────────────
+function renderOverview(){
+  const acts = ACTIVITIES;
 
-  // 阅读量
-  initChart('chart-read').setOption({ ...BASE_OPT,
-    xAxis:{ type:'category', data:chs, axisLabel:{ color:MUTED, rotate:20 }, axisLine:{ lineStyle:{ color:ORANGE+'44' } } },
-    yAxis:{ type:'value', axisLabel:{ color:MUTED, formatter: v => v >= 10000 ? (v/10000).toFixed(0)+'万' : v },
-            splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    series:[{ type:'bar', data:reads, barMaxWidth:48,
-              itemStyle:{ color: p => p.value >= 200000 ? ORANGE_LT : ORANGE },
-              label:{ show:true, position:'top', color:MUTED, fontSize:10,
-                      formatter: p => p.value >= 10000 ? (p.value/10000).toFixed(1)+'万' : p.value } }],
+  // 柱状图
+  const names = acts.map(a=>a.activity.slice(0,14)+'…');
+  const vals = acts.map(a=>Object.values(a.channels).reduce((s,d)=>s+d.comment,0));
+  eInit('c-overview-bar').setOption({...BASE,
+    grid:{...BASE.grid,bottom:80},
+    xAxis:{type:'category',data:names,axisLabel:{color:MUTED,rotate:15,fontSize:11},
+      axisLine:{lineStyle:{color:ORANGE+'44'}}},
+    yAxis:{type:'value',axisLabel:{color:MUTED},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
+    series:[{type:'bar',data:vals,barMaxWidth:60,
+      itemStyle:{color:p=>p.value>5000?OL:ORANGE},
+      label:{show:true,position:'top',color:MUTED,fontSize:11,
+        formatter:p=>p.value>=10000?(p.value/10000).toFixed(1)+'万':p.value}}],
   });
 
-  // 评论数
-  initChart('chart-comment').setOption({ ...BASE_OPT,
-    xAxis:{ type:'category', data:chs, axisLabel:{ color:MUTED, rotate:20 }, axisLine:{ lineStyle:{ color:ORANGE+'44' } } },
-    yAxis:{ type:'value', axisLabel:{ color:MUTED }, splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    series:[{ type:'bar', data:comms, barMaxWidth:48,
-              itemStyle:{ color: p => p.value >= 5000 ? ORANGE_LT : ORANGE },
-              label:{ show:true, position:'top', color:MUTED, fontSize:10 } }],
+  // 饼图
+  const pieData = acts.filter(a=>Object.values(a.channels).reduce((s,d)=>s+d.comment,0)>0)
+    .map(a=>({name:a.activity.slice(0,14)+'…',
+      value:Object.values(a.channels).reduce((s,d)=>s+d.comment,0)}));
+  eInit('c-overview-pie').setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'item',backgroundColor:'#2A2928',borderColor:ORANGE,borderWidth:1,
+      textStyle:{color:CREAM},formatter:'{b}<br/>评论: {c} ({d}%)'},
+    legend:{orient:'vertical',right:10,top:'middle',textStyle:{color:MUTED,fontSize:11}},
+    series:[{type:'pie',radius:['38%','65%'],center:['38%','50%'],
+      data:pieData,
+      itemStyle:{borderColor:DARK,borderWidth:2},
+      label:{show:false},
+      emphasis:{itemStyle:{shadowBlur:10,shadowColor:'rgba(196,63,36,.4)'}},
+      color:[OL,ORANGE,'#D4855A','#B87156','#9A8F85','#7A6F67']}],
   });
 
-  // 互动效率（评论/阅读 %）
-  initChart('chart-ratio').setOption({ ...BASE_OPT,
-    xAxis:{ type:'category', data:chs, axisLabel:{ color:MUTED, rotate:20 }, axisLine:{ lineStyle:{ color:ORANGE+'44' } } },
-    yAxis:{ type:'value', axisLabel:{ color:MUTED, formatter: v=>v+'%' }, splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    series:[{ type:'bar', data:ratios, barMaxWidth:48,
-              itemStyle:{ color: ORANGE_LT },
-              label:{ show:true, position:'top', color:MUTED, fontSize:10, formatter: p => p.value+'%' } }],
+  // 渠道汇总柱
+  const chSum = {};
+  for(const a of acts)
+    for(const [ch,d] of Object.entries(a.channels))
+      chSum[ch]=(chSum[ch]||0)+d.comment;
+  const chSorted = Object.entries(chSum).sort((a,b)=>b[1]-a[1]);
+  eInit('c-overview-ch').setOption({...BASE,
+    xAxis:{type:'category',data:chSorted.map(x=>x[0]),
+      axisLabel:{color:MUTED,rotate:20},axisLine:{lineStyle:{color:ORANGE+'44'}}},
+    yAxis:{type:'value',axisLabel:{color:MUTED},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
+    series:[{type:'bar',data:chSorted.map(x=>x[1]),barMaxWidth:50,
+      itemStyle:{color:p=>({color:chColor(chSorted[p.dataIndex][0])})},
+      label:{show:true,position:'top',color:MUTED,fontSize:10}}],
   });
 
-  // 散点：帖数 vs 均评论
-  const scatterData = chs.map(c => {
-    const d = ACT_CH[c];
-    return [d.count, d.count > 0 ? Math.round(d.comment/d.count) : 0, c];
-  });
-  initChart('chart-scatter').setOption({ ...BASE_OPT,
-    grid:{ ...BASE_OPT.grid, left:50 },
-    xAxis:{ type:'value', name:'帖数', nameTextStyle:{color:MUTED},
-            axisLabel:{color:MUTED}, splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    yAxis:{ type:'value', name:'均评论', nameTextStyle:{color:MUTED},
-            axisLabel:{color:MUTED}, splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    series:[{ type:'scatter', data:scatterData.map(d=>[d[0],d[1]]),
-              symbolSize:14, itemStyle:{ color:ORANGE_LT, borderColor:ORANGE, borderWidth:1 },
-              label:{ show:true, formatter: p => scatterData[p.dataIndex][2],
-                      position:'top', color:CREAM, fontSize:11 } }],
-  });
-}
-
-// ── Panel 02 Charts ───────────────────────────────────
-function renderHealthCharts() {
-  // 粉丝趋势
-  initChart('chart-trend').setOption({ ...BASE_OPT,
-    legend:{ data:['QQ频道','微信圈','TapTap','好游快爆'], textStyle:{ color:MUTED }, top:5 },
-    xAxis:{ type:'category', data:TREND_DATA.dates, axisLabel:{ color:MUTED }, axisLine:{ lineStyle:{ color:ORANGE+'44' } } },
-    yAxis:{ type:'value', axisLabel:{ color:MUTED, formatter: v=>v+'万' }, splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    series:[
-      { name:'QQ频道',  type:'line', data:TREND_DATA.qq,     smooth:true, lineStyle:{ color:ORANGE_LT, width:2 }, symbol:'circle', symbolSize:6, itemStyle:{color:ORANGE_LT} },
-      { name:'微信圈',  type:'line', data:TREND_DATA.wx,     smooth:true, lineStyle:{ color:'#E3DBD2', width:2 }, symbol:'circle', symbolSize:6, itemStyle:{color:'#E3DBD2'} },
-      { name:'TapTap',  type:'line', data:TREND_DATA.taptap, smooth:true, lineStyle:{ color:'#882818', width:2, type:'dashed' }, symbol:'circle', symbolSize:6, itemStyle:{color:'#882818'} },
-      { name:'好游快爆',type:'line', data:TREND_DATA.good,   smooth:true, lineStyle:{ color:MUTED, width:1.5 }, symbol:'circle', symbolSize:5, itemStyle:{color:MUTED} },
-    ],
-  });
-
-  // 社媒粉丝
-  const sc = SOCIAL;
-  initChart('chart-social').setOption({ ...BASE_OPT,
-    xAxis:{ type:'category', data:Object.keys(sc), axisLabel:{ color:MUTED }, axisLine:{ lineStyle:{ color:ORANGE+'44' } } },
-    yAxis:{ type:'value', axisLabel:{ color:MUTED, formatter: v=>v>=10000?(v/10000).toFixed(0)+'万':v },
-            splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    series:[{ type:'bar', data:Object.values(sc), barMaxWidth:40,
-              itemStyle:{ color: new echarts.graphic.LinearGradient(0,0,0,1,[
-                {offset:0, color:ORANGE_LT},{offset:1, color:ORANGE}]) },
-              label:{ show:true, position:'top', color:MUTED, fontSize:10,
-                      formatter: p => p.value>=10000?(p.value/10000).toFixed(0)+'万':p.value } }],
-  });
-
-  // 风讯指数
-  initChart('chart-fengxun').setOption({ ...BASE_OPT,
-    grid:{ ...BASE_OPT.grid, bottom:40 },
-    xAxis:{ type:'category', data:FENGXUN_DATES.slice(0,20).reverse(),
-            axisLabel:{ color:MUTED, rotate:30, fontSize:9 }, axisLine:{ lineStyle:{ color:ORANGE+'44' } } },
-    yAxis:{ type:'value', min:70, max:100, axisLabel:{ color:MUTED },
-            splitLine:{ lineStyle:{ color:'rgba(255,255,255,.06)' } } },
-    visualMap:{ show:false, min:70, max:100,
-                inRange:{ color:[ORANGE, ORANGE_LT, '#ffd0a0'] } },
-    series:[{ type:'line', data:FENGXUN_VALS.slice(0,20).reverse(),
-              smooth:true, lineStyle:{ width:2 }, symbol:'circle', symbolSize:5,
-              areaStyle:{ opacity:.15, color:ORANGE_LT },
-              markLine:{ silent:true, lineStyle:{ color:MUTED, type:'dashed' },
-                data:[{ yAxis:80, label:{ formatter:'健康线 80', color:MUTED, fontSize:10 } }] } }],
-  });
-}
-
-// ── Panel 03 Table ────────────────────────────────────
-function renderTable() {
-  const tbody = ALL_DATA.map(r => {
-    const catClass = r.cat === '社区活动' ? 'tag-activity' : 'tag-column';
+  // 明细表
+  const rows = acts.map(a=>{
+    const total=Object.values(a.channels).reduce((s,d)=>s+d.comment,0);
+    const best=Object.entries(a.channels).sort((a,b)=>b[1].comment-a[1].comment)[0];
     return `<tr>
-      <td>${r.date}</td>
-      <td><span class="tag ${catClass}">${r.cat}</span></td>
-      <td style="max-width:260px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${r.title}</td>
-      <td>${r.ch}</td>
-      <td class="${r.read ? 'num' : 'null'}">${r.read != null ? r.read.toLocaleString() : '—'}</td>
-      <td class="${r.like ? 'num' : 'null'}">${r.like != null ? r.like : '—'}</td>
-      <td class="${r.comment ? 'num' : 'null'}">${r.comment != null ? r.comment : '—'}</td>
+      <td>${a.date}</td>
+      <td>${a.activity.slice(0,28)}${a.activity.length>28?'…':''}</td>
+      <td>${a.reward}</td>
+      <td class="num rank1">${total.toLocaleString()}</td>
+      <td>${best?best[0]:'—'}</td>
+      <td class="num">${best?best[1].comment.toLocaleString():'—'}</td>
+      <td>${Object.keys(a.channels).length}</td>
     </tr>`;
   }).join('');
-  document.getElementById('all-table').innerHTML =
-    `<thead><tr>
-      <th>日期</th><th>分类</th><th>标题</th><th>渠道</th>
-      <th>阅读</th><th>点赞</th><th>评论</th>
-    </tr></thead><tbody>${tbody}</tbody>`;
+  document.getElementById('t-overview').innerHTML=
+    `<thead><tr><th>活动日期</th><th>活动名称</th><th>奖励</th><th>总评论</th><th>最强渠道</th><th>最强渠道评论</th><th>渠道数</th></tr></thead><tbody>${rows}</tbody>`;
 }
 
-// ── Tab 切换 ──────────────────────────────────────────
-function switchTab(name, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+// ─── Panel 02 ─────────────────────────────────────
+function initCrossSel(){
+  const sel=document.getElementById('act-sel');
+  for(const a of ACTIVITIES){
+    const opt=document.createElement('option');
+    opt.value=a.id; opt.textContent=a.activity;
+    sel.appendChild(opt);
+  }
+}
+
+function renderCross(){
+  const id=document.getElementById('act-sel').value;
+  const act=ACTIVITIES.find(a=>a.id===id);
+  if(!act) return;
+
+  const chs=Object.keys(act.channels);
+  const comments=chs.map(ch=>act.channels[ch].comment);
+  const reads=chs.map(ch=>act.channels[ch].read);
+
+  // 评论柱
+  eInit('c-cross-bar').setOption({...BASE,
+    xAxis:{type:'category',data:chs,axisLabel:{color:MUTED,rotate:20},axisLine:{lineStyle:{color:ORANGE+'44'}}},
+    yAxis:{type:'value',axisLabel:{color:MUTED},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
+    series:[{type:'bar',data:comments,barMaxWidth:55,
+      itemStyle:{color:p=>({color:chColor(chs[p.dataIndex])})},
+      label:{show:true,position:'top',color:MUTED,fontSize:11}}],
+  });
+
+  // 阅读柱
+  const hasRead=reads.some(r=>r>0);
+  if(hasRead){
+    eInit('c-cross-read').setOption({...BASE,
+      xAxis:{type:'category',data:chs,axisLabel:{color:MUTED,rotate:20},axisLine:{lineStyle:{color:ORANGE+'44'}}},
+      yAxis:{type:'value',axisLabel:{color:MUTED,formatter:v=>v>=10000?(v/10000).toFixed(0)+'万':v},
+        splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
+      series:[{type:'bar',data:reads,barMaxWidth:55,
+        itemStyle:{color:p=>({color:chColor(chs[p.dataIndex])})},
+        label:{show:true,position:'top',color:MUTED,fontSize:11,
+          formatter:p=>p.value>=10000?(p.value/10000).toFixed(1)+'万':p.value}}],
+    });
+  } else {
+    const c=eInit('c-cross-read');
+    c.clear();
+    c.setOption({graphic:[{type:'text',left:'center',top:'middle',style:{text:'暂无阅读量数据',fill:MUTED,fontSize:14}}]});
+  }
+
+  // 表格
+  const sorted=Object.entries(act.channels).sort((a,b)=>b[1].comment-a[1].comment);
+  const total=sorted.reduce((s,[,d])=>s+d.comment,0);
+  const rows=sorted.map(([ch,d],i)=>{
+    const pct=total>0?((d.comment/total)*100).toFixed(1)+'%':'—';
+    const cls=i===0?'rank1':i===1?'rank2':'rank3';
+    const readTxt=d.read>0?d.read.toLocaleString():'<span class="null">—</span>';
+    return `<tr><td class="${cls}">${i+1}</td><td>${ch}</td>
+      <td class="num ${cls}">${d.comment.toLocaleString()}</td>
+      <td class="num">${pct}</td><td>${readTxt}</td></tr>`;
+  }).join('');
+  document.getElementById('t-cross').innerHTML=
+    `<thead><tr><th>排名</th><th>渠道</th><th>评论/参与数</th><th>占比</th><th>阅读量</th></tr></thead><tbody>${rows}</tbody>`;
+}
+
+// ─── Panel 03 ─────────────────────────────────────
+let curCh = null;
+
+function initChannelBtns(){
+  // 收集所有有数据的渠道
+  const chSet=new Set();
+  for(const a of ACTIVITIES) for(const ch of Object.keys(a.channels)) chSet.add(ch);
+  const chs=[...CH_ORDER.filter(c=>chSet.has(c)), ...[...chSet].filter(c=>!CH_ORDER.includes(c))];
+  
+  const container=document.getElementById('ch-btns');
+  for(const ch of chs){
+    const btn=document.createElement('button');
+    btn.className='ch-btn';
+    btn.textContent=ch;
+    btn.onclick=()=>{ curCh=ch; renderChannel(ch); 
+      document.querySelectorAll('.ch-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); };
+    container.appendChild(btn);
+  }
+  // 默认选第一个
+  if(chs.length){ curCh=chs[0]; container.firstChild.classList.add('active'); }
+}
+
+function renderChannel(ch){
+  document.getElementById('ch-chart-title').textContent=`「${ch}」渠道 · 各活动评论数排行`;
+  
+  // 找该渠道参与的活动
+  const data=ACTIVITIES
+    .filter(a=>a.channels[ch])
+    .map(a=>({act:a.activity, comment:a.channels[ch].comment, read:a.channels[ch].read, date:a.date}))
+    .sort((a,b)=>b.comment-a.comment);
+
+  if(!data.length){
+    eInit('c-channel-bar').clear();
+    document.getElementById('t-channel').innerHTML='<tbody><tr><td colspan="4" class="empty">该渠道暂无活动数据</td></tr></tbody>';
+    return;
+  }
+
+  const names=data.map(d=>d.act.slice(0,14)+'…');
+  eInit('c-channel-bar').setOption({...BASE,
+    grid:{...BASE.grid,bottom:90},
+    xAxis:{type:'category',data:names,axisLabel:{color:MUTED,rotate:15,fontSize:11},axisLine:{lineStyle:{color:ORANGE+'44'}}},
+    yAxis:{type:'value',axisLabel:{color:MUTED},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
+    series:[{type:'bar',data:data.map(d=>d.comment),barMaxWidth:55,
+      itemStyle:{color:p=>p.value===Math.max(...data.map(d=>d.comment))?OL:ORANGE},
+      label:{show:true,position:'top',color:MUTED,fontSize:11}}],
+  });
+
+  const rows=data.map((d,i)=>{
+    const cls=i===0?'rank1':i===1?'rank2':'rank3';
+    const readTxt=d.read>0?d.read.toLocaleString():'<span class="null">—</span>';
+    return `<tr><td class="${cls}">${i+1}</td><td>${d.date}</td>
+      <td style="max-width:300px">${d.act}</td>
+      <td class="num ${cls}">${d.comment.toLocaleString()}</td>
+      <td>${readTxt}</td></tr>`;
+  }).join('');
+  document.getElementById('t-channel').innerHTML=
+    `<thead><tr><th>排名</th><th>时间</th><th>活动名称</th><th>评论/参与数</th><th>阅读量</th></tr></thead><tbody>${rows}</tbody>`;
+}
+
+// ─── TAB ──────────────────────────────────────────
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('panel-'+name).classList.add('active');
-  requestAnimationFrame(() => {
-    if(name==='activity') renderActivityCharts();
-    if(name==='health')   renderHealthCharts();
-    if(name==='columns')  renderTable();
+  requestAnimationFrame(()=>{
+    if(name==='overview') renderOverview();
+    if(name==='cross')    renderCross();
+    if(name==='channel')  { if(curCh) renderChannel(curCh); }
   });
 }
 
-// ── 初始化 ────────────────────────────────────────────
-document.getElementById('updateTime').textContent = new Date().toLocaleDateString('zh-CN',{month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
-renderActivityCharts();
+// ─── INIT ─────────────────────────────────────────
+document.getElementById('ts').textContent=new Date().toLocaleDateString('zh-CN',
+  {month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+
+initCrossSel();
+initChannelBtns();
+renderOverview();
+if(curCh) renderChannel(curCh);
 </script>
 </body>
 </html>
