@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- Background -->
+  <rect width="80" height="80" fill="#3D1D1D"/>
+  <!-- Outer frame - irregular rust border -->
+  <path d="M 4 4 L 76 4 L 76.5 76 L 3.5 75.5 Z" fill="none" stroke="#882818" stroke-width="2"/>
+  <!-- Corner rivets -->
+  <circle cx="10" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="10" cy="70" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="70" r="3" fill="#E3DBD2"/>
+  <!-- Document shadow layer -->
+  <path d="M 27 21 L 55 21 L 59 25 L 59 61 L 27 61 Z" fill="#882818"/>
+  <!-- Document main body -->
+  <path d="M 24 18 L 52 18 L 56 22 L 56 58 L 24 58 Z" fill="#C43F24"/>
+  <!-- Curled corner fold -->
+  <polygon points="52,18 56,22 52,22" fill="#882818"/>
+  <!-- Dark header bar -->
+  <rect x="24" y="18" width="28" height="8" fill="#882818"/>
+  <!-- Document lines (paper texture) -->
+  <line x1="28" y1="30" x2="52" y2="30" stroke="#882818" stroke-width="1.5"/>
+  <line x1="28" y1="34" x2="52" y2="34" stroke="#882818" stroke-width="1.5"/>
+  <line x1="28" y1="38" x2="46" y2="38" stroke="#882818" stroke-width="1.5"/>
+  <line x1="28" y1="42" x2="52" y2="42" stroke="#882818" stroke-width="1"/>
+  <line x1="28" y1="46" x2="48" y2="46" stroke="#882818" stroke-width="1"/>
+  <line x1="28" y1="50" x2="52" y2="50" stroke="#882818" stroke-width="1"/>
+  <!-- Pushpin - circle head -->
+  <circle cx="50" cy="24" r="5" fill="#E3DBD2"/>
+  <circle cx="50" cy="24" r="2" fill="#882818"/>
+  <!-- Pin shaft extending down -->
+  <line x1="50" y1="29" x2="50" y2="35" stroke="#E3DBD2" stroke-width="2" stroke-linecap="round"/>
+</svg>

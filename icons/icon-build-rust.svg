@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- Background -->
+  <rect width="80" height="80" fill="#3D1D1D"/>
+  <!-- Outer frame -->
+  <path d="M 4 4 L 76 4 L 76.5 76 L 3.5 75.5 Z" fill="none" stroke="#882818" stroke-width="2"/>
+  <!-- Corner rivets -->
+  <circle cx="10" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="10" cy="70" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="70" r="3" fill="#E3DBD2"/>
+  <!-- Hammer head shadow -->
+  <rect x="20" y="19" width="20" height="11" rx="2" fill="#882818"/>
+  <!-- Hammer head main -->
+  <rect x="18" y="17" width="20" height="11" rx="2" fill="#C43F24"/>
+  <!-- Hammer head face detail -->
+  <rect x="18" y="17" width="5" height="11" rx="1" fill="#882818"/>
+  <!-- Hammer handle shadow -->
+  <rect x="33" y="27" width="7" height="26" rx="2" fill="#882818" transform="rotate(-30, 36.5, 40)"/>
+  <!-- Hammer handle main -->
+  <rect x="31" y="25" width="7" height="26" rx="2" fill="#C43F24" transform="rotate(-30, 34.5, 38)"/>
+  <!-- Blueprint frame (background element) -->
+  <rect x="44" y="28" width="24" height="24" rx="1" fill="none" stroke="#C43F24" stroke-width="1.5" opacity="0.7"/>
+  <!-- Blueprint grid lines -->
+  <line x1="52" y1="28" x2="52" y2="52" stroke="#C43F24" stroke-width="0.8" opacity="0.4"/>
+  <line x1="60" y1="28" x2="60" y2="52" stroke="#C43F24" stroke-width="0.8" opacity="0.4"/>
+  <line x1="44" y1="36" x2="68" y2="36" stroke="#C43F24" stroke-width="0.8" opacity="0.4"/>
+  <line x1="44" y1="44" x2="68" y2="44" stroke="#C43F24" stroke-width="0.8" opacity="0.4"/>
+  <!-- Structural element on blueprint -->
+  <rect x="48" y="32" width="8" height="8" fill="#882818"/>
+  <!-- Nail/bolt on blueprint -->
+  <circle cx="62" cy="48" r="3" fill="#C43F24"/>
+  <circle cx="62" cy="48" r="1.2" fill="#882818"/>
+  <!-- Warning stripe panel -->
+  <rect x="4" y="62" width="72" height="4" fill="#882818" opacity="0.4"/>
+  <rect x="4" y="62" width="8" height="4" fill="#C43F24" opacity="0.3"/>
+  <rect x="20" y="62" width="8" height="4" fill="#C43F24" opacity="0.3"/>
+  <rect x="36" y="62" width="8" height="4" fill="#C43F24" opacity="0.3"/>
+  <rect x="52" y="62" width="8" height="4" fill="#C43F24" opacity="0.3"/>
+  <rect x="68" y="62" width="8" height="4" fill="#C43F24" opacity="0.3"/>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <filter id="glow-resource">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="80" height="80" fill="#1C1C1C"/>
+  <!-- Scanlines -->
+  <line x1="0" y1="4" x2="80" y2="4" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="8" x2="80" y2="8" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="12" x2="80" y2="12" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="16" x2="80" y2="16" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="20" x2="80" y2="20" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="24" x2="80" y2="24" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="28" x2="80" y2="28" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="32" x2="80" y2="32" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="36" x2="80" y2="36" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="40" x2="80" y2="40" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="44" x2="80" y2="44" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="48" x2="80" y2="48" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="52" x2="80" y2="52" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="56" x2="80" y2="56" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="60" x2="80" y2="60" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="64" x2="80" y2="64" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="68" x2="80" y2="68" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="72" x2="80" y2="72" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <!-- Outer frame -->
+  <rect x="3" y="3" width="74" height="74" fill="none" stroke="#FF7132" stroke-width="1" opacity="0.5"/>
+  <!-- Barrel/drum body -->
+  <rect x="26" y="22" width="28" height="36" rx="4" fill="none" stroke="#FF7132" stroke-width="2" filter="url(#glow-resource)"/>
+  <!-- Barrel lid top -->
+  <ellipse cx="40" cy="22" rx="14" ry="4" fill="#FF7132" filter="url(#glow-resource)"/>
+  <!-- Barrel lid bottom -->
+  <ellipse cx="40" cy="58" rx="14" ry="4" fill="#FF7132" filter="url(#glow-resource)"/>
+  <!-- Barrel hoops -->
+  <line x1="26" y1="34" x2="54" y2="34" stroke="#FF7132" stroke-width="2" filter="url(#glow-resource)"/>
+  <line x1="26" y1="46" x2="54" y2="46" stroke="#FF7132" stroke-width="2" filter="url(#glow-resource)"/>
+  <!-- Gear fragment top-right -->
+  <g transform="translate(52,20) rotate(20)" filter="url(#glow-resource)">
+    <circle cx="0" cy="0" r="6" fill="none" stroke="#FF7132" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="3" fill="#FF7132"/>
+    <rect x="-1.5" y="-9" width="3" height="5" rx="1" fill="#FF7132"/>
+    <rect x="-1.5" y="4" width="3" height="5" rx="1" fill="#FF7132"/>
+    <rect x="-9" y="-1.5" width="5" height="3" rx="1" fill="#FF7132"/>
+    <rect x="4" y="-1.5" width="5" height="3" rx="1" fill="#FF7132"/>
+  </g>
+  <!-- Label -->
+  <text x="40" y="73" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#FF7132">[RESOURCE]</text>
+</svg>

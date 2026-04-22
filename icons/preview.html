@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控进化 · 社区导航图标 预览</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1E2020;
+    font-family: 'Courier New', monospace;
+    color: #E3DBD2;
+    padding: 40px 32px;
+    min-height: 100vh;
+  }
+  h1 {
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: #C43F24;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 11px;
+    color: #E3DBD2;
+    opacity: 0.5;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: #C43F24;
+    opacity: 0.3;
+    margin-bottom: 40px;
+  }
+  /* Row = one style */
+  .style-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .row-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #C43F24;
+    text-transform: uppercase;
+    min-width: 28px;
+    padding-top: 8px;
+    opacity: 0.9;
+  }
+  .icons-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    flex: 1;
+  }
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .icon-card img {
+    width: 80px;
+    height: 80px;
+    display: block;
+  }
+  .icon-name {
+    font-size: 11px;
+    color: #E3DBD2;
+    letter-spacing: 1px;
+    text-align: center;
+    opacity: 0.85;
+  }
+  .icon-file {
+    font-size: 9px;
+    color: #E3DBD2;
+    opacity: 0.35;
+    text-align: center;
+    word-break: break-all;
+  }
+  /* Column headers */
+  .col-headers {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    margin-left: 52px;
+    margin-bottom: 16px;
+  }
+  .col-header {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #E3DBD2;
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+  .style-tag-a { border-left: 2px solid #E3DBD2; padding-left: 8px; }
+  .style-tag-b { border-left: 2px solid #C43F24; padding-left: 8px; }
+  .style-tag-c { border-left: 2px solid #FF7132; padding-left: 8px; }
+
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #C43F24;
+    opacity: 0.3;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #E3DBD2;
+  }
+</style>
+</head>
+<body>
+
+<h1>失控进化 · 社区导航图标</h1>
+<p class="subtitle">ICON DESIGN SYSTEM · 3 STYLES × 6 ICONS · 2026-04-22</p>
+<div class="divider"></div>
+
+<!-- Column headers -->
+<div class="col-headers">
+  <div class="col-header">爆料</div>
+  <div class="col-header">资讯</div>
+  <div class="col-header">建造</div>
+  <div class="col-header">生存</div>
+  <div class="col-header">战斗</div>
+  <div class="col-header">资源</div>
+</div>
+
+<!-- Style A: 军事蓝图 -->
+<div class="style-row">
+  <div class="row-label style-tag-a">军事蓝图</div>
+  <div class="icons-grid">
+    <div class="icon-card">
+      <img src="icon-scoop-blueprint.svg" alt="爆料 蓝图">
+      <div class="icon-name">最新爆料</div>
+      <div class="icon-file">icon-scoop-blueprint.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-info-blueprint.svg" alt="资讯 蓝图">
+      <div class="icon-name">游戏资讯</div>
+      <div class="icon-file">icon-info-blueprint.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-build-blueprint.svg" alt="建造 蓝图">
+      <div class="icon-name">建造</div>
+      <div class="icon-file">icon-build-blueprint.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-survive-blueprint.svg" alt="生存 蓝图">
+      <div class="icon-name">生存</div>
+      <div class="icon-file">icon-survive-blueprint.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-combat-blueprint.svg" alt="战斗 蓝图">
+      <div class="icon-name">战斗</div>
+      <div class="icon-file">icon-combat-blueprint.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-resource-blueprint.svg" alt="资源 蓝图">
+      <div class="icon-name">资源</div>
+      <div class="icon-file">icon-resource-blueprint.svg</div>
+    </div>
+  </div>
+</div>
+
+<!-- Style B: 废土锈蚀 -->
+<div class="style-row">
+  <div class="row-label style-tag-b">废土锈蚀</div>
+  <div class="icons-grid">
+    <div class="icon-card">
+      <img src="icon-scoop-rust.svg" alt="爆料 废土">
+      <div class="icon-name">最新爆料</div>
+      <div class="icon-file">icon-scoop-rust.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-info-rust.svg" alt="资讯 废土">
+      <div class="icon-name">游戏资讯</div>
+      <div class="icon-file">icon-info-rust.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-build-rust.svg" alt="建造 废土">
+      <div class="icon-name">建造</div>
+      <div class="icon-file">icon-build-rust.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-survive-rust.svg" alt="生存 废土">
+      <div class="icon-name">生存</div>
+      <div class="icon-file">icon-survive-rust.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-combat-rust.svg" alt="战斗 废土">
+      <div class="icon-name">战斗</div>
+      <div class="icon-file">icon-combat-rust.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-resource-rust.svg" alt="资源 废土">
+      <div class="icon-name">资源</div>
+      <div class="icon-file">icon-resource-rust.svg</div>
+    </div>
+  </div>
+</div>
+
+<!-- Style C: CRT终端 -->
+<div class="style-row">
+  <div class="row-label style-tag-c">CRT终端</div>
+  <div class="icons-grid">
+    <div class="icon-card">
+      <img src="icon-scoop-crt.svg" alt="爆料 CRT">
+      <div class="icon-name">最新爆料</div>
+      <div class="icon-file">icon-scoop-crt.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-info-crt.svg" alt="资讯 CRT">
+      <div class="icon-name">游戏资讯</div>
+      <div class="icon-file">icon-info-crt.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-build-crt.svg" alt="建造 CRT">
+      <div class="icon-name">建造</div>
+      <div class="icon-file">icon-build-crt.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-survive-crt.svg" alt="生存 CRT">
+      <div class="icon-name">生存</div>
+      <div class="icon-file">icon-survive-crt.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-combat-crt.svg" alt="战斗 CRT">
+      <div class="icon-name">战斗</div>
+      <div class="icon-file">icon-combat-crt.svg</div>
+    </div>
+    <div class="icon-card">
+      <img src="icon-resource-crt.svg" alt="资源 CRT">
+      <div class="icon-name">资源</div>
+      <div class="icon-file">icon-resource-crt.svg</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  失控进化 · RUST MOBILE · ICON DESIGN SYSTEM · BRAND COMPLIANT
+</div>
+
+</body>
+</html>

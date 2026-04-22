@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- Background -->
+  <rect width="80" height="80" fill="#3D1D1D"/>
+  <!-- Outer frame - irregular rust border -->
+  <path d="M 4 4 L 76 4 L 76.5 76 L 3.5 75.5 Z" fill="none" stroke="#882818" stroke-width="2"/>
+  <!-- Corner rivets -->
+  <circle cx="10" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="10" cy="70" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="70" r="3" fill="#E3DBD2"/>
+  <!-- Antenna mast - solid fill -->
+  <rect x="37" y="32" width="6" height="22" rx="1" fill="#882818"/>
+  <!-- Antenna arms -->
+  <polygon points="40,16 34,32 46,32" fill="#C43F24"/>
+  <!-- Antenna tip ball -->
+  <circle cx="40" cy="15" r="3" fill="#C43F24"/>
+  <!-- Cross bar -->
+  <rect x="33" y="40" width="14" height="3" rx="1" fill="#882818"/>
+  <rect x="35" y="46" width="10" height="2.5" rx="1" fill="#882818"/>
+  <!-- Base plate -->
+  <rect x="31" y="53" width="18" height="4" rx="1" fill="#882818"/>
+  <rect x="28" y="56" width="24" height="3" rx="1" fill="#882818"/>
+  <!-- Signal waves - filled wedge shapes -->
+  <path d="M 29 44 A 12 12 0 0 1 51 44 L 49 44 A 10 10 0 0 0 31 44 Z" fill="#C43F24" opacity="0.9"/>
+  <path d="M 23 40 A 18 18 0 0 1 57 40 L 55 40 A 16 16 0 0 0 25 40 Z" fill="#C43F24" opacity="0.6"/>
+  <path d="M 17 36 A 24 24 0 0 1 63 36 L 61 36 A 22 22 0 0 0 19 36 Z" fill="#C43F24" opacity="0.3"/>
+  <!-- Warning stripe at bottom -->
+  <rect x="4" y="68" width="72" height="3" fill="#882818" opacity="0.5"/>
+</svg>

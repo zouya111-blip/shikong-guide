@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <pattern id="grid-info-bp" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#2A2928" stroke-width="0.5" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <!-- Background -->
+  <rect width="80" height="80" fill="#1E2020"/>
+  <rect width="80" height="80" fill="url(#grid-info-bp)"/>
+  <!-- Outer frame -->
+  <rect x="3" y="3" width="74" height="74" fill="none" stroke="#C43F24" stroke-width="1"/>
+  <!-- Corner ticks -->
+  <line x1="3" y1="3" x2="8" y2="3" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="3" x2="3" y2="8" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="3" x2="72" y2="3" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="3" x2="77" y2="8" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="77" x2="8" y2="77" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="77" x2="3" y2="72" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="77" x2="72" y2="77" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="77" x2="77" y2="72" stroke="#C43F24" stroke-width="1"/>
+  <!-- Document body with curled corner -->
+  <path d="M 24 18 L 52 18 L 56 22 L 56 58 L 24 58 Z" fill="none" stroke="#E3DBD2" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Curled corner fold lines -->
+  <path d="M 52 18 L 52 22 L 56 22" fill="none" stroke="#C43F24" stroke-width="1.2"/>
+  <!-- Document content lines -->
+  <line x1="29" y1="28" x2="51" y2="28" stroke="#E3DBD2" stroke-width="1" opacity="0.7"/>
+  <line x1="29" y1="33" x2="51" y2="33" stroke="#E3DBD2" stroke-width="1" opacity="0.7"/>
+  <line x1="29" y1="38" x2="44" y2="38" stroke="#E3DBD2" stroke-width="1" opacity="0.7"/>
+  <line x1="29" y1="43" x2="51" y2="43" stroke="#E3DBD2" stroke-width="1" opacity="0.5"/>
+  <line x1="29" y1="48" x2="47" y2="48" stroke="#E3DBD2" stroke-width="1" opacity="0.5"/>
+  <!-- Pushpin on document -->
+  <circle cx="50" cy="22" r="4" fill="none" stroke="#C43F24" stroke-width="1.5"/>
+  <circle cx="50" cy="22" r="1.5" fill="#C43F24"/>
+  <!-- Pin shaft -->
+  <line x1="50" y1="26" x2="50" y2="32" stroke="#C43F24" stroke-width="1.5"/>
+  <!-- Red highlight line for importance -->
+  <line x1="29" y1="28" x2="42" y2="28" stroke="#C43F24" stroke-width="1.5"/>
+</svg>

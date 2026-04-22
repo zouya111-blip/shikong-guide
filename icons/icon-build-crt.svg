@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <filter id="glow-build">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="80" height="80" fill="#1C1C1C"/>
+  <!-- Scanlines -->
+  <line x1="0" y1="4" x2="80" y2="4" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="8" x2="80" y2="8" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="12" x2="80" y2="12" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="16" x2="80" y2="16" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="20" x2="80" y2="20" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="24" x2="80" y2="24" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="28" x2="80" y2="28" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="32" x2="80" y2="32" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="36" x2="80" y2="36" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="40" x2="80" y2="40" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="44" x2="80" y2="44" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="48" x2="80" y2="48" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="52" x2="80" y2="52" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="56" x2="80" y2="56" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="60" x2="80" y2="60" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="64" x2="80" y2="64" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="68" x2="80" y2="68" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <line x1="0" y1="72" x2="80" y2="72" stroke="#E3DBD2" stroke-width="0.5" opacity="0.06"/>
+  <!-- Outer frame -->
+  <rect x="3" y="3" width="74" height="74" fill="none" stroke="#FF7132" stroke-width="1" opacity="0.5"/>
+  <!-- Blueprint grid background (faint) -->
+  <rect x="8" y="28" width="38" height="30" fill="none" stroke="#FF7132" stroke-width="0.5" opacity="0.2" filter="url(#glow-build)"/>
+  <line x1="8" y1="38" x2="46" y2="38" stroke="#FF7132" stroke-width="0.5" opacity="0.2"/>
+  <line x1="8" y1="48" x2="46" y2="48" stroke="#FF7132" stroke-width="0.5" opacity="0.2"/>
+  <line x1="20" y1="28" x2="20" y2="58" stroke="#FF7132" stroke-width="0.5" opacity="0.2"/>
+  <line x1="34" y1="28" x2="34" y2="58" stroke="#FF7132" stroke-width="0.5" opacity="0.2"/>
+  <!-- Hammer handle -->
+  <line x1="28" y1="54" x2="52" y2="30" stroke="#FF7132" stroke-width="3" stroke-linecap="round" filter="url(#glow-build)"/>
+  <!-- Hammer head -->
+  <rect x="47" y="16" width="16" height="10" rx="2" fill="#FF7132" transform="rotate(-45 55 21)" filter="url(#glow-build)"/>
+  <!-- Label -->
+  <text x="40" y="73" text-anchor="middle" font-family="monospace" font-size="7" fill="#FF7132">[BUILD]</text>
+</svg>

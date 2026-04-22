@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- Background -->
+  <rect width="80" height="80" fill="#3D1D1D"/>
+  <!-- Outer frame -->
+  <path d="M 4 4 L 76 4 L 76.5 76 L 3.5 75.5 Z" fill="none" stroke="#882818" stroke-width="2"/>
+  <!-- Corner rivets -->
+  <circle cx="10" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="10" cy="70" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="70" r="3" fill="#E3DBD2"/>
+  <!-- Drum shadow -->
+  <rect x="27" y="21" width="28" height="36" rx="4" fill="#882818"/>
+  <!-- Drum main body -->
+  <rect x="25" y="19" width="28" height="36" rx="3" fill="#C43F24"/>
+  <!-- Top rim shadow -->
+  <rect x="23" y="18" width="32" height="5" rx="2" fill="#882818"/>
+  <!-- Top rim -->
+  <rect x="23" y="17" width="32" height="5" rx="2" fill="#C43F24"/>
+  <!-- Bottom rim shadow -->
+  <rect x="23" y="52" width="32" height="5" rx="2" fill="#882818"/>
+  <!-- Bottom rim -->
+  <rect x="23" y="51" width="32" height="5" rx="2" fill="#C43F24"/>
+  <!-- Barrel bands -->
+  <rect x="25" y="29" width="28" height="3" fill="#882818"/>
+  <rect x="25" y="40" width="28" height="3" fill="#882818"/>
+  <!-- Hazard warning diamond -->
+  <rect x="36" y="32" width="6" height="6" fill="#882818" transform="rotate(45, 39, 35)"/>
+  <!-- Gear fragment top-right -->
+  <!-- Main gear body -->
+  <circle cx="62" cy="18" r="8" fill="none" stroke="#C43F24" stroke-width="2.5"/>
+  <circle cx="62" cy="18" r="3" fill="#882818"/>
+  <!-- Gear teeth (partial, breaking frame) -->
+  <rect x="59" y="8" width="6" height="4" rx="1" fill="#C43F24"/>
+  <rect x="64" y="10" width="4" height="6" rx="1" fill="#C43F24" transform="rotate(30, 66, 13)"/>
+  <rect x="58" y="10" width="4" height="6" rx="1" fill="#C43F24" transform="rotate(-30, 60, 13)"/>
+  <!-- Small scattered gear piece bottom-left -->
+  <circle cx="18" cy="62" r="5" fill="none" stroke="#C43F24" stroke-width="1.5"/>
+  <circle cx="18" cy="62" r="2" fill="#882818"/>
+  <rect x="15" y="56" width="3" height="3" rx="0.5" fill="#C43F24"/>
+  <rect x="20" y="56" width="3" height="3" rx="0.5" fill="#C43F24"/>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- Background -->
+  <rect width="80" height="80" fill="#3D1D1D"/>
+  <!-- Outer frame -->
+  <path d="M 4 4 L 76 4 L 76.5 76 L 3.5 75.5 Z" fill="none" stroke="#882818" stroke-width="2"/>
+  <!-- Corner rivets -->
+  <circle cx="10" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="10" r="3" fill="#E3DBD2"/>
+  <circle cx="10" cy="70" r="3" fill="#E3DBD2"/>
+  <circle cx="70" cy="70" r="3" fill="#E3DBD2"/>
+  <!-- AK-47 - shadow layer -->
+  <g fill="#882818" transform="translate(1,1)">
+    <!-- Stock -->
+    <path d="M 10 39 L 24 37 L 24 44 L 10 45 Z"/>
+    <!-- Receiver -->
+    <rect x="24" y="35" width="22" height="9" rx="1"/>
+    <!-- Magazine -->
+    <path d="M 30 44 C 29 52 31 57 33 57 C 35 57 37 52 36 44 Z"/>
+    <!-- Barrel -->
+    <rect x="46" y="35" width="24" height="4" rx="1"/>
+    <!-- Grip -->
+    <path d="M 24 44 L 22 53 L 27 54 L 28 44 Z"/>
+  </g>
+  <!-- AK-47 - main fill -->
+  <!-- Stock -->
+  <path d="M 10 38 L 24 36 L 24 43 L 10 44 Z" fill="#C43F24"/>
+  <!-- Stock buttpad -->
+  <rect x="10" y="37" width="4" height="8" rx="1" fill="#882818"/>
+  <!-- Receiver body -->
+  <rect x="24" y="34" width="22" height="9" rx="1" fill="#C43F24"/>
+  <!-- Receiver top detail -->
+  <rect x="24" y="34" width="22" height="3" rx="1" fill="#882818"/>
+  <!-- Ejection port cut-out -->
+  <rect x="31" y="36" width="8" height="4" rx="0.5" fill="#882818"/>
+  <!-- Grip -->
+  <path d="M 24 43 L 22 52 L 27 53 L 28 43 Z" fill="#C43F24"/>
+  <!-- Trigger guard -->
+  <path d="M 27 43 C 27 50 24 52 22 52" fill="none" stroke="#882818" stroke-width="1.5"/>
+  <!-- Trigger -->
+  <line x1="26" y1="44" x2="25" y2="48" stroke="#E3DBD2" stroke-width="1.5"/>
+  <!-- Magazine - curved shape -->
+  <path d="M 30 43 C 28 51 30 57 33 57 C 36 57 38 51 36 43 Z" fill="#C43F24"/>
+  <!-- Magazine side detail -->
+  <line x1="31" y1="46" x2="35" y2="46" stroke="#882818" stroke-width="1"/>
+  <line x1="31" y1="50" x2="35" y2="50" stroke="#882818" stroke-width="1"/>
+  <!-- Handguard -->
+  <rect x="46" y="38" width="16" height="5" rx="1" fill="#882818"/>
+  <!-- Barrel -->
+  <rect x="46" y="34" width="24" height="5" rx="1" fill="#C43F24"/>
+  <!-- Muzzle device -->
+  <rect x="67" y="33" width="4" height="7" rx="0.5" fill="#882818"/>
+  <!-- Gas tube -->
+  <rect x="50" y="32" width="14" height="3" rx="1" fill="#882818" opacity="0.8"/>
+  <!-- Front sight post -->
+  <rect x="62" y="30" width="3" height="5" rx="0.5" fill="#C43F24"/>
+  <!-- Rear sight -->
+  <rect x="33" y="31" width="5" height="4" rx="0.5" fill="#C43F24"/>
+  <!-- Selector switch -->
+  <circle cx="45" cy="38" r="2" fill="#882818"/>
+  <line x1="45" y1="38" x2="47" y2="40" stroke="#882818" stroke-width="1"/>
+</svg>

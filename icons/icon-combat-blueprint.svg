@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <pattern id="grid-combat-bp" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#2A2928" stroke-width="0.5" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <!-- Background -->
+  <rect width="80" height="80" fill="#1E2020"/>
+  <rect width="80" height="80" fill="url(#grid-combat-bp)"/>
+  <!-- Outer frame -->
+  <rect x="3" y="3" width="74" height="74" fill="none" stroke="#C43F24" stroke-width="1"/>
+  <!-- Corner ticks -->
+  <line x1="3" y1="3" x2="8" y2="3" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="3" x2="3" y2="8" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="3" x2="72" y2="3" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="3" x2="77" y2="8" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="77" x2="8" y2="77" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="77" x2="3" y2="72" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="77" x2="72" y2="77" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="77" x2="77" y2="72" stroke="#C43F24" stroke-width="1"/>
+  <!-- AK-47 silhouette side view, pointing right -->
+  <!-- Barrel -->
+  <line x1="56" y1="37" x2="68" y2="37" stroke="#E3DBD2" stroke-width="2" stroke-linecap="round"/>
+  <!-- Muzzle detail -->
+  <line x1="67" y1="35" x2="67" y2="39" stroke="#C43F24" stroke-width="1.5"/>
+  <!-- Front sight -->
+  <line x1="60" y1="35" x2="60" y2="37" stroke="#E3DBD2" stroke-width="1"/>
+  <!-- Gas tube -->
+  <line x1="55" y1="35" x2="62" y2="35" stroke="#E3DBD2" stroke-width="1" opacity="0.6"/>
+  <!-- Receiver body -->
+  <rect x="38" y="35" width="20" height="8" rx="1" fill="none" stroke="#E3DBD2" stroke-width="1.5"/>
+  <!-- Ejection port -->
+  <rect x="44" y="36" width="7" height="4" rx="0.5" fill="none" stroke="#C43F24" stroke-width="1"/>
+  <!-- Rear sight block -->
+  <rect x="36" y="33" width="4" height="4" rx="0.5" fill="none" stroke="#E3DBD2" stroke-width="1"/>
+  <!-- Charging handle -->
+  <line x1="47" y1="35" x2="47" y2="32" stroke="#E3DBD2" stroke-width="1"/>
+  <circle cx="47" cy="31" r="1.5" fill="none" stroke="#E3DBD2" stroke-width="1"/>
+  <!-- Magazine (curved) -->
+  <path d="M 43 43 C 42 50 43 54 45 54 C 47 54 48 50 47 43" fill="none" stroke="#C43F24" stroke-width="1.8"/>
+  <line x1="43" y1="43" x2="47" y2="43" stroke="#C43F24" stroke-width="1.5"/>
+  <!-- Pistol grip -->
+  <path d="M 38 43 L 36 50 L 40 52 L 41 43" fill="none" stroke="#E3DBD2" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Trigger guard -->
+  <path d="M 40 43 C 40 48 38 50 36 50" fill="none" stroke="#E3DBD2" stroke-width="1"/>
+  <!-- Trigger -->
+  <line x1="39" y1="44" x2="39" y2="47" stroke="#C43F24" stroke-width="1"/>
+  <!-- Stock -->
+  <path d="M 36 35 L 22 37 L 22 42 L 37 42" fill="none" stroke="#E3DBD2" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Stock buttpad -->
+  <line x1="22" y1="36" x2="22" y2="43" stroke="#E3DBD2" stroke-width="2" stroke-linecap="round"/>
+  <!-- Handguard lines -->
+  <line x1="50" y1="43" x2="58" y2="43" stroke="#E3DBD2" stroke-width="1" opacity="0.5"/>
+</svg>

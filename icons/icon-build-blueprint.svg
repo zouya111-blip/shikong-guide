@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <pattern id="grid-build-bp" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#2A2928" stroke-width="0.5" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <!-- Background -->
+  <rect width="80" height="80" fill="#1E2020"/>
+  <rect width="80" height="80" fill="url(#grid-build-bp)"/>
+  <!-- Outer frame -->
+  <rect x="3" y="3" width="74" height="74" fill="none" stroke="#C43F24" stroke-width="1"/>
+  <!-- Corner ticks -->
+  <line x1="3" y1="3" x2="8" y2="3" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="3" x2="3" y2="8" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="3" x2="72" y2="3" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="3" x2="77" y2="8" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="77" x2="8" y2="77" stroke="#C43F24" stroke-width="1"/>
+  <line x1="3" y1="77" x2="3" y2="72" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="77" x2="72" y2="77" stroke="#C43F24" stroke-width="1"/>
+  <line x1="77" y1="77" x2="77" y2="72" stroke="#C43F24" stroke-width="1"/>
+  <!-- Hammer handle -->
+  <rect x="38" y="36" width="5" height="22" rx="1" fill="none" stroke="#E3DBD2" stroke-width="1.5" transform="rotate(45, 40.5, 47)"/>
+  <!-- Hammer head -->
+  <rect x="22" y="14" width="16" height="9" rx="1.5" fill="none" stroke="#C43F24" stroke-width="1.8"/>
+  <!-- Blueprint frame lines in background -->
+  <rect x="46" y="30" width="22" height="22" fill="none" stroke="#E3DBD2" stroke-width="1" opacity="0.5" stroke-dasharray="3,2"/>
+  <!-- Blueprint dimension lines -->
+  <line x1="46" y1="56" x2="68" y2="56" stroke="#E3DBD2" stroke-width="0.8" opacity="0.6"/>
+  <line x1="46" y1="54" x2="46" y2="58" stroke="#E3DBD2" stroke-width="0.8" opacity="0.6"/>
+  <line x1="68" y1="54" x2="68" y2="58" stroke="#E3DBD2" stroke-width="0.8" opacity="0.6"/>
+  <!-- Blueprint inner cross marks -->
+  <line x1="50" y1="37" x2="50" y2="43" stroke="#E3DBD2" stroke-width="0.8" opacity="0.5"/>
+  <line x1="47" y1="40" x2="53" y2="40" stroke="#E3DBD2" stroke-width="0.8" opacity="0.5"/>
+  <!-- Nail/screw detail -->
+  <circle cx="57" cy="41" r="2" fill="none" stroke="#C43F24" stroke-width="1"/>
+  <line x1="55.5" y1="41" x2="58.5" y2="41" stroke="#C43F24" stroke-width="0.8"/>
+</svg>
