@@ -1212,7 +1212,7 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <span class="np-mode-tip-icon">🎮</span>
           <div class="np-mode-tip-body">
             <span class="np-mode-tip-title">上岛前先选好模式</span>
-            <span class="np-mode-tip-sub">新手推荐「庇护模式」，家有保护 · 不怕被抄 →</span>
+            <span class="np-mode-tip-sub">新手推荐「常规模式」(暂名)，和平区建家 · 永久不被抄 →</span>
           </div>
           <span class="np-mode-tip-arrow">›</span>
         </div>
@@ -1745,39 +1745,41 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
 
       <!-- 经典战局 -->
       <div class="gi-mode-block">
-        <div class="gi-mode-title">🏆 经典战局</div>
+        <div class="gi-mode-title">🗺️ 经典战局</div>
         <div class="gi-img-placeholder" style="height:160px"><span class="gi-img-ph-icon">⚔️</span><span class="gi-img-ph-text">经典战局场景图 · 待填充</span></div>
-        <p class="gi-mode-desc">包含庇护、标准、进阶和挑战四个模式，每个模式都需要通过遗迹探索或突袭其他玩家收集情报，提升情报等级以获取强大支援。战局结算后根据情报等级获得账号奖励。</p>
+        <p class="gi-mode-desc">S1赛季经典战局包含常规、标准、挑战三个模式，通过遗迹探索或突袭其他玩家收集情报，提升情报等级（上限20级）以获取账号奖励。</p>
         <div class="gi-mode-table-wrap">
           <table class="gi-mode-table">
-            <thead><tr><th></th><th>庇护模式</th><th>标准模式</th><th>进阶模式</th><th>挑战模式</th></tr></thead>
+            <thead><tr><th></th><th>常规模式 ⭐新手</th><th>标准模式</th><th>挑战模式</th></tr></thead>
             <tbody>
-              <tr><td>死亡惩罚</td><td>掉落部分物资</td><td>掉落部分物资</td><td>掉落所有物资</td><td>掉落所有物资</td></tr>
-              <tr><td>结算时间</td><td><span class="gi-badge gi-badge-green">10天</span></td><td>7天</td><td>6天</td><td><span class="gi-badge gi-badge-red">5天</span></td></tr>
-              <tr><td>抄家保护</td><td>默认领地无敌，主动报名才解除</td><td>第1-2日禁抄家，第3-7日每天4小时允许</td><td>第1日禁抄家，第2-6日每天12小时允许</td><td>全天可抄家</td></tr>
+              <tr><td>死亡背包掉落</td><td>30%</td><td>50%</td><td>100%</td></tr>
+              <tr><td>结算时间</td><td><span class="gi-badge gi-badge-green">10天</span></td><td>7天</td><td><span class="gi-badge gi-badge-red">3天</span></td></tr>
+              <tr><td>抄家保护</td><td>和平区永久保护</td><td>每天00:00~08:00夜间保护</td><td>无，全天可抄</td></tr>
+              <tr><td>组队上限</td><td>1人 / 4人</td><td>1人 / 4人</td><td>4人</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- 限时模式 -->
+      <!-- 活动战局 -->
       <div class="gi-mode-block">
-        <div class="gi-mode-title">⚡ 限时模式 — 急速挑战</div>
-        <div class="gi-img-placeholder" style="height:160px"><span class="gi-img-ph-icon">⏱️</span><span class="gi-img-ph-text">急速挑战场景图 · 待填充</span></div>
-        <p class="gi-mode-desc">结算时间大大缩短，玩家面临残酷生存压力，需在有限时间内完成全周期发育、造家、拆家的完整生存循环。</p>
+        <div class="gi-mode-title">🎯 活动战局</div>
+        <div class="gi-img-placeholder" style="height:160px"><span class="gi-img-ph-icon">🛡️</span><span class="gi-img-ph-text">活动战局场景图 · 待填充</span></div>
+        <p class="gi-mode-desc">在核心模式基础上附加特殊规则的活动模式，包含庇护模式和高性能服。</p>
         <div class="gi-mode-table-wrap">
           <table class="gi-mode-table">
-            <thead><tr><th></th><th>急速挑战</th></tr></thead>
+            <thead><tr><th></th><th>庇护模式</th><th>高性能服</th></tr></thead>
             <tbody>
-              <tr><td>死亡惩罚</td><td>掉落所有物资</td></tr>
-              <tr><td>结算时间</td><td><span class="gi-badge gi-badge-red">2.5天</span></td></tr>
-              <tr><td>抄家保护</td><td>前12小时禁止抄家；12小时后自由抄家</td></tr>
+              <tr><td>死亡背包掉落</td><td>30%</td><td>100%</td></tr>
+              <tr><td>结算时间</td><td>10天</td><td>7天</td></tr>
+              <tr><td>抄家保护</td><td>前半程禁抄 / 后半程限时</td><td>无保护</td></tr>
+              <tr><td>组队上限</td><td>4人</td><td>8人</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- 领地攻防 -->
+      <!-- 迷你游戏（原领地攻防） -->
       <div class="gi-mode-block">
         <div class="gi-mode-title">🏰 领地攻防</div>
         <div class="gi-img-placeholder" style="height:160px"><span class="gi-img-ph-icon">💥</span><span class="gi-img-ph-text">领地攻防场景图 · 待填充</span></div>
@@ -2000,26 +2002,34 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
         <div class="mode-pre-hd">
           <span class="mode-pre-tag">BEFORE YOU START</span>
           <h3 class="mode-pre-title">🎮 上岛前先选好模式</h3>
-          <p class="mode-pre-desc">模式决定了这一局「家有多安全」和「死了损失多大」，选错了直接影响游戏体验。</p>
+          <p class="mode-pre-desc">模式决定了这一局「抄家规则怎么算」「死了损失多大」，选错了直接影响游戏体验。S1 赛季模式体系全面更新，共分五大类。</p>
         </div>
+
+        <!-- ── 大类一：经典战局 ── -->
+        <div class="mode-category-label" style="margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--orange);text-transform:uppercase;">🗺️ 经典战局 — 核心生存模式</div>
         <div class="mode-compare-grid">
-          <!-- 庇护 -->
+          <!-- 常规模式 -->
           <div class="mode-card mode-recommended">
             <div class="mode-card-hd">
-              <span class="mode-icon">🛡️</span>
+              <span class="mode-icon">🟢</span>
               <div>
-                <div class="mode-name">庇护模式</div>
+                <div class="mode-name">常规模式 <span style="font-size:10px;font-weight:400;color:var(--text-dim);font-family:'JetBrains Mono',monospace;">(暂名)</span></div>
                 <div class="mode-rec-badge">⭐ 新手首选</div>
               </div>
             </div>
             <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val green">全程保护</span></div>
-              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val green">只掉部分物资</span></div>
+              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val green">和平区永久保护</span></div>
+              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val green">背包掉落30%</span></div>
               <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">10天</span></div>
+              <div class="mode-attr"><span class="attr-label">👥 组队上限</span><span class="attr-val">1人 / 4人</span></div>
             </div>
-            <div class="mode-tip">领地默认无敌，主动报名夺榜才解除保护。给你最多空间学习基础玩法。</div>
+                        <div class="mode-card-img-placeholder" style="height:100px;background:var(--surface3);border:1px dashed var(--border-bright);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-bottom:10px;">
+              <span style="font-size:20px">🟢</span>
+              <span style="font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">常规模式场景图 · 待填充（建议 200×120px）</span>
+            </div>
+<div class="mode-tip">地图分为「和平区」和「危险区」。和平区建家永久无法被抄，危险区内可自由PVP。领地被拆时：领地柜资源掉50%，残骸存续12小时。容错率最高，最适合新手。</div>
           </div>
-          <!-- 标准 -->
+          <!-- 标准模式 -->
           <div class="mode-card">
             <div class="mode-card-hd">
               <span class="mode-icon">⚔️</span>
@@ -2029,79 +2039,131 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
               </div>
             </div>
             <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val yellow">部分时段保护</span></div>
-              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val green">只掉部分物资</span></div>
+              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val yellow">每天00:00~08:00</span></div>
+              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val yellow">背包掉落50%</span></div>
               <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">7天</span></div>
+              <div class="mode-attr"><span class="attr-label">👥 组队上限</span><span class="attr-val">1人 / 4人</span></div>
             </div>
-            <div class="mode-tip">第1-2日禁抄家，第3-7日每天4小时开放。体验完整对抗的入门选择。</div>
+                        <div class="mode-card-img-placeholder" style="height:100px;background:var(--surface3);border:1px dashed var(--border-bright);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-bottom:10px;">
+              <span style="font-size:20px">⚔️</span>
+              <span style="font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">标准模式场景图 · 待填充（建议 200×120px）</span>
+            </div>
+<div class="mode-tip">每天00:00~08:00为夜间保护期，其余时段可被突袭。领地被拆时：领地柜资源掉50%，残骸存续时间随战局进程逐步缩短（最短10分钟）。</div>
           </div>
-          <!-- 进阶 -->
-          <div class="mode-card">
-            <div class="mode-card-hd">
-              <span class="mode-icon">🔥</span>
-              <div>
-                <div class="mode-name">进阶模式</div>
-                <div class="mode-rec-badge" style="color:var(--text-muted)">有一定经验后</div>
-              </div>
-            </div>
-            <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val red">风险较高</span></div>
-              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val red">掉落全部物资</span></div>
-              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">6天</span></div>
-            </div>
-            <div class="mode-tip">第1日禁抄，第2-6日每天12小时开放。压力更大，适合提升对抗强度。</div>
-          </div>
-          <!-- 挑战 -->
+          <!-- 挑战模式 -->
           <div class="mode-card">
             <div class="mode-card-hd">
               <span class="mode-icon">💀</span>
               <div>
                 <div class="mode-name">挑战模式</div>
-                <div class="mode-rec-badge" style="color:var(--text-muted)">老手/极限挑战</div>
+                <div class="mode-rec-badge" style="color:var(--text-muted)">老手 / 极限强度</div>
               </div>
             </div>
             <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val red">无任何保护</span></div>
-              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val red">掉落全部物资</span></div>
-              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">5天</span></div>
+              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val red">全时段无保护</span></div>
+              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val red">背包掉落100%</span></div>
+              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">3天</span></div>
+              <div class="mode-attr"><span class="attr-label">👥 组队上限</span><span class="attr-val">4人</span></div>
             </div>
-            <div class="mode-tip">全天可抄家，无任何保护。追求极限刺激或老手刷分专用。</div>
+                        <div class="mode-card-img-placeholder" style="height:100px;background:var(--surface3);border:1px dashed var(--border-bright);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-bottom:10px;">
+              <span style="font-size:20px">💀</span>
+              <span style="font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">挑战模式场景图 · 待填充（建议 200×120px）</span>
+            </div>
+<div class="mode-tip">不分昼夜随时可被突袭，死亡背包全掉。领地被拆时：领地柜资源掉100%，残骸仅存续10分钟，家没了几乎什么都不剩。</div>
           </div>
-          <!-- 急速挑战 -->
+        </div>
+
+        <!-- ── 大类二：活动战局 ── -->
+        <div class="mode-category-label" style="margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--yellow);text-transform:uppercase;">🎯 活动战局 — 特殊规则模式</div>
+        <div class="mode-compare-grid">
+          <!-- 庇护模式 -->
           <div class="mode-card">
             <div class="mode-card-hd">
-              <span class="mode-icon">⚡</span>
+              <span class="mode-icon">🛡️</span>
               <div>
-                <div class="mode-name">急速挑战</div>
-                <div class="mode-rec-badge" style="color:var(--text-muted)">碎片时间 / 限时模式</div>
+                <div class="mode-name">庇护模式</div>
+                <div class="mode-rec-badge" style="color:var(--text-muted)">稳定发育 / 活动模式</div>
               </div>
             </div>
             <div class="mode-attrs">
-              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val yellow">前12小时保护</span></div>
-              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val red">掉落全部物资</span></div>
-              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">2.5天</span></div>
+              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val yellow">前半程禁抄 / 后半程限时</span></div>
+              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val green">背包掉落30%</span></div>
+              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">10天</span></div>
+              <div class="mode-attr"><span class="attr-label">👥 组队上限</span><span class="attr-val">4人</span></div>
             </div>
-            <div class="mode-tip">浓缩完整生存循环，节奏极快。碎片时间体验发育→造家→拆家全流程。</div>
+                        <div class="mode-card-img-placeholder" style="height:100px;background:var(--surface3);border:1px dashed var(--border-bright);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-bottom:10px;">
+              <span style="font-size:20px">🛡️</span>
+              <span style="font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">庇护模式场景图 · 待填充（建议 200×120px）</span>
+            </div>
+<div class="mode-tip">战局前半程完全禁止领地突袭，后半程限定时间段开放。领地被拆时：领地柜资源掉50%，残骸存续12小时。适合想稳定发育又体验完整对抗生态的玩家。</div>
           </div>
-          <!-- 领地攻防 -->
+          <!-- 高性能服 -->
+          <div class="mode-card">
+            <div class="mode-card-hd">
+              <span class="mode-icon">🔥</span>
+              <div>
+                <div class="mode-name">高性能服</div>
+                <div class="mode-rec-badge" style="color:var(--text-muted)">8人组队 / 硬件门槛</div>
+              </div>
+            </div>
+            <div class="mode-attrs">
+              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val red">全时段无保护</span></div>
+              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val red">背包掉落100%</span></div>
+              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">7天</span></div>
+              <div class="mode-attr"><span class="attr-label">👥 组队上限</span><span class="attr-val">8人</span></div>
+            </div>
+                        <div class="mode-card-img-placeholder" style="height:100px;background:var(--surface3);border:1px dashed var(--border-bright);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-bottom:10px;">
+              <span style="font-size:20px">🔥</span>
+              <span style="font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">高性能服场景图 · 待填充（建议 200×120px）</span>
+            </div>
+<div class="mode-tip">基于挑战模式规则，支持8人组队，植被更茂密。领地被拆时：领地柜资源掉100%，残骸仅存续10分钟，与挑战模式同等惩罚。</div>
+          </div>
+          <!-- 蓝图模式 -->
+          <div class="mode-card" style="display:none;">
+            <div class="mode-card-hd">
+              <span class="mode-icon">📐</span>
+              <div>
+                <div class="mode-name">蓝图模式</div>
+                <div class="mode-rec-badge" style="color:var(--blue)">🗓 8月更新</div>
+              </div>
+            </div>
+            <div class="mode-attrs">
+              <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val yellow">夜间保护（同标准）</span></div>
+              <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val yellow">背包掉落50%</span></div>
+              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">7天</span></div>
+              <div class="mode-attr"><span class="attr-label">👥 组队上限</span><span class="attr-val">2人 / 4人</span></div>
+            </div>
+            <div class="mode-tip">还原《RUST》端游蓝图碎片解锁科技的玩法，基于标准模式底层规则。8月版本更新后开放。</div>
+          </div>
+        </div>
+
+        <!-- ── 大类三：迷你游戏 ── -->
+        <div class="mode-category-label" style="margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--text-dim);text-transform:uppercase;">⚡ 迷你游戏 — 快节奏对抗</div>
+        <div class="mode-compare-grid">
           <div class="mode-card">
             <div class="mode-card-hd">
               <span class="mode-icon">🏰</span>
               <div>
-                <div class="mode-name">领地攻防</div>
-                <div class="mode-rec-badge" style="color:var(--text-muted)">纯PVP / 练战斗</div>
+                <div class="mode-name">迷你游戏（4选1）</div>
+                <div class="mode-rec-badge" style="color:var(--text-muted)">纯PVP / 练战斗手感</div>
               </div>
             </div>
             <div class="mode-attrs">
               <div class="mode-attr"><span class="attr-label">🏠 家的保护</span><span class="attr-val green">无需建家</span></div>
               <div class="mode-attr"><span class="attr-label">💀 死亡代价</span><span class="attr-val green">预设装备，无物资损失</span></div>
-              <div class="mode-attr"><span class="attr-label">⏱️ 结算周期</span><span class="attr-val">15分钟/局</span></div>
+              <div class="mode-attr"><span class="attr-label">⏱️ 单局时长</span><span class="attr-val">15分钟/局</span></div>
+              <div class="mode-attr"><span class="attr-label">👥 对阵</span><span class="attr-val">4v6 非对称PVP</span></div>
             </div>
-            <div class="mode-tip">跳过发育阶段，直接体验拆家对抗核心。4v6非对称PVP，适合练战斗手感。</div>
+                        <div class="mode-card-img-placeholder" style="height:100px;background:var(--surface3);border:1px dashed var(--border-bright);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-bottom:10px;">
+              <span style="font-size:20px">🏰</span>
+              <span style="font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">迷你游戏场景图 · 待填充（建议 200×120px）</span>
+            </div>
+<div class="mode-tip">包含四个子模式：原始攻防（弓弩）/ 手枪对决 / 轻武突袭（冲锋枪）/ 全面武装（步枪）。进攻vs防守，围绕领地柜攻防，跳过发育直接体验对抗核心。</div>
           </div>
         </div>
+
         <div class="mode-pre-advice">
-          💬 第一次上岛，选庇护模式——家有保护、死亡代价低，给你最多的空间去摸清楚游戏节奏。熟悉后再换模式不迟。
+          💬 第一次上岛，推荐选「常规模式」——在和平区建家永久无法被抄，死亡代价低，给你最多的空间摸清楚游戏节奏。玩熟了再换标准/挑战不迟。
         </div>
 
         <div class="step-faq" style="margin-top:20px">
@@ -2112,31 +2174,38 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="step-faq-list">
           <div class="step-faq-item" onclick="this.classList.toggle('open')">
             <div class="step-faq-q">
-              <span class="step-faq-q-text">哪个模式适合初期游玩？</span>
+              <span class="step-faq-q-text">新手应该选哪个模式？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
-            <div class="step-faq-a">强烈推荐「庇护模式」：领地默认无敌、死亡只掉落部分物资、结算时间10天，容错率最高。新手可以在这里学习游戏机制，熟练后再挑战标准/进阶模式。</div>
+            <div class="step-faq-a">强烈推荐「常规模式」：在和平区建家永久无法被突袭，死亡只掉落背包30%物资，结算时间10天，容错率最高。新手可以在这里安心学习游戏机制，熟练后再换标准或挑战模式。</div>
           </div>
           <div class="step-faq-item" onclick="this.classList.toggle('open')">
             <div class="step-faq-q">
-              <span class="step-faq-q-text">庇护模式和标准模式最大的区别是什么？</span>
+              <span class="step-faq-q-text">常规模式和庇护模式的区别是什么？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
-            <div class="step-faq-a">最大区别在于「抄家」：庇护模式默认领地无敌，不会被突袭；标准模式每天有4小时开放被抄时间。此外庇护死亡惩罚更低，更适合新手练习。</div>
+            <div class="step-faq-a">两者保护机制不同：常规模式通过「地图分区」实现保护——在和平区内永久无法被突袭，危险区则完全开放；庇护模式是「时间分段」保护——前半程全程禁抄，后半程限时开放。此外庇护模式属于活动战局，常规模式是常驻的经典战局。</div>
           </div>
           <div class="step-faq-item" onclick="this.classList.toggle('open')">
             <div class="step-faq-q">
-              <span class="step-faq-q-text">新手有没有保护期？一开始不会被打吗？</span>
+              <span class="step-faq-q-text">标准模式什么时候可以被抄家？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
-            <div class="step-faq-a">庇护模式下领地默认有保护，相对安全。但人物本身在野外依然可以被其他玩家攻击。建议刚开始快速建好第一个基地并锁门，减少在外暴露的时间。</div>
+            <div class="step-faq-a">标准模式每天00:00~08:00为夜间保护期，无法被领地突袭；其余时段（08:00~次日00:00）均可被抄家。睡觉前记得关门锁好工具柜。</div>
           </div>
           <div class="step-faq-item" onclick="this.classList.toggle('open')">
             <div class="step-faq-q">
               <span class="step-faq-q-text">一局游戏多久结算？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
-            <div class="step-faq-a">庇护模式10天、标准模式7天、进阶模式6天、挑战模式5天（游戏内时间）。结算后数据清空重置，玩家获得结算奖励。</div>
+            <div class="step-faq-a">常规模式10天、标准模式7天、挑战模式3天、庇护模式10天、蓝图模式7天（游戏内时间）。结算后数据清空重置，玩家获得对应奖励。</div>
+          </div>
+          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+            <div class="step-faq-q">
+              <span class="step-faq-q-text">死亡会掉落多少东西？</span>
+              <span class="step-faq-chevron">▼</span>
+            </div>
+            <div class="step-faq-a">无论什么模式，主手武器死亡后必定掉落。背包资源掉落比例：常规/庇护模式30%，标准/蓝图模式50%，挑战/高性能服100%。⚠️ 家被拆时还有额外惩罚：领地柜资源常规/庇护/标准模式掉50%（残骸存续12小时），挑战/高性能服掉100%（残骸仅存10分钟）。</div>
           </div>
           </div>
         </div>
@@ -2574,14 +2643,16 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="gs-title">四、抄家机制——最常踩的坑</div>
           <p class="gc-body" style="margin-bottom:12px">很多宝子纳闷，一觉醒来家怎么就被拆了？其实不同模式，抄家规则不一样，别搞混了。</p>
           <table class="gs-mode-table">
-            <thead><tr><th>模式</th><th>保护规则</th></tr></thead>
+            <thead><tr><th>模式</th><th>保护规则</th><th>死亡背包</th><th>领地柜掉落</th><th>残骸存续</th></tr></thead>
             <tbody>
-              <tr><td>庇护模式</td><td>情报领地全天保护，报名夺榜后则取消保护。</td></tr>
-              <tr><td>标准、进阶模式</td><td>情报领地会在特定时间内取消保护。</td></tr>
-              <tr><td>挑战模式</td><td>情报领地没有任何保护。</td></tr>
+              <tr><td>常规模式 <span style="font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">(暂名)</span></td><td>和平区永久保护；危险区无保护</td><td>30%</td><td style="color:#e05a3a;font-weight:700;">50%</td><td>12小时</td></tr>
+              <tr><td>庇护模式</td><td>前半程禁抄；后半程限时开放</td><td>30%</td><td style="color:#e05a3a;font-weight:700;">50%</td><td>12小时</td></tr>
+              <tr><td>标准模式</td><td>每天 00:00~08:00 夜间保护</td><td>50%</td><td style="color:#e05a3a;font-weight:700;">50%（阶段递减）</td><td>12小时→10分钟</td></tr>
+              <tr><td>挑战模式</td><td>无任何保护，全天可抄</td><td>100%</td><td style="color:#c43f24;font-weight:700;font-size:13px;">100% ⚠️</td><td>仅 10分钟</td></tr>
             </tbody>
           </table>
           <div class="gs-warn">⚠️ 注意——放置工具柜后，无论什么模式，激活情报领地才会受到拆家保护。</div>
+          <div class="gs-warn" style="margin-top:8px;">⚠️ 被抄时除背包掉落外，领地柜中的资源也会单独掉落！挑战模式领地柜100%掉落且残骸仅存10分钟，基本无法抢救——这是最容易被新手忽视的惩罚。</div>
         </div>
 
                 <div class="step-faq">
@@ -2616,7 +2687,7 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
               <span class="step-faq-q-text">下线之后别人能拆房吗？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
-            <div class="step-faq-a">取决于你选的模式。庇护模式：领地默认全天无敌，离线完全安全；标准/进阶模式：每天有特定时间段开放被抄，下线时段有可能被拆；挑战模式：全天可抄家，随时有风险。新手强烈建议庇护模式。</div>
+            <div class="step-faq-a">取决于你选的模式。常规模式：和平区内永久无法被突袭，安全离线；标准模式：每天00:00~08:00夜间保护，其余时段有风险；庇护模式：前半程禁抄，后半程限时开放；挑战模式：全天可抄，随时有风险。⚠️ 被拆时领地柜资源会额外掉落（挑战模式全掉），残骸存续时间挑战仅10分钟。新手强烈建议常规模式。</div>
           </div>
           </div>
         </div>
@@ -2754,7 +2825,7 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
               <span class="step-faq-q-text">被多人围攻，倒地后队友能救我吗？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
-            <div class="step-faq-a">可以，队友靠近后按互动键进行急救，需要消耗急救包。急救时有明显动作，会暴露位置，救援时需掩护。庇护模式死亡惩罚较低，适合新手。</div>
+            <div class="step-faq-a">可以，队友靠近后按互动键进行急救，需要消耗急救包。急救时有明显动作，会暴露位置，救援时需掩护。常规/庇护模式死亡惩罚较低（背包掉30%），新手建议选常规模式。</div>
           </div>
           <div class="step-faq-item" onclick="this.classList.toggle('open')">
             <div class="step-faq-q">
@@ -3482,12 +3553,15 @@ const TERMS = {
     {icon:'🏪', name:'前哨站', src:'player', source:'玩家（腾讯频道 三色卡帖）', desc:'地图上的特殊商人NPC据点，可购买物资、装备甚至载具。'},
   ]},
   mode: { label:'模式', icon:'🎮', terms:[
-    {icon:'🛡️', name:'庇护模式', desc:'【经典战局】死亡后掉落部分物资。结算时间10天。抄家保护：默认情报领地无敌，直到主动报名才会限时解除情报领地的抄家保护。残骸机制：残骸会保护50%的资源。'},
-    {icon:'⚔️', name:'标准模式', desc:'【经典战局】死亡后掉落部分物资。结算时间7天。抄家保护：第1-2日禁止抄家，第3-7日每天有4小时允许抄家。残骸机制：残骸会保护50%的资源。'},
-    {icon:'🔱', name:'进阶模式', desc:'【经典战局】死亡后掉落所有物资。结算时间6天。抄家保护：第1日禁止抄家，第2-6日每天有12小时允许抄家。残骸机制：第3日12:00前残骸会保护50%的资源；后续不再保护资源，被摧毁所有资源全掉落。'},
-    {icon:'💀', name:'挑战模式', desc:'【经典战局】死亡后掉落所有物资。结算时间5天。抄家保护：全天可抄家。残骸机制：不保护资源，领地柜和箱子被摧毁所有资源全掉落。'},
-    {icon:'⚡', name:'急速挑战', desc:'【限时模式】死亡后掉落所有物资。结算时间2.5天。前12小时禁止抄家，12小时以后允许自由抄家。残骸机制：不保护资源，领地柜和箱子被摧毁所有资源全掉落。'},
-    {icon:'🏰', name:'领地攻防', desc:'【领地攻防】无需漫长物资积累，即可体验抄家玩法的核心乐趣。玩家被分为进攻方和防守方：进攻方使用爆炸物摧毁目标领地柜；防守方需在规定时间内阻止领地柜被摧毁。包含四种子玩法：原始攻防（弓弩）、手枪对决（手枪）、轻武突袭（微冲）、全面武装（步枪），均为15分钟单局、4v6非对称PVP。'},
+    {icon:'🟢', name:'常规模式', desc:'【经典战局·新手首选】和平区永久禁突袭，危险区自由PVP。死亡背包掉30%，领地柜掉50%，残骸存12小时。10天，1/4人。'},
+    {icon:'⚔️', name:'标准模式', desc:'【经典战局】死亡背包掉50%，领地柜掉50%（随战局递减），残骸12小时→10分钟。7天，夜间保护，1/4人。'},
+    {icon:'💀', name:'挑战模式', desc:'【经典战局】死亡背包掉100%，领地柜掉100%⚠️，残骸仅存10分钟！3天，全天无保护，仅4人。适合熟悉玩法的高强度玩家。'},
+    {icon:'🛡️', name:'庇护模式', desc:'【活动战局】死亡背包掉30%，领地柜掉50%，残骸存12小时。10天，前半程禁突袭/后半程限时开放。适合稳定发育又想体验对抗的玩家。'},
+    {icon:'🔥', name:'高性能服', desc:'【活动战局】基于挑战模式规则，8人组队，植被更茂密。死亡背包掉100%，领地柜掉100%⚠️，残骸仅存10分钟。7天，无保护。'},
+    {icon:'📐', name:'蓝图模式', desc:'【活动战局·8月上线】还原《RUST》端游通过蓝图碎片解锁科技的玩法。基于标准模式底层规则，死亡背包掉落50%，结算时间7天，支持2人/4人组队。'},
+    {icon:'🏰', name:'迷你游戏', desc:'【快节奏对抗】15分钟单局，4v6非对称PVP，分进攻/防守围绕领地柜攻防。包含四种子玩法：原始攻防（弓弩）、手枪对决（手枪）、轻武突袭（微冲）、全面武装（步枪）。预设装备，无物资损失。'},
+    {icon:'🎯', name:'和平区', desc:'【常规模式专属】地图中禁止一切PVP和领地突袭的安全区域。在此建家永久不会被突袭，适合新手稳定发育。'},
+    {icon:'⚠️', name:'危险区', desc:'【常规模式专属】地图中允许玩家自由进行PVP和领地突袭的区域。资源通常更丰富，但风险也更高。'},
   ]},
 };
 
@@ -3505,7 +3579,7 @@ const FAQ_DATA = {
     {src:'official', q:'游戏里遇到外挂/作弊如何举报？', a:'局内举报：\n很抱歉给你带来了不好的游戏体验，你可直接在游戏端内通过阵亡结算页面举报该玩家，或通过游戏菜单栏的举报按钮对违规语音、建筑、范围进行举报；\n\n局外举报：\n可通过安全站或者联系客服进行提交线索和举报。\n安全站链接>>https://skjh.qq.com/cp/a20251210safety/channel.html'},
     {src:'player', q:'游戏数据会在版本结算时清空吗？', a:'每个局内按模式设定的天数结算后，该局数据清空重置，玩家重新开始。通过结算可获得游戏内特定道具奖励。'},
     {src:'player', q:'手机端帧率低卡顿怎么优化？', a:'在游戏设置中将画质调低（流畅模式）。同时清理后台App释放内存，保持设备散热良好。如设备配置较低，建议玩精简版'},
-    {src:'player', q:'新手有没有保护期？一开始不会被打吗？', a:'庇护模式下领地默认有保护，相对安全。但人物本身在野外依然可以被其他玩家攻击。建议刚开始快速建好第一个基地并锁门，减少在外暴露的时间。'},
+    {src:'player', q:'新手有没有保护期？一开始不会被打吗？', a:'常规模式在和平区内永久不可被领地突袭，是最安全的新手选择。但人物本身在野外依然可以被其他玩家攻击。建议刚开始快速建好第一个基地并锁门，减少在外暴露的时间。'},
     {src:'player', q:'手机端界面太小，怎么调整HUD布局？', a:'在游戏设置→操作界面中，可以自定义按键大小和位置。建议把常用的急救包、食物快捷键调到顺手的位置，大幅提升操作流畅度'},
   ]},
   survival: { label:'生存入门', icon:'🏕️', count:22, items:[
@@ -3618,18 +3692,18 @@ const FAQ_DATA = {
     {src:'player', q:'汽油在哪里补充？', a:'汽油桶可以在据点战利品箱中找到，也可以在安全区（前哨战等）购买。部分版本有加油桶道具，找到后可以直接给车辆加注。建议随身携带备用汽油，防止在野外断油'},
   ]},
   mode_world: { label:'模式与世界', icon:'🌍', count:14, items:[
-    {src:'official', q:'一局游戏多久结算？', a:'庇护模式10天、标准模式7天、进阶模式6天、挑战模式5天（游戏内时间）。结算后数据清空重置，玩家获得结算奖励。'},
+    {src:'official', q:'一局游戏多久结算？', a:'经典战局：常规10天、标准7天、挑战3天。活动战局：庇护10天、高性能服7天、蓝图7天（8月上线）。结算后数据清空重置，玩家获得对应奖励。',
     {src:'official', q:'什么是"情报等级"？有什么用？', a:'情报等级代表你在当前局的「声望」，越高说明你的领地越强大，会被系统标记为可攻打目标，同时解锁更多高价值事件和奖励。'},
-    {src:'official', q:'哪个模式适合初期游玩？', a:'强烈推荐「庇护模式」：领地默认无敌、死亡只掉落部分物资、结算时间10天，容错率最高。新手可以在这里学习游戏机制，熟练后再挑战标准/进阶模式。'},
-    {src:'official', q:'什么是"抄家"？', a:'抄家指破坏其他玩家的基地并搜刮其中的物资。庇护模式默认领地无敌（主动报名才解除），标准模式3-7天每天4小时可抄，进阶和挑战模式开放程度更高。'},
+    {src:'official', q:'哪个模式适合初期游玩？', a:'强烈推荐「常规模式」：在和平区内永久无法被领地突袭，死亡只掉落背包30%物资，结算时间10天，容错率最高。新手可以安心学习游戏机制，熟练后再换标准或挑战模式。'},
+    {src:'official', q:'什么是"抄家"？', a:'抄家指破坏其他玩家的基地并搜刮其中的物资。常规模式：和平区内永久禁止抄家，危险区内无保护；标准模式：每天00:00~08:00夜间保护，其余时段可被突袭；挑战模式全天开放。'},
     {src:'official', q:'被别人拆基地了怎么办？', a:'先确认是否在「可抄家」时间段被合法攻打。如确认被抢，及时检查工具柜余量并修缮建筑，加强薄弱位置的防御，考虑升级建筑材料或迁址重建。'},
     {src:'official', q:'剧本系统是什么？', a:'剧本是游戏内的特殊玩法活动，提供特定的任务目标和奖励，通常与当前版本活动相关。可以在游戏内任务面板中查看当前可用剧本。'},
     {src:'official', q:'空投物资值得争抢吗？', a:'空投提供高等级随机物资，竞争激烈。新手期装备不足时不建议强争，可以远观等其他玩家打完再捡漏。中后期有足够战力时是很好的物资来源。'},
-    {src:'player', q:'庇护模式和标准模式最大的区别是什么？', a:'最大区别在于「抄家」：庇护模式默认领地无敌，不会被突袭；标准模式每天有4小时开放被抄时间。此外庇护死亡惩罚更低，更适合新手练习'},
-    {src:'player', q:'什么是"残骸保护"？', a:'建筑被摧毁后会变成残骸，庇护/标准模式下残骸会保护内部50%的物资不掉落；进阶模式第3日前50%保护，之后全掉落；挑战模式无保护，全部掉落'},
+    {src:'player', q:'常规模式和标准模式最大的区别是什么？', a:'最大区别在于「保护机制」：常规模式通过地图分区保护——和平区永久无法被突袭，危险区则完全开放；标准模式是时间保护——每天00:00~08:00夜间保护，其余时段均可被抄。常规模式死亡掉落更低（30% vs 50%），更适合新手。'},
+    {src:'player', q:'什么是"残骸保护"？', a:'建筑被摧毁后会变成残骸，常规/庇护/标准模式下残骸会保护内部50%的物资不掉落（领地柜资源掉50%，残骸存续12小时）；挑战/高性能服模式无保护，全部掉落，残骸仅存10分钟。'},
     {src:'player', q:'结算时能带走哪些东西？', a:'结算时可以带走特定的「结算奖励」（如永久货币等），局内物资和建筑不会带到下一局。具体可带走的内容以官方公告为准'},
     {src:'player', q:'游戏内时间和现实时间比例是多少？', a:'游戏内1天通常对应现实中约1小时左右（具体以版本为准）。所以庇护模式10天大约需要10小时左右才结算。可以通过短时间高效游玩攒物资，不必连续挂机'},
-    {src:'player', q:'标准模式和挑战模式哪个奖励更多？', a:'一般来说模式越难（挑战>进阶>标准>庇护）结算奖励越丰厚，但同时游戏时间更短、风险更高。建议新手先从庇护或标准入手，有把握后再冲更高难度模式获取更好奖励'},
+    {src:'player', q:'标准模式和挑战模式哪个奖励更多？', a:'一般来说模式难度越高，结算奖励越丰厚，但游戏时间更短、风险更高。建议新手先从常规模式或标准模式入手，有把握后再冲挑战模式。常规模式还额外有皮肤碎片奖励。'},
     {src:'player', q:'结算前来不及做完想做的事怎么办？', a:'结算时间固定，无法延长。建议平时看好剩余天数，提前1-2天规划好要做的事。结算是新局的开始，每局都是独立体验，不用过于纠结上一局没做完的内容'},
     {src:'player', q:'世界地图多大？有哪些主要地区？', a:'地图包含多种地形：海岸渔村、草原、沙漠、雪地、辐射区等，各有不同资源和据点分布。初期可以探索地图边缘的安全区，熟悉各区域位置后再深入内陆的高风险据点'},
   ]},
@@ -3645,7 +3719,7 @@ const FAQ_DATA = {
     {src:'player', q:'遇到挂机队友怎么办？', a:'可以在队伍界面踢出不活跃的队员，或者直接单人继续。如果是朋友误挂机，等待一会或发送消息提醒即可。游戏没有强制踢人CD，队长可以随时操作'},
     {src:'player', q:'怎么加好友？好友系统有什么功能？', a:'在游戏内社交/好友界面可以搜索玩家ID添加好友。好友功能包括：查看在线状态、直接邀请组队、查看好友领地。建议多加活跃玩家，方便随时凑队'},
     {src:'player', q:'可以和队友共同建造同一个领地吗？', a:'可以，组队状态下可以在同一领地合作建造，共享建造权限。建议提前规划好建造分区，避免重复浪费材料。合作建造是提升效率最快的方法之一'},
-    {src:'player', q:'带新手入门要注意什么？', a:'带新手时建议：①先在庇护模式或低风险区练习；②优先教基础操作（采集、建造、进食）；③别一次给太多信息，让新手自己探索比全程保姆更有成就感；④遇到危险优先保护新手撤退'},
+    {src:'player', q:'带新手入门要注意什么？', a:'带新手时建议：①先在常规模式(暂名)或低风险区练习；②优先教基础操作（采集、建造、进食）；③别一次给太多信息，让新手自己探索比全程保姆更有成就感；④遇到危险优先保护新手撤退'},
     {src:'player', q:'陌生人要求进我基地参观，能让吗？', a:'不建议让陌生人进基地，存在被偷袭或偷窃物资的风险。如果想交流可以在基地外面空地见面。真正靠谱的队友可以在玩了几局、互相了解后再考虑邀请入住'},
     {src:'official', q:'我获得权限之后我退队伍还有权限吗？', a:'退队之后会没有领地权限'},
     {src:'official', q:'挑战模式怎么邀请好友进行双人组队？', a:'目前分双人和四人服 邀请好友在菜单 好友列表 在好友的后面会有组队邀请按钮'},
