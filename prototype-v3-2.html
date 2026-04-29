@@ -992,6 +992,29 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
 
 /* ── 游戏术语独立页适配 ── */
 .terms-page-section{padding-top:0;}
+/* ── 术语页新样式：英雄分类区块 ── */
+.terms-all-sections{max-width:900px;margin:0 auto;padding:0 48px 60px;display:flex;flex-direction:column;gap:16px;}
+.terms-sect{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--surface2);}
+.terms-sect-hd{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;transition:background .15s;user-select:none;}
+.terms-sect-hd:hover{background:rgba(255,255,255,.03);}
+.terms-sect-icon{font-size:22px;flex-shrink:0;}
+.terms-sect-name{font-size:16px;font-weight:900;flex:1;}
+.terms-sect-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--surface3,var(--surface));border:1px solid var(--border);padding:2px 9px;border-radius:20px;}
+.terms-sect-arr{font-size:13px;color:var(--text-muted);transition:transform .2s;margin-left:4px;}
+.terms-sect.open .terms-sect-arr{transform:rotate(90deg);}
+.terms-sect-body{display:none;border-top:1px solid var(--border);}
+.terms-sect.open .terms-sect-body{display:block;}
+.terms-term-row{display:flex;align-items:baseline;gap:12px;padding:13px 22px;cursor:pointer;transition:background .12s;border-bottom:1px solid rgba(255,255,255,.04);}
+.terms-term-row:last-child{border-bottom:none;}
+.terms-term-row:hover{background:rgba(255,255,255,.03);}
+.terms-term-row.open{background:rgba(196,63,36,.05);}
+.terms-term-ico{font-size:16px;flex-shrink:0;width:22px;text-align:center;}
+.terms-term-name{font-size:14px;font-weight:700;color:var(--text);min-width:90px;flex-shrink:0;}
+.terms-term-preview{font-size:13px;color:var(--text-muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.5;}
+.terms-term-expand-ico{font-size:11px;color:var(--text-muted);flex-shrink:0;transition:transform .18s;}
+.terms-term-row.open .terms-term-expand-ico{transform:rotate(90deg);color:var(--orange);}
+.terms-term-detail{display:none;padding:4px 22px 16px 54px;font-size:13px;color:var(--text-dim);line-height:1.9;white-space:pre-line;}
+.terms-term-row.open + .terms-term-detail{display:block;}
 .term-nav-btn.primary:hover{background:#f07030;}
 
 /* ════════ 搜索栏（武器/据点通用） ════════ */
@@ -1902,15 +1925,15 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
       <div class="snav-item active" id="snav-0" onclick="switchStep(1)">
         <div class="snav-num survival">01</div>
         <div class="snav-text">
-          <div class="snav-title">采集资源</div>
+          <div class="snav-title">武装自己</div>
           <div class="snav-sub">活过第一天</div>
         </div>
       </div>
       <div class="snav-item" id="snav-1" onclick="switchStep(2)">
         <div class="snav-num survival">02</div>
         <div class="snav-text">
-          <div class="snav-title">四条生命线</div>
-          <div class="snav-sub">别让任何一条归零</div>
+          <div class="snav-title">守住四线</div>
+          <div class="snav-sub">别莫名猝死</div>
         </div>
       </div>
       <!-- 阶段：发育 -->
@@ -1920,15 +1943,15 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
       <div class="snav-item" id="snav-2" onclick="switchStep(3)">
         <div class="snav-num develop">03</div>
         <div class="snav-text">
-          <div class="snav-title">四类物资</div>
-          <div class="snav-sub">一样不能少</div>
+          <div class="snav-title">按顺序采</div>
+          <div class="snav-sub">别乱跑</div>
         </div>
       </div>
       <div class="snav-item" id="snav-3" onclick="switchStep(4)">
         <div class="snav-num develop">04</div>
         <div class="snav-text">
-          <div class="snav-title">建造基地</div>
-          <div class="snav-sub">离线也不怕</div>
+          <div class="snav-title">建不垮的家</div>
+          <div class="snav-sub">选对地选对材</div>
         </div>
       </div>
       <!-- 阶段：战斗 -->
@@ -1938,15 +1961,15 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
       <div class="snav-item" id="snav-4" onclick="switchStep(5)">
         <div class="snav-num combat">05</div>
         <div class="snav-text">
-          <div class="snav-title">战斗遭遇</div>
-          <div class="snav-sub">打跑苟看情况</div>
+          <div class="snav-title">遇人别慌</div>
+          <div class="snav-sub">打跑苟都行</div>
         </div>
       </div>
       <div class="snav-item" id="snav-5" onclick="switchStep(6)">
         <div class="snav-num combat">06</div>
         <div class="snav-text">
-          <div class="snav-title">升科技树</div>
-          <div class="snav-sub">解锁强力装备</div>
+          <div class="snav-title">越来越强</div>
+          <div class="snav-sub">刷对目标</div>
         </div>
       </div>
     </div>
@@ -1958,9 +1981,9 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
         <div class="guide-page-title-row">
           <span class="guide-page-title-icon">🏝️</span>
           <h1 class="guide-page-title">新手入门</h1>
-          <span class="guide-page-badge">6 STEPS</span>
+          <span class="guide-page-badge">7 STEPS</span>
         </div>
-        <div class="guide-page-intro">从零出生到站稳脚跟——跟着 6 个步骤，避开 90% 的新手坑。</div>
+        <div class="guide-page-intro">从零出生到站稳脚跟——跟着 7 个步骤（含上岛前选模式），避开 90% 的新手坑。</div>
       </div>
       <!-- Progress -->
       <div class="progress-wrap">
@@ -2131,8 +2154,8 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="step-tag">STEP 01 / 06</div>
           <div>
             <div class="step-stage-label" style="color:var(--green)">🟢 生存阶段</div>
-            <h2>采集资源，活过第一天</h2>
-            <div class="step-subtitle">石头起手做工具，拿到第一把武器</div>
+            <h2>武装自己，活过第一天</h2>
+            <div class="step-subtitle">用对采集顺序，10分钟不空手</div>
           </div>
         </div>
         <p class="step-hook">刚进游戏一脸懵？睡醒啥都没有，站在原地不知道干啥？</p>
@@ -2243,8 +2266,8 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="step-tag">STEP 02 / 06</div>
           <div>
             <div class="step-stage-label" style="color:var(--green)">🟢 生存阶段</div>
-            <h2>管好生命值，撑过每一局</h2>
-            <div class="step-subtitle">饱腹、口渴、体温、生命值——四条线别让任何一条归零</div>
+            <h2>守住四线，别莫名猝死</h2>
+            <div class="step-subtitle">搞懂优先级，少走90%的弯路</div>
           </div>
         </div>
         <p class="step-hook">是不是刚进服没多久，就一直饥渴交加、频频掉血？</p>
@@ -2361,8 +2384,8 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="step-tag">STEP 03 / 06</div>
           <div>
             <div class="step-stage-label" style="color:var(--yellow)">🟡 发育阶段</div>
-            <h2>四类物资，一样不能少</h2>
-            <div class="step-subtitle">废料、木头、石头、布料——搞懂优先级，建家素材一局攒齐</div>
+            <h2>按顺序采，别乱跑</h2>
+            <div class="step-subtitle">一局内攒齐建家素材</div>
           </div>
         </div>
         <p class="step-hook">废料不够点科技，木头不够建房子，石头不够做工具，布料不够做绷带，宝子们是不是总被各种资源搞疯？</p>
@@ -2466,8 +2489,8 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="step-tag">STEP 04 / 06</div>
           <div>
             <div class="step-stage-label" style="color:var(--yellow)">🟡 发育阶段</div>
-            <h2>建造基地，离线也不怕</h2>
-            <div class="step-subtitle">工具柜放好、激活情报领地，离线保护才生效</div>
+            <h2>建一个拆不垮的家</h2>
+            <div class="step-subtitle">选对地选对材，被抄概率大降</div>
           </div>
         </div>
         <p class="step-hook">刚建家就被拆，辛苦攒的物资全被洗劫一空？</p>
@@ -2610,8 +2633,8 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="step-tag">STEP 05 / 06</div>
           <div>
             <div class="step-stage-label" style="color:var(--red)">🔴 战斗阶段</div>
-            <h2>战斗遭遇，送人头还是拿战果</h2>
-            <div class="step-subtitle">判断打、跑、苟，倒地别断线——队友能把你救回来</div>
+            <h2>遇人别慌，打跑苟都行</h2>
+            <div class="step-subtitle">读懂局势，倒地也能被救回</div>
           </div>
         </div>
         <p class="step-hook">萌新遇到其他玩家是不是特别慌？手里没武器只能任人拿捏，被打了更是手忙脚乱，不知道该怎么办？</p>
@@ -2755,8 +2778,8 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
           <div class="step-tag">STEP 06 / 06</div>
           <div>
             <div class="step-stage-label" style="color:var(--red)">🔴 战斗阶段</div>
-            <h2>升科技树，解锁强力装备</h2>
-            <div class="step-subtitle">废料换制作台配方，情报站积累情报币，等级越高支援越强</div>
+            <h2>从活着到越来越强</h2>
+            <div class="step-subtitle">刷对目标，进阶速度翻倍</div>
           </div>
         </div>
         <p class="step-hook">玩了很久，还是搞不懂科技树和情报到底是啥？不知道怎么推进才算真正在进步？</p>
@@ -3058,28 +3081,15 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
     <div class="terms-hero-bg"></div>
     <div class="terms-hero-eyebrow">GLOSSARY · 失控进化</div>
     <h1 class="terms-hero-title">游戏<em>术语</em>词典</h1>
-    <p class="terms-hero-sub">选择分类，查找你不熟悉的词汇。</p>
+    <p class="terms-hero-sub">点击分类区块展开词条，再点击词条查看完整释义。</p>
     <div class="terms-hero-guide">
-      <span class="terms-hero-guide-ico">👇</span>
-      <span class="terms-hero-guide-text"><strong>点击下方分类卡片</strong>，展开该分类的所有词条，再点击词条查看详细解释。</span>
+      <span class="terms-hero-guide-ico">🔍</span>
+      <span class="terms-hero-guide-text"><strong>全量词条</strong>，一行预览，点击展开详情。分类默认折叠，点击标题区域展开/收起。</span>
     </div>
   </div>
 
-  <!-- 第一屏：分类大卡片 -->
-  <div class="terms-cat-grid" id="terms-cat-grid"></div>
-
-  <!-- 第二屏：词条手风琴列表 -->
-  <div class="terms-detail-view" id="terms-detail-view">
-    <div class="terms-back-bar">
-      <button class="terms-back-btn" onclick="termsBackToCats()">← 所有分类</button>
-      <div class="terms-detail-hd">
-        <span class="terms-detail-icon" id="terms-detail-icon"></span>
-        <span class="terms-detail-name" id="terms-detail-name"></span>
-        <span class="terms-detail-count" id="terms-detail-count"></span>
-      </div>
-    </div>
-    <div class="terms-accordion" id="terms-accordion"></div>
-  </div>
+  <!-- 全量分类区块（单页展示，无翻页）-->
+  <div class="terms-all-sections" id="terms-all-sections"></div>
 
 </div>
 
@@ -3793,120 +3803,65 @@ let currentTermCatKey = null;
 let currentTermTileIdx = null;
 
 function renderTerms() {
-  const gridEl = document.getElementById('terms-cat-grid');
-  if(!gridEl) return;
-  gridEl.innerHTML = Object.entries(TERMS).map(([key,cat])=>{
+  const container = document.getElementById('terms-all-sections');
+  if(!container) return;
+  container.innerHTML = Object.entries(TERMS).map(([key,cat])=>{
     const meta = TERM_CAT_META[key] || TERM_CAT_META.survive;
-    const tags = cat.terms.slice(0,5).map(t=>`<span class="terms-cat-tag">${t.name}</span>`).join('');
-    const more = cat.terms.length > 5 ? `<span class="terms-cat-tag">+${cat.terms.length-5}</span>` : '';
+    const rows = cat.terms.map((t,i)=>{
+      const preview = (t.desc||'').replace(/\n/g,' ').replace(/\s+/g,' ').slice(0,60) + ((t.desc||'').length>60?'..':'');
+      return `
+      <div class="terms-term-row" id="trow-${key}-${i}" onclick="toggleTermRow('${key}',${i})">
+        <span class="terms-term-ico">${t.icon||cat.icon}</span>
+        <span class="terms-term-name">${t.name}</span>
+        <span class="terms-term-preview">${preview}</span>
+        <span class="terms-term-expand-ico">▶</span>
+      </div>
+      <div class="terms-term-detail" id="tdetail-${key}-${i}">${(t.desc||'').replace(/\n/g,'<br>')}</div>`;
+    }).join('');
     return `
-    <div class="terms-cat-card" data-cat="${key}" onclick="termsOpenCat('${key}')">
-      <div class="terms-cat-illus">
-        <div class="terms-cat-illus-placeholder">
-          <span class="terms-cat-illus-label">插图占位 · ${cat.label}</span>
-        </div>
-        <span class="terms-cat-illus-emoji">${cat.icon}</span>
-        <div class="terms-cat-illus-svg">${meta.svg}</div>
+    <div class="terms-sect" id="tsect-${key}">
+      <div class="terms-sect-hd" onclick="toggleTermsSect('${key}')">
+        <span class="terms-sect-icon">${cat.icon}</span>
+        <span class="terms-sect-name">${cat.label}</span>
+        <span class="terms-sect-count">${cat.terms.length} 个词条</span>
+        <span class="terms-sect-arr" style="color:${meta.color}">▶</span>
       </div>
-      <div class="terms-cat-body">
-        <div class="terms-cat-card-top">
-          <span class="terms-cat-card-icon">${cat.icon}</span>
-          <span class="terms-cat-card-name">${cat.label}</span>
-          <span class="terms-cat-card-arr" style="color:${meta.color}">→</span>
-        </div>
-        <div class="terms-cat-card-tags">${tags}${more}</div>
-        <div class="terms-cat-card-footer">
-          <span class="terms-cat-card-count">${cat.terms.length} 个词条</span>
-          <span class="terms-cat-card-cta" style="color:${meta.color};border-color:${meta.color}33;background:${meta.color}18">查看词条 →</span>
-        </div>
-      </div>
+      <div class="terms-sect-body">${rows}</div>
     </div>`;
   }).join('');
 }
 
-function termsOpenCat(key) {
-  const cat  = TERMS[key];
-  const meta = TERM_CAT_META[key] || TERM_CAT_META.survive;
-  currentTermCat    = key;
-  currentTermCatKey = key;
-  currentTermTileIdx = null;
-
-  document.getElementById('terms-cat-grid').style.display = 'none';
-  const dv = document.getElementById('terms-detail-view');
-  dv.classList.add('visible');
-  dv.style.setProperty('--cat-color', meta.color);
-  dv.style.setProperty('--cat-rgb',   meta.rgb);
-
-  document.getElementById('terms-detail-icon').textContent  = cat.icon;
-  document.getElementById('terms-detail-name').textContent  = cat.label;
-  document.getElementById('terms-detail-count').textContent = cat.terms.length + ' 个词条';
-
-  // 词条小方卡网格
-  const accordion = document.getElementById('terms-accordion');
-  accordion.innerHTML = `
-    <div class="terms-tile-grid" id="terms-tile-grid">
-      ${cat.terms.map((t,i)=>`
-        <div class="term-tile" id="term-tile-${i}" onclick="selectTermTile(${i})">
-          <span class="term-tile-ico">${t.icon||cat.icon}</span>
-          <span class="term-tile-name">${t.name}</span>
-          <span class="term-tile-hint">点击查看</span>
-        </div>
-      `).join('')}
-    </div>
-    <div id="terms-tile-panel"></div>`;
-
-  document.getElementById('page-terms').scrollTop = 0;
+function toggleTermsSect(key) {
+  const sect = document.getElementById('tsect-'+key);
+  if(!sect) return;
+  const wasOpen = sect.classList.contains('open');
+  // 关闭其他展开的分类
+  document.querySelectorAll('.terms-sect.open').forEach(s=>s.classList.remove('open'));
+  if(!wasOpen) sect.classList.add('open');
 }
 
-function selectTermTile(idx) {
-  const key  = currentTermCatKey;
-  const cat  = TERMS[key];
-  const meta = TERM_CAT_META[key] || TERM_CAT_META.survive;
-  const term = cat.terms[idx];
-  currentTermTileIdx = idx;
-
-  // 高亮选中
-  document.querySelectorAll('.term-tile').forEach((el,i)=>el.classList.toggle('selected', i===idx));
-
-  const total = cat.terms.length;
-  const prev = idx > 0 ? `<button class="terms-panel-nav-btn" onclick="selectTermTile(${idx-1})">← ${cat.terms[idx-1].name}</button>` : '<span></span>';
-  const next = idx < total-1 ? `<button class="terms-panel-nav-btn next" onclick="selectTermTile(${idx+1})">${cat.terms[idx+1].name} →</button>` : '<span></span>';
-
-  document.getElementById('terms-tile-panel').innerHTML = `
-    <div class="terms-detail-panel" style="border-color:${meta.color}44">
-      <div class="terms-detail-panel-hd">
-        <span class="terms-detail-panel-ico">${term.icon||cat.icon}</span>
-        <span class="terms-detail-panel-name">${term.name}</span>
-        <button class="terms-detail-panel-close" onclick="closeTermTilePanel()">✕</button>
-      </div>
-      <div class="terms-detail-panel-divider" style="background:linear-gradient(90deg,${meta.color},transparent)"></div>
-      <div class="terms-detail-panel-desc">${term.desc||''}</div>
-      <div class="terms-detail-panel-nav">${prev}${next}</div>
-    </div>`;
-
-  // 滚动到详情区
-  setTimeout(()=>{
-    document.getElementById('terms-tile-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
-  }, 80);
+function toggleTermRow(key, idx) {
+  const row = document.getElementById('trow-'+key+'-'+idx);
+  const detail = document.getElementById('tdetail-'+key+'-'+idx);
+  if(!row||!detail) return;
+  const wasOpen = row.classList.contains('open');
+  // 关闭同分类内其他已展开词条
+  const sect = document.getElementById('tsect-'+key);
+  if(sect) {
+    sect.querySelectorAll('.terms-term-row.open').forEach(r=>r.classList.remove('open'));
+    sect.querySelectorAll('.terms-term-detail').forEach(d=>d.style.display='');
+  }
+  if(!wasOpen) {
+    row.classList.add('open');
+    detail.style.display='block';
+    setTimeout(()=>detail.scrollIntoView({behavior:'smooth',block:'nearest'}),80);
+  }
 }
 
-function closeTermTilePanel() {
-  document.getElementById('terms-tile-panel').innerHTML = '';
-  document.querySelectorAll('.term-tile').forEach(el=>el.classList.remove('selected'));
-  currentTermTileIdx = null;
-}
-
-function termsBackToCats() {
-  document.getElementById('terms-cat-grid').style.display = '';
-  document.getElementById('terms-detail-view').classList.remove('visible');
-  document.getElementById('terms-accordion').innerHTML = '';
-  currentTermCatKey  = null;
-  currentTermTileIdx = null;
-}
-
-function toggleTermRow(){}
-function openTermSheet(){}
-function closeTermSheet(){}
+function termsOpenCat(key) { toggleTermsSect(key); }
+function termsBackToCats() {}
+function selectTermTile(){}
+function closeTermTilePanel(){}
 
 // ── 武器搜索 ──────────────────────────────────────────────────
 function filterWeaponsBySearch(q) {
