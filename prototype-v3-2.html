@@ -993,27 +993,50 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
 /* ── 游戏术语独立页适配 ── */
 .terms-page-section{padding-top:0;}
 /* ── 术语页新样式：英雄分类区块 ── */
-.terms-all-sections{max-width:900px;margin:0 auto;padding:0 48px 60px;display:flex;flex-direction:column;gap:16px;}
-.terms-sect{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--surface2);}
-.terms-sect-hd{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;transition:background .15s;user-select:none;}
-.terms-sect-hd:hover{background:rgba(255,255,255,.03);}
-.terms-sect-icon{font-size:22px;flex-shrink:0;}
-.terms-sect-name{font-size:16px;font-weight:900;flex:1;}
-.terms-sect-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--surface3,var(--surface));border:1px solid var(--border);padding:2px 9px;border-radius:20px;}
-.terms-sect-arr{font-size:13px;color:var(--text-muted);transition:transform .2s;margin-left:4px;}
-.terms-sect.open .terms-sect-arr{transform:rotate(90deg);}
-.terms-sect-body{display:none;border-top:1px solid var(--border);}
-.terms-sect.open .terms-sect-body{display:block;}
-.terms-term-row{display:flex;align-items:baseline;gap:12px;padding:13px 22px;cursor:pointer;transition:background .12s;border-bottom:1px solid rgba(255,255,255,.04);}
+.terms-all-sections{max-width:1100px;margin:0 auto;padding:0 32px 60px;}
+.terms-card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+@media(max-width:700px){.terms-card-grid{grid-template-columns:1fr;}}
+/* 术语分类卡片 */
+.terms-cat-card{border-radius:12px;overflow:hidden;background:var(--surface2);border:1px solid var(--border);cursor:pointer;transition:border-color .2s,transform .15s;}
+.terms-cat-card:hover{border-color:var(--border-bright);transform:translateY(-2px);}
+/* 卡片上半：图片占位区 */
+.terms-card-img{height:120px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.terms-card-img-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
+.terms-card-img-icon{font-size:48px;opacity:.25;}
+.terms-card-img-label{font-size:10px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,.25);letter-spacing:.5px;}
+.terms-card-img img{width:100%;height:100%;object-fit:cover;}
+/* 卡片下半：文字区 */
+.terms-card-body{background:var(--surface2);padding:14px 16px 12px;}
+.terms-card-hd{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.terms-card-title{font-size:15px;font-weight:900;color:var(--text);flex:1;}
+.terms-card-arrow{font-size:13px;color:var(--text-muted);}
+.terms-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.terms-card-tag{font-size:10px;padding:2px 7px;border-radius:4px;background:var(--surface3);border:1px solid var(--border);color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+.terms-card-tag-more{font-size:10px;padding:2px 7px;border-radius:4px;background:transparent;border:1px solid var(--border);color:var(--text-muted);}
+.terms-card-ft{display:flex;align-items:center;justify-content:space-between;}
+.terms-card-count{font-size:11px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+.terms-card-btn{font-size:11px;font-weight:700;padding:4px 12px;border-radius:4px;border:none;cursor:pointer;color:#fff;}
+/* 词条列表面板 */
+.terms-list-panel{margin-top:20px;display:none;}
+.terms-list-panel.open{display:block;}
+.terms-list-back{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--text-muted);margin-bottom:14px;padding:6px 0;}
+.terms-list-back:hover{color:var(--text);}
+.terms-list-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.terms-list-hd-icon{font-size:20px;}
+.terms-list-hd-title{font-size:16px;font-weight:900;}
+.terms-list-hd-count{font-size:11px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;padding:2px 8px;border:1px solid var(--border);border-radius:20px;}
+.terms-list-wrap{background:var(--surface2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+/* 旧展开列表行样式（复用） */
+.terms-term-row{display:flex;align-items:baseline;gap:12px;padding:13px 18px;cursor:pointer;transition:background .12s;border-bottom:1px solid rgba(255,255,255,.04);}
 .terms-term-row:last-child{border-bottom:none;}
 .terms-term-row:hover{background:rgba(255,255,255,.03);}
 .terms-term-row.open{background:rgba(196,63,36,.05);}
 .terms-term-ico{font-size:16px;flex-shrink:0;width:22px;text-align:center;}
-.terms-term-name{font-size:14px;font-weight:700;color:var(--text);min-width:90px;flex-shrink:0;}
-.terms-term-preview{font-size:13px;color:var(--text-muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.5;}
+.terms-term-name{font-size:14px;font-weight:700;color:var(--text);min-width:80px;flex-shrink:0;}
+.terms-term-preview{font-size:12px;color:var(--text-muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .terms-term-expand-ico{font-size:11px;color:var(--text-muted);flex-shrink:0;transition:transform .18s;}
 .terms-term-row.open .terms-term-expand-ico{transform:rotate(90deg);color:var(--orange);}
-.terms-term-detail{display:none;padding:4px 22px 16px 54px;font-size:13px;color:var(--text-dim);line-height:1.9;white-space:pre-line;}
+.terms-term-detail{display:none;padding:4px 18px 14px 50px;font-size:13px;color:var(--text-dim);line-height:1.9;white-space:pre-line;}
 .terms-term-row.open + .terms-term-detail{display:block;}
 .term-nav-btn.primary:hover{background:#f07030;}
 
@@ -3152,10 +3175,10 @@ button{font-family:'Noto Sans SC','PingFang SC',sans-serif;cursor:pointer;}
     <div class="terms-hero-bg"></div>
     <div class="terms-hero-eyebrow">GLOSSARY · 失控进化</div>
     <h1 class="terms-hero-title">游戏<em>术语</em>词典</h1>
-    <p class="terms-hero-sub">点击分类区块展开词条，再点击词条查看完整释义。</p>
+    <p class="terms-hero-sub">点击分类卡片进入词条列表，再点击单条查看完整释义。</p>
     <div class="terms-hero-guide">
       <span class="terms-hero-guide-ico">🔍</span>
-      <span class="terms-hero-guide-text"><strong>全量词条</strong>，一行预览，点击展开详情。分类默认折叠，点击标题区域展开/收起。</span>
+      <span class="terms-hero-guide-text"><strong>6大分类</strong>：生存 / 建造 / 资源 / 战斗 / 探索 / 模式，点卡片进入列表。</span>
     </div>
   </div>
 
@@ -3876,13 +3899,57 @@ const TERM_CAT_META = {
 let currentTermCatKey = null;
 let currentTermTileIdx = null;
 
+// 每个分类的主题色 + 渐变背景
+const TERM_CAT_THEME = {
+  survive: { color:'#c43f24', grad:'linear-gradient(135deg,#3d1a10 0%,#1a0a06 100%)', tags:['\u751f命値','\u53e3渴','\u9971腹','\u4f53温','\u8f90射'] },
+  base:    { color:'#b87333', grad:'linear-gradient(135deg,#2d1e0f 0%,#130d05 100%)', tags:['\u5de5具柜','\u5efa材','\u9525居权限','\u9886地柜','\u8170旗'] },
+  resource:{ color:'#c9a227', grad:'linear-gradient(135deg,#2d2410 0%,#130f04 100%)', tags:['\u5e9f料','\u91d1属','\u5e03料','\u77f3头','\u7b2c\u4e09者卡'] },
+  combat:  { color:'#8b5cf6', grad:'linear-gradient(135deg,#1e1030 0%,#0a0614 100%)', tags:['PVP','\u5012地','\u6025救','\u6b66器','\u5c04击'] },
+  explore: { color:'#0ea5e9', grad:'linear-gradient(135deg,#0a1e30 0%,#030d14 100%)', tags:['\u636e点','\u8fdc迹','\u5361\u623f','\u8f7d具','\u524d\u54e8\u7ad9'] },
+  mode:    { color:'#22d3ee', grad:'linear-gradient(135deg,#0a2030 0%,#030a14 100%)', tags:['\u5e38规','\u6807准','\u6311战','\u5e87护','\u8ff7\u4f60\u6e38\u620f'] },
+};
+
 function renderTerms() {
   const container = document.getElementById('terms-all-sections');
   if(!container) return;
-  container.innerHTML = Object.entries(TERMS).map(([key,cat])=>{
-    const meta = TERM_CAT_META[key] || TERM_CAT_META.survive;
-    const rows = cat.terms.map((t,i)=>{
-      const preview = (t.desc||'').replace(/\n/g,' ').replace(/\s+/g,' ').slice(0,60) + ((t.desc||'').length>60?'..':'');
+
+  // 渲染卡片网格
+  const grid = '<div class="terms-card-grid">' +
+    Object.entries(TERMS).map(([key, cat]) => {
+      const theme = TERM_CAT_THEME[key] || TERM_CAT_THEME.survive;
+      const previewTags = cat.terms.slice(0,4).map(t =>
+        `<span class="terms-card-tag">${t.name}</span>`
+      ).join('');
+      const moreCount = cat.terms.length - 4;
+      const moreBadge = moreCount > 0 ? `<span class="terms-card-tag-more">+${moreCount}</span>` : '';
+      return `
+      <div class="terms-cat-card" onclick="openTermsPanel('${key}')">
+        <div class="terms-card-img" style="background:${theme.grad}">
+          <div class="terms-card-img-ph">
+            <span class="terms-card-img-icon">${cat.icon}</span>
+            <span class="terms-card-img-label">${cat.label.toUpperCase()} · 待填充</span>
+          </div>
+        </div>
+        <div class="terms-card-body">
+          <div class="terms-card-hd">
+            <span style="font-size:18px">${cat.icon}</span>
+            <span class="terms-card-title">${cat.label}</span>
+            <span class="terms-card-arrow">→</span>
+          </div>
+          <div class="terms-card-tags">${previewTags}${moreBadge}</div>
+          <div class="terms-card-ft">
+            <span class="terms-card-count">${cat.terms.length} 个词条</span>
+            <button class="terms-card-btn" style="background:${theme.color}">查看词条 →</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('') +
+  '</div>';
+
+  // 渲染每个分类的词条列表面板（默认隐藏）
+  const panels = Object.entries(TERMS).map(([key, cat]) => {
+    const rows = cat.terms.map((t, i) => {
+      const preview = (t.desc||'').replace(/\n/g,' ').replace(/\s+/g,' ').slice(0,55) + ((t.desc||'').length>55?'..':'');
       return `
       <div class="terms-term-row" id="trow-${key}-${i}" onclick="toggleTermRow('${key}',${i})">
         <span class="terms-term-ico">${t.icon||cat.icon}</span>
@@ -3892,26 +3959,38 @@ function renderTerms() {
       </div>
       <div class="terms-term-detail" id="tdetail-${key}-${i}">${(t.desc||'').replace(/\n/g,'<br>')}</div>`;
     }).join('');
+    const theme = TERM_CAT_THEME[key] || TERM_CAT_THEME.survive;
     return `
-    <div class="terms-sect" id="tsect-${key}">
-      <div class="terms-sect-hd" onclick="toggleTermsSect('${key}')">
-        <span class="terms-sect-icon">${cat.icon}</span>
-        <span class="terms-sect-name">${cat.label}</span>
-        <span class="terms-sect-count">${cat.terms.length} 个词条</span>
-        <span class="terms-sect-arr" style="color:${meta.color}">▶</span>
+    <div class="terms-list-panel" id="tpanel-${key}">
+      <div class="terms-list-back" onclick="closeTermsPanel()">
+        <span>←</span><span>返回分类</span>
       </div>
-      <div class="terms-sect-body">${rows}</div>
+      <div class="terms-list-hd">
+        <span class="terms-list-hd-icon">${cat.icon}</span>
+        <span class="terms-list-hd-title" style="color:${theme.color}">${cat.label}</span>
+        <span class="terms-list-hd-count">${cat.terms.length} 个词条</span>
+      </div>
+      <div class="terms-list-wrap">${rows}</div>
     </div>`;
   }).join('');
+
+  container.innerHTML = grid + panels;
 }
 
-function toggleTermsSect(key) {
-  const sect = document.getElementById('tsect-'+key);
-  if(!sect) return;
-  const wasOpen = sect.classList.contains('open');
-  // 关闭其他展开的分类
-  document.querySelectorAll('.terms-sect.open').forEach(s=>s.classList.remove('open'));
-  if(!wasOpen) sect.classList.add('open');
+function openTermsPanel(key) {
+  // 隐藏卡片网格
+  const grid = document.querySelector('.terms-card-grid');
+  if(grid) grid.style.display = 'none';
+  // 隐藏其他面板
+  document.querySelectorAll('.terms-list-panel').forEach(p => p.classList.remove('open'));
+  const panel = document.getElementById('tpanel-' + key);
+  if(panel) panel.classList.add('open');
+}
+
+function closeTermsPanel() {
+  document.querySelectorAll('.terms-list-panel').forEach(p => p.classList.remove('open'));
+  const grid = document.querySelector('.terms-card-grid');
+  if(grid) grid.style.display = '';
 }
 
 function toggleTermRow(key, idx) {
